@@ -1,5 +1,5 @@
 {
-  "remoteURL": "git@github.com:RolandGasparyan/obsidian-brain.git",
+  "remoteURL": "https://github.com/RolandGasparyan/obsidian-brain.git",
   "gitLocation": "",
   "syncinterval": 15,
   "isSyncOnLoad": true,
