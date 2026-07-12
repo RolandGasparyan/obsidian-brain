@@ -1,0 +1,29 @@
+[Unit]
+Description=Trading Guru Champion Battle v2.2 - CMO Gods Level | USDT-only rounds | TITAN/VELOCITY/SENTINEL
+Documentation=file:///root/canary/canary_config.json
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/canary
+ExecStart=/root/canary/venv/bin/python3 /root/canary/champion_battle.py
+Restart=on-failure
+RestartSec=30
+StartLimitInterval=120
+StartLimitBurst=3
+Environment=PYTHONUNBUFFERED=1
+Environment=SSL_CERT_FILE=/root/canary/venv/lib/python3.11/site-packages/certifi/cacert.pem
+Environment=REQUESTS_CA_BUNDLE=/root/canary/venv/lib/python3.11/site-packages/certifi/cacert.pem
+StandardOutput=append:/root/canary/runtime/champion_battle.log
+StandardError=append:/root/canary/runtime/champion_battle.stderr.log
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/root/canary/runtime
+ReadWritePaths=/var/www/ai-trading-championship/dist/api/battle
+ReadWritePaths=/root/canary
+ReadOnlyPaths=/root/.l99
+
+[Install]
+WantedBy=multi-user.target

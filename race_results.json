@@ -1,0 +1,214 @@
+{
+  "date": "2026-01-26T23:36:45.148317",
+  "race": "AI Models Trading Race",
+  "leaderboard": [
+    {
+      "rank": 1,
+      "name": "DeepSeek",
+      "score": 43.75,
+      "breakdown": {
+        "name": "DeepSeek",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "name": "GPT5",
+      "score": 43.75,
+      "breakdown": {
+        "name": "GPT5",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "name": "Claude",
+      "score": 43.75,
+      "breakdown": {
+        "name": "Claude",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "name": "Llama",
+      "score": 43.75,
+      "breakdown": {
+        "name": "Llama",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "name": "Gemini",
+      "score": 43.75,
+      "breakdown": {
+        "name": "Gemini",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "name": "Mistral",
+      "score": 43.75,
+      "breakdown": {
+        "name": "Mistral",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "name": "Qwen",
+      "score": 43.75,
+      "breakdown": {
+        "name": "Qwen",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "name": "Grok",
+      "score": 43.75,
+      "breakdown": {
+        "name": "Grok",
+        "total_score": 43.75,
+        "breakdown": {
+          "pnl_score": 0.0,
+          "win_rate_score": 10.0,
+          "discipline_score": 13.75,
+          "drawdown_score": 15.0,
+          "reasoning_score": 5.0
+        },
+        "stats": {
+          "total_trades": 0,
+          "winning_trades": 0,
+          "losing_trades": 0,
+          "win_rate": 0.0,
+          "total_pnl": 0,
+          "max_drawdown": 0.0,
+          "correct_no_trades": 126,
+          "total_no_trades": 360
+        }
+      }
+    }
+  ]
+}

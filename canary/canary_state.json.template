@@ -1,0 +1,25 @@
+{
+  "_LEGACY": "Single-account state schema. NOT USED by the multi-account live battle.",
+  "_replaced_by": "Per-account state files: state_main.json, state_sub1.json, state_sub2.json — each schema matches canary_executor.init_state() in canary_executor.py",
+  "_current_schema": {
+    "account_id": "<MAIN | SUB1 | SUB2>",
+    "positions": "<dict pair → {side, entry_price, size_usdt, size_base, entry_ts, order_id}>",
+    "trades_today": 0,
+    "current_date": "<YYYY-MM-DD>",
+    "session_pnl": 0.0,
+    "session_start": "<ISO-8601 UTC>",
+    "daily_dd_usd": 0.0,
+    "consec_api_fails": 0,
+    "last_exit_ts": "<dict pair → unix-timestamp>"
+  },
+
+  "_": "legacy single-account fields kept below for historical reference only",
+  "position": null,
+  "last_exit_ts": 0,
+  "trades_today": 0,
+  "current_date_utc": "1970-01-01",
+  "session_pnl_usd": 0.0,
+  "session_start_equity": null,
+  "consec_api_fails": 0,
+  "started_at": 0
+}

@@ -1,0 +1,80 @@
+{
+  "generated_at_utc": "2026-06-10T18:32:47.333696+00:00",
+  "tg_safe": true,
+  "recent_hours": 24,
+  "snapshot_count_total": 8,
+  "snapshot_count_recent": 1902,
+  "event_count_recent": 90,
+  "boss_moment_count": 1,
+  "timeline": {
+    "first_ts": 1781029935.1930637,
+    "last_ts": 1781116313.152683,
+    "duration_seconds": 86377.95961928368
+  },
+  "storage": {
+    "snapshots_dir": "/root/tradingguru-empire/replay_engine/snapshots",
+    "file_count": 8,
+    "files": [
+      {
+        "name": "replay-2026-06-03.jsonl.gz",
+        "size_bytes": 557425,
+        "size_human": "544.4 KB"
+      },
+      {
+        "name": "replay-2026-06-04.jsonl.gz",
+        "size_bytes": 1014359,
+        "size_human": "990.6 KB"
+      },
+      {
+        "name": "replay-2026-06-05.jsonl.gz",
+        "size_bytes": 2545238,
+        "size_human": "2.4 MB"
+      },
+      {
+        "name": "replay-2026-06-06.jsonl.gz",
+        "size_bytes": 4123040,
+        "size_human": "3.9 MB"
+      },
+      {
+        "name": "replay-2026-06-07.jsonl.gz",
+        "size_bytes": 4288120,
+        "size_human": "4.1 MB"
+      },
+      {
+        "name": "replay-2026-06-08.jsonl.gz",
+        "size_bytes": 2078634,
+        "size_human": "2.0 MB"
+      },
+      {
+        "name": "replay-2026-06-09.jsonl.gz",
+        "size_bytes": 1240497,
+        "size_human": "1.2 MB"
+      },
+      {
+        "name": "replay-2026-06-10.jsonl.gz",
+        "size_bytes": 852454,
+        "size_human": "832.5 KB"
+      }
+    ],
+    "total_size_bytes": 16699767,
+    "total_size_mb": 15.926,
+    "retention_days": 7,
+    "max_total_mb_cap": 100.0,
+    "max_day_file_mb_cap": 10.0,
+    "current_day": "2026-06-10",
+    "current_part": 1,
+    "snapshots_written_today_session": 1459
+  },
+  "event_types_seen": {
+    "CROWD_REACTION": 9,
+    "REGIME_TRANSITION": 75,
+    "BOSS_EVENT": 6
+  },
+  "files": {
+    "index": "replay-index.json",
+    "timeline": "replay-timeline.json",
+    "events_recent": "replay-events-recent.json",
+    "bosses": "replay-bosses.json",
+    "heatmap": "replay-heatmap.json"
+  }
+}

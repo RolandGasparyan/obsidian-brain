@@ -1,0 +1,88 @@
+{
+  "race": "AI Models Trading Race",
+  "last_updated": "2026-01-26T23:36:45.147768",
+  "total_cycles": 90,
+  "total_pnl": 0.0,
+  "models": {
+    "DeepSeek": {
+      "role": "MARKET PREDATOR",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    },
+    "GPT5": {
+      "role": "ORDERBOOK GOD",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    },
+    "Claude": {
+      "role": "RISK MONK",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    },
+    "Llama": {
+      "role": "SESSION MASTER",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    },
+    "Gemini": {
+      "role": "ADAPTIVE LEARNER",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    },
+    "Mistral": {
+      "role": "ANTI-TRAP SPECIALIST",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    },
+    "Qwen": {
+      "role": "CONFIDENCE SCORER",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    },
+    "Grok": {
+      "role": "GODS LEVEL SYNTHESIZER",
+      "wins": 0,
+      "losses": 0,
+      "correct_no_trades": 126,
+      "total_no_trades": 360,
+      "pnl": 0.0,
+      "max_drawdown": 0.0,
+      "score": 43.75
+    }
+  }
+}

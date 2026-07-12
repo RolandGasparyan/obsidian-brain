@@ -1,0 +1,98 @@
+{
+  "mode": "STABLE_PROFIT_MODE",
+
+  "enabled": true,
+
+  "aggression_level": "MEDIUM",
+
+  "rapid_scalping": false,
+
+  "hyper_scalping": false,
+
+  "trade_cycle_multiplier": 4,
+
+  "signal_refresh_seconds": 4,
+
+  "ranking_refresh_seconds": 5,
+
+  "parallel_trading": true,
+
+  "max_parallel_pairs": 2,
+
+  "max_open_positions": 2,
+
+  "priority_pairs": [
+    "BTC/USDT",
+    "ETH/USDT"
+  ],
+
+  "elite_sniper_mode": true,
+
+  "minimum_confidence": 91,
+
+  "elite_confidence": 97,
+
+  "trend_alignment_required": true,
+
+  "volume_confirmation_required": true,
+
+  "fake_breakout_filter": true,
+
+  "avoid_sideways_markets": true,
+
+  "smart_auto_doubling": true,
+
+  "max_doubling_steps": 3,
+
+  "doubling_ladder": [
+    1.2,
+    1.5,
+    1.8
+  ],
+
+  "adaptive_doubling": true,
+
+  "disable_deep_recovery": true,
+
+  "rapid_reentry_mode": false,
+
+  "cooldown_after_loss_seconds": 90,
+
+  "cooldown_after_win_seconds": 20,
+
+  "smart_exit_engine": true,
+
+  "dynamic_take_profit": true,
+
+  "trailing_profit_lock": true,
+
+  "momentum_fade_exit": true,
+
+  "force_return_to_usdt": true,
+
+  "max_hold_seconds": 120,
+
+  "profit_lock_engine": true,
+
+  "lock_profit_after_percent": 0.8,
+
+  "reduce_aggression_after_profit": true,
+
+  "smart_kelly_enabled": true,
+
+  "fractional_kelly": 0.28,
+
+  "max_total_exposure_percent": 18,
+
+  "max_single_trade_percent": 5,
+
+  "kill_switch_drawdown_percent": 6,
+
+  "panic_market_block": true,
+
+  "spread_protection": true,
+
+  "black_swan_protection": true,
+
+  "safe_mode": true
+}

@@ -1,0 +1,55 @@
+{
+  "mode": "SMART_CAPITAL_SCALER",
+
+  "enabled": true,
+
+  "dynamic_position_scaling": true,
+
+  "scale_by_balance": true,
+
+  "minimum_usdt_required": 25,
+
+  "low_balance_defense_mode": true,
+
+  "capital_tier_scaling": {
+    "under_250": {
+      "max_parallel_pairs": 1,
+      "max_open_positions": 1,
+      "max_single_trade_percent": 2
+    },
+
+    "under_500": {
+      "max_parallel_pairs": 2,
+      "max_open_positions": 2,
+      "max_single_trade_percent": 3
+    },
+
+    "under_1000": {
+      "max_parallel_pairs": 3,
+      "max_open_positions": 3,
+      "max_single_trade_percent": 4
+    },
+
+    "over_1000": {
+      "max_parallel_pairs": 4,
+      "max_open_positions": 4,
+      "max_single_trade_percent": 5
+    }
+  },
+
+  "btc_size_reduction": true,
+
+  "prefer_low_cost_pairs": true,
+
+  "xrp_scalping_priority": true,
+
+  "sol_momentum_priority": true,
+
+  "avoid_oversized_btc_entries": true,
+
+  "dynamic_trade_sizing": true,
+
+  "safe_parallel_execution": true,
+
+  "force_usdt_reserve_percent": 25
+}

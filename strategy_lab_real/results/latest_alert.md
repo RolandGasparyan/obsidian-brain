@@ -1,0 +1,3 @@
+# ⚠️ SIGNAL
+
+2026-06-08T19:31:46Z  ⚪️ EXIT: BTC -> CASH  | MA50W10/BTC | close 63,510 | paper -20%

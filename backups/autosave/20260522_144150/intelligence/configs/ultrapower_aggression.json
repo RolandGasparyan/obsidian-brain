@@ -1,0 +1,49 @@
+{
+  "mode": "ULTRAPOWER_X10",
+
+  "enabled": true,
+
+  "trade_cycle_multiplier": 10,
+  "scan_speed_multiplier": 6,
+
+  "triple_entry_enabled": true,
+  "entry_size_multiplier": 3.0,
+
+  "rapid_reentry_mode": true,
+  "instant_reversal_detection": true,
+
+  "micro_scalping_enabled": true,
+  "multi_cycle_execution": true,
+
+  "max_parallel_cycles": 10,
+  "max_entries_per_symbol": 3,
+
+  "signal_refresh_seconds": 2,
+  "ranking_refresh_seconds": 3,
+
+  "dynamic_aggression": true,
+
+  "high_confidence_attack_mode": true,
+  "confidence_threshold": 78,
+
+  "kelly_aggression_boost": 1.8,
+  "momentum_attack_multiplier": 2.2,
+
+  "fibonacci_expansion_entries": true,
+  "smart_dca_recovery": true,
+
+  "trend_acceleration": true,
+  "volatility_hunter": true,
+
+  "profit_compounding": true,
+  "adaptive_position_growth": true,
+
+  "max_total_exposure_percent": 45,
+  "max_single_trade_percent": 12,
+
+  "panic_protection": true,
+  "drawdown_guard": true,
+  "kill_switch_drawdown_percent": 14,
+
+  "safe_aggressive_mode": true
+}

@@ -1,0 +1,48 @@
+[Unit]
+Description=🎮 TradingGuru Paper Battle Engine — 8-agent simulated arena (NO REAL CAPITAL)
+Documentation=file:///root/agent/README.md
+Documentation=file:///root/agent/paper_battle/paper_battle_engine.py
+After=network-online.target tradingguru-telemetry.service
+Wants=tradingguru-telemetry.service
+
+# ── ISOLATION GUARDS ────────────────────────────────────────────────────
+# This service is paper-only. It writes paper-arena.json. It NEVER opens
+# exchange connections or touches Layer 1 code.
+#
+# Refuses to start if Layer 1 mutation detected (paranoid):
+ConditionPathExists=/root/agent/canary/canary_strategy.py
+ConditionPathExists=/root/.l99/protection_halt.json
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/agent/paper_battle
+ExecStart=/usr/bin/python3 /root/agent/paper_battle/paper_battle_engine.py
+Restart=on-failure
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=5
+
+# ── HARDENING ───────────────────────────────────────────────────────────
+NoNewPrivileges=true
+ProtectSystem=full
+# NOTE: ProtectHome NOT used — we run as root with home=/root and need access
+# to /root/agent/paper_battle. ReadWritePaths constrains writes:
+ReadWritePaths=/root/agent/paper_battle
+ReadWritePaths=/var/www/ai-trading-championship/dist/api/battle
+ReadOnlyPaths=/root/agent/canary
+ReadOnlyPaths=/root/.l99
+# Tmp isolation
+PrivateTmp=true
+
+# ── LOGGING ─────────────────────────────────────────────────────────────
+StandardOutput=append:/root/agent/paper_battle/paper_battle.stdout.log
+StandardError=append:/root/agent/paper_battle/paper_battle.stderr.log
+
+# ── ENVIRONMENT (no API keys, no secrets, paper only) ──────────────────
+Environment=PAPER_MODE=1
+Environment=REAL_CAPITAL_AT_RISK=0
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

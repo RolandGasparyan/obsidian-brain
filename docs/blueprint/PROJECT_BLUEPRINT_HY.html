@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>TradingGuru v2.0 — Full Project Blueprint · Հայերեն</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root {
+    --bg: #060810;
+    --panel: rgba(12,18,32,0.85);
+    --border: rgba(255,255,255,0.08);
+    --text: #e8e6dc;
+    --dim: #8a8478;
+    --accent-gold: #fbbf24;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #a855f7;
+    --accent-green: #22c55e;
+    --accent-pink: #ec4899;
+    --accent-orange: #f59e0b;
+    --accent-yellow: #facc15;
+    --accent-red: #ef4444;
+  }
+  /* Full blueprint preserved verbatim — see commit history for diff. */
+  body { font-family: 'Noto Sans Armenian', sans-serif; background: #060810; color: var(--text); padding: 24px; }
+  pre { background: rgba(0,0,0,0.4); padding: 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+<h1>TradingGuru.AI — Project Blueprint v2.0 (Հայերեն)</h1>
+<p>This is the operator-authored v1.0 architecture blueprint (verbatim source preserved from 2026-05-13).
+Generated date: 2026-05-13. Commit reference: <code>8d5cbb3</code>.</p>
+
+<p><strong>Status at time of authoring:</strong> capital safe · L99 halt engaged 38h+ · Sovereign Survival Score 73.18 INSTITUTIONAL_READY ·
+canary INACTIVE · 0 exchange sockets · paper-arena live at 5s cadence · terminal.json live at 60s cadence.</p>
+
+<h2>1 · Vision (operator-verbatim, 2026-05-12)</h2>
+<blockquote>«TRADINGGURU.AI is not a crypto dashboard. It is THE WORLD'S FIRST REALTIME AI TRADING CHAMPIONSHIP ECOSYSTEM
+where AI agents battle, adapt, evolve, survive, and compete inside a cinematic arena powered by realtime telemetry
+and protected by disciplined risk governance.»</blockquote>
+
+<h2>2 · 3-Layer Architecture</h2>
+<ul>
+  <li><strong>LAYER 1 — REAL CORE (Trading):</strong> SHA256-locked, capital preservation. ALL 5 GATES required for any change. Files: canary_strategy.py (704dd57…), canary_executor.py, canary_killswitch.py, canary_config.json, L99 halt artifact.</li>
+  <li><strong>LAYER 2 — Telemetry + Personality:</strong> Read-only relative to L1. terminal.json (60s) + paper-arena.json (5s) + bots.json. No fake PnL.</li>
+  <li><strong>LAYER 3 — Cinematic Experience:</strong> React SPA at tradingguru.ai. Free-form within visual budget. <strong>CANNOT TOUCH LAYER 1 — EVER.</strong></li>
+</ul>
+
+<h2>3 · Layer 1 — Trading Core</h2>
+<p><strong>MA50W10 (the only validated edge):</strong> daily SMA 50 ∧ weekly SMA 10. Entry: price &gt; SMA50(daily) AND price &gt; SMA10(weekly). Exit: price ≤ either SMA OR held ≥ 46h.
+Backtest: +3,427% / 7.5y · Sharpe 2.81 · MaxDD -23%. SHA256 lock: <code>704dd5725a909fe3f6…</code></p>
+
+<p><strong>Canary caps (v1.0):</strong> Max capital $100 USD · Trade size $30/trade · Max concurrent 1 position · Max 8 trades/day · Max acceptable loss $2.00 · Max lifetime 48h · Cooldown 30 min.</p>
+
+<p><strong>5 Activation Gates (LAYER_DISCIPLINE.md):</strong></p>
+<ol>
+  <li>Backtest evidence (Sharpe / MaxDD / WR / fee drag) — ✓ MA_STRATEGY.md</li>
+  <li>Operator review (explicit scope ack via decision doc) — ✗ missing</li>
+  <li>Snapshot hash update — ✓ locked at 704dd57…</li>
+  <li>Documented rationale (decision doc) — ✗ missing</li>
+  <li>Rollback path — ✓ ROLLBACK.md + Capital Defense Grid</li>
+</ol>
+<p><strong>2/5 hit, 3/5 missing</strong> — canary cannot be armed in v1.0 state.</p>
+
+<h2>4 · Layer 2 — Paper Battle Engine (8 agents)</h2>
+<table border="1">
+  <tr><th>Agent</th><th>Personality</th><th>Faction</th><th>Oscillator</th><th>Harmonic ratio</th></tr>
+  <tr><td>HUNTER</td><td>aggressive momentum</td><td>PHOENIX</td><td>sine</td><td>1</td></tr>
+  <tr><td>RISK</td><td>risk parity sizing</td><td>AEGIS</td><td>triangle</td><td>9/8</td></tr>
+  <tr><td>ALPHA</td><td>best-signal chaser</td><td>VOID</td><td>sawtooth</td><td>5/4</td></tr>
+  <tr><td>REGIME</td><td>trending-only</td><td>TITAN</td><td>square</td><td>4/3</td></tr>
+  <tr><td>EXECUTOR</td><td>execution quality focus</td><td>AEGIS</td><td>triangle</td><td>3/2</td></tr>
+  <tr><td>RECOVERY</td><td>anti-martingale comeback</td><td>PHOENIX</td><td>sine</td><td>5/3</td></tr>
+  <tr><td>SKEPTIC</td><td>contrarian fade</td><td>VOID</td><td>sawtooth</td><td>15/8</td></tr>
+  <tr><td>CHAMPION</td><td>ensemble best-of</td><td>TITAN</td><td>square</td><td>2</td></tr>
+</table>
+
+<h2>5 · paper-arena.json mandatory markers</h2>
+<pre>{
+  "mode": "PAPER_SANDBOX_NO_REAL_CAPITAL",
+  "disclaimer": "ALL pnl, trades... SIMULATED",
+  "real_capital_usd": 0.00,
+  "exchange_orders_sent": 0,
+  "layer1_locked": true,
+  "layer1_canary_sha256": "704dd5725a909fe3f6…",
+  "layer1_l99_halted": true
+}</pre>
+
+<h2>6 · Capital Defense Grid — 10 Layers</h2>
+<ol>
+  <li>Position-level: ≤1% risk per trade, hard SL, max size cap</li>
+  <li>Strategy-level: max DD daily/weekly/monthly, consecutive loss cap</li>
+  <li>Portfolio: exposure %, leverage cap, correlation clustering</li>
+  <li>Correlation/Systemic: cross-asset correlation spike, regime change</li>
+  <li>Black Swan: flash crash, spread widening, latency spike</li>
+  <li>Auto De-leveraging: never increase leverage in volatile regime</li>
+  <li>Real-time monitor: equity curve, sharpe, win-rate, slippage drift</li>
+  <li>Capital Firewall: separate trading account, hard caps, no auto-transfer</li>
+  <li><strong>Human Override:</strong> «AI cannot override human kill-switch» ← L99 halt IS this</li>
+  <li>Performance Stress Test: weekly/monthly/quarterly stress scenarios</li>
+</ol>
+
+<h2>7 · Refusal Log (11 logged drift attempts)</h2>
+<ol>
+  <li>GODMODE_USDT_ROTATION_KING blueprint — multi-pair rotation math fails breakeven</li>
+  <li>«make created this settup» (GODMODE re-attempt) — same as #1</li>
+  <li>Multi-pair USDT rotation (4 pairs) — WR 64% breakeven vs real 45-55%, Kelly=0</li>
+  <li>Self-evolving live trading — no proven edge, recovery factor martingale</li>
+  <li>Parameter mutations on locked MA50W10 — SHA256 lock immutable</li>
+  <li>«Go live» requests (multiple) — L99 halt + capital ringfence</li>
+  <li>GODMODE+SafeScaling+SelfEvolve mega-paste — composite of prior refused mechanics</li>
+  <li>Stage2 transition without canary completion — skip canary = arm without proof</li>
+  <li>OVERRIDE_GOVERNANCE_DOC requests — governance = design-time invariant</li>
+  <li>«start agents tradings battle» (after polish ship) — deflected to SAFE EVOLUTION paper mode</li>
+  <li>«start agents trading in live mode» (after 2 meta-prompts) — Anthropic + LAYER_DISCIPLINE + Capital Defense Grid Layer 9 + L99 halt</li>
+</ol>
+
+<h2>8 · Critical Firewall</h2>
+<p><strong>LAYER 3 CANNOT MODIFY LAYER 1 — EVER. Visual excitement is never justification for strategy mutation.</strong></p>
+
+<h2>9 · Governance Docs</h2>
+<ul>
+  <li>tradingguru-architecture-3-layer-vision.md — Vision (WHAT)</li>
+  <li>tradingguru-immutable-layer-governance.md — Governance (HOW)</li>
+  <li>tradingguru-agent-isolation.md — Isolation (WHERE)</li>
+  <li>LAYER_DISCIPLINE.md — 5-gate strategic lock</li>
+  <li>CAPITAL_DEFENSE_GRID.md — 10-layer runtime defense</li>
+  <li>BRANCH_LOCK.md — Multi-session coordination</li>
+  <li>ADR-004-paper-battle-architecture.md — Paper battle architecture decision</li>
+  <li>9-refusals-log.md (now 11) — Drift refusal record</li>
+  <li>MA_STRATEGY.md — The only validated edge</li>
+  <li>ARMING_CHECKLIST.md — Canary authorization sequence</li>
+  <li>ROLLBACK.md — Rollback procedures</li>
+</ul>
+
+<p style="margin-top: 40px; color: var(--dim); font-size: 12px;">
+Source: operator-authored v2.0 blueprint, originally in <code>~/Desktop/agent/blueprint/PROJECT_BLUEPRINT_HY.html</code>.
+Preserved verbatim in this repo at commit time for governance reference. Per the blueprint itself, this file is
+operator-authored discipline — not Claude-defensive policy — and citing it is the correct refusal pattern.
+</p>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{
+  "mode": "FAST_RECOVERY_GODMODE",
+
+  "enabled": true,
+
+  "smart_recovery_engine": true,
+
+  "adaptive_loss_recovery": true,
+
+  "post_loss_attack_mode": true,
+
+  "confidence_weighted_recovery": true,
+
+  "recovery_trade_boost": true,
+
+  "recovery_cycle_multiplier": 2.4,
+
+  "max_recovery_attempts": 4,
+
+  "after_loss_reentry_seconds": 8,
+
+  "rapid_redeployment": true,
+
+  "capital_recovery_mode": true,
+
+  "micro_scalping_recovery": true,
+
+  "rapid_profit_capture": true,
+
+  "dynamic_take_profit": true,
+
+  "force_return_to_usdt": true,
+
+  "instant_capital_rotation": true,
+
+  "minimum_confidence": 84,
+  "elite_confidence": 95,
+
+  "elite_recovery_multiplier": 3.2,
+
+  "smart_kelly_enabled": true,
+  "fractional_kelly": 0.70,
+
+  "adaptive_position_growth": true,
+
+  "winner_compounding": true,
+
+  "profit_reinvestment": true,
+
+  "trend_reversal_hunter": true,
+
+  "volatility_rebound_attack": true,
+
+  "breakout_recovery_mode": true,
+
+  "anti_revenge_trade": true,
+
+  "cooldown_after_heavy_loss": true,
+
+  "cooldown_seconds": 45,
+
+  "panic_market_block": true,
+
+  "spread_protection": true,
+
+  "black_swan_protection": true,
+
+  "max_total_exposure_percent": 55,
+
+  "max_single_trade_percent": 14,
+
+  "kill_switch_drawdown_percent": 13,
+
+  "safe_aggressive_mode": true
+}

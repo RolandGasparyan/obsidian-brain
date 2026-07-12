@@ -1,0 +1,213 @@
+{
+  "mode": "ULTIMATE_AUTONOMOUS_AI",
+
+  "enabled": true,
+
+  "default_runtime_mode": true,
+
+  "auto_start_trading": true,
+
+  "auto_restart_after_shutdown": true,
+
+  "self_learning_ai": {
+    "enabled": true,
+
+    "trade_memory": true,
+    "pair_statistics": true,
+    "regime_statistics": true,
+    "adaptive_learning": true,
+    "behavior_evolution": true,
+    "strategy_scoring": true,
+
+    "auto_disable_bad_strategies": true,
+    "auto_scale_good_strategies": true,
+
+    "persistent_learning": true
+  },
+
+  "memory_engine": {
+    "enabled": true,
+
+    "remember_profitable_pairs": true,
+    "remember_failed_patterns": true,
+    "remember_best_hours": true,
+    "remember_best_regimes": true,
+
+    "persistent_memory": true
+  },
+
+  "adaptive_ai": {
+    "enabled": true,
+
+    "dynamic_confidence_thresholds": true,
+    "dynamic_position_sizing": true,
+    "dynamic_pair_priority": true,
+    "dynamic_aggression": true,
+    "dynamic_exit_behavior": true
+  },
+
+  "market_regime_ai": {
+    "enabled": true,
+
+    "trend_mode": true,
+    "chop_mode": true,
+    "panic_mode": true,
+    "breakout_mode": true,
+    "volatility_mode": true
+  },
+
+  "multi_agent_system": {
+    "enabled": true,
+
+    "trend_agent": true,
+    "breakout_agent": true,
+    "scalping_agent": true,
+    "defense_agent": true,
+    "volatility_agent": true,
+    "portfolio_agent": true,
+
+    "agent_competition": true,
+    "agent_scoring": true,
+    "agent_evolution": true
+  },
+
+  "trade_quality_ai": {
+    "enabled": true,
+
+    "minimum_confidence": 92,
+    "elite_confidence": 97,
+
+    "trend_alignment_required": true,
+    "volume_confirmation_required": true,
+    "fake_breakout_filter": true,
+    "avoid_sideways_markets": true
+  },
+
+  "rapid_scalping_engine": {
+    "enabled": true,
+
+    "triple_scalping": true,
+    "micro_scalping": true,
+
+    "scan_speed_multiplier": 3,
+    "trade_cycle_multiplier": 3,
+
+    "signal_refresh_seconds": 1,
+    "ranking_refresh_seconds": 1,
+
+    "micro_take_profit_percent": 0.18,
+
+    "fast_usdt_recycle": true,
+
+    "max_hold_seconds": 45
+  },
+
+  "smart_entry_engine": {
+    "enabled": true,
+
+    "double_entry_size": true,
+
+    "entry_size_multiplier": 2.0,
+
+    "adaptive_entry_sizing": true,
+
+    "priority_pairs": [
+      "SOL/USDT",
+      "ETH/USDT",
+      "XRP/USDT"
+    ]
+  },
+
+  "smart_exit_engine": {
+    "enabled": true,
+
+    "dynamic_take_profit": true,
+    "trailing_profit_lock": true,
+    "momentum_fade_exit": true,
+    "volatility_collapse_exit": true,
+    "instant_weakness_exit": true,
+
+    "force_return_to_usdt": true,
+    "force_full_exit": true
+  },
+
+  "capital_governor": {
+    "enabled": true,
+
+    "adaptive_capital_rotation": true,
+    "dynamic_risk_control": true,
+
+    "drawdown_defense": true,
+    "daily_profit_lock": true,
+
+    "reduce_after_losses": true,
+    "increase_after_wins": true
+  },
+
+  "portfolio_ai": {
+    "enabled": true,
+
+    "dynamic_pair_weighting": true,
+
+    "reduce_weak_pair_exposure": true,
+    "increase_strong_pair_allocation": true
+  },
+
+  "telemetry_system": {
+    "enabled": true,
+
+    "execution_tracking": true,
+    "trade_quality_tracking": true,
+    "slippage_tracking": true,
+    "latency_tracking": true,
+    "performance_analytics": true
+  },
+
+  "reinforcement_preparation": {
+    "enabled": true,
+
+    "experience_collection": true,
+    "reward_tracking": true,
+    "decision_logging": true,
+
+    "future_rl_ready": true
+  },
+
+  "smart_auto_doubling": {
+    "enabled": true,
+
+    "adaptive_doubling": true,
+
+    "elite_signal_required": true,
+
+    "max_doubling_steps": 3,
+
+    "doubling_ladder": [
+      1.15,
+      1.35,
+      1.60
+    ]
+  },
+
+  "risk_management": {
+    "max_parallel_pairs": 2,
+
+    "max_open_positions": 2,
+
+    "max_total_exposure_percent": 18,
+
+    "max_single_trade_percent": 4,
+
+    "force_usdt_reserve_percent": 30,
+
+    "kill_switch_drawdown_percent": 5
+  },
+
+  "usdt_recycle": {
+    "enabled": true,
+
+    "always_return_to_usdt": true,
+
+    "force_full_exit": true
+  }
+}

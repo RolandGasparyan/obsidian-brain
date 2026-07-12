@@ -1,0 +1,17 @@
+[Unit]
+Description=Run D6 auto-trigger every 30 minutes from Apr 30 onwards
+Documentation=https://github.com/RolandGasparyan/ai-trading-championship
+
+[Timer]
+# Fire 5 minutes after boot, then every 30 minutes thereafter.
+# d6_autotrigger.py is idempotent: it self-suppresses when span < 120h
+# or when the marker file exists, so firing too early is harmless.
+OnBootSec=5min
+OnUnitActiveSec=30min
+# Tolerate suspend / clock skew
+AccuracySec=1min
+Persistent=true
+Unit=d6-autotrigger.service
+
+[Install]
+WantedBy=timers.target

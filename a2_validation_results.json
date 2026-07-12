@@ -1,0 +1,267 @@
+{
+  "run_time": "2026-05-05T14:10:25.842166+00:00",
+  "mode": "A2_VALIDATION_SUITE",
+  "subject": "A2 Stablecoin Supply Impulse Candidate Alpha (PR #26)",
+  "validations": {
+    "lag_shift": {
+      "A2_BTC_USDT_3d_lag_minus1d": {
+        "name": "A2_BTC_USDT_3d_lag_minus1d",
+        "n": 1032,
+        "ic": 0.12250751916286819,
+        "tstat": 7.3613206965426325,
+        "pf": 1.8848266658325352,
+        "q_bps": 35.762209359433555,
+        "regime_count": 2,
+        "passes": false,
+        "killed_by": [
+          "Q5-Q1=+35.76"
+        ]
+      },
+      "A2_ETH_USDT_3d_lag_minus1d": {
+        "name": "A2_ETH_USDT_3d_lag_minus1d",
+        "n": 1032,
+        "ic": 0.06445964077771091,
+        "tstat": 6.02485253624386,
+        "pf": 1.6678491974115708,
+        "q_bps": 135.16072784754252,
+        "regime_count": 3,
+        "passes": true,
+        "killed_by": []
+      },
+      "A2_BTC_USDT_3d_lag_zero": {
+        "name": "A2_BTC_USDT_3d_lag_zero",
+        "n": 1032,
+        "ic": 0.09115783043794513,
+        "tstat": 4.898246433899755,
+        "pf": 1.5271071138935115,
+        "q_bps": 5.274579341567744,
+        "regime_count": 2,
+        "passes": false,
+        "killed_by": [
+          "Q5-Q1=+5.27"
+        ]
+      },
+      "A2_ETH_USDT_3d_lag_zero": {
+        "name": "A2_ETH_USDT_3d_lag_zero",
+        "n": 1032,
+        "ic": 0.09311215006187552,
+        "tstat": 3.9770361859751295,
+        "pf": 1.407577850641332,
+        "q_bps": 120.7735711210054,
+        "regime_count": 3,
+        "passes": true,
+        "killed_by": []
+      },
+      "A2_BTC_USDT_3d_lag_plus1d": {
+        "name": "A2_BTC_USDT_3d_lag_plus1d",
+        "n": 1032,
+        "ic": -0.006010067824935499,
+        "tstat": 4.62026616476422,
+        "pf": 1.4941575138767347,
+        "q_bps": 9.063916034779673,
+        "regime_count": 2,
+        "passes": false,
+        "killed_by": [
+          "IC=-0.0060",
+          "Q5-Q1=+9.06"
+        ]
+      },
+      "A2_ETH_USDT_3d_lag_plus1d": {
+        "name": "A2_ETH_USDT_3d_lag_plus1d",
+        "n": 1032,
+        "ic": 0.044093446699011135,
+        "tstat": 3.3291130172145564,
+        "pf": 1.332471672332265,
+        "q_bps": 133.69536751764267,
+        "regime_count": 3,
+        "passes": true,
+        "killed_by": []
+      }
+    },
+    "walk_forward": {
+      "A2_BTC_USDT_3d_year2023": {
+        "name": "A2_BTC_USDT_3d_year2023",
+        "n": 264,
+        "ic": 0.1494942248367889,
+        "tstat": 3.4742929006086154,
+        "pf": 1.8726028183337415,
+        "q_bps": -113.24252204846393,
+        "regime_count": 2,
+        "passes": false,
+        "killed_by": [
+          "Q5-Q1=-113.24"
+        ]
+      },
+      "A2_BTC_USDT_3d_year2024": {
+        "name": "A2_BTC_USDT_3d_year2024",
+        "n": 348,
+        "ic": 0.2872203114647065,
+        "tstat": 6.077901842015397,
+        "pf": 2.3217415328770716,
+        "q_bps": 71.42437436115668,
+        "regime_count": 2,
+        "passes": true,
+        "killed_by": []
+      },
+      "A2_BTC_USDT_3d_year2025": {
+        "name": "A2_BTC_USDT_3d_year2025",
+        "n": 288,
+        "ic": 0.11007006819944619,
+        "tstat": -3.6294885573936146,
+        "pf": 0.5544430909821942,
+        "q_bps": -39.106601061362376,
+        "regime_count": 0,
+        "passes": false,
+        "killed_by": [
+          "PF=0.5544",
+          "Q5-Q1=-39.11",
+          "Reg=0"
+        ]
+      },
+      "A2_BTC_USDT_3d_year2026": {
+        "name": "A2_BTC_USDT_3d_year2026",
+        "n": 132,
+        "ic": -0.4958910113590708,
+        "tstat": 0.12505328079040692,
+        "pf": 1.026889523263513,
+        "q_bps": 137.92779074595836,
+        "regime_count": 1,
+        "passes": false,
+        "killed_by": [
+          "t=+0.1251",
+          "PF=1.0269",
+          "Reg=1"
+        ]
+      },
+      "A2_ETH_USDT_3d_year2023": {
+        "name": "A2_ETH_USDT_3d_year2023",
+        "n": 264,
+        "ic": 0.035768836945391944,
+        "tstat": 2.2796240824947267,
+        "pf": 1.4491490086023349,
+        "q_bps": -29.96931892204104,
+        "regime_count": 1,
+        "passes": false,
+        "killed_by": [
+          "IC=+0.0358",
+          "Q5-Q1=-29.97",
+          "Reg=1"
+        ]
+      },
+      "A2_ETH_USDT_3d_year2024": {
+        "name": "A2_ETH_USDT_3d_year2024",
+        "n": 348,
+        "ic": 0.315821214600168,
+        "tstat": 6.5253131624822585,
+        "pf": 2.5265642440458937,
+        "q_bps": 223.23772555733757,
+        "regime_count": 3,
+        "passes": true,
+        "killed_by": []
+      },
+      "A2_ETH_USDT_3d_year2025": {
+        "name": "A2_ETH_USDT_3d_year2025",
+        "n": 288,
+        "ic": 0.0874380598724425,
+        "tstat": -1.458946142653963,
+        "pf": 0.7816926050841695,
+        "q_bps": 138.55521341862814,
+        "regime_count": 1,
+        "passes": false,
+        "killed_by": [
+          "t=-1.4589",
+          "PF=0.7817",
+          "Reg=1"
+        ]
+      },
+      "A2_ETH_USDT_3d_year2026": {
+        "name": "A2_ETH_USDT_3d_year2026",
+        "n": 132,
+        "ic": -0.40202866639186446,
+        "tstat": -2.9042903428239093,
+        "pf": 0.5174007897605959,
+        "q_bps": 117.80199323462813,
+        "regime_count": 0,
+        "passes": false,
+        "killed_by": [
+          "PF=0.5174",
+          "Reg=0"
+        ]
+      }
+    },
+    "regime_conditional": {
+      "A2_BTC_USDT_3d_regime_bull": {
+        "name": "A2_BTC_USDT_3d_regime_bull",
+        "n": 138,
+        "ic": 0.19645470548347108,
+        "tstat": 6.430250539258318,
+        "pf": 6.284737272216481,
+        "q_bps": 5.274579341567744,
+        "regime_count": 1,
+        "passes": false,
+        "killed_by": [
+          "Q5-Q1=+5.27",
+          "Reg=1"
+        ]
+      },
+      "A2_BTC_USDT_3d_regime_range": {
+        "name": "A2_BTC_USDT_3d_regime_range",
+        "n": 891,
+        "ic": 0.05980276047792548,
+        "tstat": 2.448659177185784,
+        "pf": 1.248115534668455,
+        "q_bps": 5.274579341567744,
+        "regime_count": 1,
+        "passes": false,
+        "killed_by": [
+          "PF=1.2481",
+          "Q5-Q1=+5.27",
+          "Reg=1"
+        ]
+      },
+      "A2_BTC_USDT_3d_regime_bear": {
+        "name": "A2_BTC_USDT_3d_regime_bear",
+        "n": 3,
+        "passes": false,
+        "killed_by": [
+          "N=3<100"
+        ]
+      },
+      "A2_ETH_USDT_3d_regime_bull": {
+        "name": "A2_ETH_USDT_3d_regime_bull",
+        "n": 168,
+        "ic": 0.23066799621382766,
+        "tstat": 3.0843755501649888,
+        "pf": 1.8987089486229025,
+        "q_bps": 120.7735711210054,
+        "regime_count": 1,
+        "passes": false,
+        "killed_by": [
+          "Reg=1"
+        ]
+      },
+      "A2_ETH_USDT_3d_regime_range": {
+        "name": "A2_ETH_USDT_3d_regime_range",
+        "n": 844,
+        "ic": 0.06981815394715006,
+        "tstat": 2.6885575081178468,
+        "pf": 1.2917297646900754,
+        "q_bps": 120.7735711210054,
+        "regime_count": 1,
+        "passes": false,
+        "killed_by": [
+          "PF=1.2917",
+          "Reg=1"
+        ]
+      },
+      "A2_ETH_USDT_3d_regime_bear": {
+        "name": "A2_ETH_USDT_3d_regime_bear",
+        "n": 20,
+        "passes": false,
+        "killed_by": [
+          "N=20<100"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[Unit]
+Description=B1 on-chain feature collector — CryptoQuant + Glassnode + Whale Alert
+Documentation=https://github.com/RolandGasparyan/ai-trading-championship
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/ai-trading-championship
+EnvironmentFile=-/etc/default/onchain-collector
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/var/www/ai-trading-championship/venv/bin/python \
+          /var/www/ai-trading-championship/onchain_collector.py \
+          --pairs BTC_USDT ETH_USDT \
+          --out-dir /var/log/onchain \
+          --poll-sec 300
+StandardOutput=append:/var/log/onchain-collector.log
+StandardError=append:/var/log/onchain-collector.log
+Restart=on-failure
+RestartSec=15
+MemoryMax=256M
+CPUQuota=20%
+
+[Install]
+WantedBy=multi-user.target

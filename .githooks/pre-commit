@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# ── Pre-commit hook: SHA256 lock guard on canary_strategy.py ─────────────
+# Refuses to commit if the locked strategy SHA256 has changed.
+# This is the LAST line of defense against accidental Layer 1 mutation.
+
+set -e
+
+LOCKED_SHA="704dd5725a909fe3f69e2d71283ec4a4eb1280a9f8373162e254db8d5917f143"
+STRATEGY_FILE="canary/canary_strategy.py"
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+if [ ! -f "$REPO_ROOT/$STRATEGY_FILE" ]; then
+  echo "→ Pre-commit: $STRATEGY_FILE not present (OK for partial clones)"
+  exit 0
+fi
+
+# Compute current SHA256 (cross-platform: macOS shasum + Linux sha256sum)
+if command -v sha256sum >/dev/null 2>&1; then
+  CURRENT_SHA="$(sha256sum "$REPO_ROOT/$STRATEGY_FILE" | awk '{print $1}')"
+elif command -v shasum >/dev/null 2>&1; then
+  CURRENT_SHA="$(shasum -a 256 "$REPO_ROOT/$STRATEGY_FILE" | awk '{print $1}')"
+else
+  echo "✗ Pre-commit: neither sha256sum nor shasum found — cannot verify lock"
+  exit 1
+fi
+
+if [ "$CURRENT_SHA" != "$LOCKED_SHA" ]; then
+  echo ""
+  echo "╔══════════════════════════════════════════════════════════════════╗"
+  echo "║  ✗ CANARY STRATEGY LOCK VIOLATED — COMMIT REFUSED                 ║"
+  echo "╚══════════════════════════════════════════════════════════════════╝"
+  echo ""
+  echo "  File:     $STRATEGY_FILE"
+  echo "  Locked:   $LOCKED_SHA"
+  echo "  Current:  $CURRENT_SHA"
+  echo ""
+  echo "  This file is IMMUTABLE per Layer 1 discipline."
+  echo "  If you genuinely need to rotate the lock:"
+  echo "    1. Update LOCKED_SHA in .githooks/pre-commit"
+  echo "    2. Update LOCKED_SHA in docs/9-refusals-log.md"
+  echo "    3. Update LOCKED_SHA in governance/LAYER_DISCIPLINE.md"
+  echo "    4. Update LOCKED_SHA in server-mirror/STATE.md"
+  echo "    5. Document the rotation in session-notes/"
+  echo ""
+  exit 1
+fi
+
+echo "→ Pre-commit: canary SHA256 lock verified ✓"
+
+# ── Secret leak guard ─────────────────────────────────────────────────────
+# Refuses commits containing common secret patterns.
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+if [ -n "$STAGED" ]; then
+  # Exclude .template files (they're examples, not real secrets)
+  SECRET_HITS=$(echo "$STAGED" | grep -E '\.(env|key|pem)$|\.api_key([^.]|$)|credentials\.json$|secrets\.json$' | grep -v '\.template$' | grep -vE '\.example$' || true)
+  if [ -n "$SECRET_HITS" ]; then
+    echo "✗ Pre-commit: secret-like file staged — refused"
+    echo "$SECRET_HITS"
+    exit 1
+  fi
+  # scan staged content for API key patterns
+  if git diff --cached -U0 | grep -qE '^\+.*(BYBIT|GATE|BINANCE)_API_(KEY|SECRET).*=.*[A-Za-z0-9]{20}'; then
+    echo "✗ Pre-commit: API key pattern detected in staged content — refused"
+    exit 1
+  fi
+fi
+
+echo "→ Pre-commit: secret scan clean ✓"
+exit 0

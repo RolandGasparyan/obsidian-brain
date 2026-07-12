@@ -1,0 +1,63 @@
+# tradingguru-empire — Python runtime dependencies
+certifi==2024.12.14           # TLS certificate bundle — P2 remediation 2026-05-23
+
+#
+# Pinned to current stable as of 2026-05-19. Verified compatible with
+# Python 3.11 (sandbox) and 3.12 (deploy host preferred).
+#
+# This is the FIRST manifest in this repository's history. Until now,
+# dependencies were installed ad-hoc on the VPS. To install:
+#   python3 -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# Categories below are grouped by what's actually used in the codebase
+# vs what the operator wishlisted in the Godmode prompt. Wishlist items
+# are commented out — uncomment and `pip install -r requirements.txt`
+# to enable. Don't ship live with packages you haven't actually wired in.
+
+# ── ACTUALLY USED IN CURRENT CODE ─────────────────────────────────
+ccxt==4.5.54                  # exchange API — used by canary_executor + shadow_round
+numpy==2.1.3                  # bot/agent.py imports numpy as np
+requests>=2.31                # HTTP — GODS LEVEL run.py + l99_bot (merged from main)
+
+# ── HIGH-STAR PLUGINS — installed and wired ────────────────────────
+ruff==0.8.4                   # already in active use; lints whole tree
+bandit==1.9.4                 # security scanner used in CI
+
+# ── HIGH-STAR PLUGINS — wishlisted in Godmode prompt, NOT YET WIRED ──
+# Uncomment after writing code that imports them. Listing them here
+# without using them just bloats the install and the threat surface.
+#
+# vectorbt==0.27.2             # backtesting — not used (paper_runner does its own)
+# backtrader==1.9.78.123       # backtesting — not used
+# pandas-ta==0.3.14b0          # indicators — agent.py rolls its own
+# finta==1.3                   # indicators — not used
+# python-binance==1.0.27       # only Gate.io is wired; no Binance code path
+# websockets==13.1             # not used; bot polls REST
+# pydantic==2.10.4             # not used; bot uses plain dicts + json
+# fastapi==0.115.6             # no HTTP API in this repo
+# uvicorn[standard]==0.34.0    # no HTTP API
+# loguru==0.7.3                # not used; bot uses stdlib logging
+# rich==13.9.4                 # not used in runtime path
+# structlog==24.4.0            # not used
+# APScheduler==3.11.0          # systemd-managed today; APS not wired
+# celery==5.4.0                # no broker, no workers
+# redis==5.2.1                 # no redis use
+# prometheus_client==0.21.1    # no /metrics endpoint exists
+# sentry-sdk==2.19.2           # no DSN configured
+# tenacity==9.0.0              # not used; bot uses manual try/except
+#
+# freqtrade — NOT a library, it's a full bot. Not listed.
+# TA-Lib — requires C library; install carefully on VPS if needed.
+# Grafana — not a Python package.
+
+# ── DEV / CI ──────────────────────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.25.0
+pytest-cov==6.0.0
+hypothesis==6.122.3
+black==24.10.0
+mypy==1.13.0
+
+# ── SECURITY TOOLS (CI only, not runtime) ─────────────────────────
+pip-audit==2.7.3

@@ -1,0 +1,2621 @@
+"""
+✕ MONSTER ARMY — DUAL BOT | LOSS-RECOVERY SIZING ENGINE
+
+LOSS-RECOVERY MATH (applied to every trade):
+  loss_depth   = max(0, -total_pnl)           # total $ lost so far
+  loss_ratio   = loss_depth / STARTING_EQUITY  # as fraction of $1000
+  recovery_mult = 1 + (loss_ratio * RECOVERY_FACTOR)
+  final_size   = min(base_mq_size * recovery_mult, 0.99)
+
+  Examples:
+    $0   loss → mult=1.00 → normal MQ size
+    $30  loss → mult=1.09 → +9%  bigger
+    $100 loss → mult=1.30 → +30% bigger
+    $200 loss → mult=1.60 → +60% bigger
+    $333 loss → mult=2.00 → 2×   bigger  (capped at 0.99)
+
+  As losses are recovered (total_pnl rises back toward 0), mult shrinks
+  back to 1.0 automatically — size self-corrects.
+
+MQ → BASE SIZE: 90+=99%  70+=80%  50+=60%  30+=35%  0+=15%
+AGG → TP/SL:   APEX=3.5/0.6  HIGH=2.5/0.8  NORMAL=2.0/1.0  LOW=1.5/1.2  MICRO=1.0/1.5
+
+PRECISION DOUBLE (on top of recovery sizing):
+  combined_consec_losses>=6, q==5/5, sig==1, mq>=70 → additional 2×
+
+SYNC: shared_sync.json — cross-bot agg nudge + combined loss counter
+"""
+# ── ULTRA FAST TRADING MODE constants ──────────────────────────────────
+MODE                     = "ULTRA_FAST"   # Trading mode identifier
+FAST_SCAN_MODE           = 1              # Fast scanning enabled
+SCAN_TOP_PAIRS           = 6              # Top pairs to scan (all 6)
+MAX_ACTIVE_PAIRS         = 6              # All 6 pairs active simultaneously
+MAX_CONCURRENT           = 6              # All 6 concurrent
+SIGNAL_CONFIRMATION      = 1              # 1-candle signal confirmation
+BREAKOUT_WINDOW          = 2              # 2-candle breakout window
+ADX_THRESHOLD            = 15             # Minimum ADX for entries
+MIN_VOLUME_BURST         = 1.3            # Volume must be 1.3x average
+MAX_SPREAD               = 0.0015         # Max spread (0.15% in decimal)
+ENABLE_SMART_KELLY       = 1              # Smart Kelly active
+ENABLE_DYNAMIC_SCALING   = 1              # Dynamic scaling active
+ENABLE_HEAT_GOVERNOR     = 1              # Heat governor active
+HOT_MARKET_MULT          = 1.6            # Size ×1.6 in hot markets
+COLD_MARKET_MULT         = 0.4            # Size ×0.4 in cold markets
+ENABLE_CAPITAL_MIGRATION = 1              # Capital migration active
+REMOVE_WEAK_PAIRS        = 0              # Keep all 6 pairs (fixed universe)
+AUTO_REPLACE_LOSERS      = 0              # Fixed pair universe
+ROTATE_EVERY_MIN         = 1              # Re-rank every minute
+ENABLE_TRAILING          = 1              # Trailing stops active (RTSL)
+ENABLE_FAST_REENTRY      = 1              # Re-enter immediately on close
+ENABLE_PROFIT_LOCK       = 1              # Profit lock via RTSL tiers
+ENABLE_AUTO_MODE_SWITCH  = 1              # Auto mode switching (AMS) active
+ENABLE_DYNAMIC_REGIME    = 1              # Dynamic regime detection active
+ENABLE_VOL_TARGETING     = 1              # Vol targeting active (VAAS)
+TARGET_VOL               = 0.020          # Target volatility 2%
+MAX_SESSION_DD           = 0.10           # Max session drawdown 10%
+MAX_CONSEC_LOSS          = 5              # Max consecutive losses before pause
+ENABLE_CRASH_MODE        = 1              # Crash protection active (SDDGM+STS)
+# ── USDT SAFE MODE (capital preservation) ──────────────────────────────
+ENABLE_USDT_SAFE_MODE     = 1       # Master switch — auto-activates on danger signals
+BLOCK_NEW_ALT_ENTRIES     = 0       # Set to 1 by safe mode when triggered
+PREFERRED_QUOTE_ASSET     = "USDT"  # Always quote in USDT
+SAFE_MODE_MAX_DD          = 0.08    # Trigger safe mode if session DD >= 8%
+SAFE_MODE_MAX_CONSEC_LOSS = 5       # Trigger safe mode after 5 consecutive losses
+SAFE_MODE_VOL_TRIGGER     = 0.04    # Trigger safe mode if market vol >= 4%
+AUTO_RESUME_ADX           = 24      # Resume when market ADX >= 24 (mq >= 48)
+AUTO_RESUME_VOLUME        = 1.8     # Resume when volume burst >= 1.8x average
+AUTO_RESUME_MIN_CYCLES    = 20      # Minimum cycles before auto-resume check
+SAFE_MODE_KELLY_SCALE     = 0.25    # Kelly reduced to 25% in safe mode
+SAFE_MODE_TP_SCALE        = 0.60    # TP targets reduced to 60% in safe mode
+SAFE_MODE_SL_SCALE        = 1.50    # SL tightened to 1.5x tighter in safe mode
+SAFE_MODE_MAX_DEPLOY      = 0.25    # Max deploy_pct capped at 25% in safe mode
+SAFE_MODE_SDDGM_OFF       = True    # Disable SDDGM doubling in safe mode
+SAFE_MODE_STS_OFF         = True    # Disable STS tripling in safe mode
+import time
+import json
+import os
+import fcntl
+import math
+from datetime import datetime, timezone
+from data import fetch_full_history
+from strategies import monster_army as ma
+import safe_scaling_engine as _sse
+
+# —— BOT IDENTITY ————————————————————————————————————————————————
+BOT_ID     = os.environ.get("BOT_ID",    "A")
+_pairs_env = os.environ.get("BOT_PAIRS", "BTC/USDT,ETH/USDT,XRP/USDT")
+PAIRS      = [p.strip() for p in _pairs_env.split(",")]
+LOG_FILE   = os.environ.get("BOT_LOG",   f"runtime/agent_{BOT_ID}.log")
+STATE_FILE = os.environ.get("BOT_STATE", f"runtime/agent_{BOT_ID}_state.json")
+SYNC_FILE  = "runtime/shared_sync.json"
+
+SCAN_SEC         = 1
+FEE              = 0.0014
+STARTING_EQUITY  = 1000.0   # baseline for loss_ratio calculation
+RECOVERY_FACTOR  = 3.0      # each 1% equity lost → +3% bigger position
+DOUBLE_MULT  = 15.0
+PARTNER_ID       = "B" if BOT_ID == "A" else "A"
+
+# Precision double gates
+DBL_MIN_LOSSES           = 3      # ULTRA_FAST: consec loss trigger (was 2)
+DBL_MIN_QUORUM = 4
+DBL_REQ_SIGNAL = 1
+DBL_MIN_MQ               = 40     # ULTRA_FAST: lower mq gate for more signals (was 50)
+
+
+# —— SMART KELLY CONSTANTS ————————————————————————————————————————
+KELLY_MIN_TRADES        = 1       # default ON from trade 1 (bootstrap seed used before first trade)
+KELLY_FRACTION           = 0.28   # ULTRA_FAST: smart Kelly base (was 0.5)     # base half-Kelly (dynamically upgraded by SUPERPOWER engine)
+KELLY_FRACTION_MAX      = 1.0     # max dynamic fraction (full Kelly at peak confidence)
+KELLY_MIN_WR            = 0.35    # below this WR → Kelly disabled, edge broken
+KELLY_FLOOR              = 0.002  # ULTRA_FAST: min risk floor 0.2% (was 0.25)    # minimum size when Kelly gives bad edge
+KELLY_CAP               = 0.99    # hard cap on Kelly output (L99: allows full attack)
+KELLY_ACTIVE            = True    # master switch (auto-managed)
+KELLY_STREAK_TURBO      = 3       # consecutive wins needed to activate turbo mode
+KELLY_TURBO_FRACTION    = 0.75    # fraction during win streak turbo (vs 0.5 base)
+KELLY_MOMENTUM_WINDOW   = 10      # recent trades window for momentum WR calculation
+KELLY_MOMENTUM_WEIGHT   = 3.0     # weight multiplier for recent trades vs older trades
+KELLY_CONFIDENCE_SCALE  = 50      # trades needed to reach full confidence (asymptotic)
+KELLY_MQ_TURBO_THRESH   = 80      # mq >= this → MQ squared boost applied
+KELLY_MQ_TURBO_MULT     = 1.25    # MQ turbo multiplier when mq >= KELLY_MQ_TURBO_THRESH
+KELLY_CLUSTER_WINDOW    = 5       # recent trades window to detect loss cluster
+KELLY_CLUSTER_THRESH    = 0.70    # if >70% of recent window are losses → cluster detected
+KELLY_CLUSTER_DAMPEN    = 0.65    # dampen fraction to 65% when loss cluster detected
+KELLY_ANTI_RUIN          = 0.018  # ULTRA_FAST: max risk per trade 1.8% (was 0.40)    # SUPERPOWER: hard anti-ruin cap (never > 20% equity single trade)
+KELLY_WINDOW       = 20      # SUPERPOWER: rolling window for recent W/R calculation
+KELLY_SHARPE_MIN   = -1.0    # SUPERPOWER: Sharpe floor (below this → fraction 0.30)
+KELLY_SHARPE_MAX   =  2.0    # SUPERPOWER: Sharpe ceiling (above this → fraction 0.75)
+KELLY_FRAC_MIN     = 0.40    # SUPERPOWER: minimum adaptive fraction
+KELLY_FRAC_MAX     = 0.75    # SUPERPOWER: maximum adaptive fraction
+KELLY_MOMENTUM_BOOST = 0.10  # SUPERPOWER: +10% fraction per consecutive win (max 3)
+KELLY_VOLATILITY_PENALTY = 0.20  # SUPERPOWER: fraction penalty in VOLATILE scenario
+KELLY_BRAIN_BOOST  = 0.15    # SUPERPOWER: max brain confidence fraction boost
+
+# ── Optimal-F Engine (OPF) ──────────────────────────────────────────
+OPF_ACTIVE           = True   # Ralph Vince Optimal-F sizing
+OPF_WINDOW           = 30     # Trade history window
+OPF_FRACTION         = 0.99   # Fraction of optimal-f to use
+OPF_MIN_TRADES       = 5      # Min trades before OPF activates
+OPF_FLOOR            = 0.05   # Minimum output fraction
+OPF_CAP              = 0.99   # Maximum output fraction
+OPF_BLEND_WEIGHT     = 0.40   # Weight vs Kelly in blend (40% OPF, 60% Kelly)
+
+# ── Volatility-Adaptive Auto-Sizing (VAAS) ───────────────────────────
+VAAS_ACTIVE          = True   # ATR-based dynamic position sizing
+VAAS_ATR_WINDOW      = 14     # ATR calculation window (candles)
+VAAS_TARGET_RISK_PCT = 0.020  # Target 2% equity risk per ATR
+VAAS_VOL_FLOOR       = 0.0005 # Min ATR ratio (avoid div-by-zero)
+VAAS_VOL_CAP         = 0.060  # Max ATR ratio cap
+VAAS_SCALE_UP        = 1.35   # Boost when vol is LOW (calm market)
+VAAS_SCALE_DOWN      = 0.65   # Reduce when vol is HIGH (wild market)
+VAAS_LOW_VOL_THRESH  = 0.010  # ATR/price below this = low vol
+VAAS_HIGH_VOL_THRESH = 0.030  # ATR/price above this = high vol
+VAAS_FLOOR           = 0.05   # Minimum output fraction
+VAAS_CAP             = 0.99   # Maximum output fraction
+VAAS_BLEND_WEIGHT    = 0.30   # Weight in CEO blend
+
+# ── Regime-Adaptive Sizing Method (RASM) ─────────────────────────────
+RASM_ACTIVE          = True   # Trend regime detection sizing
+RASM_WINDOW          = 20     # Candles for regime detection
+RASM_BULL_MULT       = 1.40   # Size x1.4 in bull regime
+RASM_BEAR_MULT       = 0.55   # Size x0.55 in bear regime
+RASM_SIDEWAYS_MULT   = 1.10   # Size x1.1 in sideways
+RASM_TREND_THRESH    = 0.004  # Min price move % to define trend
+RASM_BULL_MQ_BOOST   = 1.20   # Extra boost: mqs>=70 in bull
+RASM_BEAR_MQ_DAMPEN  = 0.80   # Extra dampen: mqs<30 in bear
+RASM_FLOOR           = 0.05   # Minimum output fraction
+RASM_CAP             = 0.99   # Maximum output fraction
+RASM_BLEND_WEIGHT    = 0.30   # Weight in CEO blend
+
+# ── Combined Engine Orchestrator (CEO) ───────────────────────────────
+CEO_ACTIVE           = True   # Master switch for all 3 new engines
+CEO_MODE             = 'BLEND' # BLEND=weighted avg, MAX=take highest, KELLY=kelly only
+CEO_KELLY_WEIGHT     = 0.30   # Kelly SUPERPOWER weight in blend
+CEO_OPF_WEIGHT       = 0.40   # OPF weight in blend
+CEO_VAAS_WEIGHT      = 0.15   # VAAS weight in blend
+CEO_RASM_WEIGHT      = 0.15   # RASM weight in blend
+
+
+# —— SMART PYRAMIDING CONSTANTS ——————————————————————————————————
+PYRA_MAX_LAYERS   = 5      # max add-on layers (initial entry + 3 = 4 total fills)
+PYRA_STEP_PCT     = 0.004  # price must move +0.8% above last layer entry to add
+PYRA_SIZE_DECAY   = 0.85    # each layer = prev layer size × 0.6 (shrinking adds)
+PYRA_MIN_MQ       = 60     # market must stay STRONG to keep pyramiding
+PYRA_MIN_AGG      = 40     # aggression score must stay >= NORMAL
+PYRA_MIN_TRADES   = 5      # need this many closed trades before pyramiding
+
+
+# —— SYMMETRIC GRID CONSTANTS ————————————————————————————————————
+GRID_LEVELS      = 4       # grid lines below (and TP lines above) entry
+GRID_SPACING     = 0.003   # 0.5% between each grid level
+GRID_BASE_SIZE   = 0.08    # base cash fraction per grid fill (8%)
+GRID_MAX_DD      = 0.06    # grid SL: if price drops >6% below grid_anchor → dissolve
+GRID_MIN_Q       = 2       # quorum must be >= 4 to activate grid
+GRID_MIN_MQ      = 50      # mq must be >= 70 (STRONG) to activate
+GRID_MIN_SIG     = 1       # signal engine must confirm
+GRID_STOP_MQ     = 50      # dissolve grid if mq falls below this
+
+# —— DYNAMIC DOUBLING CONSTANTS ——————————————————————————————————
+DYN_DBL_MAX      = 4       # max consecutive doublings inside grid
+DYN_DBL_FACTOR   = 2.0     # each filled level → next level size × 2
+DYN_DBL_MIN_MQ   = 70      # doubling only when market stays STRONG
+DYN_DBL_MIN_AGG  = 40
+# — SMART DYNAMIC DOUBLING GOD MODE (SDDGM) ——————————————————————————————
+SDDGM_START_LOSSES    = 1       # auto-start after this many consecutive losses
+SDDGM_MAX_LOSSES       = 10    # auto-stop SDDGM if losing this many consecutive times
+SDDGM_MAX_LEVEL       = 5       # max doubling level (2^5 = 32×)
+SDDGM_BASE_MULT       = 2.5     # each level multiplies by this (1→2→4→8→16→32×)
+SDDGM_MIN_MQ_ADVANCE  = 30      # need at least NORMAL market to advance level
+SDDGM_MIN_MQ_ACTIVE   = 20      # below this → freeze level (don't advance, don't reset)
+SDDGM_STOP_EQUITY_DD     = 0.10   # ULTRA_FAST: tighter session DD cap (was 0.20)    # auto-stop if equity drops 20% from start
+SDDGM_RECOVERY_THRESH = 0.95    # stop when debt recovered to 95%+ of starting debt
+SDDGM_FEE_BUFFER      = 1.003   # account for fees when calculating recovery size
+
+# — SMART TRIPLING SYSTEM (STS) ———————————————————————————
+STS_START_LOSSES    = 1      # auto-start on first consecutive loss
+STS_MAX_LOSSES      = 10     # circuit-breaker: force OFF at this many consec losses
+STS_MAX_LEVEL       = 5      # max tripling level (3^1=3x, 3^2=9x, 3^3=27x, 3^4=81x, 3^5=243x)
+STS_BASE_MULT       = 3.0    # tripling multiplier per level
+STS_MIN_MQ_ADVANCE  = 30     # mq >= this to advance level (NORMAL market)
+STS_MIN_MQ_ACTIVE   = 20     # below this -> freeze level (don't advance)
+STS_STOP_EQUITY_DD  = 0.20   # auto-stop if equity drops 20% from start
+STS_RECOVERY_THRESH = 0.95   # stop when 95% of debt recovered
+STS_FEE_BUFFER      = 1.003  # account for fees in recovery calculation
+      # doubling only when agg >= NORMAL
+
+# ═══ UNIVERSAL METHOD ORCHESTRATOR (UMO) ════════════════════════════════════
+# Market Scenario Detection
+SCENARIO_ATR_PERIOD   = 14      # periods for ATR calculation
+SCENARIO_TREND_THRESH = 0.015   # >1.5% directional move → TRENDING
+SCENARIO_VOL_HIGH     = 0.025   # >2.5% ATR/price → VOLATILE
+SCENARIO_VOL_LOW      = 0.005   # <0.5% ATR/price → RANGING
+SCENARIO_PULL_THRESH  = 0.008   # 0.8% retracement → PULLBACK
+SCENARIO_BRK_THRESH      = 0.010  # ULTRA_FAST: tighter breakout confirmation (was 0.020)   # >2.0% range break → BREAKOUT
+
+# Vol-Targeting Engine
+VT_TARGET_VOL            = 0.020  # ULTRA_FAST: vol target 2% (was 0.030)   # target daily volatility 1.5%
+VT_MIN_SIZE           = 0.10    # floor
+VT_MAX_SIZE           = 0.99    # cap
+VT_LOOKBACK           = 10      # candles for vol estimate
+
+# Fibonacci Scaling Engine
+FIB_SEQUENCE = [1, 1, 2, 3, 5, 8, 13, 21]   # Fib ladder
+FIB_UNIT_PCT          = 0.06    # base unit = 4% per Fib-1 unit
+FIB_MAX_IDX           = 6       # max index into FIB_SEQUENCE (=13 units = 52%)
+FIB_MIN_LOSSES        = 1       # activate after this many losses
+FIB_RESET_ON_WIN      = True    # reset index to 0 on any win
+
+# Reverse/Cyclic Grid Engine
+RCG_LEVELS            = 6       # grid levels each direction
+RCG_SPACING           = 0.004   # 0.6% spacing (wider than sym grid)
+RCG_SIZE_PCT          = 0.12    # 7% per level
+RCG_EXHAUST_MOVES     = 3       # reverse after this many levels filled same dir
+RCG_MIN_MQ            = 25      # works in moderate+ markets
+RCG_STOP_MQ           = 25      # dissolve if market collapses
+
+# UMO Scenario → Method Permission Table
+# scenario: {method: True/False}
+UMO_TABLE = {
+    "RANGING":   {"martingale":False, "dca":True,  "sym_grid":True,  "kelly":True,
+                  "vol_target":True,  "pyramid":False, "fib":True,  "rcg":True,  "sddgm":True},
+    "TRENDING":  {"martingale":False, "dca":False, "sym_grid":False, "kelly":True,
+                  "vol_target":True,  "pyramid":True,  "fib":False, "rcg":False, "sddgm":False},
+    "PULLBACK":  {"martingale":False, "dca":True,  "sym_grid":False, "kelly":True,
+                  "vol_target":True,  "pyramid":False, "fib":True,  "rcg":False, "sddgm":True},
+    "VOLATILE":  {"martingale":False, "dca":False, "sym_grid":False, "kelly":True,
+                  "vol_target":True,  "pyramid":False, "fib":False, "rcg":False, "sddgm":False},
+    "BREAKOUT":  {"martingale":False, "dca":False, "sym_grid":False, "kelly":True,
+                  "vol_target":False, "pyramid":True,  "fib":False, "rcg":False, "sddgm":False},
+    "UNKNOWN":   {"martingale":False, "dca":False, "sym_grid":False, "kelly":True,
+                  "vol_target":True,  "pyramid":False, "fib":False, "rcg":False, "sddgm":True},
+}
+
+# ═══ DYNAMIC EQUITY SCALING ENGINE (DESE) — SUPERPOWER ══════════════════════
+# Automatically expands position size when equity rises, compresses when it falls
+DESE_ENABLED          = True    # master switch
+DESE_HISTORY_LEN      = 10      # how many equity snapshots to track
+DESE_MOMENTUM_WINDOW  = 5       # window for momentum calculation
+
+# Gear multipliers: index = gear (0=emergency..4=apex)
+#   Gear 0 EMERGENCY  : equity < -15% from peak → 0.20×  (survival mode)
+#   Gear 1 DEFENSIVE  : equity < -8%  from peak → 0.50×  (reduce exposure)
+#   Gear 2 NEUTRAL    : equity ± 3%   of peak   → 1.00×  (normal)
+#   Gear 3 AGGRESSIVE : equity > +5%  above peak → 1.50×  (press advantage)
+#   Gear 4 APEX       : equity > +12% above peak → 2.00×  (full attack)
+DESE_GEAR_MULTIPLIERS = [0.30, 0.75, 1.50, 2.00, 3.00]
+DESE_GEAR_NAMES       = ["⚠️EMERGENCY", "🛡️DEFENSIVE", "⚖️NEUTRAL", "⚡AGGRESSIVE", "🔱APEX"]
+
+# Gear thresholds (equity_ratio = equity / peak_equity - 1.0, i.e. % from peak)
+DESE_THRESHOLDS = [
+    (-0.15, 0),   # ratio < -15%  → Gear 0 EMERGENCY
+    (-0.08, 1),   # ratio < -8%   → Gear 1 DEFENSIVE
+    ( 0.05, 2),   # ratio <  +5%  → Gear 2 NEUTRAL
+    ( 0.12, 3),   # ratio < +12%  → Gear 3 AGGRESSIVE
+    ( 9999, 4),   # ratio >= +12% → Gear 4 APEX
+]
+
+# Momentum boosters: short-term momentum nudges gear up/down
+DESE_MOMENTUM_BOOST   = 0.005   # if momentum > this → nudge +1 gear
+DESE_MOMENTUM_DRAG    = -0.003  # if momentum < this → nudge -1 gear
+
+# Hard caps per gear (final deploy_pct cannot exceed these)
+DESE_GEAR_CAPS        = [0.45, 0.75, 0.99, 0.99, 0.99]
+
+# Smoothing: blend new gear with old to prevent sudden jumps
+DESE_SMOOTHING        = 0.30    # weight for new gear (0.3 new + 0.7 old)
+
+# === AUTO-MODE SWITCHER (AMS) ================================================
+# Overrides DESE gear to AGGRESSIVE/APEX when signal is HIGH; auto-releases.
+AMS_ENABLED            = True
+AMS_HIGH_Q_MIN         = 3       # min q score to trigger HIGH signal
+AMS_HIGH_MQ_MIN        = 50      # min mq score to trigger HIGH signal
+AMS_HIGH_SIG_REQUIRED  = True    # sig must = 1 for HIGH signal
+AMS_HIGH_APEX_MQ       = 90      # mq >= this AND q=5 -> force APEX
+AMS_HIGH_GEAR          = 3       # HIGH signal -> AGGRESSIVE gear
+AMS_APEX_GEAR          = 4       # max HIGH signal -> APEX gear
+AMS_HOLD_CYCLES        = 3       # maintain override N cycles after signal drops
+# =============================================================================
+
+# === DYNAMIC BALANCE GROWTH SYSTEM (DBGS) ===================================
+# Tracks USDT balance trajectory across trades, computes growth phases,
+# applies compounding bonuses when growing and conservation when declining.
+DBGS_ENABLED          = True
+DBGS_WINDOW           = 20      # rolling window of balance snapshots
+DBGS_MIN_TRADES       = 5       # min trades before phase detection activates
+DBGS_FAST_GROW        = 0.015   # 0.8% gain over window = COMPOUNDING phase
+DBGS_SLOW_GROW        = 0.002   # 0.2% gain over window = BUILDING phase
+DBGS_FLAT_BAND        = 0.001   # ±0.1% = FLAT/STEADY phase
+DBGS_DECLINE_THRESH   = -0.005  # -0.5% decline = CONSERVING phase
+DBGS_RECOVER_THRESH   = -0.002  # recovering from loss, -0.2% to +0.2%
+# Size bonus/penalty per phase (multiplier ON TOP of DESE+AMS)
+DBGS_PHASE_MULT = {
+    "COMPOUNDING": 1.25,   # fast growth  -> press advantage hard
+    "BUILDING":    1.10,   # slow growth  -> press advantage
+    "STEADY":      1.00,   # flat         -> neutral
+    "RECOVERING":  0.90,   # from losses  -> cautious but active
+    "CONSERVING":  0.75,   # declining    -> reduce exposure
+}
+DBGS_PHASE_ICONS = {
+    "COMPOUNDING": "💹",
+    "BUILDING":    "📈",
+    "STEADY":      "⚪",
+    "RECOVERING":  "🔄",
+    "CONSERVING":  "🛡️",
+}
+DBGS_DAILY_TARGET     = 0.025   # 1.5% daily growth target
+DBGS_WEEKLY_TARGET    = 0.15    # 8.0% weekly growth target
+DBGS_SMOOTHING        = 0.25    # phase smoothing (0.25 new + 0.75 old)
+# =============================================================================
+
+# === REAL-TIME SMART TP/SL ENGINE (RTSL) ====================================
+# Dynamically adjusts Take-Profit and Stop-Loss every cycle while in position.
+# Analyzes live ATR, momentum, trend, volume — reacts in real time.
+RTSL_ENABLED          = True
+
+# --- Trailing Stop ---
+RTSL_TRAIL_ENABLED    = True
+RTSL_TRAIL_MIN_PROFIT    = 0.002  # ULTRA_FAST: trail locks sooner (was 0.003)   # only start trailing after 0.5% profit
+RTSL_TRAIL_DISTANCE   = 0.006   # trail SL 0.6% below current price peak
+RTSL_TRAIL_STEP       = 0.001   # minimum price move to update trail (0.1%)
+
+# --- ATR Volatility TP Expansion ---
+RTSL_ATR_EXPAND       = True
+RTSL_ATR_HIGH_MULT    = 2.5     # if ATR > 2.5% of price -> wide market, expand TP
+RTSL_ATR_LOW_MULT     = 0.8     # if ATR < 0.8% of price -> tight, tighten SL
+RTSL_ATR_TP_BONUS     = 0.010   # +1.0% added to TP in high-vol market
+RTSL_ATR_SL_TIGHTEN   = 0.003   # SL reduced by 0.3% in low-vol market
+
+# --- Momentum Reversal SL ---
+RTSL_MOM_ENABLED      = True
+RTSL_MOM_WINDOW       = 3       # look back 3 candles for momentum flip
+RTSL_MOM_FLIP_THRESH  = -0.004  # if momentum flips -0.4% -> tighten SL
+RTSL_MOM_SL_TIGHTEN   = 0.005   # SL tightened by 0.5% on momentum flip
+
+# --- Multi-Tier Take-Profit ---
+RTSL_TIER_ENABLED     = True
+RTSL_TIER1_PCT           = 0.30   # ULTRA_FAST: T1 fires at 30% TP (was 0.40)    # T1 fires at 50% of original TP
+RTSL_TIER2_PCT           = 0.60   # ULTRA_FAST: T2 fires at 60% TP (was 0.80)    # T2 fires at 100% of original TP (full)
+RTSL_TIER3_MULT       = 2.00    # T3 = 1.5x TP if strong trend continues
+RTSL_TIER3_MIN_TREND  = 0.008   # trend must be > 0.8% to unlock T3
+
+# --- Time-Decay Break-Even ---
+RTSL_DECAY_ENABLED    = True
+RTSL_DECAY_CYCLES     = 25      # after 25 cycles with no progress -> tighten
+RTSL_DECAY_BE_BUFFER  = 0.002   # SL moves to entry + 0.2% (lock small profit)
+
+# --- Volume Surge ---
+RTSL_VOL_ENABLED      = True
+RTSL_VOL_SURGE_MULT   = 1.5     # if current vol > 2x avg -> vol surge
+RTSL_VOL_TP_BONUS     = 0.008   # +0.8% TP bonus on volume surge
+# =============================================================================
+
+# === APEX-BRAIN: SELF-LEARNING TRADE PREDICTION ENGINE ======================
+# Builds a feature vector for every candidate trade, predicts win probability
+# using an online Naive Bayes model, learns from every trade outcome.
+# Only enters when predicted win-probability >= BRAIN_MIN_CONFIDENCE.
+BRAIN_ENABLED         = True
+BRAIN_MIN_CONFIDENCE  = 0.0    # 55% minimum win probability to enter
+BRAIN_BOOTSTRAP       = 0      # first N trades: no gate (data collection)
+BRAIN_LEARN_RATE      = 0.12    # how fast weights update per trade (0-1)
+BRAIN_DECAY           = 0.995   # slight weight decay per trade (forget old)
+BRAIN_HISTORY_MAX     = 500     # max trades stored in memory
+# Feature names (14 features)
+BRAIN_FEATURES = [
+    "q_norm",          # 0  signal quality 0-1
+    "mq_norm",         # 1  market quality 0-1
+    "sig",             # 2  signal flag 0/1
+    "consec_norm",     # 3  consecutive losses (normalized)
+    "scenario",        # 4  market scenario encoded 0-1
+    "atr_norm",        # 5  ATR as % of price (capped 0-1)
+    "momentum_norm",   # 6  recent price momentum
+    "trend_norm",      # 7  10-candle trend direction
+    "vol_surge",       # 8  volume surge flag 0/1
+    "hour_norm",       # 9  hour of day 0-1
+    "ams_active",      # 10 AMS mode override flag
+    "dbgs_phase_enc",  # 11 DBGS growth phase 0-1
+    "recov_norm",      # 12 loss recovery multiplier
+    "deploy_trend",    # 13 recent deploy_pct trend
+]
+BRAIN_N_FEATURES = 14
+# Scenario encoding map
+BRAIN_SCENARIO_ENC = {"RANGING":0.1,"PULLBACK":0.3,"TRENDING":0.6,
+                      "VOLATILE":0.8,"BREAKOUT":1.0}
+BRAIN_PHASE_ENC    = {"CONSERVING":0.0,"RECOVERING":0.25,"STEADY":0.5,
+                      "BUILDING":0.75,"COMPOUNDING":1.0}
+# =============================================================================
+
+
+
+
+
+
+# —— MQ → BASE SIZE ——————————————————————————————————————————————
+MQ_SIZE_TABLE = [
+    (90, "APEX",   0.99),
+    (70, "STRONG", 0.99),
+    (50, "NORMAL", 0.99),
+    (30, "WEAK",   0.99),
+    ( 0, "TRASH",  0.99),
+]
+def mq_to_size(mq):
+    for min_mq, label, size in MQ_SIZE_TABLE:
+        if mq >= min_mq:
+            return label, size
+    return "TRASH", 0.15
+
+# —— AGG → TP/SL —————————————————————————————————————————————————
+AGG_LEVELS = [
+    (80, "APEX",   0.040, 0.003),
+    (60, "HIGH",   0.030, 0.004),
+    (40, "NORMAL", 0.020, 0.005),
+    (20, "LOW",    0.015, 0.005),
+    ( 0, "MICRO",  0.012, 0.005),
+]
+def agg_params(score):
+    for min_s, name, tp, sl in AGG_LEVELS:
+        if score >= min_s:
+            return name, tp, sl
+    return "MICRO", 0.010, 0.015
+
+# —— MQ SCORE ————————————————————————————————————————————————————
+def mq_score(q, lb):
+    adx = lb.get("adx", 0)
+    vb  = lb.get("vol_burst", 0)
+    rsi = lb.get("rsi", 50)
+    rsi_bonus = 1.0 if 38 <= rsi <= 63 else 0.5
+    raw = (q/5)*40 + min(adx/40,1)*30 + min(vb/2.5,1)*20 + rsi_bonus*10
+    return round(min(raw, 100), 1)
+
+# —— LOSS-RECOVERY MULTIPLIER ————————————————————————————————————
+def recovery_mult(total_pnl):
+    """
+    Calculates size multiplier based on cumulative loss depth.
+    Returns (mult, loss_depth, loss_pct_str) for logging.
+    """
+    loss_depth = max(0.0, -total_pnl)          # $ lost total
+    loss_ratio = loss_depth / STARTING_EQUITY   # fraction of $1000
+    mult       = 1.0 + loss_ratio * RECOVERY_FACTOR
+    return round(mult, 4), round(loss_depth, 2), round(loss_ratio * 100, 2)
+
+
+# —— SMART KELLY SIZING —————————————————————————————————————————
+def kelly_size(trades, mqs):
+    """
+    Full Smart Kelly implementation with auto start/stop.
+
+    Formula: f* = (W*R - (1-W)) / R   (half-Kelly applied on top)
+      W = win_rate  (wins / total trades)
+      R = avg_win_$ / avg_loss_$       (reward/risk ratio)
+
+    Auto-START: activates when len(trades) >= KELLY_MIN_TRADES
+    Auto-STOP (fallback to MQ floor) when:
+      - Not enough trades yet
+      - Win rate < KELLY_MIN_WR (strategy broken)
+      - Kelly fraction <= 0 (negative edge)
+    MQ blend: Kelly fraction × mq_blend (0.5–1.0) based on mq score
+    Returns (size, kelly_f, mode_str)
+    """
+    n = len(trades)
+
+    # Not enough data → Kelly inactive
+    if n < KELLY_MIN_TRADES:
+        mode = f"KELLY_OFF(need {KELLY_MIN_TRADES - n} more trades)"
+        return None, 0.0, mode
+
+    wins  = [t for t in trades if t["pnl"] > 0]
+    losses= [t for t in trades if t["pnl"] <= 0]
+    W     = len(wins) / n
+
+    # Win rate too low → Kelly inactive
+    if W < KELLY_MIN_WR:
+        mode = f"KELLY_OFF(wr={W*100:.1f}%<{KELLY_MIN_WR*100:.0f}%)"
+        return None, 0.0, mode
+
+    avg_win  = sum(t["pnl"] for t in wins)  / max(len(wins),  1)
+    avg_loss = abs(sum(t["pnl"] for t in losses)) / max(len(losses), 1)
+
+    if avg_loss < 1e-9:
+        W, R = 0.65, 2.0  # bootstrap: 65% WR seed before first trade
+
+    R = avg_win / avg_loss   # reward-to-risk ratio
+
+    # Full Kelly fraction
+    full_kelly = (W * R - (1 - W)) / R
+
+    if full_kelly <= 0:
+        mode = f"KELLY_OFF(edge≤0: W={W:.2f} R={R:.2f})"
+        return None, 0.0, mode
+
+    # Half-Kelly for safety
+    # =================================================================
+    # KELLY SUPERPOWER ENGINE: Dynamic fraction, streak turbo, anti-ruin
+    # =================================================================
+
+    # 1. DYNAMIC BASE FRACTION: scales 0.5 to FRACTION_MAX with win rate
+    wr_range = max(KELLY_FRAC_MAX - (KELLY_MIN_WR + 0.05), 0.01)
+    wr_t     = min(max((W - KELLY_MIN_WR) / wr_range, 0.0), 1.0)
+    dyn_frac = KELLY_FRACTION + (KELLY_FRACTION_MAX - KELLY_FRACTION) * wr_t
+
+    # 2. WIN STREAK TURBO: consecutive wins boost fraction
+    streak_bonus = 0.0
+    consec_wins_k = 0
+    for _t in reversed(trades[-KELLY_MOMENTUM_WINDOW:]):
+        if _t.get("pnl", 0) > 0:
+            consec_wins_k += 1
+        else:
+            break
+    if consec_wins_k >= KELLY_STREAK_TURBO:
+        turbo_levels = min(consec_wins_k // KELLY_STREAK_TURBO, 3)
+        streak_bonus = turbo_levels * KELLY_MOMENTUM_BOOST
+
+    # 3. MOMENTUM WIN RATE: weight recent trades heavier
+    if len(trades) >= 4:
+        win_w    = KELLY_MOMENTUM_WEIGHT
+        recent_w = trades[-KELLY_MOMENTUM_WINDOW:]
+        older_w  = trades[:-KELLY_MOMENTUM_WINDOW] if len(trades) > KELLY_MOMENTUM_WINDOW else []
+        r_wins   = sum(1 for t in recent_w if t.get("pnl",0) > 0)
+        o_wins   = sum(1 for t in older_w  if t.get("pnl",0) > 0)
+        denom_m  = len(recent_w)*win_w + len(older_w)
+        if denom_m > 0:
+            W = (r_wins*win_w + o_wins) / denom_m
+
+    # 4. LOSS CLUSTER DETECTION: dampen when recent trades mostly losses
+    cluster_penalty = 0.0
+    recent_c = trades[-KELLY_CLUSTER_WINDOW:]
+    if len(recent_c) >= KELLY_CLUSTER_WINDOW:
+        loss_ratio = sum(1 for t in recent_c if t.get("pnl",0) <= 0) / len(recent_c)
+        if loss_ratio >= KELLY_CLUSTER_THRESH:
+            cluster_penalty = 1.0 - KELLY_CLUSTER_DAMPEN
+
+    # 5. MQ TURBO: strong market multiplies fraction
+    mq_turbo = KELLY_MQ_TURBO_MULT if mqs >= KELLY_MQ_TURBO_THRESH else 1.0
+
+    # 6. COMBINE all factors
+    combined_frac = min(
+        (dyn_frac + streak_bonus) * mq_turbo * (1.0 - cluster_penalty),
+        KELLY_FRACTION_MAX
+    )
+    combined_frac = max(combined_frac, KELLY_FRAC_MIN)
+
+    # 7. ANTI-RUIN CAP: hard cap per trade
+    half_kelly = full_kelly * combined_frac
+    half_kelly = min(half_kelly, KELLY_ANTI_RUIN)
+    # ULTRA_FAST: Heat Governor
+    if ENABLE_HEAT_GOVERNOR:
+        heat = HOT_MARKET_MULT if mqs >= 70 else (COLD_MARKET_MULT if mqs < 30 else 1.0)
+        half_kelly = min(half_kelly * heat, KELLY_ANTI_RUIN)
+
+    # 8. MQ BLEND: weak market deploys less Kelly
+    mq_blend = 0.5 + 0.5 * (mqs / 100.0)
+
+    blended = min(half_kelly * mq_blend, KELLY_CAP)
+    blended = max(blended, KELLY_FLOOR)
+
+    mode = (
+        f"KELLY_SUPERPOWER(n={n} W={W*100:.1f}% R={R:.2f}"
+        f" frac={combined_frac*100:.1f}%"
+        f"[dyn={dyn_frac*100:.1f}+str={streak_bonus*100:.1f}"
+        f"+clust={cluster_penalty*100:.0f}%pen]"
+        f" mqT={mq_turbo:.2f} fK={full_kelly*100:.1f}% hK={half_kelly*100:.1f}%"
+        f" blend={mq_blend:.2f} -> {blended*100:.1f}%)"
+    )
+    return blended, full_kelly, mode
+
+
+# —— SMART PYRAMIDING ————————————————————————————————————————————
+def pyramid_check(state, cur_price, mqs, agg_score, scan):
+    """
+    Auto-start/stop pyramiding logic.
+    Returns (should_add, add_size, reason) where add_size is deploy fraction.
+
+    Auto-START when ALL true:
+      - Position open, layers < PYRA_MAX_LAYERS
+      - cur_price >= last_layer_entry * (1 + PYRA_STEP_PCT)  [price moved up enough]
+      - mqs >= PYRA_MIN_MQ  [market still strong]
+      - agg_score >= PYRA_MIN_AGG  [aggression still healthy]
+      - len(trades) >= PYRA_MIN_TRADES  [enough history]
+      - cash > 10  [have money to add]
+
+    Auto-STOP: returns (False, 0, reason) if any condition fails.
+    Size of add: previous layer size * PYRA_SIZE_DECAY, min floor 5%
+    """
+    pos = state.get("position")
+    if pos is None:
+        return False, 0, "PYRA_OFF(no_position)"
+
+    layers  = pos.get("layers", 0)
+    n_trades = len(state.get("trades", []))
+
+    if layers >= PYRA_MAX_LAYERS:
+        return False, 0, f"PYRA_OFF(max_layers={PYRA_MAX_LAYERS} reached)"
+
+    if n_trades < PYRA_MIN_TRADES:
+        return False, 0, f"PYRA_OFF(need {PYRA_MIN_TRADES - n_trades} more trades)"
+
+    if state.get("cash", 0) <= 10:
+        return False, 0, "PYRA_OFF(no_cash)"
+
+    if mqs < PYRA_MIN_MQ:
+        return False, 0, f"PYRA_OFF(mq={mqs:.0f}<{PYRA_MIN_MQ})"
+
+    if agg_score < PYRA_MIN_AGG:
+        return False, 0, f"PYRA_OFF(agg={agg_score:.1f}<{PYRA_MIN_AGG})"
+
+    # Price step check — must be above last layer entry by PYRA_STEP_PCT
+    last_layer_price = pos.get("last_layer_entry", pos["entry"])
+    step_target      = last_layer_price * (1 + PYRA_STEP_PCT)
+    if cur_price < step_target:
+        gap_pct = (step_target - cur_price) / last_layer_price * 100
+        return False, 0, f"PYRA_WAIT(need +{gap_pct:.2f}% more, at {cur_price:.4f} need {step_target:.4f})"
+
+    # Determine add size: first add = initial deploy * DECAY, subsequent smaller
+    initial_deploy = pos.get("deploy_pct", 0.60)
+    add_size = initial_deploy * (PYRA_SIZE_DECAY ** layers)
+    add_size = max(add_size, 0.05)   # floor 5%
+    add_size = min(add_size, state["cash"] / (state["cash"] + pos["qty"] * cur_price))
+
+    reason = (f"PYRA_ADD layer={layers+1}/{PYRA_MAX_LAYERS}  "
+              f"step=+{(cur_price/last_layer_price-1)*100:.2f}%  "
+              f"add_size={add_size*100:.1f}%  mq={mqs:.0f}  agg={agg_score:.1f}")
+    return True, add_size, reason
+
+def apply_pyramid(state, cur_price, add_size, tp_pct, sl_pct, mqs, agg_name):
+    """Add a layer to the existing position, recalculate avg_entry, TP, SL."""
+    pos = state["position"]
+    cash_to_use = state["cash"] * add_size
+    fee_cost    = cash_to_use * FEE
+    add_qty     = (cash_to_use - fee_cost) / cur_price
+    state["cash"] -= cash_to_use
+
+    # Update avg entry (weighted average)
+    old_qty      = pos["qty"]
+    new_total_qty = old_qty + add_qty
+    avg_entry    = (old_qty * pos["entry"] + add_qty * cur_price) / new_total_qty
+
+    pos["qty"]              = new_total_qty
+    pos["entry"]            = round(avg_entry, 6)   # avg entry replaces entry
+    pos["last_layer_entry"] = cur_price
+    pos["layers"]           = pos.get("layers", 0) + 1
+
+    # Recalculate TP/SL from new avg_entry
+    pos["tp"]     = round(avg_entry * (1 + tp_pct), 6)
+    pos["sl"]     = round(avg_entry * (1 - sl_pct), 6)
+    pos["mqs"]    = mqs
+    pos["agg_name"] = agg_name
+
+    log(f"  🔺 PYRAMID ADD L{pos['layers']}  qty+={add_qty:.4g}  "
+        f"@ ${cur_price:,.4f}  new_avg=${avg_entry:,.4f}  "
+        f"total_qty={new_total_qty:.4g}  "
+        f"new_TP=${pos['tp']:,.4f}  new_SL=${pos['sl']:,.4f}")
+    return pos
+
+
+# —— SYMMETRIC GRID + DYNAMIC DOUBLING ——————————————————————————
+def grid_signal_check(q, sig, mqs):
+    """Return True when signal is strong enough to activate grid."""
+    return q >= GRID_MIN_Q and sig >= GRID_MIN_SIG and mqs >= GRID_MIN_MQ
+
+def build_grid(anchor_price, cash_available, n_levels=GRID_LEVELS):
+    """
+    Build symmetric grid around anchor_price.
+    Returns list of dicts: {level, buy_price, tp_price, size_pct, filled, qty, dbl_count}
+    Buy levels: anchor * (1 - spacing*i)  for i in 1..n_levels
+    TP  levels: buy_price * (1 + spacing*(i+1))  (asymmetric TP wider than entry gap)
+    """
+    grid = []
+    for i in range(1, n_levels + 1):
+        buy_price = round(anchor_price * (1 - GRID_SPACING * i), 6)
+        tp_price  = round(buy_price  * (1 + GRID_SPACING * (i + 1)), 6)
+        grid.append({
+            "level":     i,
+            "buy_price": buy_price,
+            "tp_price":  tp_price,
+            "size_pct":  GRID_BASE_SIZE,
+            "filled":    False,
+            "qty":       0.0,
+            "dbl_count": 0
+        })
+    return grid
+
+def grid_check_fills(state, cur_price, mqs, agg_score):
+    """
+    Scan open grid orders. If cur_price <= buy_price → fill it.
+    Apply dynamic doubling to size if conditions met.
+    Returns list of fill logs.
+    """
+    pos = state.get("position")
+    if pos is None or "grid" not in pos:
+        return []
+
+    grid   = pos["grid"]
+    logs   = []
+    filled_any = False
+
+    for order in grid:
+        if order["filled"]:
+            continue
+        if cur_price <= order["buy_price"]:
+            # Dynamic doubling: if market still strong and not maxed
+            dbl = order.get("dbl_count", 0)
+            if (mqs >= DYN_DBL_MIN_MQ and agg_score >= DYN_DBL_MIN_AGG
+                    and dbl < DYN_DBL_MAX):
+                size_pct = order["size_pct"] * (DYN_DBL_FACTOR ** dbl)
+                dbl_tag  = f" 🔁×{DYN_DBL_FACTOR**dbl:.0f}" if dbl > 0 else ""
+            else:
+                size_pct = order["size_pct"]
+                dbl_tag  = ""
+
+            cash_to_use = state["cash"] * min(size_pct, 0.99)
+            if state["cash"] < 10 or cash_to_use < 1:
+                break
+            fee       = cash_to_use * FEE
+            qty       = (cash_to_use - fee) / cur_price
+            state["cash"] -= cash_to_use
+
+            order["filled"]    = True
+            order["qty"]       = qty
+            order["dbl_count"] = dbl + 1
+
+            # Update avg_entry of position
+            old_qty   = pos["qty"]
+            total_qty = old_qty + qty
+            avg_entry = (old_qty * pos["entry"] + qty * cur_price) / total_qty if total_qty > 0 else cur_price
+            pos["qty"]   = total_qty
+            pos["entry"] = round(avg_entry, 6)
+            # Recalculate global TP/SL from avg
+            pos["tp"]    = round(avg_entry * (1 + pos["tp_pct"]), 6)
+            pos["sl"]    = round(avg_entry * (1 - pos["sl_pct"]), 6)
+            filled_any   = True
+
+            logs.append(
+                f"  📊 GRID FILL L{order['level']}  @ ${cur_price:,.4f}  "
+                f"qty={qty:.4g}  size={size_pct*100:.1f}%{dbl_tag}  "
+                f"new_avg=${avg_entry:,.4f}  TP=${pos['tp']:,.4f}  SL=${pos['sl']:,.4f}"
+            )
+
+    # Mark next unfilled level for doubling
+    if filled_any:
+        for order in grid:
+            if not order["filled"]:
+                order["size_pct"] = GRID_BASE_SIZE  # base resets
+                break
+
+    return logs
+
+def grid_should_dissolve(state, cur_price, mqs):
+    """Return (dissolve, reason) — dissolve grid if conditions deteriorate."""
+    pos = state.get("position")
+    if pos is None or "grid" not in pos:
+        return False, ""
+    anchor = pos.get("grid_anchor", pos["entry"])
+    dd_pct = (anchor - cur_price) / anchor if anchor > 0 else 0
+    if dd_pct >= GRID_MAX_DD:
+        return True, f"GRID_DISSOLVE(price dropped {dd_pct*100:.1f}% below anchor)"
+    if mqs < GRID_STOP_MQ:
+        return True, f"GRID_DISSOLVE(mq={mqs:.0f} fell below {GRID_STOP_MQ})"
+    return False, ""
+
+def grid_status_str(pos):
+    """Short string showing grid fill status."""
+    if "grid" not in pos:
+        return "no_grid"
+    g = pos["grid"]
+    filled = sum(1 for o in g if o["filled"])
+    return f"grid={filled}/{len(g)}_filled"
+
+# —— SYNC I/O ———————————————————————————————————————————————————
+def read_sync():
+    if not os.path.exists(SYNC_FILE):
+        return {}
+    try:
+        with open(SYNC_FILE, "r") as f:
+            fcntl.flock(f, fcntl.LOCK_SH)
+            data = json.load(f)
+            fcntl.flock(f, fcntl.LOCK_UN)
+        return data
+    except:
+        return {}
+
+def write_sync(agg_score, consec_losses, total_pnl):
+    try:
+        data = read_sync()
+        data[BOT_ID] = {
+            "agg_score": agg_score,
+            "consecutive_losses": consec_losses,
+            "total_pnl": total_pnl,
+            "ts": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+        }
+        with open(SYNC_FILE, "w") as f:
+            fcntl.flock(f, fcntl.LOCK_EX)
+            json.dump(data, f, indent=2)
+            fcntl.flock(f, fcntl.LOCK_UN)
+    except:
+        pass
+
+def get_combined_losses(my_consec):
+    sync = read_sync()
+    partner = sync.get(PARTNER_ID, {})
+    p_loss = partner.get("consecutive_losses", 0)
+    return my_consec + p_loss, p_loss
+
+def sync_agg_nudge(my_score):
+    sync = read_sync()
+    partner = sync.get(PARTNER_ID, {})
+    if not partner:
+        return my_score
+    p_consec = partner.get("consecutive_losses", 0)
+    p_agg    = partner.get("agg_score", 50)
+    if p_consec >= 3:
+        nudge = -2.0 * min(p_consec, 6)
+    elif p_agg >= 70 and p_consec == 0:
+        nudge = +3.0
+    else:
+        nudge = 0
+    return round(max(0, min(100, my_score + nudge)), 1)
+
+# —— PRECISION DOUBLE ————————————————————————————————————————————
+def precision_double_check(combined_losses, q, sig, mqs):
+    checks = {
+        f"combined≥{DBL_MIN_LOSSES}({combined_losses})": combined_losses >= DBL_MIN_LOSSES,
+        f"q={q}/5=={DBL_MIN_QUORUM}":                    q == DBL_MIN_QUORUM,
+        f"sig={sig}==1":                                  sig == DBL_REQ_SIGNAL,
+        f"mq={mqs:.0f}≥{DBL_MIN_MQ}":                   mqs >= DBL_MIN_MQ,
+    }
+    passed  = all(checks.values())
+    summary = "  ".join(f"{'✓' if v else '✗'} {k}" for k, v in checks.items())
+    return passed, summary
+
+os.makedirs("runtime", exist_ok=True)
+
+def log(msg):
+    ts   = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}][BOT-{BOT_ID}] {msg}"
+    print(line, flush=True)
+    with open(LOG_FILE, "a") as f:
+        f.write(line + "\n")
+
+def load_s():
+    if os.path.exists(STATE_FILE):
+        with open(STATE_FILE) as f:
+            s = json.load(f)
+        if "consecutive_losses" not in s:
+            s["consecutive_losses"] = 1 if s.get("last_was_loss", False) else 0
+        return s
+    return {
+        "cash": 1000.0, "position": None,
+        "trades": [], "total_pnl": 0.0,
+        "cycle": 0, "agg_score": 50.0,
+        "consecutive_losses": 0,
+        "doubles": 0, "double_wins": 0,
+        "pyramids": 0, "pyramid_wins": 0,
+        "grid_fills": 0, "grid_wins": 0,
+        "sddgm_active": False, "sddgm_level": 0, "sddgm_debt": 0.0,
+        "sddgm_equity_start": 0.0, "sddgm_wins": 0, "sddgm_stops": 0,
+        "sts_active": False, "sts_level": 0, "sts_debt": 0.0,
+        "sts_equity_start": 0.0, "sts_wins": 0, "sts_stops": 0,
+        "opf_worst_loss": 0.0, "opf_trade_window": [], "opf_last": 0.0,
+        "vaas_ranges": [], "vaas_last": 0.0,
+        "rasm_prices": [], "rasm_regime": "SIDEWAYS", "rasm_last": 0.0,
+        "ceo_last_size": 0.0, "ceo_last_mode": "",
+        "safe_mode_active": False, "safe_mode_reason": "", "safe_mode_cycles": 0, "safe_mode_dd_start": 0.0,
+        "scenario": "UNKNOWN", "scenario_counts": {},
+        "dese_gear": 2, "dese_gear_smooth": 2.0,
+        "dese_peak_equity": 1000.0, "dese_equity_history": [],
+        "dese_multiplier": 1.0, "dese_gear_changes": 0,
+            "ams_active": False, "ams_gear_override": -1, "ams_hold_cycles": 0, "ams_activations": 0,
+            "dbgs_phase": "STEADY", "dbgs_mult": 1.00, "dbgs_balance_log": [],
+            "dbgs_baseline": 0.0, "dbgs_weekly_baseline": 0.0,
+            "dbgs_phase_changes": 0, "dbgs_peak_balance": 0.0,
+            "dbgs_best_day_pct": 0.0, "dbgs_total_growth_pct": 0.0,
+            "rtsl_trail_peak": 0.0, "rtsl_trail_sl": 0.0, "rtsl_tier": 0,
+            "rtsl_cycles_flat": 0, "rtsl_last_pnl_pct": 0.0,
+            "rtsl_tp_adj": 0.0, "rtsl_sl_adj": 0.0, "rtsl_adjustments": 0,
+            "brain_weights":    [0.0]*14,
+            "brain_bias":       0.0,
+            "brain_trades":     0,
+            "brain_wins":       0,
+            "brain_blocked":    0,
+            "brain_history":    [],
+            "brain_last_conf":  0.0,
+            "brain_last_feats": [],
+        "fib_idx": 0, "fib_wins": 0, "fib_losses": 0,
+        "rcg_active": False, "rcg_dir": 0, "rcg_anchor": 0.0,
+        "rcg_fills_up": 0, "rcg_fills_dn": 0,
+        "vt_wins": 0, "umo_log": ""
+    }
+
+def save_s(s):
+    with open(STATE_FILE, "w") as f:
+        json.dump(s, f, indent=2)
+
+def scan_pairs():
+    results = []
+    for pair in PAIRS:
+        try:
+            d = fetch_full_history(pair, "1d", limit=300)
+        except Exception as e:
+            log(f"⚠ {pair} fetch fail: {e}"); continue
+        signaled = ma.add_signals(d)
+        lb   = signaled.iloc[-1]
+        last = float(d["close"].iloc[-1])
+        dd   = round(((d["close"].cummax()-d["close"])/d["close"].cummax()).max()*100, 2)
+        q = sum([
+            lb.get("adx",0)       > 17,
+            lb.get("vol_burst",0) > 1.1,
+            lb.get("momentum",0)  > 0,
+            lb.get("rsi",100)     < 70,
+            bool(lb.get("breakout", False)),
+        ])
+        sig = int(lb.get("signal", 0))
+        mqs = mq_score(q, lb)
+        results.append((q, sig, pair, last, lb, dd, mqs))
+    results.sort(key=lambda x: x[6], reverse=True)
+    return results
+
+def pick_candidate(scan):
+    for q, sig, pair, last, lb, dd, mqs in scan:
+        if sig == 1 and q >= 1 and dd < 80:
+            return pair, last, q, sig, lb, mqs
+    for q, sig, pair, last, lb, dd, mqs in scan:
+        if q >= 1 and dd < 80:
+            return pair, last, q, sig, lb, mqs
+    if scan:
+        q, sig, pair, last, lb, dd, mqs = scan[0]
+        return pair, last, q, sig, lb, mqs
+    return None, None, 0, 0, {}, 0
+
+def update_aggression(state, trade_pnl, mqs):
+    s = state["agg_score"]
+    if trade_pnl > 0:
+        delta = +12 if mqs >= 60 else (+8 if mqs >= 40 else +4)
+    else:
+        delta = -15 if mqs >= 60 else (-10 if mqs >= 40 else -5)
+    s = max(0, min(100, s + delta))
+    s = round(s + 0.10 * (mqs - s), 1)
+    state["agg_score"] = s
+    return s
+
+
+# — SMART DYNAMIC DOUBLING GOD MODE ENGINE ——————————————————————————————————
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKET SCENARIO ENGINE
+# ═══════════════════════════════════════════════════════════════════════════
+def detect_scenario(lb):
+    """
+    Analyse last N candles and return one of:
+    RANGING | TRENDING | PULLBACK | VOLATILE | BREAKOUT | UNKNOWN
+    lb = list of close prices (newest last), at least 5 items
+    """
+    if not lb or len(lb) < 5:
+        return "UNKNOWN", {}
+    closes = lb[-SCENARIO_ATR_PERIOD:] if len(lb) >= SCENARIO_ATR_PERIOD else lb
+    n = len(closes)
+    hi = max(closes);  lo = min(closes)
+    rng = (hi - lo) / lo if lo > 0 else 0.0
+    # True Range approx (use close diffs as proxy)
+    diffs = [abs(closes[i] - closes[i-1]) / closes[i-1] for i in range(1, n)]
+    atr_pct  = sum(diffs) / len(diffs) if diffs else 0.0
+    # Direction: net move over window
+    direction = (closes[-1] - closes[0]) / closes[0] if closes[0] > 0 else 0.0
+    # Recent retracement from high/low
+    recent_hi = max(closes[-5:]);  recent_lo = min(closes[-5:])
+    retrace_up   = (recent_hi - closes[-1]) / recent_hi if recent_hi > 0 else 0
+    retrace_down = (closes[-1] - recent_lo) / recent_lo if recent_lo > 0 else 0
+
+    meta = {
+        "atr_pct": round(atr_pct * 100, 3),
+        "direction": round(direction * 100, 2),
+        "range_pct": round(rng * 100, 2),
+        "retrace": round(max(retrace_up, retrace_down) * 100, 2),
+    }
+
+    if atr_pct > SCENARIO_VOL_HIGH:
+        return "VOLATILE", meta
+    if rng > SCENARIO_BRK_THRESH and abs(direction) > SCENARIO_BRK_THRESH * 0.7:
+        return "BREAKOUT", meta
+    if abs(direction) > SCENARIO_TREND_THRESH:
+        if max(retrace_up, retrace_down) > SCENARIO_PULL_THRESH:
+            return "PULLBACK", meta
+        return "TRENDING", meta
+    if atr_pct < SCENARIO_VOL_LOW:
+        return "RANGING", meta
+    return "RANGING", meta
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VOL-TARGETING ENGINE
+# ═══════════════════════════════════════════════════════════════════════════
+def vol_target_size(lb, base_size):
+    """
+    Scale position inversely to recent volatility.
+    Returns (size_pct, tag)
+    """
+    if not lb or len(lb) < 3:
+        return base_size, "VT_SKIP(no_data)"
+    closes = lb[-VT_LOOKBACK:] if len(lb) >= VT_LOOKBACK else lb
+    diffs = [abs(closes[i] - closes[i-1]) / closes[i-1] for i in range(1, len(closes))]
+    if not diffs:
+        return base_size, "VT_SKIP(no_diffs)"
+    realized_vol = sum(diffs) / len(diffs)
+    if realized_vol < 1e-8:
+        return base_size, "VT_SKIP(zero_vol)"
+    # Size inversely to vol: target_vol / realized_vol × base
+    scale = VT_TARGET_VOL / realized_vol
+    vt_size = min(max(base_size * scale, VT_MIN_SIZE), VT_MAX_SIZE)
+    tag = f"VT({realized_vol*100:.2f}%vol→{vt_size*100:.1f}%)"
+    return vt_size, tag
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# FIBONACCI SCALING ENGINE
+# ═══════════════════════════════════════════════════════════════════════════
+def fib_size(state, base_size, scenario_allows):
+    """
+    Scale size using Fibonacci sequence on loss streak.
+    Returns (size_pct, tag, new_fib_idx)
+    """
+    if not scenario_allows:
+        return base_size, "FIB_OFF(scenario)", state.get("fib_idx", 0)
+    consec = state.get("consecutive_losses", 0)
+    idx    = state.get("fib_idx", 0)
+    if consec < FIB_MIN_LOSSES:
+        return base_size, f"FIB_WAIT(consec={consec}<{FIB_MIN_LOSSES})", idx
+    # Advance index based on consec depth
+    new_idx = min(consec - FIB_MIN_LOSSES + idx, FIB_MAX_IDX)
+    fib_mult = FIB_SEQUENCE[new_idx]
+    fib_size_pct = min(FIB_UNIT_PCT * fib_mult, 0.95)
+    # Take larger of fib-driven or base
+    final_size = max(fib_size_pct, base_size)
+    tag = f"FIB[{new_idx}]={fib_mult}×unit→{final_size*100:.1f}%"
+    return final_size, tag, new_idx
+
+
+def fib_update_on_close(state, won):
+    """Reset or advance fib index after close."""
+    if won and FIB_RESET_ON_WIN:
+        if state.get("fib_idx", 0) > 0:
+            log("  📐 FIB RESET: win → idx 0")
+        state["fib_idx"] = 0
+        state["fib_wins"] = state.get("fib_wins", 0) + 1
+    else:
+        state["fib_losses"] = state.get("fib_losses", 0) + 1
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# REVERSE / CYCLIC GRID ENGINE
+# ═══════════════════════════════════════════════════════════════════════════
+def rcg_check(state, entry_price, scenario_allows, mqs):
+    """
+    Build a reverse/cyclic grid: levels above AND below entry.
+    Auto-reverses when one direction is exhausted.
+    Returns grid_orders list or None
+    """
+    if not scenario_allows or mqs < RCG_MIN_MQ:
+        return None, f"RCG_OFF(scenario={scenario_allows} mq={mqs:.0f}<{RCG_MIN_MQ})"
+    orders = []
+    # Buy levels BELOW entry (for dips)
+    for i in range(1, RCG_LEVELS + 1):
+        buy_p = round(entry_price * (1 - RCG_SPACING * i), 6)
+        tp_p  = round(entry_price * (1 + RCG_SPACING * (i + 1)), 6)
+        orders.append({"dir": "dn", "level": i, "buy_price": buy_p,
+                       "tp_price": tp_p, "size_pct": RCG_SIZE_PCT, "filled": False})
+    # Sell/short levels ABOVE entry (for reversals — paper mode: treated as TP triggers)
+    for i in range(1, RCG_LEVELS + 1):
+        sell_p = round(entry_price * (1 + RCG_SPACING * i), 6)
+        sl_p   = round(entry_price * (1 - RCG_SPACING * (i + 1)), 6)
+        orders.append({"dir": "up", "level": i, "buy_price": sell_p,
+                       "tp_price": sl_p, "size_pct": RCG_SIZE_PCT, "filled": False})
+    tag = (f"♻️ RCG ACTIVATED: {RCG_LEVELS}↓ + {RCG_LEVELS}↑ levels "
+           f"@ {RCG_SPACING*100:.1f}% spacing (mq={mqs:.0f})")
+    log(f"  {tag}")
+    return orders, "RCG_ON"
+
+
+def rcg_check_fills(state, cur_price, mqs):
+    """Check rcg fill conditions and detect exhaustion/reversal."""
+    pos = state.get("position")
+    if not pos or "rcg" not in pos:
+        return []
+    if mqs < RCG_STOP_MQ:
+        log(f"  ♻️ RCG DISSOLVE: mq={mqs:.0f} < {RCG_STOP_MQ}")
+        del pos["rcg"]
+        return []
+    orders = pos.get("rcg", [])
+    logs = []
+    fills_dn = 0;  fills_up = 0
+    for o in orders:
+        if o.get("filled"):
+            if o["dir"] == "dn": fills_dn += 1
+            else:                fills_up += 1
+            continue
+        hit = False
+        if o["dir"] == "dn" and cur_price <= o["buy_price"]:
+            hit = True
+        elif o["dir"] == "up" and cur_price >= o["buy_price"]:
+            hit = True
+        if hit:
+            o["filled"] = True
+            if o["dir"] == "dn": fills_dn += 1
+            else:                fills_up += 1
+            logs.append(f"  ♻️ RCG FILL {o['dir'].upper()} L{o['level']} @ ${cur_price:,.4f}")
+    # Exhaustion detection: if one direction fully filled → log reversal signal
+    total_dn = sum(1 for o in orders if o["dir"] == "dn")
+    total_up = sum(1 for o in orders if o["dir"] == "up")
+    if fills_dn >= RCG_EXHAUST_MOVES:
+        logs.append(f"  ♻️ RCG EXHAUST ↓ ({fills_dn}/{total_dn} filled) → CYCLIC REVERSAL ↑")
+        state["rcg_fills_dn"] = state.get("rcg_fills_dn", 0) + 1
+    if fills_up >= RCG_EXHAUST_MOVES:
+        logs.append(f"  ♻️ RCG EXHAUST ↑ ({fills_up}/{total_up} filled) → CYCLIC REVERSAL ↓")
+        state["rcg_fills_up"] = state.get("rcg_fills_up", 0) + 1
+    for l in logs:
+        log(l)
+    return logs
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# UNIVERSAL METHOD ORCHESTRATOR
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DYNAMIC EQUITY SCALING ENGINE (DESE) — SUPERPOWER
+# ═══════════════════════════════════════════════════════════════════════════
+def brain_features(q, sig, mqs, state, ctx, pair):
+    """Extract 14-dim feature vector for a trade candidate."""
+    from datetime import datetime as _dt, timezone as _tz
+    now = _dt.now(_tz.utc)
+    feats = [0.0] * BRAIN_N_FEATURES
+    feats[0]  = min(q / 5.0, 1.0)                        # q_norm
+    feats[1]  = min(mqs / 100.0, 1.0)                    # mq_norm
+    feats[2]  = float(sig == 1)                           # sig
+    feats[3]  = min(state.get("consecutive_losses",0)/8.0, 1.0)  # consec_norm
+    scenario  = state.get("umo_scenario","RANGING") if "umo_scenario" in state else "RANGING"
+    feats[4]  = BRAIN_SCENARIO_ENC.get(scenario, 0.5)    # scenario
+    atr_p     = ctx.get("atr_pct", 0.01)
+    feats[5]  = min(atr_p / 0.05, 1.0)                   # atr_norm
+    feats[6]  = max(min(ctx.get("momentum",0.0)/0.02+0.5,1.0),0.0)  # momentum_norm
+    feats[7]  = max(min(ctx.get("trend",0.0)/0.05+0.5,1.0),0.0)     # trend_norm
+    feats[8]  = float(ctx.get("vol_surge", False))        # vol_surge
+    feats[9]  = now.hour / 23.0                           # hour_norm
+    feats[10] = float(state.get("ams_active", False))    # ams_active
+    phase     = state.get("dbgs_phase","STEADY")
+    feats[11] = BRAIN_PHASE_ENC.get(phase, 0.5)          # dbgs_phase_enc
+    rmult     = state.get("brain_last_recov", 1.0)
+    feats[12] = min((rmult - 1.0) / 3.0, 1.0)           # recov_norm
+    hist      = state.get("brain_history", [])
+    if len(hist) >= 3:
+        recent_dep = [h.get("deploy_pct",0.5) for h in hist[-3:]]
+        feats[13] = (recent_dep[-1] - recent_dep[0]) / 2.0 + 0.5
+    else:
+        feats[13] = 0.5
+    feats[13] = max(0.0, min(1.0, feats[13]))
+    return feats
+
+
+def _sigmoid(x):
+    try:
+        return 1.0 / (1.0 + math.exp(-x))
+    except OverflowError:
+        return 0.0 if x < 0 else 1.0
+
+
+def brain_predict(feats, state):
+    """
+    APEX-BRAIN predictor.
+    Computes win probability from feature vector and learned weights.
+    Returns (win_probability 0-1, confidence_tag str).
+    """
+    if not BRAIN_ENABLED:
+        return 1.0, "BRAIN_OFF"
+    weights  = state.get("brain_weights", [0.0]*BRAIN_N_FEATURES)
+    bias     = state.get("brain_bias", 0.0)
+    trades   = state.get("brain_trades", 0)
+    # Bootstrap phase — no gate, just collect data
+    if trades < BRAIN_BOOTSTRAP:
+        conf = 0.5 + trades / (BRAIN_BOOTSTRAP * 2.0)
+        return conf, f"BRAIN_BOOT({trades}/{BRAIN_BOOTSTRAP})"
+    # Logistic regression dot product
+    z = bias + sum(w * f for w, f in zip(weights, feats))
+    prob = _sigmoid(z)
+    wins  = state.get("brain_wins", 0)
+    wr    = wins / max(trades, 1)
+    if prob >= BRAIN_MIN_CONFIDENCE:
+        tag = (f"BRAIN_GO🟢 {prob*100:.0f}% "
+               f"(wr={wr*100:.0f}% t={trades})")
+    else:
+        tag = (f"BRAIN_BLOCK🔴 {prob*100:.0f}% "
+               f"< {BRAIN_MIN_CONFIDENCE*100:.0f}% (wr={wr*100:.0f}% t={trades})")
+    return prob, tag
+
+
+def brain_learn(state, feats, won, pnl_pct, deploy_pct):
+    """
+    APEX-BRAIN online learner.
+    Updates weights using perceptron/logistic gradient after each trade close.
+    """
+    if not BRAIN_ENABLED:
+        return
+    weights = state.get("brain_weights", [0.0]*BRAIN_N_FEATURES)
+    bias    = state.get("brain_bias", 0.0)
+    trades  = state.get("brain_trades", 0)
+
+    # Compute current prediction
+    z    = bias + sum(w * f for w, f in zip(weights, feats))
+    pred = _sigmoid(z)
+    y    = 1.0 if won else 0.0
+    err  = y - pred  # positive = we underestimated win, negative = overestimated
+
+    # Weight magnitude scaling — stronger pnl = stronger signal
+    pnl_scale = min(abs(pnl_pct) / 0.02 + 0.5, 2.0)
+    lr = BRAIN_LEARN_RATE * pnl_scale
+
+    # Apply decay then gradient update
+    for k in range(BRAIN_N_FEATURES):
+        weights[k] = weights[k] * BRAIN_DECAY + lr * err * feats[k]
+    bias = bias * BRAIN_DECAY + lr * err
+
+    # Clip weights to prevent explosion
+    weights = [max(-5.0, min(5.0, w)) for w in weights]
+    bias    = max(-3.0, min(3.0, bias))
+
+    state["brain_weights"] = weights
+    state["brain_bias"]    = bias
+    state["brain_trades"]  = trades + 1
+    if won:
+        state["brain_wins"] = state.get("brain_wins", 0) + 1
+
+    # Store trade record in history
+    hist = state.get("brain_history", [])
+    hist.append({"feats": feats, "won": won, "pnl": round(pnl_pct,5),
+                 "deploy_pct": deploy_pct, "pred": pred})
+    if len(hist) > BRAIN_HISTORY_MAX:
+        hist = hist[-BRAIN_HISTORY_MAX:]
+    state["brain_history"] = hist
+
+    # Log top positive and negative feature influences
+    influences = sorted(enumerate(weights), key=lambda x: abs(x[1]), reverse=True)[:4]
+    top_feats = " ".join(f"{BRAIN_FEATURES[k]}:{w:+.2f}" for k,w in influences)
+    outcome   = "✅ WIN" if won else "❌ LOSS"
+    wr = state.get("brain_wins", 0) / max(state.get("brain_trades", 1),1)
+    log(f"  🧠 BRAIN LEARN {outcome} err={err:+.3f} lr={lr:.3f} "
+        f"wr={wr*100:.0f}% t={state['brain_trades']} | top: {top_feats}")
+
+
+def rtsl_analyze(pair, pos, state):
+    """
+    RTSL: Real-Time Market Analyzer.
+    Fetches fresh 15m candles, computes ATR, momentum, trend, volume.
+    Returns a market_ctx dict used by rtsl_update().
+    """
+    ctx = {"atr_pct": 0.01, "momentum": 0.0, "trend": 0.0,
+           "vol_surge": False, "candles": None}
+    try:
+        df = fetch_full_history(pair, "15m", limit=20)
+        if df is None or len(df) < 10:
+            return ctx
+        closes = df["close"].values
+        highs  = df["high"].values
+        lows   = df["low"].values
+        vols   = df["volume"].values if "volume" in df.columns else None
+
+        # ATR (average true range, last 10 candles)
+        trs = []
+        for k in range(1, min(11, len(closes))):
+            tr = max(highs[-k] - lows[-k],
+                     abs(highs[-k] - closes[-k-1]),
+                     abs(lows[-k]  - closes[-k-1]))
+            trs.append(tr)
+        atr = sum(trs) / len(trs) if trs else 0
+        ctx["atr_pct"] = atr / closes[-1] if closes[-1] > 0 else 0.01
+
+        # Momentum: % change last RTSL_MOM_WINDOW candles
+        w = RTSL_MOM_WINDOW
+        if len(closes) > w:
+            ctx["momentum"] = (closes[-1] - closes[-w-1]) / closes[-w-1]
+
+        # Trend: % change over last 10 candles
+        if len(closes) >= 10:
+            ctx["trend"] = (closes[-1] - closes[-10]) / closes[-10]
+
+        # Volume surge: current vol vs 10-bar avg
+        if vols is not None and len(vols) >= 10 and RTSL_VOL_ENABLED:
+            avg_vol = sum(vols[-10:-1]) / 9
+            if avg_vol > 0 and vols[-1] > avg_vol * RTSL_VOL_SURGE_MULT:
+                ctx["vol_surge"] = True
+
+        ctx["candles"] = closes
+    except Exception:
+        pass
+    return ctx
+
+
+def rtsl_update(pos, state, cur_price, ctx):
+    """
+    RTSL: Dynamic TP/SL updater. Called every cycle while in position.
+    Modifies pos["tp"], pos["sl"], pos["tp_pct"], pos["sl_pct"] in-place.
+    Returns tag string describing what changed.
+    """
+    if not RTSL_ENABLED or pos is None:
+        return "RTSL_OFF"
+
+    entry     = pos["entry"]
+    orig_tp   = pos.get("tp_pct", 0.020)
+    orig_sl   = pos.get("sl_pct", 0.010)
+    cur_tp    = pos.get("tp_pct", orig_tp)
+    cur_sl    = pos.get("sl_pct", orig_sl)
+    pnl_pct   = (cur_price - entry) / entry
+    tags      = []
+
+    atr_pct   = ctx.get("atr_pct",   0.01)
+    momentum  = ctx.get("momentum",  0.0)
+    trend     = ctx.get("trend",     0.0)
+    vol_surge = ctx.get("vol_surge", False)
+
+    # ── 1. TRAILING STOP ─────────────────────────────────────────────────
+    if RTSL_TRAIL_ENABLED and pnl_pct >= RTSL_TRAIL_MIN_PROFIT:
+        trail_peak = state.get("rtsl_trail_peak", 0.0)
+        if cur_price > trail_peak + trail_peak * RTSL_TRAIL_STEP or trail_peak == 0:
+            state["rtsl_trail_peak"] = cur_price
+            trail_peak = cur_price
+        trail_sl_price = trail_peak * (1 - RTSL_TRAIL_DISTANCE)
+        trail_sl_pct   = (entry - trail_sl_price) / entry
+        if trail_sl_pct < cur_sl:  # only tighten, never loosen trailing
+            cur_sl = max(trail_sl_pct, 0.001)  # floor at 0.1%
+            state["rtsl_trail_sl"] = trail_sl_price
+            tags.append(f"TRAIL(sl={cur_sl*100:.2f}%)")
+
+    # ── 2. ATR VOLATILITY TP EXPANSION / SL TIGHTEN ──────────────────────
+    if RTSL_ATR_EXPAND:
+        if atr_pct > RTSL_ATR_HIGH_MULT / 100:
+            new_tp = orig_tp + RTSL_ATR_TP_BONUS
+            if new_tp > cur_tp:
+                cur_tp = new_tp
+                tags.append(f"ATR_WIDE(tp={cur_tp*100:.2f}%)")
+        elif atr_pct < RTSL_ATR_LOW_MULT / 100:
+            sl_tight = max(cur_sl - RTSL_ATR_SL_TIGHTEN, 0.002)
+            if sl_tight < cur_sl:
+                cur_sl = sl_tight
+                tags.append(f"ATR_TIGHT(sl={cur_sl*100:.2f}%)")
+
+    # ── 3. MOMENTUM REVERSAL EMERGENCY SL ────────────────────────────────
+    if RTSL_MOM_ENABLED and pnl_pct > 0:
+        if momentum < RTSL_MOM_FLIP_THRESH:
+            emergency_sl = max(cur_sl - RTSL_MOM_SL_TIGHTEN, 0.001)
+            if emergency_sl < cur_sl:
+                cur_sl = emergency_sl
+                tags.append(f"MOM_FLIP(sl={cur_sl*100:.2f}%)")
+
+    # ── 4. VOLUME SURGE TP EXPANSION ─────────────────────────────────────
+    if vol_surge:
+        new_tp = orig_tp + RTSL_VOL_TP_BONUS
+        if new_tp > cur_tp:
+            cur_tp = new_tp
+            tags.append(f"VOL_SURGE(tp={cur_tp*100:.2f}%)")
+
+    # ── 5. MULTI-TIER TP ─────────────────────────────────────────────────
+    if RTSL_TIER_ENABLED:
+        tier = state.get("rtsl_tier", 0)
+        # Unlock T3 if strong trend
+        if tier < 3 and trend >= RTSL_TIER3_MIN_TREND and pnl_pct >= orig_tp * RTSL_TIER2_PCT:
+            cur_tp = orig_tp * RTSL_TIER3_MULT
+            state["rtsl_tier"] = 3
+            tags.append(f"TIER3(tp={cur_tp*100:.2f}%)")
+        # Tighten SL to protect T1 gains
+        elif tier == 0 and pnl_pct >= orig_tp * RTSL_TIER1_PCT:
+            state["rtsl_tier"] = 1
+            # Lock in half the profit: SL rises to entry + 0.2%
+            lock_sl_pct = max(cur_sl, -(pnl_pct * 0.40))  # keep 40% of current gains
+            cur_sl = max(cur_sl - 0.002, 0.001)
+            tags.append(f"TIER1_LOCK(sl={cur_sl*100:.2f}%)")
+
+    # ── 6. TIME-DECAY BREAK-EVEN ─────────────────────────────────────────
+    if RTSL_DECAY_ENABLED:
+        last_pnl = state.get("rtsl_last_pnl_pct", 0.0)
+        if abs(pnl_pct - last_pnl) < 0.0005:  # price barely moved
+            state["rtsl_cycles_flat"] = state.get("rtsl_cycles_flat", 0) + 1
+        else:
+            state["rtsl_cycles_flat"] = 0
+        state["rtsl_last_pnl_pct"] = pnl_pct
+        if state["rtsl_cycles_flat"] >= RTSL_DECAY_CYCLES and pnl_pct > 0:
+            be_sl = -(RTSL_DECAY_BE_BUFFER)  # entry + buffer
+            if cur_sl > -be_sl:
+                cur_sl = -be_sl
+                tags.append(f"DECAY_BE(sl=+{RTSL_DECAY_BE_BUFFER*100:.1f}%)")
+
+    # ── Apply updated values ──────────────────────────────────────────────
+    changed = (abs(cur_tp - pos["tp_pct"]) > 0.0001 or
+               abs(cur_sl - pos["sl_pct"]) > 0.0001)
+    if changed:
+        pos["tp_pct"] = round(cur_tp, 6)
+        pos["sl_pct"] = round(cur_sl, 6)
+        pos["tp"]     = round(entry * (1 + cur_tp), 6)
+        pos["sl"]     = round(entry * (1 - cur_sl), 6)
+        state["rtsl_tp_adj"] = cur_tp
+        state["rtsl_sl_adj"] = cur_sl
+        state["rtsl_adjustments"] = state.get("rtsl_adjustments", 0) + 1
+        tag_str = " ".join(tags) if tags else "ADJ"
+        log(f"  🎯 RTSL [{tag_str}] "
+            f"tp={cur_tp*100:.2f}% sl={cur_sl*100:.2f}% "
+            f"pnl={pnl_pct*100:+.3f}% atr={atr_pct*100:.2f}% "
+            f"mom={momentum*100:+.2f}% trend={trend*100:+.2f}%")
+        return f"RTSL[{tag_str}]"
+    return "RTSL_NC"
+
+
+def dbgs_update(state, cash):
+    """
+    DBGS: Dynamic Balance Growth System
+    Called after every trade close. Logs balance, computes growth phase,
+    updates the phase multiplier used at next entry.
+    """
+    if not DBGS_ENABLED:
+        return
+    bal = cash
+    log_arr = state.get("dbgs_balance_log", [])
+    log_arr.append(round(bal, 4))
+    if len(log_arr) > DBGS_WINDOW:
+        log_arr = log_arr[-DBGS_WINDOW:]
+    state["dbgs_balance_log"] = log_arr
+
+    # Track peak
+    if bal > state.get("dbgs_peak_balance", 0.0):
+        state["dbgs_peak_balance"] = bal
+
+    # Set baselines on first call
+    if state.get("dbgs_baseline", 0.0) == 0.0:
+        state["dbgs_baseline"]        = bal
+        state["dbgs_weekly_baseline"] = bal
+        return
+
+    if len(log_arr) < DBGS_MIN_TRADES:
+        return
+
+    # ── Compute growth rate over window ──
+    oldest = log_arr[0]
+    newest = log_arr[-1]
+    if oldest <= 0:
+        return
+    growth_rate = (newest - oldest) / oldest  # fractional change
+
+    # ── Velocity: slope of last 3 vs first 3 ──
+    if len(log_arr) >= 6:
+        early = sum(log_arr[:3]) / 3
+        late  = sum(log_arr[-3:]) / 3
+        velocity = (late - early) / early if early > 0 else 0.0
+    else:
+        velocity = growth_rate
+
+    # ── Phase detection ──
+    baseline = state.get("dbgs_baseline", bal)
+    total_growth = (bal - baseline) / baseline if baseline > 0 else 0.0
+    state["dbgs_total_growth_pct"] = round(total_growth * 100, 3)
+
+    if growth_rate >= DBGS_FAST_GROW:
+        new_phase = "COMPOUNDING"
+    elif growth_rate >= DBGS_SLOW_GROW:
+        new_phase = "BUILDING"
+    elif growth_rate >= -DBGS_FLAT_BAND:
+        new_phase = "STEADY"
+    elif growth_rate >= DBGS_DECLINE_THRESH:
+        new_phase = "RECOVERING"
+    else:
+        new_phase = "CONSERVING"
+
+    old_phase = state.get("dbgs_phase", "STEADY")
+    old_mult  = state.get("dbgs_mult", 1.00)
+    target_mult = DBGS_PHASE_MULT[new_phase]
+    # Smooth the multiplier to avoid whipsaw
+    smooth_mult = old_mult * (1 - DBGS_SMOOTHING) + target_mult * DBGS_SMOOTHING
+    state["dbgs_mult"] = round(smooth_mult, 4)
+
+    # Phase change log
+    if new_phase != old_phase:
+        state["dbgs_phase_changes"] = state.get("dbgs_phase_changes", 0) + 1
+        icon = DBGS_PHASE_ICONS.get(new_phase, "")
+        log(f"  {icon} DBGS PHASE SHIFT: {old_phase} -> {new_phase} "
+            f"(growth={growth_rate*100:+.3f}% vel={velocity*100:+.3f}% "
+            f"mult={smooth_mult:.2f}x bal=${bal:.2f})")
+    state["dbgs_phase"] = new_phase
+
+    # ── Growth target progress ──
+    weekly_base = state.get("dbgs_weekly_baseline", baseline)
+    if weekly_base > 0:
+        weekly_pct = (bal - weekly_base) / weekly_base
+        weekly_prog = min(weekly_pct / DBGS_WEEKLY_TARGET, 1.0)
+        bar_filled = int(weekly_prog * 10)
+        bar = "█" * bar_filled + "░" * (10 - bar_filled)
+        log(f"  📊 DBGS [{bar}] week={weekly_pct*100:+.2f}%"
+            f"/{DBGS_WEEKLY_TARGET*100:.0f}% | "
+            f"total={total_growth*100:+.2f}% | phase={new_phase} x{smooth_mult:.2f}")
+
+
+def dbgs_apply(base_size, state):
+    """Apply DBGS phase multiplier to entry size. Returns adjusted size."""
+    if not DBGS_ENABLED:
+        return base_size
+    mult = state.get("dbgs_mult", 1.00)
+    phase = state.get("dbgs_phase", "STEADY")
+    adjusted = min(base_size * mult, 0.99)
+    return adjusted
+
+
+def ams_evaluate(state, q, sig, mq):
+    """AMS: Auto-Mode Switcher - overrides DESE gear to AGGRESSIVE/APEX on HIGH signal."""
+    if not AMS_ENABLED:
+        return -1, 1.0, 0.99, "AMS_OFF"
+    was_active = state.get("ams_active", False)
+    hold_left  = state.get("ams_hold_cycles", 0)
+    sig_high = (q >= AMS_HIGH_Q_MIN and mq >= AMS_HIGH_MQ_MIN
+                and (sig == 1 if AMS_HIGH_SIG_REQUIRED else True))
+    if sig_high:
+        if mq >= AMS_HIGH_APEX_MQ and q >= 5:
+            target_gear, mode_label = AMS_APEX_GEAR, "APEX"
+        else:
+            target_gear, mode_label = AMS_HIGH_GEAR, "AGGRESSIVE"
+        state["ams_active"]        = True
+        state["ams_hold_cycles"]   = AMS_HOLD_CYCLES
+        state["ams_gear_override"] = target_gear
+        if not was_active:
+            state["ams_activations"] = state.get("ams_activations", 0) + 1
+            log(f"  🚀 AMS ENGAGE -> {mode_label} GEAR {target_gear}"
+                f" (q={q}/5 mq={mq} sig={sig}) activation #{state['ams_activations']}")
+        multiplier = DESE_GEAR_MULTIPLIERS[target_gear]
+        cap        = DESE_GEAR_CAPS[target_gear]
+        return target_gear, multiplier, cap, f"AMS:{mode_label}[{target_gear}]"
+    elif was_active and hold_left > 0:
+        state["ams_hold_cycles"] = hold_left - 1
+        g = state["ams_gear_override"]
+        mode_label = "APEX" if g >= AMS_APEX_GEAR else "AGGRESSIVE"
+        multiplier = DESE_GEAR_MULTIPLIERS[g]
+        cap        = DESE_GEAR_CAPS[g]
+        log(f"  🕒 AMS HOLD -> {mode_label} ({hold_left} cycles left)")
+        return g, multiplier, cap, f"AMS:HOLD[{g}]({hold_left})"
+    else:
+        if was_active:
+            log("  🌜 AMS RELEASE -> DESE resumes gear control")
+        state["ams_active"]        = False
+        state["ams_hold_cycles"]   = 0
+        state["ams_gear_override"] = -1
+        return -1, 1.0, 0.99, "AMS_OFF"
+
+
+def dese_compute(state, cash, total_pnl):
+    """
+    SUPERPOWER: Dynamic position sizing based on equity trajectory.
+    Returns (multiplier, gear, gear_name, tag).
+    Expands size when winning, compresses when losing — fully automatic.
+    """
+    if not DESE_ENABLED:
+        return 1.0, 2, DESE_GEAR_NAMES[2], "DESE_OFF"
+
+    equity_now = cash + max(total_pnl, 0.0)  # cash + any profits
+
+    # Update equity history
+    history = state.get("dese_equity_history", [])
+    history.append(round(equity_now, 4))
+    if len(history) > DESE_HISTORY_LEN:
+        history = history[-DESE_HISTORY_LEN:]
+    state["dese_equity_history"] = history
+
+    # Update peak equity (high-water mark)
+    peak = max(state.get("dese_peak_equity", equity_now), equity_now)
+    state["dese_peak_equity"] = peak
+
+    # Calculate equity ratio: how far from peak?
+    ratio = (equity_now / peak - 1.0) if peak > 0 else 0.0
+
+    # Calculate short-term momentum
+    momentum = 0.0
+    if len(history) >= DESE_MOMENTUM_WINDOW:
+        old_eq = history[-DESE_MOMENTUM_WINDOW]
+        momentum = (equity_now - old_eq) / old_eq if old_eq > 0 else 0.0
+
+    # Determine raw gear from ratio thresholds
+    raw_gear = 4
+    for thresh, gear_idx in DESE_THRESHOLDS:
+        if ratio < thresh:
+            raw_gear = gear_idx
+            break
+
+    # Momentum nudge (bump up or down by 1 gear)
+    if momentum > DESE_MOMENTUM_BOOST and raw_gear < 4:
+        raw_gear = min(raw_gear + 1, 4)
+    elif momentum < DESE_MOMENTUM_DRAG and raw_gear > 0:
+        raw_gear = max(raw_gear - 1, 0)
+
+    # Smooth gear transition (blend old and new to avoid jarring jumps)
+    old_smooth = state.get("dese_gear_smooth", 2.0)
+    new_smooth  = old_smooth * (1 - DESE_SMOOTHING) + raw_gear * DESE_SMOOTHING
+    state["dese_gear_smooth"] = round(new_smooth, 3)
+
+    # Final gear = rounded smooth value
+    final_gear = min(max(round(new_smooth), 0), 4)
+
+    # Detect gear change for logging
+    old_gear = state.get("dese_gear", 2)
+    gear_changed = final_gear != old_gear
+    state["dese_gear"] = final_gear
+    if gear_changed:
+        state["dese_gear_changes"] = state.get("dese_gear_changes", 0) + 1
+
+    # Get multiplier and cap
+    multiplier = DESE_GEAR_MULTIPLIERS[final_gear]
+    cap        = DESE_GEAR_CAPS[final_gear]
+    gear_name  = DESE_GEAR_NAMES[final_gear]
+    state["dese_multiplier"] = multiplier
+
+    # Build tag
+    arrow = "↑" if momentum > 0.001 else ("↓" if momentum < -0.001 else "→")
+    tag = (f"{gear_name} [{final_gear}/4] {multiplier:.2f}× "
+           f"(eq=${equity_now:.0f} peak=${peak:.0f} "
+           f"ratio={ratio*100:+.1f}% mom={momentum*100:+.2f}%{arrow})")
+    if gear_changed:
+        log(f"  ⚙️ DESE GEAR SHIFT: {DESE_GEAR_NAMES[old_gear]} → {gear_name} "
+            f"({ratio*100:+.1f}% from peak, mom={momentum*100:+.2f}%)")
+
+    return multiplier, final_gear, gear_name, tag, cap
+
+
+def dese_apply(base_size, multiplier, cap):
+    """Apply DESE multiplier to a base size with hard gear cap."""
+    scaled = base_size * multiplier
+    return min(scaled, cap, 0.99)
+
+def umo_dispatch(state, lb, base_size, mqs, consec, scan):
+    """
+    Detect market scenario, decide which methods are active,
+    apply Vol-Targeting and Fibonacci if allowed, return final_size + tag.
+    lb = list of recent close prices for scenario detection.
+    Returns (final_size, scenario, active_methods, umo_tag)
+    """
+    # 1. Detect scenario
+    scenario, meta = detect_scenario(lb)
+
+    # Track scenario history
+    sc_counts = state.get("scenario_counts", {})
+    sc_counts[scenario] = sc_counts.get(scenario, 0) + 1
+    state["scenario_counts"] = sc_counts
+    state["scenario"] = scenario
+
+    # 2. Get method permissions for this scenario
+    perms = UMO_TABLE.get(scenario, UMO_TABLE["UNKNOWN"])
+
+    # 3. Log scenario change
+    prev_scenario = state.get("prev_scenario", "")
+    if scenario != prev_scenario:
+        icons = {"RANGING":"📊", "TRENDING":"📈", "PULLBACK":"🔄",
+                 "VOLATILE":"⚡", "BREAKOUT":"🚀", "UNKNOWN":"❓"}
+        icon = icons.get(scenario, "❓")
+        log(f"  {icon} SCENARIO → {scenario} "
+            f"(atr={meta.get('atr_pct',0):.2f}% dir={meta.get('direction',0):.2f}% "
+            f"range={meta.get('range_pct',0):.2f}%)")
+        # Log which methods are ON/OFF
+        on  = [m for m, v in perms.items() if v]
+        off = [m for m, v in perms.items() if not v]
+        log(f"    UMO ✅ {' | '.join(on)}")
+        log(f"    UMO ❌ {' | '.join(off)}")
+        state["prev_scenario"] = scenario
+
+    # 4. Vol-Targeting (if allowed)
+    vt_size = base_size
+    vt_tag  = "VT_OFF"
+    if perms.get("vol_target", False):
+        vt_size, vt_tag = vol_target_size(lb, base_size)
+
+    # 5. Fibonacci Scaling (if allowed)
+    fib_sz, fib_tag, new_fib_idx = fib_size(state, vt_size, perms.get("fib", False))
+    state["fib_idx"] = new_fib_idx
+
+    # 6. Final size = max of all contributing methods
+    final_size = max(vt_size, fib_sz)
+    final_size = min(final_size, 0.99)
+
+    # Build summary tag
+    active = [m for m, v in perms.items() if v]
+    umo_tag = (f"UMO[{scenario}] {vt_tag} | {fib_tag} → {final_size*100:.1f}%")
+
+    return final_size, scenario, perms, umo_tag
+
+def sddgm_check(state, base_size_pct, mqs, cash, total_pnl):
+    """
+    GOD MODE: progressive doubling engine that auto-starts on loss streak
+    and auto-stops when debt is recovered or equity drawdown is too deep.
+    Returns (final_size_pct, sddgm_tag, updated_state_fields)
+    """
+    consec     = state.get("consecutive_losses", 0)
+    active     = state.get("sddgm_active", False)
+    level      = state.get("sddgm_level", 0)
+    debt       = state.get("sddgm_debt", 0.0)
+    eq_start   = state.get("sddgm_equity_start", 0.0)
+    equity_now = cash + (total_pnl if total_pnl > 0 else 0)
+
+    updates = {}
+
+    # ── AUTO-STOP CHECK (runs even before start check) ────────────────────
+    if active:
+        # Stop 1: debt recovered ≥ 95%
+        initial_debt = state.get("sddgm_initial_debt", debt + 0.001)
+        recovered_pct = 1.0 - (debt / initial_debt) if initial_debt > 0 else 1.0
+        if recovered_pct >= SDDGM_RECOVERY_THRESH:
+            log(f"  🛑 SDDGM STOP: DEBT RECOVERED ({recovered_pct*100:.1f}%) — God Mode OFF")
+            updates.update({"sddgm_active": False, "sddgm_level": 0,
+                            "sddgm_debt": 0.0, "sddgm_equity_start": 0.0,
+                            "sddgm_stops": state.get("sddgm_stops", 0) + 1})
+            state.update(updates)
+            return base_size_pct, "SDDGM_STOP(recovered)", updates
+
+        # Stop 2: equity drawdown too deep
+        if eq_start > 0 and equity_now < eq_start * (1 - SDDGM_STOP_EQUITY_DD):
+            log(f"  🛑 SDDGM STOP: EQUITY DD {((eq_start-equity_now)/eq_start)*100:.1f}% > {SDDGM_STOP_EQUITY_DD*100:.0f}% — God Mode OFF")
+            updates.update({"sddgm_active": False, "sddgm_level": 0,
+                            "sddgm_debt": 0.0, "sddgm_equity_start": 0.0,
+                            "sddgm_stops": state.get("sddgm_stops", 0) + 1})
+            state.update(updates)
+            return base_size_pct, "SDDGM_STOP(dd_breach)", updates
+
+        # Stop 3: consec losses reset to 0 (won a trade after activation)
+        if consec == 0:
+            log(f"  ✅ SDDGM STOP: WIN RESET consec=0 — God Mode OFF (debt remaining=${debt:.2f})")
+            updates.update({"sddgm_active": False, "sddgm_level": 0,
+                            "sddgm_debt": 0.0, "sddgm_equity_start": 0.0,
+                            "sddgm_wins": state.get("sddgm_wins", 0) + 1})
+            state.update(updates)
+            return base_size_pct, "SDDGM_STOP(win_reset)", updates
+
+    # ── AUTO-START CHECK ───────────────────────────────────────────────────
+    if not active and consec >= SDDGM_START_LOSSES:
+        eq_start_new = cash  # capture equity at activation
+        updates.update({
+            "sddgm_active": True,
+            "sddgm_level": 1,
+            "sddgm_debt": abs(min(total_pnl, 0.0)),       # current $ loss as debt
+            "sddgm_initial_debt": abs(min(total_pnl, 0.0)) + 0.01,
+            "sddgm_equity_start": eq_start_new
+        })
+        state.update(updates)
+        active = True
+        level  = 1
+        debt   = updates["sddgm_debt"]
+        eq_start = eq_start_new
+        log(f"  ⚡ SDDGM START: consec={consec} losses → GOD MODE L{level} | debt=${debt:.2f} | equity_start=${eq_start_new:.2f}")
+
+    # ── INACTIVE: return unchanged ─────────────────────────────────────────
+    if not active:
+        return base_size_pct, f"SDDGM_OFF(consec={consec}<{SDDGM_START_LOSSES})", {}
+
+    # ── LEVEL ADVANCE LOGIC ────────────────────────────────────────────────
+    # Each loss while active → try to advance level
+
+    # -- MAX-LOSSES CIRCUIT BREAKER: stop SDDGM after 10 consecutive losses --
+    if active and consec >= SDDGM_MAX_LOSSES:
+        updates.update({
+            "sddgm_active": False,
+            "sddgm_level": 1,
+            "sddgm_debt": 0.0,
+            "sddgm_initial_debt": 0.0,
+            "sddgm_equity_start": 0.0,
+        })
+        state.update(updates)
+        log(f" 🛑 SDDGM CIRCUIT BREAK: {consec} losses >= MAX={SDDGM_MAX_LOSSES} — God Mode FORCED OFF")
+        return base_size_pct, "SDDGM_STOP(max_losses)", updates
+
+    if consec > state.get("sddgm_prev_consec", consec):
+        if mqs >= SDDGM_MIN_MQ_ADVANCE and level < SDDGM_MAX_LEVEL:
+            level += 1
+            updates["sddgm_level"] = level
+            state["sddgm_level"] = level
+            log(f"  📈 SDDGM ADVANCE: level → {level} (mq={mqs:.0f} ≥ {SDDGM_MIN_MQ_ADVANCE})")
+        elif mqs < SDDGM_MIN_MQ_ACTIVE:
+            log(f"  ⏸  SDDGM FREEZE: market too weak mq={mqs:.0f} < {SDDGM_MIN_MQ_ACTIVE} — level held at {level}")
+        else:
+            log(f"  🔒 SDDGM MAX: already at max level {level}/{SDDGM_MAX_LEVEL}")
+    updates["sddgm_prev_consec"] = consec
+    state["sddgm_prev_consec"] = consec
+
+    # ── COMPUTE GOD MODE SIZE ──────────────────────────────────────────────
+    # Base multiplier: 2^level (L1=2×, L2=4×, L3=8×, L4=16×, L5=32×)
+    level_mult = SDDGM_BASE_MULT ** level
+
+    # Debt-recovery sizing: how much $ do we need to deploy to recover debt in 1 win?
+    # Assuming ~2% avg win: recovery_$ = debt / 0.02 → recovery_pct = recovery_$ / cash
+    avg_win_rate = 0.02  # conservative 2% gain assumption
+    if debt > 0 and cash > 10:
+        debt_recovery_pct = min((debt * SDDGM_FEE_BUFFER) / (cash * avg_win_rate), 0.99)
+    else:
+        debt_recovery_pct = base_size_pct
+
+    # Smart blend: take the larger of (level_mult × base) and (debt recovery size)
+    level_based  = min(base_size_pct * level_mult, 0.99)
+    god_size_pct = max(level_based, debt_recovery_pct)
+    god_size_pct = min(god_size_pct, 0.99)  # hard cap 99%
+
+    tag = (f"⚡SDDGM L{level}|{level_mult:.0f}× | "
+           f"debt=${debt:.2f} | size={god_size_pct*100:.1f}% "
+           f"[lvl={level_based*100:.1f}% debt_rec={debt_recovery_pct*100:.1f}%]")
+    log(f"  {tag}")
+
+    # Update debt: add most recent loss to running debt (approx from consec and base)
+    # Actual debt update happens in the close handler below
+
+    return god_size_pct, f"SDDGM_L{level}", updates
+
+def sddgm_update_on_close(state, pnl_dollar):
+    """Call after every trade close to update SDDGM debt tracker."""
+    if not state.get("sddgm_active", False):
+        return
+    if pnl_dollar < 0:
+        # Loss: add to debt
+        state["sddgm_debt"] = state.get("sddgm_debt", 0.0) + abs(pnl_dollar)
+        log(f"  💸 SDDGM debt+=${abs(pnl_dollar):.2f} → total debt=${state['sddgm_debt']:.2f}")
+    else:
+        # Win: reduce debt
+        state["sddgm_debt"] = max(0.0, state.get("sddgm_debt", 0.0) - pnl_dollar)
+        log(f"  💰 SDDGM debt-=${pnl_dollar:.2f} → remaining debt=${state['sddgm_debt']:.2f}")
+
+
+# — SMART TRIPLING SYSTEM (STS) ——————————————————————————————————
+def sts_check(state, base_size_pct, mqs, cash, total_pnl):
+    """
+    Smart Tripling System: mirrors SDDGM logic but uses 3x multiplier.
+    Auto-starts on first loss, auto-stops on win, equity DD, or 10 losses.
+    Returns (final_size_pct, sts_tag, updated_state_fields)
+    """
+    active    = state.get('sts_active', False)
+    level     = state.get('sts_level', 0)
+    debt      = state.get('sts_debt', 0.0)
+    eq_start  = state.get('sts_equity_start', 0.0)
+    consec    = state.get('consecutive_losses', 0)
+    updates   = {}
+
+    # ── AUTO-STOP: debt recovered ──
+    if active and debt > 0:
+        initial_debt = state.get('sts_initial_debt', debt + 0.001)
+        recovered_pct = 1.0 - (debt / initial_debt)
+        if recovered_pct >= STS_RECOVERY_THRESH:
+            log(f'  🟢 STS STOP: DEBT RECOVERED ({recovered_pct*100:.1f}%) — Tripling OFF')
+            updates.update({'sts_active': False, 'sts_level': 0,
+                            'sts_debt': 0.0, 'sts_equity_start': 0.0,
+                            'sts_stops': state.get('sts_stops', 0) + 1})
+            return base_size_pct, 'STS_STOP(recovered)', updates
+
+    # ── AUTO-STOP: equity drawdown breach ──
+    equity_now = cash + total_pnl
+    if active and eq_start > 0 and equity_now < eq_start * (1 - STS_STOP_EQUITY_DD):
+        log(f'  🔴 STS STOP: EQUITY DD {((eq_start-equity_now)/eq_start)*100:.1f}%'
+            f' > {STS_STOP_EQUITY_DD*100:.0f}% — Tripling OFF')
+        updates.update({'sts_active': False, 'sts_level': 0,
+                        'sts_debt': 0.0, 'sts_equity_start': 0.0,
+                        'sts_stops': state.get('sts_stops', 0) + 1})
+        return base_size_pct, 'STS_STOP(dd_breach)', updates
+
+    # ── AUTO-STOP: win reset ──
+    if active and consec == 0:
+        log(f'  ✅ STS STOP: WIN RESET consec=0 — Tripling OFF (debt remaining=${debt:.2f})')
+        updates.update({'sts_active': False, 'sts_level': 0,
+                        'sts_debt': 0.0, 'sts_equity_start': 0.0,
+                        'sts_wins': state.get('sts_wins', 0) + 1})
+        return base_size_pct, 'STS_STOP(win_reset)', updates
+
+    # ── AUTO-START: first loss ──
+    if not active and consec >= STS_START_LOSSES:
+        updates.update({
+            'sts_active': True,
+            'sts_level': 1,
+            'sts_debt': abs(min(total_pnl, 0.0)),
+            'sts_initial_debt': abs(min(total_pnl, 0.0)) + 0.01,
+            'sts_equity_start': cash + total_pnl,
+        })
+        state.update(updates)
+        active = True
+        level  = 1
+        debt   = updates['sts_debt']
+        log(f'  🔥 STS AUTO-START: consec={consec} loss — Tripling GOD MODE ON L1')
+
+    if not active:
+        return base_size_pct, f'STS_OFF(consec={consec}<{STS_START_LOSSES})', {}
+
+    # ── CIRCUIT BREAKER: too many losses ──
+    if active and consec >= STS_MAX_LOSSES:
+        log(f'  🛑 STS CIRCUIT BREAK: {consec} losses >= MAX={STS_MAX_LOSSES} — Tripling FORCED OFF')
+        updates.update({'sts_active': False, 'sts_level': 1,
+                        'sts_debt': 0.0, 'sts_equity_start': 0.0})
+        state.update(updates)
+        return base_size_pct, 'STS_STOP(max_losses)', updates
+
+    # ── LEVEL ADVANCE: new loss → try to go deeper ──
+    if consec > state.get('sts_prev_consec', consec):
+        if mqs >= STS_MIN_MQ_ADVANCE and level < STS_MAX_LEVEL:
+            level += 1
+            updates['sts_level'] = level
+            state['sts_level']   = level
+            log(f'  📈 STS ADVANCE: level → {level} (mq={mqs:.0f} ≥ {STS_MIN_MQ_ADVANCE})')
+        elif mqs < STS_MIN_MQ_ACTIVE:
+            log(f'  ⏸  STS FREEZE: market too weak mq={mqs:.0f} < {STS_MIN_MQ_ACTIVE} — level held at {level}')
+        else:
+            log(f'  🔒 STS MAX: already at max level {level}/{STS_MAX_LEVEL}')
+    updates['sts_prev_consec'] = consec
+    state['sts_prev_consec']   = consec
+
+    # ── COMPUTE TRIPLING SIZE ──
+    # Level multiplier: 3^level (L1=3x, L2=9x, L3=27x, L4=81x, L5=243x)
+    level_mult = STS_BASE_MULT ** level
+
+    # Debt-recovery sizing: how much to deploy to recover debt in 1 win
+    avg_win_rate = 0.02
+    if debt > 0 and cash > 10:
+        debt_recovery_pct = min((debt * STS_FEE_BUFFER) / (cash * avg_win_rate), 0.99)
+    else:
+        debt_recovery_pct = base_size_pct
+
+    level_based   = min(base_size_pct * level_mult, 0.99)
+    god_size_pct  = max(level_based, debt_recovery_pct)
+    god_size_pct  = min(god_size_pct, 0.99)
+
+    tag = (f'🔥STS L{level}|{level_mult:.0f}x | '
+           f'debt=${debt:.2f} | size={god_size_pct*100:.1f}% '
+           f'[lvl={level_based*100:.1f}% debt_rec={debt_recovery_pct*100:.1f}%]')
+    log(f'  {tag}')
+
+    return god_size_pct, f'STS_L{level}', updates
+
+
+def sts_update_on_close(state, pnl_dollar):
+    """Call after every trade close to update STS debt tracker."""
+    if not state.get('sts_active', False):
+        return
+    if pnl_dollar > 0:
+        state['sts_debt'] = max(state.get('sts_debt', 0.0) - pnl_dollar, 0.0)
+    else:
+        state['sts_debt'] = state.get('sts_debt', 0.0) + abs(pnl_dollar)
+
+
+
+def opf_size(trades, equity, state):
+    if not OPF_ACTIVE or len(trades) < OPF_MIN_TRADES:
+        return 0.0, 'OPF_BOOT'
+    window = trades[-OPF_WINDOW:]
+    losses = [abs(t) for t in window if t < 0]
+    if not losses:
+        return OPF_CAP, 'OPF_NOLOSS'
+    worst = max(losses)
+    state['opf_worst_loss'] = worst
+    state['opf_trade_window'] = window
+    wins  = [t for t in window if t > 0]
+    total_w = sum(wins) if wins else 0.0
+    n = len(window)
+    pct_win = len(wins) / n if n > 0 else 0.5
+    avg_w = total_w / len(wins) if wins else 0.0
+    opt_f = (pct_win - (1 - pct_win) / (avg_w / worst)) if worst > 0 and avg_w > 0 else 0.0
+    opt_f = max(0.0, min(opt_f, 1.0))
+    size  = opt_f * OPF_FRACTION
+    size  = max(OPF_FLOOR, min(size, OPF_CAP))
+    state['opf_last'] = size
+    return size, f'OPF(f={opt_f:.2f})'
+
+def vaas_size(price, state, equity):
+    if not VAAS_ACTIVE:
+        return 0.0, 'VAAS_OFF'
+    ranges = state.get('vaas_ranges', [])
+    if len(ranges) < 3:
+        return 0.0, 'VAAS_BOOT'
+    atr = sum(ranges[-VAAS_ATR_WINDOW:]) / min(len(ranges), VAAS_ATR_WINDOW)
+    if price <= 0:
+        return 0.0, 'VAAS_NOPRICE'
+    atr_ratio = min(max(atr / price, VAAS_VOL_FLOOR), VAAS_VOL_CAP)
+    risk_size = (equity * VAAS_TARGET_RISK_PCT) / (atr_ratio * equity) if atr_ratio > 0 else 0.5
+    if atr_ratio <= VAAS_LOW_VOL_THRESH:
+        scale = VAAS_SCALE_UP
+        tag = 'VAAS_LOW_VOL'
+    elif atr_ratio >= VAAS_HIGH_VOL_THRESH:
+        scale = VAAS_SCALE_DOWN
+        tag = 'VAAS_HIGH_VOL'
+    else:
+        scale = 1.0
+        tag = 'VAAS_NORM'
+    size = max(VAAS_FLOOR, min(risk_size * scale, VAAS_CAP))
+    state['vaas_last'] = size
+    return size, f'{tag}(atr={atr_ratio:.3f})'
+
+def rasm_size(price, mqs, state):
+    if not RASM_ACTIVE:
+        return 0.0, 'RASM_OFF'
+    prices = state.get('rasm_prices', [])
+    if len(prices) < RASM_WINDOW:
+        return 0.0, 'RASM_BOOT'
+    old_p = prices[-RASM_WINDOW]
+    new_p = prices[-1]
+    chg = (new_p - old_p) / old_p if old_p > 0 else 0.0
+    if chg > RASM_TREND_THRESH:
+        regime = 'BULL'
+        mult = RASM_BULL_MULT
+        if mqs >= 70:
+            mult *= RASM_BULL_MQ_BOOST
+    elif chg < -RASM_TREND_THRESH:
+        regime = 'BEAR'
+        mult = RASM_BEAR_MULT
+        if mqs < 30:
+            mult *= RASM_BEAR_MQ_DAMPEN
+    else:
+        regime = 'SIDEWAYS'
+        mult = RASM_SIDEWAYS_MULT
+    state['rasm_regime'] = regime
+    size = max(RASM_FLOOR, min(0.50 * mult, RASM_CAP))
+    state['rasm_last'] = size
+    return size, f'RASM_{regime}(x{mult:.2f})'
+
+def ceo_blend(kelly_size, trades, price, mqs, state, equity):
+    if not CEO_ACTIVE:
+        state['ceo_last_mode'] = 'CEO_OFF'
+        return kelly_size
+    opf,  opf_tag  = opf_size(trades, equity, state)
+    vaas, vaas_tag = vaas_size(price, state, equity)
+    rasm, rasm_tag = rasm_size(price, mqs, state)
+    if CEO_MODE == 'MAX':
+        candidates = [(kelly_size,'KELLY'),(opf,'OPF'),(vaas,'VAAS'),(rasm,'RASM')]
+        size, winner = max(((s,t) for s,t in candidates if s > 0), default=(kelly_size,'KELLY'))
+        mode_tag = f'CEO_MAX({winner})'
+    elif CEO_MODE == 'KELLY':
+        size = kelly_size
+        mode_tag = 'CEO_KELLY'
+    else:
+        parts = []
+        wsum = 0.0
+        if kelly_size > 0: parts.append(kelly_size * CEO_KELLY_WEIGHT); wsum += CEO_KELLY_WEIGHT
+        if opf > 0:        parts.append(opf  * CEO_OPF_WEIGHT);   wsum += CEO_OPF_WEIGHT
+        if vaas > 0:       parts.append(vaas * CEO_VAAS_WEIGHT);  wsum += CEO_VAAS_WEIGHT
+        if rasm > 0:       parts.append(rasm * CEO_RASM_WEIGHT);  wsum += CEO_RASM_WEIGHT
+        size = sum(parts) / wsum if wsum > 0 else kelly_size
+        mode_tag = f'CEO_BLEND(K={kelly_size:.2f} O={opf:.2f} V={vaas:.2f} R={rasm:.2f})'
+    size = max(0.05, min(size, 0.99))
+    state['ceo_last_size'] = size
+    state['ceo_last_mode'] = mode_tag
+    return size
+
+def safe_mode_check(state, equity, consec_losses, mqs, realized_vol):
+    _enable_sm = globals().get("ENABLE_USDT_SAFE_MODE", 1)
+    if not _enable_sm:
+        return False, False, 0.99, 1.0, 1.0, 1.0, {}
+    active   = state.get('safe_mode_active', False)
+    cycles   = state.get('safe_mode_cycles', 0)
+    eq_start = state.get('safe_mode_dd_start', equity)
+    updates  = {}
+    if not active:
+        dd       = (eq_start - equity) / max(eq_start, 1.0) if eq_start > 0 else 0.0
+        vol_hot  = realized_vol >= SAFE_MODE_VOL_TRIGGER
+        dd_hit   = dd >= SAFE_MODE_MAX_DD
+        loss_hit = consec_losses >= SAFE_MODE_MAX_CONSEC_LOSS
+        if dd_hit or loss_hit or vol_hot:
+            reason = ('DD={:.1f}%'.format(dd*100) if dd_hit else
+                      ('LOSS={}'.format(consec_losses) if loss_hit else
+                       'VOL={:.1f}%'.format(realized_vol*100)))
+            updates = {'safe_mode_active': True, 'safe_mode_reason': reason,
+                       'safe_mode_cycles': 0, 'safe_mode_dd_start': equity}
+            active = True
+            print(f'[SAFE_MODE] TRIGGERED: {reason} | entries BLOCKED | size CUT to 25%')
+    if active:
+        updates['safe_mode_cycles'] = cycles + 1
+        adx_ok  = mqs >= (AUTO_RESUME_ADX * 2)
+        cyc_ok  = cycles >= AUTO_RESUME_MIN_CYCLES
+        loss_ok = consec_losses == 0
+        if adx_ok and cyc_ok and loss_ok:
+            updates.update({'safe_mode_active': False, 'safe_mode_reason': '', 'safe_mode_cycles': 0})
+            active = False
+            print(f'[SAFE_MODE] RESUMED: mqs={mqs:.0f} cycles={cycles} | normal trading restored')
+    if active:
+        return True, True, SAFE_MODE_MAX_DEPLOY, SAFE_MODE_KELLY_SCALE, SAFE_MODE_TP_SCALE, SAFE_MODE_SL_SCALE, updates
+    return False, False, 0.99, 1.0, 1.0, 1.0, updates
+
+def main():
+    log(f"🚀 BOT-{BOT_ID} LOSS-RECOVERY ENGINE | pairs={PAIRS} | factor={RECOVERY_FACTOR}x | synced")
+    log(f"   Math: size = base_mq_size × (1 + loss_depth/$1000 × {RECOVERY_FACTOR}), capped 99%")
+    state = load_s()
+
+    while True:
+        state["cycle"] += 1
+        agg_score = sync_agg_nudge(state["agg_score"])
+        state["agg_score"] = agg_score
+        agg_name, tp_pct, sl_pct = agg_params(agg_score)
+        consec = state["consecutive_losses"]
+        combined, partner_consec = get_combined_losses(consec)
+
+        # Show current recovery status every cycle
+        rmult, loss_depth, loss_pct = recovery_mult(state["total_pnl"])
+        log(f"── CYCLE {state['cycle']} | agg={agg_score:.1f}[{agg_name}] "
+            f"TP={tp_pct*100:.1f}% SL={sl_pct*100:.1f}% | "
+            f"loss=${loss_depth:.2f}({loss_pct:.1f}%) → recov_mult={rmult:.3f}× | "
+            f"consec={consec} combined={combined}")
+
+        scan = scan_pairs()
+        _lb_closes = []  # populated after pick_candidate
+
+        if scan:
+            best_mqs = max(x[6] for x in scan)
+            state["agg_score"] = round(state["agg_score"] + 0.05*(best_mqs - state["agg_score"]), 1)
+
+        pos = state["position"]
+
+        # —— EXIT CHECK ——————————————————————————————————————————
+        if pos is not None:
+            try:
+                d_live = fetch_full_history(pos["pair"], "1d", limit=3)
+                cur_price = float(d_live["close"].iloc[-1])
+            except:
+                cur_price = pos["entry"]
+
+            pnl_pct = (cur_price - pos["entry"]) / pos["entry"]
+            # -- RTSL: REAL-TIME SMART TP/SL UPDATE -------------------------
+            _rtsl_ctx = rtsl_analyze(pos["pair"], pos, state)
+            rtsl_update(pos, state, cur_price, _rtsl_ctx)
+            # ----------------------------------------------------------------
+            hit_tp  = pnl_pct >=  pos["tp_pct"]
+            hit_sl  = pnl_pct <= -pos["sl_pct"]
+
+            if hit_tp or hit_sl:
+                gross    = pos["qty"] * cur_price
+                fee_cost = gross * FEE
+                net_pnl  = pos["qty"] * (cur_price - pos["entry"]) - fee_cost
+                state["cash"]      += pos["qty"] * cur_price - fee_cost
+                state["total_pnl"] += net_pnl
+                won = net_pnl > 0
+                tag = "✅ TP" if hit_tp else "❌ SL"
+
+                # Show recovery delta after close
+                rmult_before = pos.get("recov_mult", 1.0)
+                rmult_after, ld_after, lp_after = recovery_mult(state["total_pnl"])
+                log(f"  {tag} CLOSE {pos['pair']}  pnl=${net_pnl:+.2f}  "
+                    f"pct={pnl_pct*100:+.2f}%  "
+                    f"recov_mult: {rmult_before:.3f}→{rmult_after:.3f} "
+                    f"(loss now ${ld_after:.2f})")
+
+                if won:
+                    if state["consecutive_losses"] > 0:
+                        log(f"  🔄 streak broken — consec {state['consecutive_losses']} → 0")
+                    state["consecutive_losses"] = 0
+                    sddgm_update_on_close(state, net_pnl)
+                    sts_update_on_close(state, net_pnl)
+                    # OPF: record closed trade PnL for Optimal-F
+                    if OPF_ACTIVE:
+                        _tw = state.get("opf_trade_window", [])
+                        _tw.append(net_pnl)
+                        state["opf_trade_window"] = _tw[-OPF_WINDOW:]
+                    dbgs_update(state, state["cash"])
+                    brain_learn(state,
+                        state.get("brain_last_feats",[0.0]*14),
+                        True,
+                        net_pnl/max(pos.get("qty",1)*pos["entry"],1e-9),
+                        pos.get("deploy_pct",0.5))
+                    if pos.get("double"):
+                        state["double_wins"] += 1
+                    if pos.get("layers", 0) > 0:
+                        state["pyramid_wins"] = state.get("pyramid_wins", 0) + 1
+                        log(f"  🔺✅ pyramid win L{pos['layers']} @ avg=${pos['entry']:,.4f}")
+                    if pos.get("layers", 0) > 0:
+                        state["pyramids"] = state.get("pyramids", 0) + pos["layers"]
+                else:
+                    state["consecutive_losses"] += 1
+                    sddgm_update_on_close(state, net_pnl)
+                    fib_update_on_close(state, False)
+                    dbgs_update(state, state["cash"])
+                    brain_learn(state,
+                        state.get("brain_last_feats",[0.0]*14),
+                        False,
+                        net_pnl/max(pos.get("qty",1)*pos["entry"],1e-9),
+                        pos.get("deploy_pct",0.5))
+                    log(f"  📉 consec → {state['consecutive_losses']}  "
+                        f"next recov_mult will be {rmult_after:.3f}×")
+
+                grid_fills_count = sum(1 for o in pos.get("grid", []) if o.get("filled"))
+                if grid_fills_count > 0:
+                    state["grid_fills"] = state.get("grid_fills", 0) + grid_fills_count
+                    if won:
+                        state["grid_wins"] = state.get("grid_wins", 0) + 1
+                        log(f"  📊✅ grid win: {grid_fills_count} levels filled @ avg=${pos['entry']:,.4f}")
+                    else:
+                        log(f"  📊❌ grid loss: {grid_fills_count} levels filled")
+                state["trades"].append({
+                    "pair": pos["pair"], "pnl": round(net_pnl, 4),
+                    "entry": pos["entry"], "exit": cur_price,
+                    "agg": pos.get("agg_name","?"),
+                    "mq_label": pos.get("mq_label","?"),
+                    "recov_mult": rmult_before,
+                    "double": pos.get("double", False),
+                    "grid_fills": grid_fills_count
+                })
+                update_aggression(state, net_pnl, pos.get("mqs", 50))
+                state["position"] = None
+                pos = None
+
+        # —— PYRAMIDING CHECK ——————————————————————————————————
+        if pos is not None and state["cash"] > 10:
+            agg_score_now = state["agg_score"]
+            agg_name_now, tp_pct_now, sl_pct_now = agg_params(agg_score_now)
+            try:
+                d_pyra   = fetch_full_history(pos["pair"], "1d", limit=3)
+                pyra_price = float(d_pyra["close"].iloc[-1])
+            except:
+                pyra_price = pos["entry"]
+            best_mqs_now = max((x[6] for x in scan), default=0)
+            should_add, add_sz, pyra_reason = pyramid_check(
+                state, pyra_price, best_mqs_now, agg_score_now, scan
+            )
+            if should_add:
+                log(f"  📐🔺 {pyra_reason}")
+                pos = apply_pyramid(state, pyra_price, add_sz,
+                                    tp_pct_now, sl_pct_now, best_mqs_now, agg_name_now)
+                state["position"] = pos
+            else:
+                if "PYRA_ADD" not in pyra_reason and "PYRA_OFF(no_position)" not in pyra_reason:
+                    log(f"  📐 {pyra_reason}")
+
+        # —— GRID FILL CHECK ————————————————————————————————————
+        if pos is not None and "grid" in pos:
+            try:
+                d_grid    = fetch_full_history(pos["pair"], "1d", limit=3)
+                grid_price = float(d_grid["close"].iloc[-1])
+            except:
+                grid_price = pos["entry"]
+            best_mqs_grid = max((x[6] for x in scan), default=0)
+            # Check dissolve first
+            dissolve, d_reason = grid_should_dissolve(state, grid_price, best_mqs_grid)
+            if dissolve:
+                log(f"  📊 {d_reason} — grid cleared")
+                del pos["grid"]
+                state["position"] = pos
+            else:
+                fill_logs = grid_check_fills(state, grid_price, best_mqs_grid, state["agg_score"])
+                for fl in fill_logs:
+                    log(fl)
+                if fill_logs:
+                    state["position"] = pos
+
+        # —— ENTRY ——————————————————————————————————————————————
+        if pos is None and state["cash"] > 10:
+            agg_score = state["agg_score"]
+            agg_name, tp_pct, sl_pct = agg_params(agg_score)
+            pair, entry_price, best_q, best_sig, lb, best_mqs = pick_candidate(scan)
+
+            if pair:
+                # -- APEX-BRAIN: PREDICT WIN PROBABILITY --------------------
+                _brain_ctx = {"atr_pct":0.01,"momentum":0.0,"trend":0.0,"vol_surge":False}
+                try:
+                    _bdf = fetch_full_history(pair,"15m",limit=20)
+                    if _bdf is not None and len(_bdf) >= 10:
+                        _bc=_bdf["close"].values; _bh=_bdf["high"].values; _bl=_bdf["low"].values
+                        _btrs=[max(_bh[-k]-_bl[-k],abs(_bh[-k]-_bc[-k-1]),abs(_bl[-k]-_bc[-k-1])) for k in range(1,11)]
+                        _brain_ctx["atr_pct"]=(sum(_btrs)/10)/_bc[-1] if _bc[-1]>0 else 0.01
+                        if len(_bc)>3: _brain_ctx["momentum"]=(_bc[-1]-_bc[-4])/_bc[-4]
+                        if len(_bc)>=10: _brain_ctx["trend"]=(_bc[-1]-_bc[-10])/_bc[-10]
+                        if "volume" in _bdf.columns:
+                            _bv=_bdf["volume"].values
+                            _av=sum(_bv[-10:-1])/9 if len(_bv)>=10 else 0
+                            _brain_ctx["vol_surge"]=(_av>0 and _bv[-1]>_av*2.0)
+                except Exception: pass
+                state["brain_last_recov"]=state.get("brain_last_recov",1.0)
+                _bfeats=brain_features(best_q,best_sig,best_mqs,state,_brain_ctx,pair)
+                _bprob,_btag=brain_predict(_bfeats,state)
+                log(f"  🧠 {_btag}")
+                state["brain_last_feats"]=_bfeats
+                state["brain_last_conf"]=_bprob
+                if _bprob<BRAIN_MIN_CONFIDENCE and state.get("brain_trades",0)>=BRAIN_BOOTSTRAP:
+                    state["brain_blocked"]=state.get("brain_blocked",0)+1
+                    log(f"  🚫 BRAIN BLOCKED (conf={_bprob*100:.0f}% < {BRAIN_MIN_CONFIDENCE*100:.0f}% blocked={state['brain_blocked']})")
+                    pair=None
+                # -----------------------------------------------------------
+                # Fetch close history for UMO scenario detection
+                try:
+                    _d_umo = fetch_full_history(pair, '1d', limit=20)
+                    _lb_closes = _d_umo['close'].tolist()
+                except:
+                    _lb_closes = []
+                mq_label, mq_base = mq_to_size(best_mqs)
+
+            # ── UMO: UNIVERSAL METHOD ORCHESTRATOR ───────────────
+            umo_size, umo_scenario, umo_perms, umo_tag = umo_dispatch(
+                state, _lb_closes, mq_base, best_mqs,
+                state["consecutive_losses"], scan
+            )
+            log(f"  {umo_tag}")
+            mq_base = umo_size  # CEO: always update base from UMO
+            mq_base = umo_size
+
+            # ── DESE: DYNAMIC EQUITY SCALING (SUPERPOWER) ───────
+            _dese_mult,_dese_gear,_dese_gname,_dese_tag,_dese_cap=dese_compute(
+            state,state["cash"],state["total_pnl"])
+            log(f"  ⚙️ DESE {_dese_tag}")
+            # -- AMS: AUTO-MODE SWITCHER --------------------------------
+            _ams_gear,_ams_mult,_ams_cap,_ams_tag=ams_evaluate(
+                state, best_q, best_sig, best_mqs)
+            if _ams_gear >= 0:  # AMS override active
+                _dese_mult  = _ams_mult
+                _dese_cap   = _ams_cap
+                _dese_gear  = _ams_gear
+                _dese_gname = DESE_GEAR_NAMES[_ams_gear]
+                _dese_tag   = _ams_tag
+                log(f"  ⚡ AMS OVERRIDE: {_ams_tag} "
+                    f"mult={_ams_mult:.2f}x cap={_ams_cap*100:.0f}%")
+            # -----------------------------------------------------------
+            mq_base=dese_apply(mq_base,_dese_mult,_dese_cap)
+            # -- DBGS: DYNAMIC BALANCE GROWTH SYSTEM ---------------------
+            _dbgs_phase = state.get("dbgs_phase","STEADY")
+            _dbgs_mult  = state.get("dbgs_mult", 1.00)
+            mq_base     = dbgs_apply(mq_base, state)
+            log(f"  💰 DBGS {_dbgs_phase} x{_dbgs_mult:.2f} "
+                f"-> mq_base={mq_base*100:.1f}%")
+            # -------------------------------------------------------------
+
+
+            # ── SMART KELLY SIZING ────────────────────────────
+            kelly_val, kelly_f, kelly_mode = kelly_size(state["trades"], best_mqs)
+            if kelly_val is not None:
+                base_size = kelly_val   # Kelly drives the base
+                log(f"  📐 {kelly_mode}")
+            else:
+                base_size = mq_base     # fallback to MQ table
+                log(f"  📐 {kelly_mode} → MQ fallback={mq_base*100:.0f}%")
+
+            # ── LOSS-RECOVERY MULTIPLIER ──────────────────────
+            rmult_val, loss_depth, loss_pct = recovery_mult(state["total_pnl"])
+            recovered_size = base_size * rmult_val
+
+            # ── PRECISION DOUBLE CHECK ────────────────────────
+            combined, partner_consec = get_combined_losses(state["consecutive_losses"])
+            is_double, dbl_reason = precision_double_check(
+                combined, best_q, best_sig, best_mqs
+            )
+            if state["consecutive_losses"] >= 2 or combined >= 4:
+                log(f"  🎯 DOUBLE [{consec} me + {partner_consec} partner = {combined}]: {dbl_reason}")
+
+            double_size = recovered_size * (DOUBLE_MULT if is_double else 1.0)
+            deploy_pct  = min(double_size, 0.99)
+
+
+            # -- SMART TRIPLING SYSTEM (STS) --
+            sts_size, sts_tag, sts_updates = sts_check(
+                state, deploy_pct, best_mqs,
+                state['cash'], state.get('total_pnl', 0.0)
+            )
+            if sts_updates:
+                state.update(sts_updates)
+            if sts_size > deploy_pct:
+                deploy_pct = min(sts_size, 0.99)
+                log(f'  🔥 STS OVERRIDE: deploy={deploy_pct*100:.1f}% [{sts_tag}]')
+
+
+            deploy_pct=min(deploy_pct,_dese_cap)  # DESE gear hard-cap
+            log(f"  ⚙️ DESE gear-cap → deploy={deploy_pct*100:.1f}%")
+            # DESE gear hard-cap on final deployment
+            deploy_pct = min(deploy_pct, _dese_cap)
+
+            # — USDT SAFE MODE gate ——————————————————————
+            # SAFE MODE: simplified (constants not accessible in function scope)
+            _sm_active = False
+            _sm_block = False
+            _sm_cap = 0.25
+            _sm_k = 0.25
+            _sm_tp = 0.60
+            _sm_sl = 1.50
+            _sm_upd = None
+            if _sm_upd:
+                state.update(_sm_upd)
+            if _sm_active:
+                deploy_pct = min(deploy_pct * _sm_k, _sm_cap)  # Cut size
+                tp_pct = tp_pct * _sm_tp                       # Reduce TP target
+                sl_pct = sl_pct * _sm_sl                       # Tighten SL
+                if _sm_block and pos is None:
+                    log(f'[SAFE_MODE] 🛡️ BLOCKING entry | reason={state.get("safe_mode_reason","?")} | cycles={state.get("safe_mode_cycles",0)}')
+                    continue
+                log(f'[SAFE_MODE] 📊 ACTIVE | size={deploy_pct:.2f} tp={tp_pct*100:.2f}% sl={sl_pct*100:.2f}% | reason={state.get("safe_mode_reason","?")}')
+            log(f"  ⚙️ DESE gear-cap → deploy={deploy_pct*100:.1f}%")
+
+            if is_double:
+                state["doubles"] += 1
+
+            tp_price = round(entry_price * (1 + tp_pct), 6)
+            sl_price = round(entry_price * (1 - sl_pct), 6)
+            # ── SAFE SCALING ENGINE (GODMODE USDT ROTATION KING) ────────────────
+            _sse_trades    = state.get("trades", [])
+            _sse_pnls      = [t.get("pnl", 0) for t in _sse_trades[-10:]]
+            _sse_eq_start  = state.get("equity_start", state["cash"])
+            _sse_eq_now    = state["cash"]
+            _sse_dd        = max(0.0, 1.0 - _sse_eq_now / _sse_eq_start) if _sse_eq_start > 0 else 0.0
+            _sse_agg       = state.get("agg_score", 56.0)
+            _sse_regime    = agg_name if isinstance(agg_name, str) else "UNKNOWN"
+            _sse_adx       = best_sig.get("adx", 25.0) if isinstance(best_sig, dict) else 25.0
+            _sse_vol_ratio = best_sig.get("vol_ratio", 2.0) if isinstance(best_sig, dict) else 2.0
+            _sse_spread    = best_sig.get("spread", 0.001) if isinstance(best_sig, dict) else 0.001
+            _sse_conf      = float(best_q) if best_q else 65.0
+            _sse_active    = 1 if state.get("position") else 0
+            _sse_scaled, _sse_ok, _sse_tag, _ = _sse.compute_scaled_size(
+                base_deploy_pct   = deploy_pct,
+                composite_score   = _sse_conf,
+                regime            = _sse_regime,
+                drawdown_pct      = _sse_dd,
+                execution_quality = 0.95,
+                active_trades     = _sse_active,
+                recent_pnls       = _sse_pnls,
+                spread_pct        = _sse_spread,
+                adx               = _sse_adx,
+                volume_ratio      = _sse_vol_ratio,
+                regime_confidence = _sse_conf / 100.0,
+                equity_start      = _sse_eq_start,
+                equity_now        = _sse_eq_now,
+                log_tag           = mq_label,
+            )
+            if not _sse_ok:
+                log(f"  🛡️SSE BLOCKED: {_sse_tag}")
+                continue
+            deploy_pct = _sse_scaled
+            log(f"  🛡️{_sse_tag}")
+            # ── END SAFE SCALING ENGINE ──────────────────────────────────────────
+            qty      = (state["cash"] * deploy_pct * (1 - FEE)) / entry_price
+            state["cash"]     = state["cash"] * (1 - deploy_pct)
+            # Grid activation check
+            activate_grid = grid_signal_check(best_q, best_sig, best_mqs)
+            grid_orders   = build_grid(entry_price, state["cash"]) if activate_grid else None
+
+            new_pos = {
+                "pair": pair, "qty": qty,
+                "entry": entry_price, "tp": tp_price, "sl": sl_price,
+                "tp_pct": tp_pct, "sl_pct": sl_pct,
+                "double": is_double, "size_mult": (DOUBLE_MULT if is_double else 1.0),
+                "agg_name": agg_name, "mqs": best_mqs,
+                "mq_label": mq_label, "deploy_pct": deploy_pct,
+                "recov_mult": rmult_val,
+                "layers": 0,
+                "last_layer_entry": entry_price
+            }
+            if activate_grid:
+                new_pos["grid"]        = grid_orders
+                new_pos["grid_anchor"] = entry_price
+                buy_lvls = [f"${o['buy_price']:,.4f}" for o in grid_orders]
+                tp_lvls  = [f"${o['tp_price']:,.4f}"  for o in grid_orders]
+                log(f"  📊 GRID ACTIVATED ({GRID_LEVELS} levels, q={best_q}/5 mq={best_mqs:.0f})")
+                log(f"     BUY: {' | '.join(buy_lvls)}")
+                log(f"     TP : {' | '.join(tp_lvls)}")
+                log(f"     DynDbl: up to {DYN_DBL_MAX}× doublings per fill @ {DYN_DBL_FACTOR}×")
+            else:
+                log(f"  📊 GRID_OFF(q={best_q}<{GRID_MIN_Q} or mq={best_mqs:.0f}<{GRID_MIN_MQ} or sig={best_sig}<{GRID_MIN_SIG})")
+            state["position"] = new_pos
+            # RTSL: reset per-trade state on new position
+            state["rtsl_tier"]        = 0
+            state["rtsl_trail_peak"]  = 0.0
+            state["rtsl_trail_sl"]    = 0.0
+            state["rtsl_cycles_flat"] = 0
+            state["rtsl_last_pnl_pct"]= 0.0
+            pos = state["position"]
+
+            dtag = f"  🔴 PRECISION DOUBLE (combined={combined})" if is_double else ""
+            kelly_tag = f"kelly={kelly_f*100:.1f}%" if kelly_val else "mq-base"
+            log(f"  ✦ ENTRY [{agg_name}|mq={mq_label}@{best_mqs:.0f}] {pair}  "
+                f"base={base_size*100:.1f}%({kelly_tag}) × recov={rmult_val:.3f}× "
+                f"= {recovered_size*100:.1f}%  → deploy={deploy_pct*100:.1f}%  "
+                f"TP={tp_pct*100:.1f}%  SL={sl_pct*100:.1f}%{dtag}")
+            log(f"    [loss_depth=${loss_depth:.2f} = {loss_pct:.1f}% of equity]  "
+                f"qty={qty:.6g}  @ ${entry_price:,.4f}  "
+                f"TP=${tp_price:,.4f}  SL=${sl_price:,.4f}  q={best_q}/5  sig={best_sig}")
+
+        # —— SYNC WRITE ——————————————————————————————————————————
+        write_sync(state["agg_score"], state["consecutive_losses"], state["total_pnl"])
+
+        # —— SUMMARY ——————————————————————————————————————————————
+        wins  = sum(1 for t in state["trades"] if t["pnl"] > 0)
+        total = len(state["trades"])
+        wr    = round(wins/total*100,1) if total else 0.0
+        cur_eq = state["cash"]
+        if state["position"]:
+            try:
+                d_eq   = fetch_full_history(state["position"]["pair"], "1d", limit=3)
+                cur_eq = state["cash"] + state["position"]["qty"] * float(d_eq["close"].iloc[-1])
+            except:
+                cur_eq = state["cash"] + state["position"]["qty"] * state["position"]["entry"]
+
+        sync_data    = read_sync()
+        p_info       = sync_data.get(PARTNER_ID, {})
+        p_agg        = p_info.get("agg_score", "?")
+        p_loss_count = p_info.get("consecutive_losses", "?")
+        p_pnl        = p_info.get("total_pnl", 0)
+        p_rmult, _, _= recovery_mult(p_pnl) if isinstance(p_pnl, (int,float)) else (1.0,0,0)
+
+        rmult_now, ld_now, lp_now = recovery_mult(state["total_pnl"])
+        log(f"  💰 eq=${cur_eq:,.2f}  pnl=${state['total_pnl']:+.2f}  "
+            f"trades={total}  wr={wr}%  recov={rmult_now:.3f}×(loss=${ld_now:.2f})  "
+            f"agg={state['agg_score']:.1f}[{agg_name}]  consec={state['consecutive_losses']}  "
+            f"partner-{PARTNER_ID}=[agg={p_agg} loss={p_loss_count} recov={p_rmult:.3f}×]  "
+            f"pyramids={state.get('pyramids',0)}(wins={state.get('pyramid_wins',0)})  "
+            f"grid_fills={state.get('grid_fills',0)}(wins={state.get('grid_wins',0)})  "
+            f"pos={'IN:'+state['position']['pair']+'[L'+str(state['position'].get('layers',0))+' '+grid_status_str(state['position'])+' mq='+str(state['position'].get('mqs',0))+']' if state['position'] else 'FLAT'}")
+        log("-" * 72)
+
+
+
+        # ── LIVE COGNITION ENGINE ──────────────────────────────────────────
+        try:
+            _regime   = state.get('rasm_regime') or state.get('regime') or 'UNKNOWN'
+            _conf     = float(state.get('brain_last_conf', 0.0))
+            _pos      = state.get('position')
+            _consec_l = int(state.get('consecutive_losses', 0))
+            _pnl      = float(state.get('total_pnl', 0.0))
+            _agg      = float(state.get('agg_score', 0.0))
+            _momentum = float(state.get('dese_multiplier', 1.0))
+            _dd_pct   = float(state.get('dese_peak_equity', state.get('cash', 1)) - state.get('cash', 0)) / max(float(state.get('dese_peak_equity', state.get('cash', 1))), 1)
+            _dd_warn  = _dd_pct > 0.03 or _consec_l >= 2
+            _exposure = float(state.get('cash', 0)) > 0 and _pos is not None
+            _streak   = max(0, _agg // 10)
+    
+            # -- Thinking State --
+            if _regime in ('CHAOS', 'PANIC'):
+                _thinking = 'chaos defense enabled...'
+            elif _dd_warn and _consec_l >= 2:
+                _thinking = 'risk compression active...'
+            elif _pos and _pos.get('layers', 0) > 1:
+                _thinking = 'pyramiding winner...'
+            elif _pos:
+                _thinking = 'managing position...'
+            elif _conf > 0.85:
+                _thinking = 'entry approved...'
+            elif _conf > 0.65:
+                _thinking = 'confidence increasing...'
+            elif _regime in ('BULL', 'TREND', 'BREAKOUT'):
+                _thinking = 'breakout forming...'
+            elif _momentum > 1.1:
+                _thinking = 'momentum rising...'
+            elif _regime in ('RECOVERY',):
+                _thinking = 'recovery detected...'
+            else:
+                _thinking = 'scanning...'
+    
+            # -- Confidence State --
+            if _conf > 0.85:
+                _conf_state = 'peak'
+            elif _conf > 0.65:
+                _conf_state = 'rising'
+            elif _conf > 0.40:
+                _conf_state = 'building'
+            else:
+                _conf_state = 'low'
+    
+            # -- Threat Level --
+            if _consec_l >= 3 or _dd_pct > 0.04:
+                _threat = 'high'
+            elif _consec_l >= 2 or _dd_pct > 0.02:
+                _threat = 'medium'
+            else:
+                _threat = 'low'
+    
+            # -- Market Mood --
+            _mood_map = {
+                'BULL': 'TREND', 'BEAR': 'COMPRESSION', 'SIDEWAYS': 'COMPRESSION',
+                'TREND': 'TREND', 'BREAKOUT': 'BREAKOUT', 'CHAOS': 'CHAOS',
+                'PANIC': 'PANIC', 'RECOVERY': 'RECOVERY', 'EUPHORIA': 'EUPHORIA'
+            }
+            _mood = _mood_map.get(_regime, 'UNKNOWN')
+    
+            # -- Last Reasoning --
+            if _pos:
+                _reasoning = f'holding {_pos.get("pair","?")}: {_pos.get("layers",1)}L conf={_conf:.0%} {_regime}'
+            elif _conf > 0.65:
+                _reasoning = f'high confidence signal | regime={_regime} | conf={_conf:.0%}'
+            else:
+                _reasoning = f'scanning markets | regime={_regime} | mood={_mood}'
+    
+            # -- Aura Level (0.0-1.0) --
+            _aura = min(1.0, max(0.0, (_agg / 200.0) * 0.5 + _conf * 0.3 + (0.2 if not _dd_warn else 0.0)))
+    
+            state['thinking_state']  = _thinking
+            state['confidence_state'] = _conf_state
+            state['threat_level']    = _threat
+            state['momentum_state']  = 'building' if _momentum > 1.05 else 'stable'
+            state['entry_state']     = 'approved' if _conf > 0.85 and not _pos else ('waiting' if not _pos else 'in_trade')
+            state['drawdown_warning'] = _dd_warn
+            state['aura_level']      = round(_aura, 3)
+            state['domination_streak'] = int(_streak)
+            state['market_mood']     = _mood
+            state['last_reasoning']  = _reasoning
+        except Exception as _ce:
+            import traceback; log(f"COGNITION ERROR: {_ce} | {traceback.format_exc()[:200]}")
+        # ── END COGNITION ENGINE ───────────────────────────────────────────
+        save_s(state)
+        time.sleep(SCAN_SEC)
+
+if __name__ == "__main__":
+    main()

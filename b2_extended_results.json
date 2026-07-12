@@ -1,0 +1,396 @@
+{
+  "run_time": "2026-05-05T13:01:00.446854+00:00",
+  "mode": "B2_OI_SPIKE_EXTENDED",
+  "pagination_range": "2023-11-14 \u2192 now",
+  "pairs": [
+    "BTC_USDT",
+    "ETH_USDT",
+    "SOL_USDT",
+    "XRP_USDT",
+    "AVAX_USDT"
+  ],
+  "L99_thresholds": {
+    "IC_MIN": 0.04,
+    "TSTAT_MIN": 2.0,
+    "PF_MIN": 1.3,
+    "QUINTILE_MIN_bps": 60.0,
+    "MC_STABILITY": 0.8,
+    "REGIME_MIN": 2,
+    "MIN_OBS": 100
+  },
+  "fee_scenarios": {
+    "A_VIP0_taker": "25.0 bps RT",
+    "B_VIP1_GT_discount": "18.0 bps RT",
+    "C_VIP1_maker_only": "14.0 bps RT"
+  },
+  "spec_thresholds": {
+    "OI_LOOKBACK_3D": 72,
+    "OI_PERCENTILE_THRESHOLD": 0.9,
+    "PRICE_FLAT_THRESHOLD_PCT": 1.0
+  },
+  "signal_funnels": {
+    "B2_BTC_USDT": {
+      "total": 21639,
+      "oi_spike": 2231,
+      "flat_price": 8807,
+      "both": 631
+    },
+    "B2_ETH_USDT": {
+      "total": 21639,
+      "oi_spike": 2330,
+      "flat_price": 6651,
+      "both": 408
+    },
+    "B2_SOL_USDT": {
+      "total": 21639,
+      "oi_spike": 2238,
+      "flat_price": 4824,
+      "both": 466
+    },
+    "B2_XRP_USDT": {
+      "total": 21640,
+      "oi_spike": 2403,
+      "flat_price": 6535,
+      "both": 520
+    },
+    "B2_AVAX_USDT": {
+      "total": 21640,
+      "oi_spike": 2264,
+      "flat_price": 4368,
+      "both": 374
+    }
+  },
+  "stats_records_per_pair": {
+    "BTC_USDT": 21639,
+    "ETH_USDT": 21639,
+    "SOL_USDT": 21639,
+    "XRP_USDT": 21640,
+    "AVAX_USDT": 21640
+  },
+  "passing_count": 0,
+  "insufficient_count": 0,
+  "failing_count": 18,
+  "results": {
+    "B2_BTC_USDT_A_VIP0_taker": {
+      "name": "B2_BTC_USDT_A_VIP0_taker",
+      "fee_rt_bps": 25.0,
+      "n": 619,
+      "passes": false,
+      "killed_by": [
+        "IC=+0.0059",
+        "Q5-Q1=-70.77",
+        "Reg=1"
+      ],
+      "ic": 0.005942421502610465,
+      "tstat": 31.37376907426381,
+      "pf": 338.2679555650199,
+      "q_bps": -70.76780365340807,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 2.5492072580317964,
+      "net_expectancy": 2.2992072580317964
+    },
+    "B2_BTC_USDT_B_VIP1_GT_discount": {
+      "name": "B2_BTC_USDT_B_VIP1_GT_discount",
+      "fee_rt_bps": 18.0,
+      "n": 619,
+      "passes": false,
+      "killed_by": [
+        "IC=+0.0059",
+        "Q5-Q1=-56.77",
+        "Reg=1"
+      ],
+      "ic": 0.005942421502610465,
+      "tstat": 32.32895213900347,
+      "pf": 769.5901812854355,
+      "q_bps": -56.767803653408066,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 2.5492072580317964,
+      "net_expectancy": 2.3692072580317967
+    },
+    "B2_BTC_USDT_C_VIP1_maker_only": {
+      "name": "B2_BTC_USDT_C_VIP1_maker_only",
+      "fee_rt_bps": 14.0,
+      "n": 619,
+      "passes": false,
+      "killed_by": [
+        "IC=+0.0059",
+        "Q5-Q1=-48.77",
+        "Reg=1"
+      ],
+      "ic": 0.005942421502610465,
+      "tstat": 32.87477103314041,
+      "pf": 1297.5800114387368,
+      "q_bps": -48.767803653408066,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 2.5492072580317964,
+      "net_expectancy": 2.4092072580317967
+    },
+    "B2_ETH_USDT_A_VIP0_taker": {
+      "name": "B2_ETH_USDT_A_VIP0_taker",
+      "fee_rt_bps": 25.0,
+      "n": 393,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-26.39",
+        "Reg=1"
+      ],
+      "ic": -0.2533690036637742,
+      "tstat": 22.372621066022802,
+      "pf": 405.38169079317555,
+      "q_bps": -26.386690379815114,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 3.2807766954402173,
+      "net_expectancy": 3.0307766954402173
+    },
+    "B2_ETH_USDT_B_VIP1_GT_discount": {
+      "name": "B2_ETH_USDT_B_VIP1_GT_discount",
+      "fee_rt_bps": 18.0,
+      "n": 393,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-12.39",
+        "Reg=1"
+      ],
+      "ic": -0.2533690036637742,
+      "tstat": 22.889347843346172,
+      "pf": 693.5801140281952,
+      "q_bps": -12.386690379815114,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 3.2807766954402173,
+      "net_expectancy": 3.1007766954402176
+    },
+    "B2_ETH_USDT_C_VIP1_maker_only": {
+      "name": "B2_ETH_USDT_C_VIP1_maker_only",
+      "fee_rt_bps": 14.0,
+      "n": 393,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-4.39",
+        "Reg=1"
+      ],
+      "ic": -0.2533690036637742,
+      "tstat": 23.184620287530954,
+      "pf": 1031.7068796295657,
+      "q_bps": -4.386690379815114,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 3.2807766954402173,
+      "net_expectancy": 3.1407766954402176
+    },
+    "B2_SOL_USDT_A_VIP0_taker": {
+      "name": "B2_SOL_USDT_A_VIP0_taker",
+      "fee_rt_bps": 25.0,
+      "n": 466,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-86.56",
+        "Reg=1"
+      ],
+      "ic": -0.10235913648436282,
+      "tstat": 25.652742724729162,
+      "pf": 520.9094170638176,
+      "q_bps": -86.55822687586951,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 3.7287921311142602,
+      "net_expectancy": 3.4787921311142602
+    },
+    "B2_SOL_USDT_B_VIP1_GT_discount": {
+      "name": "B2_SOL_USDT_B_VIP1_GT_discount",
+      "fee_rt_bps": 18.0,
+      "n": 466,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-72.56",
+        "Reg=1"
+      ],
+      "ic": -0.10235913648436282,
+      "tstat": 26.168925331522594,
+      "pf": 1049.6995155620377,
+      "q_bps": -72.55822687586951,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 3.7287921311142602,
+      "net_expectancy": 3.54879213111426
+    },
+    "B2_SOL_USDT_C_VIP1_maker_only": {
+      "name": "B2_SOL_USDT_C_VIP1_maker_only",
+      "fee_rt_bps": 14.0,
+      "n": 466,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-64.56",
+        "Reg=1"
+      ],
+      "ic": -0.10235913648436282,
+      "tstat": 26.46388682111884,
+      "pf": 1824.7291305690458,
+      "q_bps": -64.55822687586951,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 3.7287921311142602,
+      "net_expectancy": 3.58879213111426
+    },
+    "B2_XRP_USDT_A_VIP0_taker": {
+      "name": "B2_XRP_USDT_A_VIP0_taker",
+      "fee_rt_bps": 25.0,
+      "n": 520,
+      "passes": false,
+      "killed_by": [
+        "Reg=1"
+      ],
+      "ic": 0.3377685454571834,
+      "tstat": 18.22223521404227,
+      "pf": 630.3502379329653,
+      "q_bps": 60.72009264603339,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 4.516423907237523,
+      "net_expectancy": 4.266423907237523
+    },
+    "B2_XRP_USDT_B_VIP1_GT_discount": {
+      "name": "B2_XRP_USDT_B_VIP1_GT_discount",
+      "fee_rt_bps": 18.0,
+      "n": 520,
+      "passes": false,
+      "killed_by": [
+        "Reg=1"
+      ],
+      "ic": 0.3377685454571834,
+      "tstat": 18.521210771257557,
+      "pf": 1059.4899064818746,
+      "q_bps": 74.7200926460334,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 4.516423907237523,
+      "net_expectancy": 4.336423907237523
+    },
+    "B2_XRP_USDT_C_VIP1_maker_only": {
+      "name": "B2_XRP_USDT_C_VIP1_maker_only",
+      "fee_rt_bps": 14.0,
+      "n": 520,
+      "passes": false,
+      "killed_by": [
+        "Reg=1"
+      ],
+      "ic": 0.3377685454571834,
+      "tstat": 18.69205394680915,
+      "pf": 1627.6292578047855,
+      "q_bps": 82.7200926460334,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 4.516423907237523,
+      "net_expectancy": 4.376423907237523
+    },
+    "B2_AVAX_USDT_A_VIP0_taker": {
+      "name": "B2_AVAX_USDT_A_VIP0_taker",
+      "fee_rt_bps": 25.0,
+      "n": 372,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-66.25",
+        "Reg=1"
+      ],
+      "ic": 0.08293835272046514,
+      "tstat": 21.791325023675995,
+      "pf": 772.4570066341165,
+      "q_bps": -66.24762601144755,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 5.1041531657625825,
+      "net_expectancy": 4.8541531657625825
+    },
+    "B2_AVAX_USDT_B_VIP1_GT_discount": {
+      "name": "B2_AVAX_USDT_B_VIP1_GT_discount",
+      "fee_rt_bps": 18.0,
+      "n": 372,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-52.25",
+        "Reg=1"
+      ],
+      "ic": 0.08293835272046514,
+      "tstat": 22.105569898027355,
+      "pf": 1599.2301962490262,
+      "q_bps": -52.24762601144756,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 5.1041531657625825,
+      "net_expectancy": 4.924153165762583
+    },
+    "B2_AVAX_USDT_C_VIP1_maker_only": {
+      "name": "B2_AVAX_USDT_C_VIP1_maker_only",
+      "fee_rt_bps": 14.0,
+      "n": 372,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-44.25",
+        "Reg=1"
+      ],
+      "ic": 0.08293835272046514,
+      "tstat": 22.285138397656706,
+      "pf": 3139.112320075862,
+      "q_bps": -44.24762601144756,
+      "mc": 1.0,
+      "regime_count": 1,
+      "gross_expectancy": 5.1041531657625825,
+      "net_expectancy": 4.964153165762583
+    },
+    "B2_UNIVERSE_A_VIP0_taker": {
+      "name": "B2_UNIVERSE_A_VIP0_taker",
+      "fee_rt_bps": 25.0,
+      "n": 2370,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-38.58"
+      ],
+      "ic": 0.0809599461386664,
+      "tstat": 45.82419315603677,
+      "pf": 512.4626466811051,
+      "q_bps": -38.5806903665781,
+      "mc": 1.0,
+      "regime_count": 2,
+      "gross_expectancy": 3.735108471120728,
+      "net_expectancy": 3.485108471120728
+    },
+    "B2_UNIVERSE_B_VIP1_GT_discount": {
+      "name": "B2_UNIVERSE_B_VIP1_GT_discount",
+      "fee_rt_bps": 18.0,
+      "n": 2370,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-24.58"
+      ],
+      "ic": 0.0809599461386664,
+      "tstat": 46.744593065394845,
+      "pf": 989.8030189575471,
+      "q_bps": -24.580690366578096,
+      "mc": 1.0,
+      "regime_count": 2,
+      "gross_expectancy": 3.735108471120728,
+      "net_expectancy": 3.5551084711207284
+    },
+    "B2_UNIVERSE_C_VIP1_maker_only": {
+      "name": "B2_UNIVERSE_C_VIP1_maker_only",
+      "fee_rt_bps": 14.0,
+      "n": 2370,
+      "passes": false,
+      "killed_by": [
+        "Q5-Q1=-16.58"
+      ],
+      "ic": 0.0809599461386664,
+      "tstat": 47.270535870742314,
+      "pf": 1623.2371281678118,
+      "q_bps": -16.580690366578096,
+      "mc": 1.0,
+      "regime_count": 2,
+      "gross_expectancy": 3.735108471120728,
+      "net_expectancy": 3.595108471120728
+    }
+  }
+}

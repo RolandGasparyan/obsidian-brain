@@ -1,0 +1,101 @@
+{
+  "mode": "DEFAULT_TRIPLE_SCALP_MODE",
+
+  "enabled": true,
+
+  "default_runtime_mode": true,
+
+  "auto_start_trading": true,
+
+  "auto_restart_after_shutdown": true,
+
+  "triple_scalping_mode": true,
+
+  "scan_speed_multiplier": 3,
+
+  "trade_cycle_multiplier": 3,
+
+  "signal_refresh_seconds": 1,
+
+  "ranking_refresh_seconds": 1,
+
+  "rapid_micro_scalping": true,
+
+  "micro_take_profit_percent": 0.20,
+
+  "rapid_profit_capture": true,
+
+  "max_hold_seconds": 40,
+
+  "instant_exit_on_weakness": true,
+
+  "momentum_fade_exit": true,
+
+  "volatility_collapse_exit": true,
+
+  "fast_usdt_recycle": true,
+
+  "always_return_to_usdt": true,
+
+  "force_full_exit": true,
+
+  "parallel_trading": true,
+
+  "max_parallel_pairs": 2,
+
+  "max_open_positions": 2,
+
+  "priority_pairs": [
+    "SOL/USDT",
+    "ETH/USDT",
+    "XRP/USDT"
+  ],
+
+  "btc_low_priority": true,
+
+  "smart_entry_filter": true,
+
+  "minimum_confidence": 92,
+
+  "elite_confidence": 97,
+
+  "volume_confirmation_required": true,
+
+  "trend_alignment_required": true,
+
+  "avoid_sideways_markets": true,
+
+  "fake_breakout_filter": true,
+
+  "smart_auto_doubling": true,
+
+  "default_doubling_enabled": true,
+
+  "max_doubling_steps": 3,
+
+  "doubling_ladder": [
+    1.15,
+    1.35,
+    1.60
+  ],
+
+  "adaptive_doubling": true,
+
+  "dynamic_position_scaling": true,
+
+  "safe_parallel_execution": true,
+
+  "max_total_exposure_percent": 18,
+
+  "max_single_trade_percent": 4,
+
+  "force_usdt_reserve_percent": 30,
+
+  "kill_switch_drawdown_percent": 5,
+
+  "panic_market_block": true,
+
+  "spread_protection": true,
+
+  "safe_mode": true
+}

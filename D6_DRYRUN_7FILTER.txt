@@ -1,0 +1,104 @@
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  MICROSTRUCTURE ROBUSTNESS CHECK · 7-filter battery
+  (1) stationarity by day  (2) walk-forward stability
+  (3) BH-FDR multi-comparison  (4) block-bootstrap 95% CI
+  (5) vol-adjusted IC same-sign + ≥50% magnitude
+  (6) concurrent-feature independence (|ρ|<0.7)
+  (7) quintile monotonicity (|ρ(rank, fwd_mean)| ≥ 0.85)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  pairs:    AVAX_USDT, BTC_USDT, ETH_USDT, SOL_USDT, XRP_USDT
+  horizons: [60, 120, 300, 600, 1800]
+  features: 11
+  days:     2
+  total tests = 275 = 275 hypotheses
+
+▸ Base hits (|IC|≥0.04 AND |t|≥2.0): 138 of 275 tests
+
+▸ FILTER 1: stationarity by day (sign consistent across ≥2 of 2 days)
+    104 of 138 survive
+
+▸ FILTER 2: walk-forward stability (train 60% → test 40%, same sign + |test_IC|≥0.5×|train_IC|)
+    79 of 104 survive
+
+▸ FILTER 3: Benjamini-Hochberg FDR @ α=0.1
+    239 of 275 tests pass FDR
+
+  TRIPLE-FILTER survivors: 79
+
+▸ FILTER 4: block-bootstrap 95% CI (block=60s · 1000 resamples · CI excludes |IC|=0.04 floor)
+    53 of 79 survive bootstrap CI
+
+▸ FILTER 5: vol-adjusted IC (raw IC robust to per-horizon σ normalization)
+    53 of 53 survive vol-adjustment
+
+▸ FILTER 7: quintile monotonicity (|ρ(rank, fwd_mean)| ≥ 0.85)
+    47 of 53 survive monotonicity gate
+
+▸ FILTER 6: concurrent-feature correlation (warn if any pair has |ρ|>0.7 between two features)
+    ⚠ AVAX_USDT: ρ(depth_imbalance, book_slope_bid) = +0.77
+    ⚠ AVAX_USDT: ρ(depth_imbalance, book_slope_ask) = -0.75
+    ⚠ ETH_USDT: ρ(funding_rate_8h, perp_oi) = -0.72
+    ⚠ SOL_USDT: ρ(depth_imbalance, book_slope_bid) = +0.82
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  TIGHTENED PHASE B VERDICT — seven-filter battery
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  ✅ 47 (pair, feature, horizon) combos cleared ALL SEVEN filters:
+
+     pair       feature                 H      IC   train    test  CI95.lo  CI95.hi   volAdj   mono ρ
+     ------------------------------------------------------------------------------------------------------
+     XRP_USDT   spread_pct          1800s +0.422 +0.588 +0.325  +0.353  +0.487  +0.434  +0.899
+     ETH_USDT   spread_pct          1800s +0.396 +0.435 +0.416  +0.319  +0.471  +0.326  +0.883
+     XRP_USDT   basis_pct            120s +0.376 +0.388 +0.378  +0.333  +0.418  +0.376  +0.984
+     XRP_USDT   basis_pct            300s +0.373 +0.332 +0.438  +0.324  +0.423  +0.367  +0.964
+     XRP_USDT   basis_pct             60s +0.366 +0.377 +0.367  +0.325  +0.399  +0.363  +0.988
+     BTC_USDT   spread_pct          1800s +0.332 +0.503 +0.538  +0.253  +0.401  +0.274  +0.961
+     SOL_USDT   spread_pct          1800s +0.318 +0.516 +0.455  +0.247  +0.384  +0.294  +0.996
+     XRP_USDT   basis_pct            600s +0.310 +0.269 +0.376  +0.259  +0.358  +0.322  +0.942
+     XRP_USDT   book_slope_bid       300s -0.304 -0.239 -0.397  -0.367  -0.246  -0.294  -0.998
+     ETH_USDT   spread_pct           600s +0.300 +0.347 +0.253  +0.225  +0.370  +0.291  +0.989
+     XRP_USDT   book_slope_ask       600s +0.294 +0.352 +0.201  +0.236  +0.349  +0.283  +0.955
+     XRP_USDT   book_slope_bid       120s -0.285 -0.273 -0.318  -0.339  -0.236  -0.282  -0.996
+     XRP_USDT   book_slope_ask       300s +0.284 +0.279 +0.319  +0.221  +0.337  +0.277  +0.964
+     XRP_USDT   book_slope_bid       600s -0.274 -0.186 -0.393  -0.335  -0.216  -0.273  -0.982
+     XRP_USDT   book_slope_ask       120s +0.274 +0.275 +0.288  +0.221  +0.324  +0.277  +0.973
+     XRP_USDT   book_slope_ask      1800s +0.273 +0.327 +0.174  +0.210  +0.332  +0.284  +0.958
+     XRP_USDT   book_slope_bid      1800s -0.268 -0.177 -0.382  -0.333  -0.205  -0.278  -0.916
+     XRP_USDT   book_slope_bid        60s -0.265 -0.271 -0.270  -0.308  -0.222  -0.265  -0.982
+     XRP_USDT   book_slope_ask        60s +0.257 +0.255 +0.269  +0.213  +0.301  +0.257  +0.986
+     BTC_USDT   spread_pct           600s +0.256 +0.353 +0.306  +0.181  +0.327  +0.240  +0.898
+     BTC_USDT   depth_imbalance       60s +0.240 +0.209 +0.290  +0.197  +0.284  +0.244  +0.981
+     ETH_USDT   spread_pct           300s +0.237 +0.272 +0.200  +0.147  +0.318  +0.229  +0.995
+     XRP_USDT   depth_imbalance       60s +0.231 +0.223 +0.240  +0.185  +0.272  +0.227  +0.969
+     SOL_USDT   spread_pct           600s +0.218 +0.349 +0.375  +0.145  +0.287  +0.197  +0.920
+     XRP_USDT   depth_imbalance      120s +0.217 +0.195 +0.250  +0.154  +0.272  +0.213  +0.959
+     ETH_USDT   depth_imbalance       60s +0.209 +0.219 +0.210  +0.168  +0.250  +0.212  +0.961
+     XRP_USDT   basis_pct           1800s +0.209 +0.159 +0.263  +0.157  +0.261  +0.225  +0.892
+     BTC_USDT   spread_pct           300s +0.184 +0.249 +0.238  +0.098  +0.260  +0.179  +0.915
+     ETH_USDT   spread_pct           120s +0.175 +0.191 +0.164  +0.110  +0.241  +0.172  +0.976
+     SOL_USDT   spread_pct           300s +0.171 +0.276 +0.302  +0.086  +0.245  +0.160  +0.935
+     ... and 17 more
+
+  Six-filter (feature, horizon) combos hitting ≥2 pairs:
+    • spread_pct @ H=1800s — 4 pairs: XRP_USDT, ETH_USDT, BTC_USDT, SOL_USDT
+    • spread_pct @ H=600s — 3 pairs: ETH_USDT, BTC_USDT, SOL_USDT
+    • book_slope_bid @ H=60s — 3 pairs: XRP_USDT, BTC_USDT, ETH_USDT
+    • depth_imbalance @ H=60s — 3 pairs: BTC_USDT, XRP_USDT, ETH_USDT
+    • spread_pct @ H=300s — 3 pairs: ETH_USDT, BTC_USDT, SOL_USDT
+    • depth_imbalance @ H=120s — 3 pairs: XRP_USDT, BTC_USDT, ETH_USDT
+    • spread_pct @ H=120s — 3 pairs: ETH_USDT, BTC_USDT, SOL_USDT
+    • basis_pct @ H=120s — 2 pairs: XRP_USDT, ETH_USDT
+    • basis_pct @ H=300s — 2 pairs: XRP_USDT, BTC_USDT
+    • basis_pct @ H=600s — 2 pairs: XRP_USDT, ETH_USDT
+    • book_slope_bid @ H=120s — 2 pairs: XRP_USDT, BTC_USDT
+    • book_slope_ask @ H=60s — 2 pairs: XRP_USDT, ETH_USDT
+    • ofi_30s @ H=60s — 2 pairs: BTC_USDT, ETH_USDT
+    • funding_rate_8h @ H=600s — 2 pairs: SOL_USDT, AVAX_USDT
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  Concurrent-feature warning: the following pairs are ρ>0.7-correlated
+  on at least one symbol. Counting them as separate winners is double-counting:
+    book_slope_bid ↔ depth_imbalance
+    funding_rate_8h ↔ perp_oi
+    book_slope_ask ↔ depth_imbalance

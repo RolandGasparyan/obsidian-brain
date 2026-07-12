@@ -1,0 +1,75 @@
+{
+  "mode": "FORCE_USDT_ROTATION",
+
+  "enabled": true,
+
+  "always_return_to_usdt": true,
+
+  "force_full_exit": true,
+
+  "no_long_term_holding": true,
+
+  "rapid_scalping_mode": true,
+
+  "micro_profit_target_percent": 0.35,
+
+  "quick_take_profit_enabled": true,
+
+  "dynamic_take_profit": true,
+
+  "force_sell_after_profit": true,
+
+  "force_sell_after_timeout": true,
+
+  "max_hold_seconds": 180,
+
+  "emergency_position_flush": true,
+
+  "flush_weak_positions": true,
+
+  "auto_recycle_capital": true,
+
+  "instant_redeployment": true,
+
+  "rapid_reentry_mode": true,
+
+  "max_open_positions": 4,
+
+  "parallel_scalping_enabled": true,
+
+  "confidence_weighted_entries": true,
+
+  "minimum_confidence": 84,
+
+  "elite_confidence": 95,
+
+  "smart_kelly_enabled": true,
+
+  "fractional_kelly": 0.65,
+
+  "winner_compounding": true,
+
+  "profit_reinvestment": true,
+
+  "adaptive_position_growth": true,
+
+  "volatility_hunter": true,
+
+  "breakout_attack_mode": true,
+
+  "trend_acceleration": true,
+
+  "panic_market_block": true,
+
+  "spread_protection": true,
+
+  "black_swan_protection": true,
+
+  "max_total_exposure_percent": 50,
+
+  "max_single_trade_percent": 12,
+
+  "kill_switch_drawdown_percent": 12,
+
+  "safe_aggressive_mode": true
+}

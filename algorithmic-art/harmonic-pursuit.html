@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<!--
+  HARMONIC PURSUIT — eight voices racing through interfering frequencies.
+
+  Generative algorithm: 8 racers driven by layered Perlin noise field, each
+  carrying a synthesized oscillator. Velocity → gain, x-position → stereo
+  pan, y-position → filter cutoff. Reproducible by seed.
+
+  Built on /anthropic-skills:algorithmic-art template.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonic Pursuit · Generative Race with Sound</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --anthropic-dark: #141413;
+            --anthropic-light: #faf9f5;
+            --anthropic-mid-gray: #b0aea5;
+            --anthropic-light-gray: #e8e6dc;
+            --anthropic-orange: #d97757;
+            --anthropic-blue: #6a9bcc;
+            --anthropic-green: #788c5d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--anthropic-light) 0%, #f5f3ee 100%);
+            min-height: 100vh;
+            color: var(--anthropic-dark);
+        }
+        .container { display: flex; min-height: 100vh; padding: 20px; gap: 20px; }
+        .sidebar {
+            width: 340px; flex-shrink: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(20,20,19,0.1);
+            overflow-y: auto; overflow-x: hidden;
+            max-height: calc(100vh - 40px);
+        }
+        .sidebar h1 {
+            font-family: 'Lora', serif;
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--anthropic-dark);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+        .sidebar .subtitle {
+            color: var(--anthropic-mid-gray);
+            font-size: 13px;
+            margin-bottom: 28px;
+            line-height: 1.45;
+            font-style: italic;
+        }
+        .control-section { margin-bottom: 28px; }
+        .control-section h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--anthropic-dark);
+            margin-bottom: 14px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .control-section h3::before {
+            content: '•';
+            color: var(--anthropic-orange);
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .seed-input {
+            width: 100%;
+            background: var(--anthropic-light);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin-bottom: 10px;
+            border: 1px solid var(--anthropic-light-gray);
+            text-align: center;
+        }
+        .seed-input:focus {
+            outline: none;
+            border-color: var(--anthropic-orange);
+            box-shadow: 0 0 0 2px rgba(217,119,87,0.1);
+            background: white;
+        }
+        .seed-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .control-group { margin-bottom: 16px; }
+        .control-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--anthropic-dark);
+            margin-bottom: 6px;
+        }
+        .slider-container { display: flex; align-items: center; gap: 12px; }
+        .slider-container input[type="range"] {
+            flex: 1; height: 4px;
+            background: var(--anthropic-light-gray);
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px; height: 16px;
+            background: var(--anthropic-orange);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .slider-container input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            background: #c86641;
+        }
+        .slider-container input[type="range"]::-moz-range-thumb {
+            width: 16px; height: 16px;
+            background: var(--anthropic-orange);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+        .value-display {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--anthropic-mid-gray);
+            min-width: 56px;
+            text-align: right;
+        }
+        .color-group { margin-bottom: 14px; }
+        .color-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--anthropic-mid-gray);
+            margin-bottom: 4px;
+        }
+        .color-picker-container { display: flex; align-items: center; gap: 8px; }
+        .color-picker-container input[type="color"] {
+            width: 32px; height: 32px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: none;
+            padding: 0;
+        }
+        .color-value {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--anthropic-mid-gray);
+        }
+        .button {
+            background: var(--anthropic-orange);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        .button:hover { background: #c86641; transform: translateY(-1px); }
+        .button:active { transform: translateY(0); }
+        .button.secondary { background: var(--anthropic-blue); }
+        .button.secondary:hover { background: #5a8bb8; }
+        .button.tertiary { background: var(--anthropic-green); }
+        .button.tertiary:hover { background: #6b7b52; }
+        .button.audio-on {
+            background: var(--anthropic-dark);
+            color: var(--anthropic-orange);
+        }
+        .button.audio-on:hover { background: #2a2826; }
+        .button-row { display: flex; gap: 8px; }
+        .button-row .button { flex: 1; }
+        .audio-status {
+            font-size: 11px;
+            color: var(--anthropic-mid-gray);
+            margin-top: 8px;
+            text-align: center;
+            font-style: italic;
+        }
+        .canvas-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+        }
+        #canvas-container {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(20,20,19,0.15);
+            background: #faf9f5;
+        }
+        #canvas-container canvas {
+            display: block;
+            width: 100% !important;
+            height: auto !important;
+        }
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--anthropic-mid-gray);
+            padding: 200px 20px;
+        }
+        .racer-legend {
+            margin-top: 12px;
+            font-size: 11px;
+            line-height: 1.6;
+            font-family: 'Courier New', monospace;
+            color: var(--anthropic-mid-gray);
+        }
+        .racer-legend .racer-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 0;
+        }
+        .racer-legend .dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        @media (max-width: 700px) {
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; max-height: none; }
+            .canvas-area { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <h1>Harmonic Pursuit</h1>
+        <div class="subtitle">Eight voices racing through interfering frequencies. Each cycle is unique; the seed is the score.</div>
+
+        <!-- Seed (FIXED) -->
+        <div class="control-section">
+            <h3>Seed</h3>
+            <input type="number" id="seed-input" class="seed-input" value="20260513" onchange="updateSeed()">
+            <div class="seed-controls">
+                <button class="button secondary" onclick="previousSeed()">← Prev</button>
+                <button class="button secondary" onclick="nextSeed()">Next →</button>
+            </div>
+            <button class="button tertiary" onclick="randomSeedAndUpdate()">↻ Random</button>
+        </div>
+
+        <!-- Parameters -->
+        <div class="control-section">
+            <h3>Field</h3>
+            <div class="control-group">
+                <label>Noise Scale</label>
+                <div class="slider-container">
+                    <input type="range" id="noiseScale" min="0.001" max="0.012" step="0.0005" value="0.0035" oninput="updateParam('noiseScale', this.value)">
+                    <span class="value-display" id="noiseScale-value">0.0035</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Racer Speed</label>
+                <div class="slider-container">
+                    <input type="range" id="racerSpeed" min="0.3" max="3.5" step="0.1" value="1.5" oninput="updateParam('racerSpeed', this.value)">
+                    <span class="value-display" id="racerSpeed-value">1.5</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Forward Drift</label>
+                <div class="slider-container">
+                    <input type="range" id="forwardDrift" min="0" max="1.5" step="0.05" value="0.45" oninput="updateParam('forwardDrift', this.value)">
+                    <span class="value-display" id="forwardDrift-value">0.45</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Trail Length</label>
+                <div class="slider-container">
+                    <input type="range" id="trailLength" min="20" max="200" step="5" value="100" oninput="updateParam('trailLength', this.value)">
+                    <span class="value-display" id="trailLength-value">100</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Trail Decay</label>
+                <div class="slider-container">
+                    <input type="range" id="trailDecay" min="0.85" max="0.99" step="0.005" value="0.94" oninput="updateParam('trailDecay', this.value)">
+                    <span class="value-display" id="trailDecay-value">0.94</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Glow Intensity</label>
+                <div class="slider-container">
+                    <input type="range" id="glow" min="0" max="40" step="1" value="18" oninput="updateParam('glow', this.value)">
+                    <span class="value-display" id="glow-value">18</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sound -->
+        <div class="control-section">
+            <h3>Sound</h3>
+            <button id="audio-toggle" class="button audio-on" onclick="toggleAudio()">🔇 ENABLE AUDIO</button>
+            <div class="audio-status" id="audio-status">Click to enable 8-voice synthesis</div>
+
+            <div class="control-group" style="margin-top:14px">
+                <label>Harmonic Root (Hz)</label>
+                <div class="slider-container">
+                    <input type="range" id="harmonicRoot" min="80" max="440" step="5" value="174" oninput="updateParam('harmonicRoot', this.value)">
+                    <span class="value-display" id="harmonicRoot-value">174</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Master Gain</label>
+                <div class="slider-container">
+                    <input type="range" id="audioGain" min="0" max="0.35" step="0.01" value="0.10" oninput="updateParam('audioGain', this.value)">
+                    <span class="value-display" id="audioGain-value">0.10</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Reverb Mix</label>
+                <div class="slider-container">
+                    <input type="range" id="reverbMix" min="0" max="0.8" step="0.05" value="0.35" oninput="updateParam('reverbMix', this.value)">
+                    <span class="value-display" id="reverbMix-value">0.35</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Racer Legend -->
+        <div class="control-section">
+            <h3>Racers</h3>
+            <div class="racer-legend" id="racer-legend"></div>
+        </div>
+
+        <!-- Actions (FIXED) -->
+        <div class="control-section">
+            <h3>Actions</h3>
+            <div class="button-row">
+                <button class="button" onclick="resetParameters()">Reset</button>
+                <button class="button secondary" onclick="downloadPNG()">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-area">
+        <div id="canvas-container">
+            <div class="loading">Initializing harmonic field…</div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// HARMONIC PURSUIT — algorithmic philosophy in code
+// ═══════════════════════════════════════════════════════════════════════
+
+// Eight voices. Eight personalities. Tuned to a harmonic series.
+const RACERS = [
+    { name: 'HUNTER',   ratio: 1.0,   osc: 'sine',     color: '#d97757' },  // root
+    { name: 'RISK',     ratio: 9/8,   osc: 'triangle', color: '#788c5d' },  // major 2nd
+    { name: 'ALPHA',    ratio: 5/4,   osc: 'sawtooth', color: '#a855f7' },  // major 3rd
+    { name: 'REGIME',   ratio: 4/3,   osc: 'square',   color: '#facc15' },  // perfect 4th
+    { name: 'EXECUTOR', ratio: 3/2,   osc: 'triangle', color: '#06b6d4' },  // perfect 5th
+    { name: 'RECOVERY', ratio: 5/3,   osc: 'sine',     color: '#f59e0b' },  // major 6th
+    { name: 'SKEPTIC',  ratio: 15/8,  osc: 'sawtooth', color: '#ec4899' },  // major 7th
+    { name: 'CHAMPION', ratio: 2.0,   osc: 'square',   color: '#fbbf24' },  // octave
+];
+
+let params = {
+    seed: 20260513,
+    noiseScale: 0.0035,
+    racerSpeed: 1.5,
+    forwardDrift: 0.45,
+    trailLength: 100,
+    trailDecay: 0.94,
+    glow: 18,
+    harmonicRoot: 174,
+    audioGain: 0.10,
+    reverbMix: 0.35,
+};
+let defaultParams = {...params};
+
+// Audio state
+let audioCtx = null;
+let masterGain = null;
+let convolver = null;
+let dryGain = null;
+let wetGain = null;
+let audioEnabled = false;
+let voices = [];  // {osc, gain, filter, pan}
+
+// p5 state
+let racers = [];
+let bgCanvas;
+let elapsedT = 0;
+
+// ── Web Audio init (must be triggered by user gesture) ────────────────
+async function enableAudio() {
+    if (audioCtx) return;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = params.audioGain;
+    masterGain.connect(audioCtx.destination);
+
+    // Simple convolver-based reverb using procedural impulse
+    convolver = audioCtx.createConvolver();
+    convolver.buffer = createReverbImpulse(audioCtx, 2.6, 2.2);
+    dryGain = audioCtx.createGain();
+    wetGain = audioCtx.createGain();
+    dryGain.gain.value = 1 - params.reverbMix;
+    wetGain.gain.value = params.reverbMix;
+    dryGain.connect(masterGain);
+    convolver.connect(wetGain);
+    wetGain.connect(masterGain);
+
+    // Build 8 voices
+    voices = RACERS.map((r, i) => {
+        const osc = audioCtx.createOscillator();
+        osc.type = r.osc;
+        osc.frequency.value = params.harmonicRoot * r.ratio;
+
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 1500;
+        filter.Q.value = 1.2;
+
+        const gain = audioCtx.createGain();
+        gain.gain.value = 0;
+
+        const pan = audioCtx.createStereoPanner();
+        pan.pan.value = 0;
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(pan);
+        pan.connect(dryGain);
+        pan.connect(convolver);
+
+        osc.start();
+        return { osc, gain, filter, pan };
+    });
+    audioEnabled = true;
+}
+
+function createReverbImpulse(ctx, duration, decay) {
+    const rate = ctx.sampleRate;
+    const len = rate * duration;
+    const impulse = ctx.createBuffer(2, len, rate);
+    for (let ch = 0; ch < 2; ch++) {
+        const data = impulse.getChannelData(ch);
+        for (let i = 0; i < len; i++) {
+            data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay);
+        }
+    }
+    return impulse;
+}
+
+function disableAudio() {
+    if (!audioCtx) return;
+    voices.forEach(v => v.gain.gain.value = 0);
+    audioEnabled = false;
+}
+
+function toggleAudio() {
+    const btn = document.getElementById('audio-toggle');
+    const status = document.getElementById('audio-status');
+    if (!audioEnabled) {
+        enableAudio().then(() => {
+            btn.textContent = '🔊 AUDIO ACTIVE';
+            btn.classList.remove('audio-on');
+            btn.style.background = 'var(--anthropic-orange)';
+            btn.style.color = 'white';
+            status.textContent = '8 oscillators · velocity → gain · x → pan · y → filter';
+            status.style.color = 'var(--anthropic-orange)';
+        });
+    } else {
+        disableAudio();
+        btn.textContent = '🔇 ENABLE AUDIO';
+        btn.classList.add('audio-on');
+        btn.style.background = '';
+        btn.style.color = '';
+        status.textContent = 'Click to enable 8-voice synthesis';
+        status.style.color = '';
+    }
+}
+
+// ── p5.js sketch ──────────────────────────────────────────────────────
+
+function setup() {
+    const cnv = createCanvas(1000, 1000);
+    cnv.parent('canvas-container');
+    document.querySelector('.loading').style.display = 'none';
+
+    // Off-screen layer for trail accumulation
+    bgCanvas = createGraphics(width, height);
+    bgCanvas.background(250, 249, 245);
+
+    initializeSystem();
+    renderRacerLegend();
+}
+
+function initializeSystem() {
+    randomSeed(params.seed);
+    noiseSeed(params.seed);
+
+    racers = RACERS.map((r, i) => ({
+        ...r,
+        idx: i,
+        x: width * 0.06 + random(-10, 10),
+        y: (height / 9) * (i + 1),
+        vx: 0, vy: 0,
+        history: [],
+        // each racer has a personality offset into the noise field
+        offset: i * 137.508,  // golden angle in degrees, scaled
+    }));
+
+    bgCanvas.background(250, 249, 245);
+    elapsedT = 0;
+}
+
+function draw() {
+    elapsedT += 0.003;
+
+    // Decay the trail layer slightly each frame (controlled by trailDecay)
+    // We fade by drawing a translucent background over it.
+    const fadeA = (1 - params.trailDecay) * 255 * 0.6;
+    bgCanvas.noStroke();
+    bgCanvas.fill(250, 249, 245, fadeA);
+    bgCanvas.rect(0, 0, width, height);
+
+    // Draw subtle field hint (very low alpha noise contour suggestion)
+    if (frameCount % 4 === 0) drawFieldHint(bgCanvas);
+
+    // Draw racer trails into bgCanvas (permanent accumulation)
+    for (const r of racers) {
+        updateRacer(r);
+        drawTrail(bgCanvas, r);
+    }
+
+    // Composite onto main canvas
+    image(bgCanvas, 0, 0);
+
+    // Draw racer sprites on top (live layer)
+    for (const r of racers) drawSprite(r);
+
+    // Finish line marker (subtle vertical dashed at right edge)
+    drawFinishLine();
+
+    // Update audio voices from racer state
+    if (audioEnabled) updateAudioVoices();
+}
+
+function updateRacer(r) {
+    // Sample primary noise field for direction
+    const n1 = noise(r.x * params.noiseScale, r.y * params.noiseScale, elapsedT + r.offset * 0.001);
+    // Secondary perturbation per-racer
+    const n2 = noise(r.idx * 100 + r.x * params.noiseScale * 2.5, r.y * params.noiseScale * 2.5, elapsedT * 1.7);
+
+    const angle = (n1 * 4 + n2) * TWO_PI;
+
+    let fx = cos(angle) * params.racerSpeed;
+    let fy = sin(angle) * params.racerSpeed;
+
+    // Forward drift — keeps the race moving rightward
+    fx += params.forwardDrift;
+
+    // Slight lane bias — each racer tends back toward its starting lane
+    const laneY = (height / 9) * (r.idx + 1);
+    const pullBack = (laneY - r.y) * 0.0012;
+    fy += pullBack;
+
+    // Smooth velocity update
+    r.vx = lerp(r.vx, fx, 0.18);
+    r.vy = lerp(r.vy, fy, 0.18);
+
+    r.x += r.vx;
+    r.y += r.vy;
+
+    // Wrap horizontally when reaching the right edge
+    if (r.x > width - 14) {
+        r.x = 20;
+        // record a phantom point so the trail doesn't span the wrap
+        r.history.push(null);
+    }
+    // Clamp vertically
+    if (r.y < 20)  r.y = 20;
+    if (r.y > height - 20) r.y = height - 20;
+
+    r.history.push({ x: r.x, y: r.y, vx: r.vx, vy: r.vy });
+    if (r.history.length > params.trailLength) r.history.shift();
+}
+
+function drawTrail(g, r) {
+    // Draw recent history as fading dots
+    const len = r.history.length;
+    for (let i = Math.max(0, len - 6); i < len; i++) {
+        const h = r.history[i];
+        if (!h) continue;
+        const t = (i + 1) / len;
+        const a = pow(t, 1.8) * 200;
+        const c = color(r.color);
+        c.setAlpha(a);
+        g.noStroke();
+        g.fill(c);
+        g.circle(h.x, h.y, 2.4 + t * 3.5);
+    }
+}
+
+function drawSprite(r) {
+    const speed = sqrt(r.vx * r.vx + r.vy * r.vy);
+
+    // Soft glow halo (additive)
+    if (params.glow > 0) {
+        push();
+        drawingContext.globalCompositeOperation = 'lighter';
+        for (let i = 0; i < 3; i++) {
+            const c = color(r.color);
+            c.setAlpha(params.glow * (3 - i) * 1.2);
+            noStroke();
+            fill(c);
+            circle(r.x, r.y, 14 + i * 12);
+        }
+        pop();
+    }
+
+    // Core dot — slight pulse with velocity
+    noStroke();
+    fill(r.color);
+    const coreSize = 9 + speed * 1.2;
+    circle(r.x, r.y, coreSize);
+
+    // Bright center highlight
+    fill(255, 255, 255, 200);
+    circle(r.x - coreSize * 0.18, r.y - coreSize * 0.18, coreSize * 0.35);
+}
+
+function drawFieldHint(g) {
+    // Very subtle: a few field probes drawn faintly
+    g.noStroke();
+    for (let i = 0; i < 8; i++) {
+        const x = random(width);
+        const y = random(height);
+        const n = noise(x * params.noiseScale, y * params.noiseScale, elapsedT);
+        const angle = n * TWO_PI * 4;
+        const len = 14;
+        g.fill(20, 20, 19, 18);
+        g.push();
+        g.translate(x, y);
+        g.rotate(angle);
+        g.rect(0, 0, len, 0.7);
+        g.pop();
+    }
+}
+
+function drawFinishLine() {
+    push();
+    noFill();
+    stroke(176, 174, 165, 60);
+    strokeWeight(1);
+    drawingContext.setLineDash([6, 8]);
+    const fx = width - 18;
+    line(fx, 16, fx, height - 16);
+    drawingContext.setLineDash([]);
+    // tiny label
+    noStroke();
+    fill(176, 174, 165, 120);
+    textSize(9);
+    textAlign(CENTER);
+    text('finish', fx, height - 6);
+    pop();
+}
+
+// ── Audio modulation ──────────────────────────────────────────────────
+function updateAudioVoices() {
+    if (!voices.length) return;
+    for (let i = 0; i < racers.length; i++) {
+        const r = racers[i];
+        const v = voices[i];
+        const speed = sqrt(r.vx * r.vx + r.vy * r.vy);
+
+        // Velocity → gain (with smoothing via setTargetAtTime)
+        const targetGain = Math.min(0.5, speed / 4) * 0.7;
+        v.gain.gain.setTargetAtTime(targetGain, audioCtx.currentTime, 0.05);
+
+        // x position → stereo pan
+        const panVal = (r.x / width) * 2 - 1;  // -1 .. +1
+        v.pan.pan.setTargetAtTime(panVal * 0.8, audioCtx.currentTime, 0.08);
+
+        // y position → filter cutoff (lower y = brighter)
+        const cutoff = map(r.y, 0, height, 4500, 320);
+        v.filter.frequency.setTargetAtTime(cutoff, audioCtx.currentTime, 0.06);
+
+        // Update frequency if root changed
+        const targetFreq = params.harmonicRoot * RACERS[i].ratio;
+        if (Math.abs(v.osc.frequency.value - targetFreq) > 0.5) {
+            v.osc.frequency.setTargetAtTime(targetFreq, audioCtx.currentTime, 0.1);
+        }
+    }
+    if (masterGain) masterGain.gain.setTargetAtTime(params.audioGain, audioCtx.currentTime, 0.05);
+    if (dryGain && wetGain) {
+        dryGain.gain.setTargetAtTime(1 - params.reverbMix, audioCtx.currentTime, 0.1);
+        wetGain.gain.setTargetAtTime(params.reverbMix, audioCtx.currentTime, 0.1);
+    }
+}
+
+// ── UI handlers ───────────────────────────────────────────────────────
+function updateParam(name, val) {
+    params[name] = parseFloat(val);
+    const el = document.getElementById(name + '-value');
+    if (el) el.textContent = (typeof params[name] === 'number' ? params[name].toFixed(name === 'noiseScale' || name === 'trailDecay' ? 4 : 2) : params[name]);
+    // Some params reset the trail layer (cleaner look)
+    if (name === 'noiseScale') {
+        bgCanvas.background(250, 249, 245);
+    }
+}
+
+function renderRacerLegend() {
+    const el = document.getElementById('racer-legend');
+    el.innerHTML = RACERS.map((r, i) => {
+        const interval = ['1','9/8','5/4','4/3','3/2','5/3','15/8','2'][i];
+        return `<div class="racer-row"><span class="dot" style="background:${r.color}"></span>${r.name.padEnd(8)} <span style="color:#b0aea5">${r.osc.padEnd(8)} ${interval}</span></div>`;
+    }).join('');
+}
+
+// ── Seed controls (FIXED from template) ──────────────────────────────
+function updateSeedDisplay() {
+    document.getElementById('seed-input').value = params.seed;
+}
+function updateSeed() {
+    const v = parseInt(document.getElementById('seed-input').value);
+    if (v && v > 0) {
+        params.seed = v;
+        initializeSystem();
+    } else updateSeedDisplay();
+}
+function previousSeed() {
+    params.seed = Math.max(1, params.seed - 1);
+    updateSeedDisplay();
+    initializeSystem();
+}
+function nextSeed() {
+    params.seed = params.seed + 1;
+    updateSeedDisplay();
+    initializeSystem();
+}
+function randomSeedAndUpdate() {
+    params.seed = Math.floor(Math.random() * 999999999) + 1;
+    updateSeedDisplay();
+    initializeSystem();
+}
+
+function resetParameters() {
+    params = {...defaultParams};
+    // Refresh all slider values + displays
+    for (const k of Object.keys(params)) {
+        const slider = document.getElementById(k);
+        const display = document.getElementById(k + '-value');
+        if (slider) slider.value = params[k];
+        if (display) display.textContent = params[k];
+    }
+    updateSeedDisplay();
+    initializeSystem();
+}
+
+function downloadPNG() {
+    saveCanvas('harmonic-pursuit-seed-' + params.seed, 'png');
+}
+
+window.addEventListener('load', () => {
+    updateSeedDisplay();
+});
+</script>
+</body>
+</html>

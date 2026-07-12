@@ -1,0 +1,56 @@
+{
+  "mode": "ULTRA_KELLY_AGGRESSIVE",
+
+  "enabled": true,
+
+  "kelly_enabled": true,
+  "fractional_kelly": 0.65,
+
+  "base_risk_percent": 2.5,
+  "max_risk_percent": 8.0,
+
+  "confidence_boost_scaling": true,
+  "dynamic_size_by_confidence": true,
+
+  "high_confidence_threshold": 82,
+  "extreme_confidence_threshold": 91,
+
+  "high_confidence_multiplier": 1.45,
+  "extreme_confidence_multiplier": 2.25,
+
+  "kelly_after_win_boost": true,
+  "kelly_after_loss_reduce": true,
+
+  "loss_reduction_factor": 0.72,
+  "win_acceleration_factor": 1.35,
+
+  "smart_compounding": true,
+  "adaptive_growth_mode": true,
+
+  "trend_strength_multiplier": true,
+  "volatility_adjustment": true,
+  "momentum_acceleration": true,
+
+  "fibonacci_reentry_mode": true,
+  "smart_revenge_trade_block": true,
+
+  "profit_lock_enabled": true,
+  "profit_lock_trigger_percent": 4.0,
+
+  "max_total_exposure_percent": 28,
+  "max_single_trade_percent": 9,
+
+  "panic_market_block": true,
+  "spread_protection": true,
+  "black_swan_protection": true,
+
+  "kill_switch_drawdown_percent": 9,
+
+  "alpha_memory_learning": true,
+  "shadow_replay_learning": true,
+
+  "telemetry_enabled": true,
+  "regime_filter_enabled": true,
+
+  "safe_mode": true
+}

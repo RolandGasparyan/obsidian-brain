@@ -1,0 +1,13 @@
+[Unit]
+Description=Run production health monitor every 5 minutes
+Documentation=https://github.com/RolandGasparyan/ai-trading-championship
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=15s
+Persistent=true
+Unit=production-monitor.service
+
+[Install]
+WantedBy=timers.target

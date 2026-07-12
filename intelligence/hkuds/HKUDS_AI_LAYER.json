@@ -1,0 +1,31 @@
+{
+  "enabled": true,
+
+  "mode": "META_MARKET_REASONING",
+
+  "llm_reasoning": true,
+
+  "market_analysis_ai": true,
+
+  "signal_intelligence": true,
+
+  "strategy_reflection": true,
+
+  "market_psychology_modeling": true,
+
+  "multi_agent_market_reasoning": true,
+
+  "trade_quality_scoring": true,
+
+  "autonomous_trade_analysis": true,
+
+  "profitability_feedback_loops": true,
+
+  "failure_pattern_learning": true,
+
+  "dynamic_strategy_adaptation": true,
+
+  "elite_signal_filtering": true,
+
+  "capital_efficiency_analysis": true
+}

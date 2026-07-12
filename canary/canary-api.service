@@ -1,0 +1,19 @@
+[Unit]
+Description=Trading Guru Canary API Server (port 8765)
+Documentation=https://github.com/RolandGasparyan/tradingguru-empire
+After=network.target canary-battle.service
+Wants=canary-battle.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/canary
+ExecStart=/usr/bin/python3 /root/canary/canary_api_server.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/root/canary/runtime/canary_api.log
+StandardError=append:/root/canary/runtime/canary_api.log
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

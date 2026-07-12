@@ -1,0 +1,43 @@
+[Unit]
+Description=🎬 TradingGuru Replay Timeline Engine — paper-safe history capture
+Documentation=file:///root/tradingguru-empire/governance/REPLAY_TIMELINE_ENGINE_v1.md
+After=network-online.target paper-arena.service tradingguru-arena.service
+Wants=paper-arena.service tradingguru-arena.service
+
+# ── ISOLATION GUARDS ────────────────────────────────────────────────────
+# Service is read-only / paper-only. Refuses to start if Layer 1 mutated:
+ConditionPathExists=/root/tradingguru-empire/canary/canary_strategy.py
+ConditionPathExists=/root/.l99/protection_halt.json
+
+[Service]
+Type=simple
+# Hard safety env (runner checks at startup):
+Environment="TG_PAPER_EXECUTION=1"
+Environment="TG_DISABLE_REAL_ORDERS=1"
+Environment="LIVE_ORDERS=0"
+
+# Storage tuning (~70 MB cap · 7 days retention)
+Environment="REPLAY_SNAPSHOTS_DIR=/root/tradingguru-empire/replay_engine/snapshots"
+Environment="REPLAY_RETENTION_DAYS=7"
+Environment="REPLAY_MAX_TOTAL_MB=100"
+Environment="REPLAY_MAX_DAY_FILE_MB=10"
+Environment="REPLAY_SCAN_INTERVAL_SEC=10"
+Environment="REPLAY_COMPACT_INTERVAL_SEC=30"
+
+# Public JSON publish location (nginx serves /api/battle/replay-*.json):
+Environment="REPLAY_PUBLISH_DIR=/var/www/ai-trading-championship/dist/api/battle"
+
+ExecStart=/usr/bin/python3 /root/tradingguru-empire/replay_engine/replay_collector.py
+WorkingDirectory=/root/tradingguru-empire/replay_engine
+Restart=on-failure
+RestartSec=30
+User=root
+StandardOutput=journal
+StandardError=journal
+
+# Resource limits (paper-safe service should be lightweight)
+MemoryMax=200M
+CPUQuota=20%
+
+[Install]
+WantedBy=multi-user.target

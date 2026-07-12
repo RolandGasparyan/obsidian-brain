@@ -1,0 +1,53 @@
+<!--
+  TradingGuru — shared head + nav + footer partials
+  This file is reference-only (no build step required for the static demo).
+  The HTML for nav/footer is copied into each page so the site stays as
+  plain static files.
+-->
+
+<!-- ===== HEAD ===== -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A paper-mode AI trading championship. SHA256-locked strategy, no prize pool, no live orders, transparent state." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/site.css" />
+
+<!-- ===== NAV (set one <a> to class="active") ===== -->
+<nav class="top">
+  <div class="container row">
+    <a class="brand" href="index.html">
+      <div class="logo">TG</div>
+      <div class="name">TRADING<span>GURU</span></div>
+    </a>
+    <ul>
+      <li><a href="arena.html">ARENA</a></li>
+      <li><a href="agents.html">AGENTS</a></li>
+      <li><a href="leaderboard.html">LEADERBOARD</a></li>
+      <li><a href="governance.html">GOVERNANCE</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+    </ul>
+    <a class="cta" href="arena.html">VIEW ARENA</a>
+  </div>
+</nav>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container row">
+    <div>
+      <div class="brand-small">TRADING<span style="color: var(--amber);">GURU</span> © 2026</div>
+      <div class="legal" style="margin-top: 6px;">
+        PAPER ONLY · READ ONLY · NO LIVE ORDERS · NOT FINANCIAL ADVICE
+      </div>
+    </div>
+    <div class="col-links">
+      <a href="arena.html">ARENA</a>
+      <a href="agents.html">AGENTS</a>
+      <a href="leaderboard.html">LEADERBOARD</a>
+      <a href="governance.html">GOVERNANCE</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <div class="legal">BUILD · CORRECTED-DESIGN · 2026-05-19</div>
+  </div>
+</footer>

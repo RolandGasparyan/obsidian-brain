@@ -1,0 +1,139 @@
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  MICROSTRUCTURE ANALYSIS · /var/log/microstructure
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+▸ Data summary
+  AVAX_USDT   305,791 rows · 133.7 h of data
+  BTC_USDT    305,790 rows · 133.7 h of data
+  ETH_USDT    305,790 rows · 133.7 h of data
+  SOL_USDT    305,791 rows · 133.7 h of data
+  XRP_USDT    305,791 rows · 133.7 h of data
+
+▸ Regime distribution by pair
+  AVAX_USDT   DEAD 194095 (63.5%) · NEUTRAL 76649 (25.1%) · EXPANSION 19959 (6.5%) · HIGH_IMPULSE 8523 (2.8%)
+  BTC_USDT    DEAD 156017 (51.0%) · NEUTRAL 91571 (29.9%) · EXPANSION 30456 (10.0%) · HIGH_IMPULSE 21181 (6.9%)
+  ETH_USDT    DEAD 159131 (52.0%) · NEUTRAL 91579 (29.9%) · EXPANSION 29717 (9.7%) · HIGH_IMPULSE 18798 (6.1%)
+  SOL_USDT    DEAD 150603 (49.3%) · NEUTRAL 100272 (32.8%) · EXPANSION 32594 (10.7%) · HIGH_IMPULSE 15756 (5.2%)
+  XRP_USDT    DEAD 156443 (51.2%) · NEUTRAL 88575 (29.0%) · EXPANSION 32507 (10.6%) · HIGH_IMPULSE 21700 (7.1%)
+
+▸ Information Coefficient (Spearman ρ) — |IC| ≥ 0.04 and |t| ≥ 2.0 flagged
+
+  pair       feature                         H=60s             H=120s             H=300s             H=600s            H=1800s
+  ----------------------------------------------------------------------------------------------------------------------------
+  AVAX_USDT  depth_imbalance         +0.021/t+9.8       +0.019/t+8.6      +0.023/t+10.7      +0.029/t+14.6      +0.054/t+25.8★ 
+  AVAX_USDT  spread_pct              +0.001/t+0.7       +0.006/t+2.5       +0.015/t+6.9       +0.014/t+6.9      +0.032/t+15.3  
+  AVAX_USDT  delta_30s               -0.007/t-3.4       -0.019/t-8.5       -0.020/t-9.1       -0.020/t-9.9      -0.021/t-10.1  
+  AVAX_USDT  trade_intensity         -0.002/t-1.1       -0.005/t-2.2       -0.012/t-5.5       -0.011/t-5.5       -0.014/t-6.8  
+  AVAX_USDT  volatility_burst        -0.004/t-2.0       -0.009/t-4.2       -0.007/t-3.1       -0.002/t-1.1       +0.001/t+0.4  
+  AVAX_USDT  ofi_30s                 +0.011/t+5.1       +0.006/t+2.6       +0.011/t+5.0       +0.005/t+2.4       -0.009/t-4.5  
+  AVAX_USDT  book_slope_bid          +0.020/t+9.4       +0.017/t+7.5       +0.018/t+8.4      +0.031/t+15.4      +0.062/t+30.1★ 
+  AVAX_USDT  book_slope_ask          -0.017/t-7.9       -0.017/t-7.8       -0.020/t-9.0      -0.022/t-11.2      -0.045/t-21.8★ 
+  AVAX_USDT  basis_pct               +0.007/t+3.5       +0.013/t+6.1       +0.001/t+0.6       -0.014/t-7.1       -0.009/t-4.3  
+  AVAX_USDT  funding_rate_8h         -0.019/t-8.8      -0.025/t-11.4      -0.041/t-18.6★     -0.052/t-26.0★     -0.104/t-50.2★ 
+  AVAX_USDT  perp_oi                 -0.002/t-1.0       +0.000/t+0.1       -0.008/t-3.8       -0.019/t-9.4      -0.045/t-21.6★ 
+
+  BTC_USDT   depth_imbalance        +0.160/t+74.6★     +0.105/t+47.9★     +0.071/t+32.3★     +0.044/t+22.3★      +0.016/t+7.7  
+  BTC_USDT   spread_pct             +0.026/t+11.9      +0.029/t+13.4      +0.053/t+23.9★     +0.062/t+31.2★     +0.098/t+47.3★ 
+  BTC_USDT   delta_30s               +0.000/t+0.1       -0.005/t-2.2       -0.007/t-3.0       -0.003/t-1.4       -0.005/t-2.5  
+  BTC_USDT   trade_intensity         -0.017/t-7.9       -0.017/t-7.9      -0.024/t-10.7      -0.029/t-14.5      -0.046/t-21.9★ 
+  BTC_USDT   volatility_burst        +0.000/t+0.2       -0.006/t-2.9       -0.010/t-4.4      -0.023/t-11.6      -0.023/t-11.0  
+  BTC_USDT   ofi_30s                +0.076/t+35.1★     +0.045/t+20.6★     +0.038/t+17.3      +0.030/t+15.2       +0.008/t+3.6  
+  BTC_USDT   book_slope_bid         +0.087/t+40.1★     +0.051/t+23.4★     +0.033/t+15.0       +0.018/t+8.9       +0.007/t+3.4  
+  BTC_USDT   book_slope_ask         -0.082/t-37.9★     -0.049/t-22.1★     -0.038/t-17.4       -0.019/t-9.4       +0.002/t+1.0  
+  BTC_USDT   basis_pct               -0.000/t-0.0       +0.012/t+5.4       +0.012/t+5.3       +0.009/t+4.6      +0.028/t+13.3  
+  BTC_USDT   funding_rate_8h        +0.030/t+13.8      +0.040/t+18.1      +0.063/t+28.4★     +0.079/t+39.9★     +0.137/t+66.4★ 
+  BTC_USDT   perp_oi                 -0.021/t-9.5      -0.025/t-11.6      -0.041/t-18.6★     -0.052/t-26.3★     -0.102/t-49.2★ 
+
+  ETH_USDT   depth_imbalance        +0.120/t+55.5★     +0.084/t+38.1★     +0.040/t+18.0       +0.018/t+9.2       -0.017/t-8.1  
+  ETH_USDT   spread_pct             +0.026/t+12.0      +0.034/t+15.5      +0.060/t+27.1★     +0.072/t+36.5★     +0.124/t+60.1★ 
+  ETH_USDT   delta_30s               -0.018/t-8.3       -0.022/t-9.8       -0.013/t-6.0       -0.012/t-6.2       -0.012/t-5.6  
+  ETH_USDT   trade_intensity         -0.012/t-5.3       -0.015/t-6.9      -0.022/t-10.0      -0.036/t-18.1      -0.022/t-10.7  
+  ETH_USDT   volatility_burst        -0.008/t-3.9       -0.016/t-7.1       -0.000/t-0.1       -0.007/t-3.4       -0.005/t-2.5  
+  ETH_USDT   ofi_30s                +0.049/t+22.5★     +0.029/t+13.3      +0.034/t+15.5      +0.025/t+12.5       +0.011/t+5.4  
+  ETH_USDT   book_slope_bid         +0.074/t+34.3★     +0.055/t+25.2★     +0.033/t+15.0       +0.016/t+7.9       -0.007/t-3.6  
+  ETH_USDT   book_slope_ask         -0.062/t-28.7★     -0.041/t-18.6★      -0.011/t-4.9       -0.003/t-1.6       +0.017/t+8.3  
+  ETH_USDT   basis_pct              +0.022/t+10.1      +0.032/t+14.7      +0.024/t+10.8      +0.024/t+11.8      +0.048/t+23.3★ 
+  ETH_USDT   funding_rate_8h         +0.017/t+7.9      +0.026/t+11.9      +0.039/t+17.5      +0.047/t+23.5★     +0.045/t+21.8★ 
+  ETH_USDT   perp_oi                 -0.006/t-2.9       -0.008/t-3.8       -0.002/t-0.7       +0.006/t+2.8      +0.029/t+14.1  
+
+  SOL_USDT   depth_imbalance        +0.035/t+16.3      +0.025/t+11.3       +0.011/t+5.1       -0.002/t-1.1       -0.007/t-3.4  
+  SOL_USDT   spread_pct             +0.023/t+10.6      +0.030/t+13.4      +0.052/t+23.8★     +0.061/t+30.8★     +0.103/t+49.7★ 
+  SOL_USDT   delta_30s               +0.012/t+5.7       +0.008/t+3.4       +0.000/t+0.0       -0.016/t-8.1       -0.008/t-4.0  
+  SOL_USDT   trade_intensity         -0.010/t-4.7       -0.005/t-2.1       -0.016/t-7.1      -0.029/t-14.5      -0.037/t-17.9  
+  SOL_USDT   volatility_burst        +0.007/t+3.1       +0.005/t+2.1       +0.005/t+2.5       -0.003/t-1.3       -0.002/t-1.1  
+  SOL_USDT   ofi_30s                +0.026/t+12.0       +0.009/t+4.0       +0.012/t+5.7       -0.003/t-1.6       -0.001/t-0.5  
+  SOL_USDT   book_slope_bid          +0.020/t+9.4       +0.016/t+7.4       +0.019/t+8.6      +0.026/t+13.3      +0.045/t+21.7★ 
+  SOL_USDT   book_slope_ask          -0.005/t-2.4       +0.001/t+0.4       +0.012/t+5.5      +0.029/t+14.5      +0.039/t+18.9  
+  SOL_USDT   basis_pct               +0.012/t+5.7       +0.021/t+9.7       +0.013/t+6.1       +0.019/t+9.6      +0.040/t+19.2  
+  SOL_USDT   funding_rate_8h         +0.001/t+0.4       -0.011/t-4.9       -0.020/t-9.2       -0.015/t-7.4      -0.041/t-19.6★ 
+  SOL_USDT   perp_oi                 -0.004/t-2.1       -0.008/t-3.8       -0.006/t-2.6       -0.017/t-8.4      -0.024/t-11.7  
+
+  XRP_USDT   depth_imbalance        +0.101/t+46.7★     +0.084/t+38.3★     +0.033/t+14.7       -0.006/t-3.0      -0.041/t-19.6★ 
+  XRP_USDT   spread_pct              +0.020/t+9.2      +0.023/t+10.5      +0.040/t+18.3★     +0.050/t+25.1★     +0.112/t+54.4★ 
+  XRP_USDT   delta_30s              +0.028/t+12.9      +0.024/t+11.1       +0.007/t+3.2       +0.001/t+0.5       +0.002/t+1.2  
+  XRP_USDT   trade_intensity         +0.008/t+3.7       +0.009/t+4.2       +0.011/t+4.9       +0.007/t+3.4       -0.002/t-1.0  
+  XRP_USDT   volatility_burst        +0.004/t+1.8       +0.006/t+2.6       +0.012/t+5.7       +0.019/t+9.4      +0.027/t+13.2  
+  XRP_USDT   ofi_30s                +0.059/t+27.3★     +0.041/t+18.7★     +0.039/t+17.7      +0.031/t+15.4       +0.005/t+2.6  
+  XRP_USDT   book_slope_bid         -0.106/t-49.1★     -0.102/t-46.6★     -0.092/t-42.0★     -0.083/t-42.1★     -0.091/t-43.8★ 
+  XRP_USDT   book_slope_ask         +0.108/t+50.2★     +0.094/t+42.9★     +0.075/t+34.0★     +0.046/t+23.2★      +0.010/t+4.9  
+  XRP_USDT   basis_pct             +0.272/t+130.4★    +0.262/t+123.2★     +0.193/t+89.0★     +0.132/t+67.0★     +0.081/t+39.0★ 
+  XRP_USDT   funding_rate_8h         +0.004/t+1.7       +0.008/t+3.5       +0.012/t+5.5       +0.016/t+8.0      +0.043/t+20.6★ 
+  XRP_USDT   perp_oi                 +0.001/t+0.4       -0.002/t-0.9       +0.006/t+2.6       +0.007/t+3.4      +0.046/t+22.3★ 
+
+
+▸ Regime-conditional IC — features × {EXPANSION+HIGH_IMPULSE only}
+  Only flagging features whose conditional |IC| improves by ≥0.02 over unconditional
+  AVAX_USDT   EXPANSION/HIGH_IMPULSE rows: 28482
+    ★ spread_pct         H=600s  IC_all=+0.014  IC_expansion=+0.044  Δ=+0.031
+    ★ spread_pct         H=1800s  IC_all=+0.032  IC_expansion=+0.052  Δ=+0.020
+    ★ trade_intensity    H=300s  IC_all=-0.012  IC_expansion=-0.042  Δ=+0.030
+    ★ trade_intensity    H=600s  IC_all=-0.011  IC_expansion=-0.059  Δ=+0.048
+    ★ funding_rate_8h    H=300s  IC_all=-0.041  IC_expansion=-0.063  Δ=+0.022
+    ★ funding_rate_8h    H=600s  IC_all=-0.052  IC_expansion=-0.098  Δ=+0.047
+  BTC_USDT    EXPANSION/HIGH_IMPULSE rows: 51637
+    ★ depth_imbalance    H=1800s  IC_all=+0.016  IC_expansion=+0.048  Δ=+0.031
+    ★ spread_pct         H=60s  IC_all=+0.026  IC_expansion=+0.053  Δ=+0.028
+    ★ spread_pct         H=120s  IC_all=+0.029  IC_expansion=+0.052  Δ=+0.023
+    ★ book_slope_bid     H=120s  IC_all=+0.051  IC_expansion=+0.072  Δ=+0.020
+    ★ funding_rate_8h    H=60s  IC_all=+0.030  IC_expansion=+0.051  Δ=+0.021
+    ★ perp_oi            H=60s  IC_all=-0.021  IC_expansion=-0.042  Δ=+0.021
+  ETH_USDT    EXPANSION/HIGH_IMPULSE rows: 48515
+    ★ ofi_30s            H=600s  IC_all=+0.025  IC_expansion=+0.053  Δ=+0.029
+    ★ funding_rate_8h    H=1800s  IC_all=+0.045  IC_expansion=+0.078  Δ=+0.033
+  SOL_USDT    EXPANSION/HIGH_IMPULSE rows: 48350
+    ★ spread_pct         H=300s  IC_all=+0.052  IC_expansion=+0.082  Δ=+0.030
+    ★ spread_pct         H=600s  IC_all=+0.061  IC_expansion=+0.100  Δ=+0.039
+    ★ spread_pct         H=1800s  IC_all=+0.103  IC_expansion=+0.136  Δ=+0.033
+    ★ delta_30s          H=600s  IC_all=-0.016  IC_expansion=-0.058  Δ=+0.042
+    ★ delta_30s          H=1800s  IC_all=-0.008  IC_expansion=-0.043  Δ=+0.034
+    ★ funding_rate_8h    H=300s  IC_all=-0.020  IC_expansion=-0.042  Δ=+0.022
+  XRP_USDT    EXPANSION/HIGH_IMPULSE rows: 54207
+    ★ spread_pct         H=60s  IC_all=+0.020  IC_expansion=+0.041  Δ=+0.021
+    ★ book_slope_bid     H=600s  IC_all=-0.083  IC_expansion=-0.110  Δ=+0.027
+    ★ book_slope_bid     H=1800s  IC_all=-0.091  IC_expansion=-0.153  Δ=+0.062
+    ★ book_slope_ask     H=1800s  IC_all=+0.010  IC_expansion=-0.071  Δ=+0.060
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  PHASE B GATE
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  ✅ 18 (feature, horizon) combo(s) cleared the bar:
+    • funding_rate_8h @ H=1800s  consistent on 5/5 pairs: AVAX_USDT, BTC_USDT, ETH_USDT, SOL_USDT, XRP_USDT
+    • spread_pct @ H=300s  consistent on 4/5 pairs: BTC_USDT, ETH_USDT, SOL_USDT, XRP_USDT
+    • spread_pct @ H=600s  consistent on 4/5 pairs: BTC_USDT, ETH_USDT, SOL_USDT, XRP_USDT
+    • spread_pct @ H=1800s  consistent on 4/5 pairs: BTC_USDT, ETH_USDT, SOL_USDT, XRP_USDT
+    • book_slope_bid @ H=1800s  consistent on 3/5 pairs: AVAX_USDT, SOL_USDT, XRP_USDT
+    • funding_rate_8h @ H=600s  consistent on 3/5 pairs: AVAX_USDT, BTC_USDT, ETH_USDT
+    • perp_oi @ H=1800s  consistent on 3/5 pairs: AVAX_USDT, BTC_USDT, XRP_USDT
+    • depth_imbalance @ H=60s  consistent on 3/5 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • depth_imbalance @ H=120s  consistent on 3/5 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • ofi_30s @ H=60s  consistent on 3/5 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • book_slope_bid @ H=60s  consistent on 3/5 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • book_slope_bid @ H=120s  consistent on 3/5 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • book_slope_ask @ H=60s  consistent on 3/5 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • book_slope_ask @ H=120s  consistent on 3/5 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • depth_imbalance @ H=1800s  consistent on 2/5 pairs: AVAX_USDT, XRP_USDT
+    • funding_rate_8h @ H=300s  consistent on 2/5 pairs: AVAX_USDT, BTC_USDT
+    • ofi_30s @ H=120s  consistent on 2/5 pairs: BTC_USDT, XRP_USDT
+    • basis_pct @ H=1800s  consistent on 2/5 pairs: ETH_USDT, XRP_USDT
+
+  Recommended Phase B: ensemble the surviving features into a classifier,
+  walk-forward validate with professional_backtest.py, deploy paper-only if it clears.

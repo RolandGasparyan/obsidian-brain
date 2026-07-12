@@ -1,0 +1,175 @@
+{
+  "mode": "SCALPING_KING_GODMODE",
+
+  "enabled": true,
+
+  "default_runtime_mode": true,
+
+  "auto_start_trading": true,
+
+  "auto_restart_after_shutdown": true,
+
+  "micro_momentum_engine": {
+    "enabled": true,
+
+    "instant_momentum_detection": true,
+
+    "breakout_acceleration_detection": true,
+
+    "volume_spike_detection": true,
+
+    "micro_trend_attack": true
+  },
+
+  "trade_quality_ai": {
+    "enabled": true,
+
+    "minimum_confidence": 93,
+
+    "elite_confidence": 98,
+
+    "trend_alignment_required": true,
+
+    "volume_confirmation_required": true,
+
+    "fake_breakout_filter": true,
+
+    "spread_protection": true,
+
+    "avoid_sideways_markets": true
+  },
+
+  "triple_scalping_engine": {
+    "enabled": true,
+
+    "scan_speed_multiplier": 3,
+
+    "trade_cycle_multiplier": 3,
+
+    "signal_refresh_seconds": 1,
+
+    "ranking_refresh_seconds": 1,
+
+    "rapid_micro_scalping": true,
+
+    "micro_take_profit_percent": 0.18,
+
+    "rapid_profit_capture": true,
+
+    "max_hold_seconds": 35
+  },
+
+  "smart_entry_engine": {
+    "enabled": true,
+
+    "double_entry_size": true,
+
+    "entry_size_multiplier": 2.0,
+
+    "dynamic_position_scaling": true,
+
+    "adaptive_entry_sizing": true,
+
+    "priority_pairs": [
+      "SOL/USDT",
+      "ETH/USDT",
+      "XRP/USDT"
+    ],
+
+    "btc_low_priority": true
+  },
+
+  "instant_exit_engine": {
+    "enabled": true,
+
+    "momentum_fade_exit": true,
+
+    "volatility_collapse_exit": true,
+
+    "instant_exit_on_weakness": true,
+
+    "trailing_profit_lock": true,
+
+    "force_return_to_usdt": true,
+
+    "force_full_exit": true
+  },
+
+  "rapid_usdt_recycle": {
+    "enabled": true,
+
+    "always_return_to_usdt": true,
+
+    "instant_capital_redeploy": true,
+
+    "auto_recycle_capital": true,
+
+    "max_hold_seconds": 45
+  },
+
+  "smart_auto_doubling": {
+    "enabled": true,
+
+    "default_mode_active": true,
+
+    "max_doubling_steps": 5,
+
+    "doubling_ladder": [
+      1.2,
+      1.5,
+      1.8,
+      2.2,
+      2.8
+    ],
+
+    "adaptive_doubling": true,
+
+    "elite_signal_required": true,
+
+    "cooldown_after_loss_seconds": 90
+  },
+
+  "volatility_engine": {
+    "enabled": true,
+
+    "adaptive_position_sizing": true,
+
+    "high_volatility_reduce_size": true,
+
+    "stable_trend_extend_profit": true
+  },
+
+  "smart_kelly_engine": {
+    "enabled": true,
+
+    "dynamic_kelly": true,
+
+    "fractional_kelly": 0.32
+  },
+
+  "balance_governor": {
+    "enabled": true,
+
+    "dynamic_risk_control": true,
+
+    "drawdown_defense": true,
+
+    "daily_profit_lock": true,
+
+    "reduce_aggression_after_profit": true
+  },
+
+  "risk_management": {
+    "max_parallel_pairs": 2,
+
+    "max_open_positions": 2,
+
+    "max_total_exposure_percent": 22,
+
+    "max_single_trade_percent": 6,
+
+    "force_usdt_reserve_percent": 25,
+
+    "kill_switch_drawdown_percent": 5
+  }
+}

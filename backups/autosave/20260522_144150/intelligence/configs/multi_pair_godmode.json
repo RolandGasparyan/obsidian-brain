@@ -1,0 +1,81 @@
+{
+  "mode": "MULTI_PAIR_GODMODE",
+
+  "enabled": true,
+
+  "parallel_trading_enabled": true,
+
+  "max_parallel_pairs": 6,
+
+  "allow_simultaneous_positions": true,
+
+  "multi_symbol_attack_mode": true,
+
+  "priority_pairs": [
+    "SOL/USDT",
+    "BTC/USDT",
+    "ETH/USDT",
+    "XRP/USDT"
+  ],
+
+  "micro_scalping_enabled": true,
+  "rapid_cycle_mode": true,
+
+  "trade_cycle_multiplier": 18,
+
+  "signal_refresh_seconds": 1,
+  "ranking_refresh_seconds": 1,
+
+  "instant_buy_sell_mode": true,
+
+  "adaptive_pair_rotation": true,
+
+  "pair_independent_take_profit": true,
+  "pair_independent_stop_loss": true,
+
+  "confidence_weighted_entries": true,
+
+  "minimum_confidence": 82,
+  "elite_confidence": 94,
+
+  "elite_attack_multiplier": 3.0,
+
+  "smart_doubling_enabled": true,
+
+  "adaptive_pyramiding": true,
+
+  "max_entries_per_symbol": 4,
+
+  "entry_size_multiplier": 3.5,
+
+  "winner_compounding": true,
+  "profit_reinvestment": true,
+
+  "rapid_profit_capture": true,
+
+  "volatility_hunter": true,
+  "breakout_attack_mode": true,
+  "trend_acceleration": true,
+
+  "smart_kelly_enabled": true,
+  "fractional_kelly": 0.72,
+
+  "dynamic_capital_distribution": true,
+
+  "max_total_exposure_percent": 65,
+  "max_single_trade_percent": 16,
+
+  "panic_market_block": true,
+  "spread_protection": true,
+  "black_swan_protection": true,
+
+  "kill_switch_drawdown_percent": 16,
+
+  "alpha_memory_learning": true,
+  "shadow_replay_learning": true,
+
+  "telemetry_enabled": true,
+  "regime_filter_enabled": true,
+
+  "safe_aggressive_mode": true
+}

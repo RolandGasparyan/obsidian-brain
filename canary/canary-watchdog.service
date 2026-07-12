@@ -1,0 +1,25 @@
+[Unit]
+Description=Trading Guru Canary Watchdog v2 — multi-account killswitch
+Documentation=file:///root/canary/canary_killswitch.py
+After=canary-battle.service
+BindsTo=canary-battle.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/canary
+ExecStart=/root/canary/venv/bin/python3 /root/canary/canary_killswitch.py
+Restart=on-failure
+RestartSec=15
+StartLimitInterval=120
+StartLimitBurst=5
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=append:/root/canary/runtime/watchdog.log
+StandardError=append:/root/canary/runtime/watchdog.stderr.log
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/root/canary/runtime
+ReadOnlyPaths=/root/.l99
+
+[Install]
+WantedBy=canary-battle.service

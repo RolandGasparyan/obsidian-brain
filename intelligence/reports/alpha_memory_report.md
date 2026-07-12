@@ -1,0 +1,14 @@
+
+# ALPHA MEMORY REPORT
+
+Last Pattern:
+RSI_RECOVERY
+
+Confidence:
+72
+
+PnL:
+11.19
+
+Timestamp:
+2026-05-23T02:41:18.245471

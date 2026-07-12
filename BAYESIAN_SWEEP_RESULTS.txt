@@ -1,0 +1,79 @@
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  BAYESIAN EDGE SWEEP · 11 cells × 50 trials
+  commission: 0.30% RT  (Gate.io taker reference)
+  data: /var/log/microstructure
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+▸ XRP_USDT · basis_pct (sign=+)
+  best params: q=95  hold=60m  sl=2.50%  tp=2.39%
+  Sharpe -4805727989221.80  Ret  -33.1%  vs BH   -4.2%  DD -33.1%  WR    0%  # 59  SQN -19.20
+
+▸ XRP_USDT · book_slope_bid (sign=-)
+  best params: q=95  hold=60m  sl=1.22%  tp=0.79%
+  Sharpe -947513926.15  Ret  -24.1%  vs BH   -4.2%  DD -24.2%  WR    0%  # 43  SQN -17.58
+
+▸ XRP_USDT · book_slope_ask (sign=+)
+  best params: q=95  hold=60m  sl=2.50%  tp=2.39%
+  Sharpe -3103239443.33  Ret  -24.8%  vs BH   -4.2%  DD -24.9%  WR    2%  # 44  SQN -14.12
+
+▸ XRP_USDT · depth_imbalance (sign=+)
+  best params: q=95  hold=60m  sl=2.62%  tp=3.00%
+  Sharpe -190263491.78  Ret  -21.0%  vs BH   -4.2%  DD -21.0%  WR    3%  # 37  SQN -10.26
+
+▸ XRP_USDT · ofi_30s (sign=+)
+  best params: q=95  hold=60m  sl=2.26%  tp=2.93%
+  Sharpe -32273115992468.16  Ret  -34.4%  vs BH   -4.2%  DD -34.5%  WR    2%  # 66  SQN -19.38
+
+▸ BTC_USDT · depth_imbalance (sign=+)
+  best params: q=79  hold=14m  sl=1.21%  tp=1.83%
+  Sharpe  +nan  Ret   +0.0%  vs BH   -1.9%  DD   0.0%  WR  nan%  #  0  SQN  +nan
+
+▸ BTC_USDT · book_slope_bid (sign=+)
+  best params: q=79  hold=14m  sl=1.21%  tp=1.83%
+  Sharpe  +nan  Ret   +0.0%  vs BH   -1.9%  DD   0.0%  WR  nan%  #  0  SQN  +nan
+
+▸ BTC_USDT · book_slope_ask (sign=-)
+  best params: q=79  hold=14m  sl=1.21%  tp=1.83%
+  Sharpe  +nan  Ret   +0.0%  vs BH   -1.9%  DD   0.0%  WR  nan%  #  0  SQN  +nan
+
+▸ ETH_USDT · depth_imbalance (sign=+)
+  best params: q=95  hold=60m  sl=1.00%  tp=1.56%
+  Sharpe -2685130673.46  Ret  -24.9%  vs BH   -1.3%  DD -25.1%  WR    4%  # 56  SQN -12.08
+
+▸ ETH_USDT · book_slope_bid (sign=+)
+  best params: q=95  hold=60m  sl=1.00%  tp=2.25%
+  Sharpe -2138980452.94  Ret  -24.7%  vs BH   -1.3%  DD -24.8%  WR    2%  # 53  SQN -13.57
+
+▸ ETH_USDT · book_slope_ask (sign=-)
+  best params: q=95  hold=60m  sl=1.67%  tp=1.43%
+  Sharpe -6118040711.48  Ret  -25.7%  vs BH   -1.3%  DD -25.7%  WR    2%  # 56  SQN -18.64
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  PROMOTION-GATE ANALYSIS
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  Gate criteria (Phase B candidate must clear ALL):
+    - Net Sharpe ≥ 0.5 after 0.30% fee
+    - # Trades ≥ 30
+    - Max DD ≤ 15%
+    - Beats buy-and-hold
+
+    # pair       feature             Sharpe     Ret%     BH%    DD%   WR%  #tr   pass
+  ------------------------------------------------------------------------------------
+    1 XRP_USDT   depth_imbalance    -190263491.78    -21.0%    -4.2%   21.0%    3%   37       🛑
+    2 XRP_USDT   book_slope_bid     -947513926.15    -24.1%    -4.2%   24.2%    0%   43       🛑
+    3 ETH_USDT   book_slope_bid     -2138980452.94    -24.7%    -1.3%   24.8%    2%   53       🛑
+    4 ETH_USDT   depth_imbalance    -2685130673.46    -24.9%    -1.3%   25.1%    4%   56       🛑
+    5 XRP_USDT   book_slope_ask     -3103239443.33    -24.8%    -4.2%   24.9%    2%   44       🛑
+    6 ETH_USDT   book_slope_ask     -6118040711.48    -25.7%    -1.3%   25.7%    2%   56       🛑
+    7 XRP_USDT   basis_pct          -4805727989221.80    -33.1%    -4.2%   33.1%    0%   59       🛑
+    8 XRP_USDT   ofi_30s            -32273115992468.16    -34.4%    -4.2%   34.5%    2%   66       🛑
+    9 BTC_USDT   depth_imbalance      +nan     +0.0%    -1.9%    0.0%  nan%    0       🛑
+   10 BTC_USDT   book_slope_bid       +nan     +0.0%    -1.9%    0.0%  nan%    0       🛑
+   11 BTC_USDT   book_slope_ask       +nan     +0.0%    -1.9%    0.0%  nan%    0       🛑
+
+  🛑 NO cell passes the promotion gate.
+     This confirms what the 7-filter battery + signal-nature found:
+     single-feature microstructure on Gate.io spot at 30 bps fee is
+     below tradeable economics, regardless of parameter tuning.
+     Phase B will require ensemble OR maker-execution OR on-chain.
+════════════════════════════════════════════════════════════════════════════════════════════════════

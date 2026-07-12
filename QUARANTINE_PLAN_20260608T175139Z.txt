@@ -1,0 +1,119 @@
+=== Quarantine plan (DRY-RUN) 20260608T175139Z ===
+
+## A. Nested duplicate repo folder (safe to quarantine)
+  (none)
+
+## B. Fake / broken Strategy Lab (service is inactive)
+  WOULD MOVE  strategy_lab.py
+  WOULD MOVE  strategy-lab.service
+
+## C. Grade-theater MARKDOWN docs (inert — safe to quarantine)
+  WOULD MOVE  GODMODE_FUTURES_ARCH.md
+  WOULD MOVE  UPGRADE_RESEARCH.md
+  WOULD MOVE  AUDIT_REPORT_GODMODE.md
+  WOULD MOVE  CLAUDE.md
+  WOULD MOVE  governance/MASTER_ARCHITECTURE_v2.0.md
+  WOULD MOVE  governance/refused_proposals/GODMODE_FUTURES_ARCH.md
+  WOULD MOVE  governance/refused_proposals/GODMODE_UPGRADE_MASTERPLAN.md
+  WOULD MOVE  governance/refused_proposals/GODMODE_AUDIT.md
+  WOULD MOVE  governance/LAYER_DISCIPLINE.md
+  WOULD MOVE  GODMODE_UPGRADE_MASTERPLAN.md
+  WOULD MOVE  SNAPSHOT_INFO.md
+  WOULD MOVE  PHASE_B_DECISION_TREE.md
+  WOULD MOVE  CHAMPION_MODE.md
+  WOULD MOVE  audit/2026-05-13/SLIGHT_UNLOCK_ROUND_REPORT.md
+  WOULD MOVE  audit/2026-05-13/ARCHITECTURE_VALIDATION_REPORT.md
+  WOULD MOVE  audit/2026-05-14/DISCIPLINED_UNLOCK_V1_ROUND_REPORT.md
+  WOULD MOVE  audit/2026-05-20-deploy-live-battle/DEPLOY_LIVE_BATTLE_AUDIT.md
+  WOULD MOVE  SecondBrain/DeploymentLogs/README.md
+  WOULD MOVE  SecondBrain/Governance/README.md
+  WOULD MOVE  server-mirror/STATE.md
+  WOULD MOVE  session-notes/2026-05-13-isolation-migration.md
+  WOULD MOVE  session-notes/2026-05-20-3-account-live-active.md
+  WOULD MOVE  session-notes/2026-05-20-multi-account-api-recovery.md
+  WOULD MOVE  session-notes/2026-05-19-multi-account-live-launch.md
+  WOULD MOVE  GODMODE_AUDIT.md
+  WOULD MOVE  L99_OPERATIONS.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Research/Governance/MASTER_ARCHITECTURE_v2.0.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Research/Governance/refused_proposals/GODMODE_FUTURES_ARCH.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Research/Governance/refused_proposals/GODMODE_UPGRADE_MASTERPLAN.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Research/Governance/refused_proposals/GODMODE_AUDIT.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Research/Governance/LAYER_DISCIPLINE.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Research/SecondBrain/DeploymentLogs/README.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Research/SecondBrain/Governance/README.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/rollback.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/decisions/2026-05-14-stage1-micro-arm.TEMPLATE.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/decisions/2026-05-16-stage1-micro-arm.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/decisions/2026-05-03-stage2-transition-spec.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/9-refusals-log.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/CHAMPIONSHIP_RULES.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/GOVERNED_PLATFORM.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/specs/L99_DEPLOYMENT_VALIDATOR.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/specs/L99_SPOT_HYBRID.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/specs/L99_EDGE_RECOVERY.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/specs/L99_HYBRID_PORTFOLIO_GOD_MODE.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Docs/Official/LIVE_BATTLE_MONITORING.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Logs/Session_Notes/2026-05-13-isolation-migration.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Logs/Session_Notes/2026-05-20-3-account-live-active.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Logs/Session_Notes/2026-05-20-multi-account-api-recovery.md
+  WOULD MOVE  second-brain/01_Projects/TradingGuru_Empire/Logs/Session_Notes/2026-05-19-multi-account-live-launch.md
+  WOULD MOVE  AGENTS.md
+  WOULD MOVE  CHANGELOG.md
+  WOULD MOVE  docs/rollback.md
+  WOULD MOVE  docs/decisions/2026-05-14-stage1-micro-arm.TEMPLATE.md
+  WOULD MOVE  docs/decisions/2026-05-16-stage1-micro-arm.md
+  WOULD MOVE  docs/decisions/2026-05-03-stage2-transition-spec.md
+  WOULD MOVE  docs/9-refusals-log.md
+  WOULD MOVE  docs/CHAMPIONSHIP_RULES.md
+  WOULD MOVE  docs/GOVERNED_PLATFORM.md
+  WOULD MOVE  docs/specs/L99_DEPLOYMENT_VALIDATOR.md
+  WOULD MOVE  docs/specs/L99_SPOT_HYBRID.md
+  WOULD MOVE  docs/specs/L99_EDGE_RECOVERY.md
+  WOULD MOVE  docs/specs/L99_HYBRID_PORTFOLIO_GOD_MODE.md
+  WOULD MOVE  docs/LIVE_BATTLE_MONITORING.md
+  WOULD MOVE  CHAMPION.md
+
+## D. Random-scoring CODE (REPORT ONLY — may be imported by running engines)
+   Review each; move manually only after confirming nothing live imports it.
+  REVIEW  mean_reversion.py
+  REVIEW  a2_stablecoin_runner.py
+  REVIEW  gods_level_strategy_logic.py
+  REVIEW  rsi2_validate.py
+  REVIEW  audit_engine.py
+  REVIEW  funding_extended_runner.py
+  REVIEW  ma50w10_validate.py
+  REVIEW  trading_engine.py
+  REVIEW  basis_extended_runner.py
+  REVIEW  c2_4h_runner.py
+  REVIEW  l99_battery.py
+  REVIEW  deep_edge.py
+  REVIEW  c1_btc_dxy_runner.py
+  REVIEW  orderflow_validate.py
+  REVIEW  tournament-ai-bot-/ml/ml_signal.py
+  REVIEW  v1_vwap_gap.py
+  REVIEW  champion/equity_mc_sim.py
+  REVIEW  max_edge.py
+  REVIEW  godmode/replay.py
+  REVIEW  gods_level_engine.py
+  REVIEW  strategy_lab.py
+  REVIEW  market_utils.py
+  REVIEW  trading_guru/core/orchestrator.py
+  REVIEW  trading_guru/agents/llm_agent.py
+  REVIEW  trading_guru/utils/market_utils.py
+  REVIEW  engine.py
+  REVIEW  regime_gated_ma.py
+  REVIEW  one_dollar_sniper.py
+  REVIEW  venv/lib/python3.12/site-packages/websockets/legacy/client.py
+  REVIEW  venv/lib/python3.12/site-packages/websockets/client.py
+  REVIEW  venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/retry.py
+  REVIEW  venv/lib/python3.12/site-packages/pip/_vendor/rich/progress.py
+  REVIEW  venv/lib/python3.12/site-packages/pip/_vendor/rich/live.py
+  REVIEW  trading_engine/engine.py
+  REVIEW  native_factors_runner.py
+  REVIEW  param_sweep.py
+  REVIEW  oi_extended_runner.py
+  REVIEW  walk_forward.py
+
+=== summary: would-move items in A-C; D is report-only ===
+Protected (untouched): live canary bot, API keys, running engines, venvs, data, .git.
+Plan written to: /root/tradingguru-empire/QUARANTINE_PLAN_20260608T175139Z.txt

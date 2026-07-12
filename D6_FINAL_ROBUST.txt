@@ -1,0 +1,82 @@
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  MICROSTRUCTURE ROBUSTNESS CHECK · 7-filter battery
+  (1) stationarity by day  (2) walk-forward stability
+  (3) BH-FDR multi-comparison  (4) block-bootstrap 95% CI
+  (5) vol-adjusted IC same-sign + ≥50% magnitude
+  (6) concurrent-feature independence (|ρ|<0.7)
+  (7) quintile monotonicity (|ρ(rank, fwd_mean)| ≥ 0.85)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  pairs:    AVAX_USDT, BTC_USDT, ETH_USDT, SOL_USDT, XRP_USDT
+  horizons: [60, 120, 300, 600, 1800]
+  features: 11
+  days:     7
+  total tests = 275 = 275 hypotheses
+
+▸ Base hits (|IC|≥0.04 AND |t|≥2.0): 69 of 275 tests
+
+▸ FILTER 1: stationarity by day (sign consistent across ≥6 of 7 days)
+    56 of 69 survive
+
+▸ FILTER 2: walk-forward stability (train 60% → test 40%, same sign + |test_IC|≥0.5×|train_IC|)
+    50 of 56 survive
+
+▸ FILTER 3: Benjamini-Hochberg FDR @ α=0.1
+    246 of 275 tests pass FDR
+
+  TRIPLE-FILTER survivors: 50
+
+▸ FILTER 4: block-bootstrap 95% CI (block=60s · 1000 resamples · CI excludes |IC|=0.04 floor)
+    32 of 50 survive bootstrap CI
+
+▸ FILTER 5: vol-adjusted IC (raw IC robust to per-horizon σ normalization)
+    32 of 32 survive vol-adjustment
+
+▸ FILTER 7: quintile monotonicity (|ρ(rank, fwd_mean)| ≥ 0.85)
+    24 of 32 survive monotonicity gate
+
+▸ FILTER 6: concurrent-feature correlation (warn if any pair has |ρ|>0.7 between two features)
+    ⚠ AVAX_USDT: ρ(depth_imbalance, book_slope_bid) = +0.71
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  TIGHTENED PHASE B VERDICT — seven-filter battery
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  ✅ 24 (pair, feature, horizon) combos cleared ALL SEVEN filters:
+
+     pair       feature                 H      IC   train    test  CI95.lo  CI95.hi   volAdj   mono ρ
+     ------------------------------------------------------------------------------------------------------
+     XRP_USDT   basis_pct             60s +0.272 +0.300 +0.244  +0.257  +0.286  +0.284  +0.997
+     XRP_USDT   basis_pct            120s +0.262 +0.293 +0.229  +0.245  +0.278  +0.279  +0.998
+     XRP_USDT   basis_pct            300s +0.193 +0.236 +0.145  +0.174  +0.211  +0.219  +0.992
+     BTC_USDT   depth_imbalance       60s +0.160 +0.182 +0.136  +0.146  +0.173  +0.172  +0.996
+     XRP_USDT   basis_pct            600s +0.132 +0.169 +0.087  +0.113  +0.150  +0.157  +0.991
+     ETH_USDT   depth_imbalance       60s +0.120 +0.136 +0.102  +0.106  +0.133  +0.131  +0.987
+     XRP_USDT   book_slope_ask        60s +0.108 +0.114 +0.167  +0.088  +0.126  +0.113  +0.914
+     XRP_USDT   book_slope_bid        60s -0.106 -0.117 -0.130  -0.125  -0.088  -0.108  -0.966
+     BTC_USDT   depth_imbalance      120s +0.105 +0.126 +0.082  +0.090  +0.119  +0.113  +0.992
+     XRP_USDT   book_slope_bid       120s -0.102 -0.107 -0.125  -0.128  -0.076  -0.105  -0.988
+     XRP_USDT   depth_imbalance       60s +0.101 +0.109 +0.095  +0.084  +0.118  +0.106  +0.973
+     XRP_USDT   book_slope_ask       120s +0.094 +0.109 +0.146  +0.071  +0.119  +0.102  +0.923
+     XRP_USDT   book_slope_bid       300s -0.092 -0.103 -0.114  -0.123  -0.064  -0.097  -0.950
+     XRP_USDT   book_slope_bid      1800s -0.091 -0.097 -0.122  -0.120  -0.059  -0.104  -0.874
+     BTC_USDT   book_slope_bid        60s +0.087 +0.104 +0.068  +0.072  +0.100  +0.095  +0.916
+     XRP_USDT   depth_imbalance      120s +0.084 +0.095 +0.070  +0.061  +0.105  +0.092  +0.972
+     ETH_USDT   depth_imbalance      120s +0.084 +0.089 +0.080  +0.068  +0.098  +0.090  +0.989
+     BTC_USDT   book_slope_ask        60s -0.082 -0.086 -0.076  -0.094  -0.068  -0.085  -0.988
+     BTC_USDT   funding_rate_8h      600s +0.079 +0.067 +0.097  +0.048  +0.111  +0.071  +0.892
+     XRP_USDT   book_slope_ask       300s +0.075 +0.104 +0.099  +0.047  +0.103  +0.086  +0.955
+     ETH_USDT   book_slope_bid        60s +0.074 +0.080 +0.068  +0.061  +0.088  +0.081  +0.971
+     BTC_USDT   depth_imbalance      300s +0.071 +0.082 +0.059  +0.054  +0.088  +0.074  +0.980
+     ETH_USDT   book_slope_ask        60s -0.062 -0.076 -0.045  -0.076  -0.051  -0.068  -0.983
+     XRP_USDT   ofi_30s               60s +0.059 +0.065 +0.049  +0.045  +0.073  +0.063  +0.981
+
+  Six-filter (feature, horizon) combos hitting ≥2 pairs:
+    • depth_imbalance @ H=60s — 3 pairs: BTC_USDT, ETH_USDT, XRP_USDT
+    • book_slope_ask @ H=60s — 3 pairs: XRP_USDT, BTC_USDT, ETH_USDT
+    • book_slope_bid @ H=60s — 3 pairs: XRP_USDT, BTC_USDT, ETH_USDT
+    • depth_imbalance @ H=120s — 3 pairs: BTC_USDT, XRP_USDT, ETH_USDT
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  Concurrent-feature warning: the following pairs are ρ>0.7-correlated
+  on at least one symbol. Counting them as separate winners is double-counting:
+    book_slope_bid ↔ depth_imbalance

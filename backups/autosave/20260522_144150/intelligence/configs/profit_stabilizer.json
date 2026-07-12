@@ -1,0 +1,71 @@
+{
+  "mode": "PROFIT_STABILIZER",
+
+  "enabled": true,
+
+  "profit_lock_engine": true,
+
+  "lock_profit_after_percent": 1.2,
+
+  "profit_lock_reduction_factor": 0.55,
+
+  "dynamic_aggression_control": true,
+
+  "reduce_aggression_after_profit": true,
+
+  "stability_mode_enabled": true,
+
+  "balance_volatility_protection": true,
+
+  "equity_curve_smoothing": true,
+
+  "adaptive_position_reduction": true,
+
+  "max_balance_fluctuation_percent": 3.5,
+
+  "smart_trade_filtering": true,
+
+  "avoid_sideways_markets": true,
+
+  "minimum_confidence": 88,
+
+  "elite_confidence": 95,
+
+  "high_quality_entries_only": true,
+
+  "fake_breakout_filter": true,
+
+  "trend_strength_required": true,
+
+  "volume_confirmation_required": true,
+
+  "rapid_profit_capture": true,
+
+  "micro_take_profit": true,
+
+  "return_to_usdt_after_profit": true,
+
+  "winner_hold_extension": false,
+
+  "max_open_positions": 3,
+
+  "max_parallel_pairs": 3,
+
+  "smart_kelly_enabled": true,
+
+  "fractional_kelly": 0.42,
+
+  "max_total_exposure_percent": 32,
+
+  "max_single_trade_percent": 8,
+
+  "kill_switch_drawdown_percent": 8,
+
+  "panic_market_block": true,
+
+  "spread_protection": true,
+
+  "black_swan_protection": true,
+
+  "safe_recovery_mode": true
+}
