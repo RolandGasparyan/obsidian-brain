@@ -1,0 +1,837 @@
+{
+  ".obsidian/app.json": {
+    "mtime": 1784137664.9898617,
+    "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
+    "semantic_hash": ""
+  },
+  ".obsidian/appearance.json": {
+    "mtime": 1784137664.9902859,
+    "ast_hash": "86d9f6137e6a7f85b82e26b03cbcde9d",
+    "semantic_hash": ""
+  },
+  ".obsidian/backlink.json": {
+    "mtime": 1780495779.648999,
+    "ast_hash": "d0ae81046be67c624aee7a07f072c6b0",
+    "semantic_hash": ""
+  },
+  ".obsidian/core-plugins.json": {
+    "mtime": 1784137664.6434462,
+    "ast_hash": "7c877bea49eaeabb100563bd157b9051",
+    "semantic_hash": ""
+  },
+  ".obsidian/graph.json": {
+    "mtime": 1784139549.372999,
+    "ast_hash": "bddd7efdbef957b7cfaab47f6e0af9ca",
+    "semantic_hash": ""
+  },
+  ".obsidian/hotkeys.json": {
+    "mtime": 1780150621.0,
+    "ast_hash": "cd79a2ea80afc133950ac1223e5d4193",
+    "semantic_hash": ""
+  },
+  ".obsidian/switcher.json": {
+    "mtime": 1780699087.786,
+    "ast_hash": "1c5b7aae94c9bf896e50b298ad95b4ed",
+    "semantic_hash": ""
+  },
+  ".obsidian/workspace.json": {
+    "mtime": 1784139679.3821235,
+    "ast_hash": "6ee6ec7e026c459cabce240843448889",
+    "semantic_hash": ""
+  },
+  "00_Home.md": {
+    "mtime": 1780930057.591,
+    "ast_hash": "5da8290579dcc210441aceb07dc84ad1",
+    "semantic_hash": ""
+  },
+  "00_Meta/EMPIRE_STATE.md": {
+    "mtime": 1781386830.069999,
+    "ast_hash": "ee59f539c132078f31d2477ba30b9174",
+    "semantic_hash": ""
+  },
+  "00_Meta/EMPIRE_TRUTH.md": {
+    "mtime": 1781387106.144999,
+    "ast_hash": "41cadf7e8b720a0d0a4e61fc60d08594",
+    "semantic_hash": ""
+  },
+  "00_Meta/FOUNDER_OS.md": {
+    "mtime": 1781386830.075,
+    "ast_hash": "adfbceb810977e91914bb2b65db7a09c",
+    "semantic_hash": ""
+  },
+  "00_Meta/Forensic_Live_Audit_2026-06-17.md": {
+    "mtime": 1781685971.552,
+    "ast_hash": "853cde2845d6ab88e2e7a5d92b91e836",
+    "semantic_hash": ""
+  },
+  "00_Meta/KNOWLEDGE_AUDIT.md": {
+    "mtime": 1781387857.944999,
+    "ast_hash": "7fca4d74e04040497bda70c59e1d2c2f",
+    "semantic_hash": ""
+  },
+  "00_Meta/SYSTEM_AUTHORITY.md": {
+    "mtime": 1781387405.95,
+    "ast_hash": "d9d80df41aa1f09177bd0595527a72ac",
+    "semantic_hash": ""
+  },
+  "00_Meta/Vault_Map.md": {
+    "mtime": 1780930057.591,
+    "ast_hash": "09e5f977eef72a418580a899d4ee9a20",
+    "semantic_hash": ""
+  },
+  "01_Projects/2026-07-12.md": {
+    "mtime": 1783808747.296,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "01_Projects/REINCARNATION_SMM/README.md": {
+    "mtime": 1783358006.201999,
+    "ast_hash": "a695fcb6c9eb2d1d4c439820902e6d7a",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/Council_Runner_Automation.md": {
+    "mtime": 1780930057.589999,
+    "ast_hash": "b6c9bf66beaea200009dd2a22e98ab98",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/Councils_28.md": {
+    "mtime": 1783356587.0,
+    "ast_hash": "545d18764bc5b613ac1c086296120f7b",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/Free_APIs_Reference.md": {
+    "mtime": 1780930057.589999,
+    "ast_hash": "bbb99a9f41fac4d1f075d306de4dfde8",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/Kronos_Forecasting.md": {
+    "mtime": 1780931729.714999,
+    "ast_hash": "014c25b3c09ccc779e178c230272fa39",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/OpenAlice_Paper.md": {
+    "mtime": 1780930823.450999,
+    "ast_hash": "a953fa2dd89773e74aa574529d4c42dd",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/OpenBB_Research.md": {
+    "mtime": 1783356012.0,
+    "ast_hash": "ed42baaa3d900f0849e8b3db821066a9",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/Project_Work_Queue.md": {
+    "mtime": 1783356071.0,
+    "ast_hash": "7bb29a9a012f2d173531df39c89ff9ed",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/Strategy_Lab_Leaderboard.md": {
+    "mtime": 1780948662.934,
+    "ast_hash": "306fd23cafe76760c15392d2709dbdd3",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/Trading_Guru_Empire_MOC.md": {
+    "mtime": 1783355637.0,
+    "ast_hash": "d92a0e7f814cdb85d733aecc1d0b9755",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/War_Room_and_The_Delegation.md": {
+    "mtime": 1783356012.0,
+    "ast_hash": "7d6a1bd0a93a599f1cafe32a778e0a23",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/_synced/Arena_Live_Status.md": {
+    "mtime": 1783084552.858,
+    "ast_hash": "0a8fc4810d5e630f82d5e52924946027",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/_synced/CouncilRunner_README.md": {
+    "mtime": 1783356034.0,
+    "ast_hash": "be14ea6573d4b1248635b9cad2b3f3cd",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/_synced/Latest_Council_Briefing.md": {
+    "mtime": 1783356759.0,
+    "ast_hash": "777226645518ee3dbc6ee0a3c3d3bc02",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/_synced/TheDelegation_README.md": {
+    "mtime": 1780930361.936,
+    "ast_hash": "6bd1cd497b74a70c7ec522ca096d9636",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/_synced/WarRoom_README.md": {
+    "mtime": 1780930361.931999,
+    "ast_hash": "4929ebbe288b7c80a0fe141f0a2d905d",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Guru_Empire/_synced/_STATUS.md": {
+    "mtime": 1783356759.0,
+    "ast_hash": "df8b6b285aa722583fc0aca7f8ea8b9f",
+    "semantic_hash": ""
+  },
+  "01_Projects/hudda.md": {
+    "mtime": 1783807497.803999,
+    "ast_hash": "08bec6df8b76fcb0573e68a055129aa3",
+    "semantic_hash": ""
+  },
+  "02_Areas/AI_Models/Agent_Roles_Leaderboard.md": {
+    "mtime": 1780150496.0,
+    "ast_hash": "f7a9ca3bba4c60c5d1c37c86f8634e7f",
+    "semantic_hash": ""
+  },
+  "02_Areas/Infrastructure/Infrastructure_Overview.md": {
+    "mtime": 1780150593.0,
+    "ast_hash": "8f08fcfcce2e8ca29af06e8dd9c3878e",
+    "semantic_hash": ""
+  },
+  "02_Areas/Trading_Strategies/MA50W10_Strategy.md": {
+    "mtime": 1780150482.0,
+    "ast_hash": "f1ed6c1bbe070e49fdc579d137355c67",
+    "semantic_hash": ""
+  },
+  "02_Areas/Trading_Strategies/RSI2_Champion_Cell.md": {
+    "mtime": 1780150541.0,
+    "ast_hash": "70c112a3158945bf030b81504cc9aab5",
+    "semantic_hash": ""
+  },
+  "03_Resources/Backtests/GODSMODE_Research_Results.md": {
+    "mtime": 1780150554.0,
+    "ast_hash": "67555ab83de0e17b19b5a5fa1cd0ff54",
+    "semantic_hash": ""
+  },
+  "03_Resources/Backtests/MA50W10_Backtest_Evidence.md": {
+    "mtime": 1780150679.0,
+    "ast_hash": "7040afd9b0c9897f716db9aec8897011",
+    "semantic_hash": ""
+  },
+  "03_Resources/External_Links/Key_Resources.md": {
+    "mtime": 1780150689.0,
+    "ast_hash": "df05cffaabc0f85ca4b2148c502a1e66",
+    "semantic_hash": ""
+  },
+  "6-EMPIRE/6 EMPIRES OS \u2014 Project State.md": {
+    "mtime": 1781908051.904999,
+    "ast_hash": "e4f5de8a560310ed440d3b0030ea9b65",
+    "semantic_hash": ""
+  },
+  "6-EMPIRE/L99 FINAL AUDIT.md": {
+    "mtime": 1782069964.734999,
+    "ast_hash": "3aaa040f7646b91dbcfe47fd347793d1",
+    "semantic_hash": ""
+  },
+  "99_Templates/Daily_Note_Template.md": {
+    "mtime": 1780150444.0,
+    "ast_hash": "dcb438d1fa0d4e3d1148e061b3cbd106",
+    "semantic_hash": ""
+  },
+  "99_Templates/Project_Note_Template.md": {
+    "mtime": 1780150447.0,
+    "ast_hash": "d1c76e5842cfa4ec398f98f3ff230c93",
+    "semantic_hash": ""
+  },
+  "99_Templates/Trading_Strategy_Template.md": {
+    "mtime": 1780150451.0,
+    "ast_hash": "89638fb2ef350367a054bc83f4110661",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1781116852.411999,
+    "ast_hash": "bb7e09d52d188fc321eff9eb63f305e0",
+    "semantic_hash": ""
+  },
+  "AUDIT_REPORT_GODMODE.md": {
+    "mtime": 1781116852.411999,
+    "ast_hash": "3b4fe13a1d3f4ceb9c54cef92a48d33f",
+    "semantic_hash": ""
+  },
+  "B1_RESEARCH.md": {
+    "mtime": 1781116852.413,
+    "ast_hash": "39ce93e447138220cc970e3b92abfea7",
+    "semantic_hash": ""
+  },
+  "BACKUP_PROFITABLE_500_TO_700.md": {
+    "mtime": 1781116852.413,
+    "ast_hash": "05152a3afb518d3c73ec660b38e10615",
+    "semantic_hash": ""
+  },
+  "BACKUP_PROFITABLE_SETUP_JAN27.md": {
+    "mtime": 1781116852.413,
+    "ast_hash": "3a6788af2a30c1a94e9c13b4e0bfcccf",
+    "semantic_hash": ""
+  },
+  "CHAMPION.md": {
+    "mtime": 1781116852.414,
+    "ast_hash": "59fe307dac82fbff9f3c639d3b347675",
+    "semantic_hash": ""
+  },
+  "CHAMPION_MODE.md": {
+    "mtime": 1781116852.414,
+    "ast_hash": "d14a600cac9e147887a29dd73c03edd7",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1781116852.414,
+    "ast_hash": "2004790cea06516edf673d95d5f43caa",
+    "semantic_hash": ""
+  },
+  "DEEP_EDGE_RESULTS.md": {
+    "mtime": 1781116852.417,
+    "ast_hash": "bc61b8d6f3822e48bf59e8b669d9adf7",
+    "semantic_hash": ""
+  },
+  "FINAL_VERIFICATION_3ACCOUNT_LIVE.md": {
+    "mtime": 1781116852.417999,
+    "ast_hash": "8e30839840c4aa1592f8ec033b73ebd9",
+    "semantic_hash": ""
+  },
+  "GODMODE_AUDIT.md": {
+    "mtime": 1781116852.417999,
+    "ast_hash": "428269159ccaa873cd78c43ca112808a",
+    "semantic_hash": ""
+  },
+  "GODMODE_FUTURES_ARCH.md": {
+    "mtime": 1781116852.417999,
+    "ast_hash": "c1158029faeb907e59ac2685bda39099",
+    "semantic_hash": ""
+  },
+  "GODMODE_UPGRADE_MASTERPLAN.md": {
+    "mtime": 1781116852.418999,
+    "ast_hash": "b2eb14e2a900f53772e0dad8bb07b7a8",
+    "semantic_hash": ""
+  },
+  "GODSMODE_RESULTS.md": {
+    "mtime": 1781116852.418999,
+    "ast_hash": "e014ad912e05b2d30b0c215a3f09d3b1",
+    "semantic_hash": ""
+  },
+  "God of Gods Level Trading Crypto Prompt.md": {
+    "mtime": 1781116852.42,
+    "ast_hash": "e6db8cdbadb8c220a02defd04d8593fd",
+    "semantic_hash": ""
+  },
+  "L99_OPERATIONS.md": {
+    "mtime": 1781116852.42,
+    "ast_hash": "6b2ad138a971951b709aa293e76b0899",
+    "semantic_hash": ""
+  },
+  "MR_ENSEMBLE_RESULTS.md": {
+    "mtime": 1781116852.421,
+    "ast_hash": "44edf071449770e87b327f6fe4e73980",
+    "semantic_hash": ""
+  },
+  "MULTI_TOKEN_RESULTS.md": {
+    "mtime": 1781116852.421,
+    "ast_hash": "712349a25f62f9ec86ad49f7b8e2e821",
+    "semantic_hash": ""
+  },
+  "OFI_FINAL_VERDICT.md": {
+    "mtime": 1781116852.421999,
+    "ast_hash": "d2a32b85b3a9f5c74c2b030925ee9abd",
+    "semantic_hash": ""
+  },
+  "PARAM_SWEEP_RESULTS.md": {
+    "mtime": 1781116852.421999,
+    "ast_hash": "f343ab2b1469de1c3be3b940bd060110",
+    "semantic_hash": ""
+  },
+  "PHASE_B_DECISION_TREE.md": {
+    "mtime": 1781116852.421999,
+    "ast_hash": "b72ecb091d6d3fd18f76594dbd8b0522",
+    "semantic_hash": ""
+  },
+  "PROFESSIONAL_BACKTEST_RESULTS.md": {
+    "mtime": 1781116852.423,
+    "ast_hash": "45682ceb5cbf2afd8099a81af2b157a8",
+    "semantic_hash": ""
+  },
+  "REGIME_GATE_RESULTS.md": {
+    "mtime": 1781116852.424999,
+    "ast_hash": "2f5901c08fd86a6e44f68e78d4b5ef14",
+    "semantic_hash": ""
+  },
+  "SNAPSHOT_INFO.md": {
+    "mtime": 1781116852.426,
+    "ast_hash": "22807ba4ac94f63bc3c9b35ed1509e1b",
+    "semantic_hash": ""
+  },
+  "STAGE1_CHECKLIST.md": {
+    "mtime": 1781116852.427,
+    "ast_hash": "7931c7eed9fd502191cbff6c0cad58d5",
+    "semantic_hash": ""
+  },
+  "STAGE1_RUNBOOK.md": {
+    "mtime": 1781116852.427,
+    "ast_hash": "69e53772041535ef21cb801cdc4f88da",
+    "semantic_hash": ""
+  },
+  "SYNC_STATUS.md": {
+    "mtime": 1783892956.5999515,
+    "ast_hash": "d979cb18f6b3b3e783d4adfbd3439e41",
+    "semantic_hash": ""
+  },
+  "TESTING_ENGINE.md": {
+    "mtime": 1781116852.431999,
+    "ast_hash": "2606ef5b5ae92845c06ab91e67c7f0bc",
+    "semantic_hash": ""
+  },
+  "Three-Project Verification and Render Release Runbook - 2026-07-13.md": {
+    "mtime": 1783966389.269999,
+    "ast_hash": "c0991e0786ccb463f75ec00cbca491b5",
+    "semantic_hash": ""
+  },
+  "UPGRADE_RESEARCH.md": {
+    "mtime": 1781116852.433,
+    "ast_hash": "263317f46e132a2385365729d432e943",
+    "semantic_hash": ""
+  },
+  "Untitled.md": {
+    "mtime": 1783963057.107,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "WALK_FORWARD_RESULTS.md": {
+    "mtime": 1781116852.433,
+    "ast_hash": "df5c8e5d106620783446c76305cea39c",
+    "semantic_hash": ""
+  },
+  "_CLAUDE.md": {
+    "mtime": 1781683395.269,
+    "ast_hash": "c5cac0eaaa01465857c47fe50140cc03",
+    "semantic_hash": ""
+  },
+  "algorithmic-art/harmonic-pursuit.md": {
+    "mtime": 1781116852.443,
+    "ast_hash": "2423f7f9fd6d951e13b880981b3018a2",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/ARCHITECTURE_VALIDATION_REPORT.md": {
+    "mtime": 1781116852.444,
+    "ast_hash": "213d78021fdbfd122f017dc781651aeb",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/DATA_SANITIZATION_LOG.md": {
+    "mtime": 1781116852.444,
+    "ast_hash": "727ad32eea62d57859c3ab4032770a4e",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/DEPLOYMENT_READY_CHECKLIST.md": {
+    "mtime": 1781116852.444,
+    "ast_hash": "384a4c75dc91ae16ff45fe133900844e",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/DESIGN_NORMALIZATION_LOG.md": {
+    "mtime": 1781116852.444,
+    "ast_hash": "8aff7dd10254098e29800b6907dec07c",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/OBSIDIAN_EXPORT_READY.md": {
+    "mtime": 1781116852.444999,
+    "ast_hash": "c6b6ad6a2868079390cd123a24fa40e9",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/RELEASE_NOTES_v1.1.md": {
+    "mtime": 1781116852.444999,
+    "ast_hash": "454e6e8354e6bc08e488a7432001cf4b",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/SLIGHT_UNLOCK_ROUND_REPORT.md": {
+    "mtime": 1781116852.444999,
+    "ast_hash": "89234c5f9560a1dda400c3d1cf6b65de",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-13/STRUCTURAL_AUDIT_REPORT.md": {
+    "mtime": 1781116852.444999,
+    "ast_hash": "3404545264995909ba000ddac9c57fa9",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-14/DISCIPLINED_UNLOCK_V1_ROUND_REPORT.md": {
+    "mtime": 1781116852.444999,
+    "ast_hash": "5a6d68d0b1fa1523a6d092362e718f3f",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-20-deploy-live-battle/DEPLOY_LIVE_BATTLE_AUDIT.md": {
+    "mtime": 1781116852.446,
+    "ast_hash": "6474c354399006b987e74c9cb7c0aac0",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-20-deploy-live-battle/ROLLBACK_VALIDATION.md": {
+    "mtime": 1781116852.446,
+    "ast_hash": "08797b67953fad8e2b4f714cd8e1ef9d",
+    "semantic_hash": ""
+  },
+  "audit/2026-05-20-deploy-live-battle/SAFE_DEPLOY_CHECKLIST.md": {
+    "mtime": 1781116852.446,
+    "ast_hash": "2351b6abc35744cf5b60973d6295c226",
+    "semantic_hash": ""
+  },
+  "backups/PROFITABLE_SETUP_20260126_165918/TODAY_CONFIG.md": {
+    "mtime": 1781116852.448999,
+    "ast_hash": "5edec145b59b30f743ab9e3c22cc8287",
+    "semantic_hash": ""
+  },
+  "backups/full_backup_20260126_165500/CONFIG_SUMMARY.md": {
+    "mtime": 1781116852.47,
+    "ast_hash": "38178688ceca8c49e8e1383e164cb31a",
+    "semantic_hash": ""
+  },
+  "blueprint_roadmap.md": {
+    "mtime": 1781116852.482,
+    "ast_hash": "a094c464057ead54ce5ccfa529898228",
+    "semantic_hash": ""
+  },
+  "bot/DISABLED.md": {
+    "mtime": 1781116852.486,
+    "ast_hash": "dc1f7962fa73041845bc01b4cdfbdc7f",
+    "semantic_hash": ""
+  },
+  "canary/ARMING_CHECKLIST.md": {
+    "mtime": 1781116852.5,
+    "ast_hash": "06ea6773e5439645b851729128d895dc",
+    "semantic_hash": ""
+  },
+  "canary/DEPLOY.md": {
+    "mtime": 1781116852.5,
+    "ast_hash": "5da600a221c02263f5cdf12a2bfc9b37",
+    "semantic_hash": ""
+  },
+  "canary/ROLLBACK.md": {
+    "mtime": 1781116852.5,
+    "ast_hash": "a3281a2c920baa783669e31619a35991",
+    "semantic_hash": ""
+  },
+  "design/tradingguru-ai-corrected/ONE_PASTE_MAC.md": {
+    "mtime": 1781116852.538,
+    "ast_hash": "9dc3cbba2273d661e15ba6f72c26115e",
+    "semantic_hash": ""
+  },
+  "design/tradingguru-ai-corrected/README.md": {
+    "mtime": 1781116852.538,
+    "ast_hash": "9af278b8de4f65ef673a42d3549b098d",
+    "semantic_hash": ""
+  },
+  "design/tradingguru-ai-corrected/SWITCHOVER_PLAN.md": {
+    "mtime": 1781116852.538,
+    "ast_hash": "35be2f7e06e48f1c8fa937c480503ba3",
+    "semantic_hash": ""
+  },
+  "design/tradingguru-ai-corrected/full-site/DEPLOY.md": {
+    "mtime": 1781116852.539,
+    "ast_hash": "08cfc7347ddb11f60c026d68d967f26f",
+    "semantic_hash": ""
+  },
+  "docs/9-refusals-log.md": {
+    "mtime": 1781116852.542999,
+    "ast_hash": "82007a666ae45863e2b133dd6fddcd40",
+    "semantic_hash": ""
+  },
+  "docs/ADR-001-stack-continuation-vs-pivot.md": {
+    "mtime": 1781116852.542999,
+    "ast_hash": "b5122ad2ea65a2c6081e1fd13a552b8e",
+    "semantic_hash": ""
+  },
+  "docs/ADR-002-phase-b-direction.md": {
+    "mtime": 1781116852.542999,
+    "ast_hash": "27bb093c9cc0efb2f41fda13db7a6d5c",
+    "semantic_hash": ""
+  },
+  "docs/ADR-003-week-plan.md": {
+    "mtime": 1781116852.542999,
+    "ast_hash": "cc9c04ee262f95c1ca0a5af9ff92765b",
+    "semantic_hash": ""
+  },
+  "docs/BACKTESTING_RESULTS.md": {
+    "mtime": 1781116852.543999,
+    "ast_hash": "75fb72766d0e2ef1e611c9a15aedcd74",
+    "semantic_hash": ""
+  },
+  "docs/CHAMPIONSHIP_RULES.md": {
+    "mtime": 1781116852.543999,
+    "ast_hash": "335d922fe016dca92b92cdfc51fa9d45",
+    "semantic_hash": ""
+  },
+  "docs/DEPLOY_GUIDE.md": {
+    "mtime": 1781116852.543999,
+    "ast_hash": "31678ecad520e8feb04e2c43198ff55b",
+    "semantic_hash": ""
+  },
+  "docs/GOVERNANCE_ACTIVATION_PROTOCOL.md": {
+    "mtime": 1781116852.543999,
+    "ast_hash": "8b3713c0e0812bee6e700f9853d3ec5a",
+    "semantic_hash": ""
+  },
+  "docs/GOVERNED_PLATFORM.md": {
+    "mtime": 1781116852.543999,
+    "ast_hash": "32b2c0ba284c9c2299e01756956c643a",
+    "semantic_hash": ""
+  },
+  "docs/LIVE_BATTLE_MONITORING.md": {
+    "mtime": 1781116852.545,
+    "ast_hash": "8b2b2d66c362a6450cf3eb5f89603867",
+    "semantic_hash": ""
+  },
+  "docs/MA_STRATEGY.md": {
+    "mtime": 1781116852.545,
+    "ast_hash": "f53aa41ae512b68e1044682f4fd58da8",
+    "semantic_hash": ""
+  },
+  "docs/STRESS_TEST_RESULTS.md": {
+    "mtime": 1781116852.545,
+    "ast_hash": "f39384ab6cb070946074060868cde449",
+    "semantic_hash": ""
+  },
+  "docs/TESTNET_PROTOCOL.md": {
+    "mtime": 1781116852.546,
+    "ast_hash": "5a89df503d5ebe76b365aa9f29d09786",
+    "semantic_hash": ""
+  },
+  "docs/crypto_trading_encyclopedia.md": {
+    "mtime": 1781116852.546,
+    "ast_hash": "1cb246b6211393acc4e82d8ab0434b8f",
+    "semantic_hash": ""
+  },
+  "docs/crypto_trading_strategies_library.md": {
+    "mtime": 1781116852.546,
+    "ast_hash": "a27dcce3ae19a9ff954cdb89e02f8928",
+    "semantic_hash": ""
+  },
+  "docs/rollback.md": {
+    "mtime": 1781116852.552999,
+    "ast_hash": "c71e33e3d9f31b5482de7619955694ff",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_ALPHA_VALIDATION.md": {
+    "mtime": 1781116852.553999,
+    "ast_hash": "30bcf1fba27b76de4b5463bb01e7b3b1",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_ALPHA_VALIDATION_AMENDMENTS.md": {
+    "mtime": 1781116852.553999,
+    "ast_hash": "5c708eb90f842c715e1ec1b74555c6eb",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_CAPITAL_MATHEMATICS.md": {
+    "mtime": 1781116852.553999,
+    "ast_hash": "8f5b59821f8c002d39c4bc0ce50ca83d",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_COMPOUNDING_VELOCITY.md": {
+    "mtime": 1781116852.555,
+    "ast_hash": "1422b1a791b3700cff02cd7eff2c212a",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_DEPLOYMENT_VALIDATOR.md": {
+    "mtime": 1781116852.555,
+    "ast_hash": "2be6f2c3e20e54fc67da54efe8c317ff",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_EDGE_RECOVERY.md": {
+    "mtime": 1781116852.555,
+    "ast_hash": "7cfb45c5fdb20c99d7ea87c690f4e0cb",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_HYBRID_PORTFOLIO_GOD_MODE.md": {
+    "mtime": 1781116852.555,
+    "ast_hash": "b4237ee4cac774d8c34af86b2fd34975",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_REGIME_PROBABILITY.md": {
+    "mtime": 1781116852.555,
+    "ast_hash": "58053a3a7537853d81db46d2267b4372",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_RESEARCH_ROADMAP.md": {
+    "mtime": 1781116852.555999,
+    "ast_hash": "5753681023842c3d78b178542dffa633",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_SPOT_HYBRID.md": {
+    "mtime": 1781116852.555999,
+    "ast_hash": "0dde2c71acdaaad3160083797c0197d6",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_SYSTEM_AUDIT.md": {
+    "mtime": 1781116852.555999,
+    "ast_hash": "443b93d324f992632f8561adf031d449",
+    "semantic_hash": ""
+  },
+  "docs/specs/L99_ULTRA_AGGRESSIVE_ALPHA_BLUEPRINT.md": {
+    "mtime": 1781116852.555999,
+    "ast_hash": "1e712fe5ecdbb10087d2a37deddc6b94",
+    "semantic_hash": ""
+  },
+  "docs/specs/NULL_REGISTRY.md": {
+    "mtime": 1781116852.555999,
+    "ast_hash": "a9cadda8e4ee06beed210d7bb2da9bbc",
+    "semantic_hash": ""
+  },
+  "docs/specs/RESEARCH_ARC_COMPLETE.md": {
+    "mtime": 1781116852.556999,
+    "ast_hash": "97e9dc8eb4f241ced97fc73a43a9bd1a",
+    "semantic_hash": ""
+  },
+  "docs/testing-engine/IMPLEMENTATION_GUIDE.md": {
+    "mtime": 1781116852.556999,
+    "ast_hash": "3c8768fbed5198558b2c95aa6f32b5f6",
+    "semantic_hash": ""
+  },
+  "docs/testing-engine/TECH_SPEC.md": {
+    "mtime": 1781116852.558,
+    "ast_hash": "559ee2be702cf47721ab3f31dc353c84",
+    "semantic_hash": ""
+  },
+  "docs/testing-engine/TESTING_PROTOCOL.md": {
+    "mtime": 1781116852.558,
+    "ast_hash": "1a6e39c896d1f770b7e7700d47edf6d1",
+    "semantic_hash": ""
+  },
+  "docs/testing-engine/VERIFICATION_CHECKLIST.md": {
+    "mtime": 1781116852.559,
+    "ast_hash": "cbd61ad7e795984ac85d6079a8ee604b",
+    "semantic_hash": ""
+  },
+  "docs/vision/README.md": {
+    "mtime": 1781116852.562999,
+    "ast_hash": "48ff53e38c6f5f51fddf38abcf86d3bf",
+    "semantic_hash": ""
+  },
+  "frontend-pointers/README.md": {
+    "mtime": 1781116852.565,
+    "ast_hash": "2ca6513d100da47fb023d03d1f1eac60",
+    "semantic_hash": ""
+  },
+  "intelligence/reports/acie_report.md": {
+    "mtime": 1781116852.608,
+    "ast_hash": "b9706a44870a566781027f80a108d8b5",
+    "semantic_hash": ""
+  },
+  "intelligence/reports/alpha_memory_report.md": {
+    "mtime": 1781116852.608999,
+    "ast_hash": "f78fca418741040e58916a765587dee6",
+    "semantic_hash": ""
+  },
+  "intelligence/reports/confidence_report.md": {
+    "mtime": 1781116852.608999,
+    "ast_hash": "a88d6cb60a77b99c1c7a47966b3479da",
+    "semantic_hash": ""
+  },
+  "intelligence/reports/fib_report.md": {
+    "mtime": 1781116852.608999,
+    "ast_hash": "69db9cf66b4350584a7c4f659b657599",
+    "semantic_hash": ""
+  },
+  "intelligence/reports/regime_report.md": {
+    "mtime": 1781116852.608999,
+    "ast_hash": "9a6e603c4b22215a2963d903b5e66a0b",
+    "semantic_hash": ""
+  },
+  "intelligence/reports/triple_engine_report.md": {
+    "mtime": 1781116852.608999,
+    "ast_hash": "55b9ef82cba403ff753f99746806edd2",
+    "semantic_hash": ""
+  },
+  "ops/README.md": {
+    "mtime": 1781116852.621,
+    "ast_hash": "4d27364e5bdb70a31c19087b1059c55f",
+    "semantic_hash": ""
+  },
+  "production_engine/README.md": {
+    "mtime": 1781116852.628,
+    "ast_hash": "1467dff83ac5c5651d6a155520cef527",
+    "semantic_hash": ""
+  },
+  "replit.md": {
+    "mtime": 1781116852.653,
+    "ast_hash": "c253fc477c4bde41ef1e839f73b093ed",
+    "semantic_hash": ""
+  },
+  "server-mirror/STATE.md": {
+    "mtime": 1781116852.698999,
+    "ast_hash": "1ef382d7438c88e033c94f81e4e7f731",
+    "semantic_hash": ""
+  },
+  "session-notes/2026-07-07-sync-working-process.md": {
+    "mtime": 1783413391.484999,
+    "ast_hash": "38cb2ea282518b1b782e65aef9be516a",
+    "semantic_hash": ""
+  },
+  "skills/system-verification-docs/SKILL.md": {
+    "mtime": 1781116852.707999,
+    "ast_hash": "7cbf3a8b2c1f5981929d54d719e708b9",
+    "semantic_hash": ""
+  },
+  "skills/system-verification-docs/templates/implementation_guide_template.md": {
+    "mtime": 1781116852.707999,
+    "ast_hash": "5e9cb58a4beb38d6bd1c9611057dd23a",
+    "semantic_hash": ""
+  },
+  "skills/system-verification-docs/templates/tech_spec_template.md": {
+    "mtime": 1781116852.707999,
+    "ast_hash": "c2c4ec6f32ac7400b53207a5ddf35034",
+    "semantic_hash": ""
+  },
+  "strategies/order_flow_imbalance/README.md": {
+    "mtime": 1781116852.720999,
+    "ast_hash": "424200156dd4db497e5d1854fcf4e8f6",
+    "semantic_hash": ""
+  },
+  "strategy_lab_real/results/FORWARD_TEST.md": {
+    "mtime": 1781116852.736999,
+    "ast_hash": "25a614d5b3ba07a81bfddd9dd07da1be",
+    "semantic_hash": ""
+  },
+  "strategy_lab_real/results/LEADERBOARD.md": {
+    "mtime": 1781116852.736999,
+    "ast_hash": "023d23b73b10469c12c138bb9a2c17c0",
+    "semantic_hash": ""
+  },
+  "strategy_lab_real/results/LIVE_ELIGIBILITY.md": {
+    "mtime": 1781116852.736999,
+    "ast_hash": "c37982e50d045b2467ba1279c49cf409",
+    "semantic_hash": ""
+  },
+  "strategy_lab_real/results/PAPER_SHADOW.md": {
+    "mtime": 1781116852.737999,
+    "ast_hash": "7e0d16658c6837cdb4b61376637de3c5",
+    "semantic_hash": ""
+  },
+  "strategy_lab_real/results/latest_alert.md": {
+    "mtime": 1781116852.737999,
+    "ast_hash": "9df79d2286ae2407cfed946bf62f3071",
+    "semantic_hash": ""
+  },
+  "tournament-ai-bot-/README.md": {
+    "mtime": 1781116852.753999,
+    "ast_hash": "73a7db40b5f7f80a9e343142d128358c",
+    "semantic_hash": ""
+  },
+  "tournament-ai-bot-/tournament/INTEGRATION.md": {
+    "mtime": 1781116852.759999,
+    "ast_hash": "92d757e00a0cad82dbba409ed689d774",
+    "semantic_hash": ""
+  },
+  "www.altrady.com_crypto-trading_smart-money-concept_what-are-smart-money-concepts.md": {
+    "mtime": 1781116852.783999,
+    "ast_hash": "105fbbc9b7610950d6fc6fb76d4a3702",
+    "semantic_hash": ""
+  },
+  "client/public/favicon.png": {
+    "mtime": 1781116852.520999,
+    "ast_hash": "ed6740d90cd839744d48523d4991a6f7",
+    "semantic_hash": ""
+  },
+  "docs/testing-engine/arena_diagram.png": {
+    "mtime": 1781116852.562,
+    "ast_hash": "c2a0ec57381a834b5a6fdf763eb4d8dd",
+    "semantic_hash": ""
+  },
+  "public/audio/party-loop.mp3": {
+    "mtime": 1781116852.644,
+    "ast_hash": "6831161e840ac586eb314f321fd1d9da",
+    "semantic_hash": ""
+  },
+  "public/audio/ufo-landing.mp3": {
+    "mtime": 1781116852.645999,
+    "ast_hash": "ce89b948c73f27768800ef771b727dcd",
+    "semantic_hash": ""
+  }
+}

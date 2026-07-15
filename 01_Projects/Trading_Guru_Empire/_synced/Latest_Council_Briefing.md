@@ -1,30 +1,14 @@
-# Council briefings — 2026-06-08T14:31:57.128Z
-Context: A new shadow-championship trading round is starting.
-Mode: DRY-RUN (no spend) · cap $1/day · spent today $0.0000
+# Latest Council Briefing
 
-## Intelligence Council — Chief Intelligence Officer
-_[DRY-RUN] prompt built, no API call made._
+Mirror snapshot of the most recent council-runner output.
 
-```
-Battle context: A new shadow-championship trading round is starting.
+- Source briefing: `council_runner/briefings/briefing-2026-07-06T16-42-28-915Z.md`
+- Signal bridge: `council_runner/briefings/latest_signal.txt`
+- Mode: `DRY-RUN` for the briefing pass, then live-style signal generation from OpenBB + Kronos
+- Status: clean dry-run path, no spend, no trades
 
-Produce a concise pre-round briefing from your council's mandate. Be specific and actionable, bullet points, under 250 words. End with one line: "TOP RISK:" and one line: "EDGE:".
-```
+## What this run confirms
 
-## Risk Council — Risk Governor
-_[DRY-RUN] prompt built, no API call made._
-
-```
-Battle context: A new shadow-championship trading round is starting.
-
-Produce a concise pre-round briefing from your council's mandate. Be specific and actionable, bullet points, under 250 words. End with one line: "TOP RISK:" and one line: "EDGE:".
-```
-
-## Strategy Council — Chief Strategist
-_[DRY-RUN] prompt built, no API call made._
-
-```
-Battle context: A new shadow-championship trading round is starting.
-
-Produce a concise pre-round briefing from your council's mandate. Be specific and actionable, bullet points, under 250 words. End with one line: "TOP RISK:" and one line: "EDGE:".
-```
+- Watcher trigger fires on battle-start PID changes.
+- Council runner writes fresh briefings in dry-run mode.
+- OpenBB → Kronos signal bridge writes `latest_signal.txt` and per-symbol signal notes.

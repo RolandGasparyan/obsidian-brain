@@ -1,9 +1,0 @@
-# Copy to .tg_env (same folder) and fill with YOUR values. Never commit it.
-# The lab loop sources this before signal_alert.py — no token lives in code.
-#
-# 1) In Telegram, message @BotFather -> /newbot -> copy the TOKEN.
-# 2) Message your new bot once (say "hi"), then open:
-#       https://api.telegram.org/bot<TOKEN>/getUpdates
-#    and copy the "chat":{"id": ... } number.
-export TG_BOT_TOKEN=8573617566:AAHIEZJixCdFjz44GdyyF_E7DMMsZQYPJpc
-export TG_CHAT_ID=5780711921

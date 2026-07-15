@@ -1,4 +1,0 @@
-triggered manually at 2026-04-30 11:54 UTC (after auto-trigger timed out 3x)
-span: 133.7h
-verdict: NO-GO (0 maker-fee winners; 24 cells survived 7-filter battery but Q5-Q1 < 30 bps fee gate)
-next path: ADR-002 fallback B1 (on-chain)

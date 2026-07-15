@@ -1,8 +1,0 @@
-{
-  "active_exchange": "PRIMARY",
-  "failover_active": false,
-  "last_switch_ts": null,
-  "consecutive_healthy": 0,
-  "primary_order_failures": 0,
-  "secondary_order_failures": 0
-}

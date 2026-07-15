@@ -9,6 +9,8 @@ updated: 2026-06-08
 
 [OpenBB-finance/OpenBB](https://github.com/OpenBB-finance/OpenBB) — open-source investment research platform. Installed (pip `openbb` 4.7.2 + all providers) at `~/tradingguru-empire/research/OpenBB` (Python 3.11 venv). **Data/research only — not an executor.**
 
+This is the research source used by `~/tradingguru-empire/council_runner/signal/run_signal.sh` for fresh OHLCV fetches before Kronos forecasting. The council pipeline treats it as input only.
+
 ## Verified working
 Fetched live BTC-USD history via yfinance (keyless), 366 rows. ✅
 
@@ -22,5 +24,6 @@ Providers needing keys (FMP, Intrinio, Tiingo, FRED, Benzinga…) are configured
 ## Empire fit
 - Pull live OHLCV / fundamentals / macro → feed [[Kronos_Forecasting|Kronos]] forecasts and [[Councils_28|council]] analysis.
 - Complements [[Free_APIs_Reference]] (raw API list) with a unified Python SDK.
+- Feeds the council signal briefings, but never places orders directly.
 
 Related: [[Trading_Guru_Empire_MOC]] · [[Kronos_Forecasting]]

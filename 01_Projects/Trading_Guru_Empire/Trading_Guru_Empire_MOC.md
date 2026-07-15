@@ -3,18 +3,25 @@ title: Trading Guru Empire — MOC
 type: project-moc
 tags: [project, trading-guru-empire, moc]
 status: active
-updated: 2026-06-08
+updated: 2026-07-06
 ---
 
 # 🏛 Trading Guru Empire — Map of Content
 
-The trading-championship empire: shadow battles, AI councils, strategy R&D, and supporting infra. Repo lives at `~/tradingguru-empire/`.
+The trading-championship empire: shadow battles, AI councils, strategy R&D, and supporting infra. Active repo lives at `~/tradingguru-empire/`.
 
 ## Pillars
 - [[Councils_28]] — the 28 AI agent teams (The Delegation) + the 11-point Trading Constitution
 - [[Council_Runner_Automation]] — councils auto-brief **when a battle starts** (headless, capped, dry-run safe)
 - [[Free_APIs_Reference]] — 147 free crypto/finance/blockchain APIs (from public-apis)
 - [[War_Room_and_The_Delegation]] — the pixel War Room UI + the 3D agent playground
+
+## Current execution queue
+1. Stabilize council automation and keep it dry-run safe.
+2. Normalize War Room + Delegation notes against the active repo.
+3. Refresh research references and remove stale mirror noise only after a canonical copy is confirmed.
+4. Keep the Obsidian project hub aligned with the live repo structure before any new feature work.
+5. Track the live plan in [[Project_Work_Queue]].
 
 ## Strategies (Areas)
 - [[MA50W10_Strategy]] — validated setup

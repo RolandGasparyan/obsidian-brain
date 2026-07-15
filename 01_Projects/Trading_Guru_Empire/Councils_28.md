@@ -7,7 +7,7 @@ updated: 2026-06-08
 
 # 🤝 The 28 Councils (The Delegation)
 
-Built in [The Delegation](https://github.com/arturitu/the-delegation) (3D agentic-AI playground). **28 teams = 14 unique + 14 copies.** Stored in browser localStorage (`team-storage`); full backup at `~/.../outputs/tge-teams-backup.json` + `TGE-teams-backup.md`. Model: `gemini-3-flash-preview`.
+Built in [The Delegation](https://github.com/arturitu/the-delegation) (3D agentic-AI playground). **28 teams = 14 unique + 14 copies.** Stored in browser localStorage (`team-storage`); keep the backup export alongside the Delegation project notes and restore from that saved copy when localStorage is wiped. Model: `gemini-3-flash-preview`.
 
 ## 14 unique councils (lead agent)
 1. **Intelligence Council** — Chief Intelligence Officer (Macro / Market / News / Social / AI / Technology / Competitive Intelligence Agents)
@@ -31,4 +31,4 @@ Each carries the [[Trading_Guru_Empire_MOC#The 11-Point Trading Constitution|11-
 See [[Council_Runner_Automation]] — fires selected councils when a battle starts.
 
 > [!info] Restore
-> If localStorage is ever wiped, re-import from `tge-teams-backup.json` (set `localStorage['team-storage']` to its contents, reload).
+> If localStorage is ever wiped, re-import from the saved backup export for the councils and reload the Delegation app.

@@ -37,7 +37,7 @@ cp .env.example .env
 #   → leave DRY_RUN=1 for the first battle to confirm it fires safely
 
 # test the wiring without a battle:
-DRY_RUN=1 /opt/homebrew/bin/node run_councils.mjs   # writes a dry-run briefing
+DRY_RUN=1 "$(command -v node)" run_councils.mjs   # writes a dry-run briefing
 
 # run the watcher (foreground):
 ./watch_battle.sh
