@@ -1,10 +1,11 @@
-# Graph Report - .  (2026-07-15)
+# Graph Report - Guru  (2026-07-15)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 174 files · ~190,350 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1761 nodes · 1666 edges · 156 communities (147 shown, 9 thin omitted)
+- 1823 nodes · 1719 edges · 165 communities (153 shown, 12 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -161,6 +162,15 @@
 - alpha_memory_report.md
 - latest_alert.md
 - www.altrady.com_crypto-trading_smart-money-concept_what-are-smart-money-concepts.md
+- What You Must Do When Invoked
+- graphify reference: extra exports and benchmark
+- graphify reference: query, path, explain
+- graphify reference: add a URL and watch a folder
+- graphify reference: commit hook and native CLAUDE.md integration
+- graphify reference: incremental update and cluster-only
+- graphify reference: GitHub clone and cross-repo merge
+- graphify reference: transcribe video and audio
+- extraction-spec.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -168,11 +178,11 @@
 3. `4. Tier 2 Strategies — Asset Specialists` - 19 edges
 4. `Stage 1 forward-test runbook` - 16 edges
 5. `L99 System Audit — Post-Architecture Phase` - 16 edges
-6. `GODS LEVEL ENGINE — Project Guide` - 14 edges
+6. `GODS LEVEL ENGINE — Project Guide` - 15 edges
 7. `L99 Bot — VPS Deploy Guide` - 14 edges
 8. `RESEARCH ARC COMPLETE — formal decision to pause factor research` - 14 edges
-9. `FINAL VERIFY AUDIT — `Godmode` branch` - 13 edges
-10. `MA50W10 Strategy — Backtesting Results & Validation` - 13 edges
+9. `Roland Gasparyan's Cloud Computer — AGENTS.md` - 13 edges
+10. `FINAL VERIFY AUDIT — `Godmode` branch` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -180,7 +190,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (156 total, 9 thin omitted)
+## Communities (165 total, 12 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
@@ -219,8 +229,8 @@ Cohesion: 0.09
 Nodes (21): `battle` and `battle-restart`, command-center.sh, Configuration, `final` — championship report, Governance posture, Governance posture (Mac side), GUARDED ZONE input validation, GUARDED ZONE (require `CONFIRM=YES`) (+13 more)
 
 ### Community 9 - "Roland Gasparyan's Cloud Computer — AGENTS.md"
-Cohesion: 0.10
-Nodes (20): 1. Trading Strategies Testing Engine v9.1 (5 critical fixes applied 2026-06-01), 2. Trading Engine Status API v3 — Interactive Animated Dashboard (v8.0), Active Services, 🔴 CANARY REAL MONEY BATTLE (DO VPS: 167.71.24.86), Champion Battle v9.1 DUST-PROOF — 2026-06-06 07:45 UTC ✅, Daily AM Monitoring System (2026-06-01), Engine v9.2 — Anti-Martingale Default Sizing (2026-06-01), Environment (+12 more)
+Cohesion: 0.09
+Nodes (21): 1. Trading Strategies Testing Engine v9.1 (5 critical fixes applied 2026-06-01), 2. Trading Engine Status API v3 — Interactive Animated Dashboard (v8.0), Active Services, 🔴 CANARY REAL MONEY BATTLE (DO VPS: 167.71.24.86), Champion Battle v9.1 DUST-PROOF — 2026-06-06 07:45 UTC ✅, Daily AM Monitoring System (2026-06-01), Engine v9.2 — Anti-Martingale Default Sizing (2026-06-01), Environment (+13 more)
 
 ### Community 10 - "FINAL VERIFY AUDIT — `Godmode` branch"
 Cohesion: 0.10
@@ -316,7 +326,7 @@ Nodes (15): 8 AI MODELS WITH WEIGHTS, Consensus Requirements, CURRENT TRADING CO
 
 ### Community 33 - "GODS LEVEL ENGINE — Project Guide"
 Cohesion: 0.12
-Nodes (15): Backtest reality check, Canary Real Money Battle (DO VPS: 167.71.24.86), Commands, Current state — 2026-04-28 (post-Step 1 of L99 path), Files, GODS LEVEL ENGINE — Project Guide, Hard rules (today's discipline lessons), Knowledge layer — `wiki/` (+7 more)
+Nodes (16): Backtest reality check, Canary Real Money Battle (DO VPS: 167.71.24.86), Commands, Current state — 2026-04-28 (post-Step 1 of L99 path), Files, GODS LEVEL ENGINE — Project Guide, graphify, Hard rules (today's discipline lessons) (+8 more)
 
 ### Community 34 - "MA-family parameter sweep — no combo clears the ship gate"
 Cohesion: 0.12
@@ -754,16 +764,42 @@ Nodes (3): Forward track record (since go-live, out-of-sample), 📒 Paper Shado
 Cohesion: 0.67
 Nodes (3): 5.1 ALMA + Stochastic Reversal (PF: 0.984), 5.2 Heikin Ashi Trend Filter (PF: 0.974), 5. Tier 3 Strategies — Breakeven Zone (PF 0.984–0.999)
 
+### Community 156 - "What You Must Do When Invoked"
+Cohesion: 0.08
+Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
+
+### Community 157 - "graphify reference: extra exports and benchmark"
+Cohesion: 0.22
+Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
+
+### Community 158 - "graphify reference: query, path, explain"
+Cohesion: 0.33
+Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
+
+### Community 159 - "graphify reference: add a URL and watch a folder"
+Cohesion: 0.50
+Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
+
+### Community 160 - "graphify reference: commit hook and native CLAUDE.md integration"
+Cohesion: 0.50
+Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify reference: commit hook and native CLAUDE.md integration
+
+### Community 161 - "graphify reference: incremental update and cluster-only"
+Cohesion: 0.50
+Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
+
 ## Knowledge Gaps
-- **1321 isolated node(s):** `🚀 Active project`, `🗺 Areas`, `📚 Resources`, `🧭 Meta`, `Infrastructure` (+1316 more)
+- **1364 isolated node(s):** `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)`, `Step 1 - Ensure graphify is installed`, `Step 2 - Detect files` (+1359 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **What connects `🚀 Active project`, `🗺 Areas`, `📚 Resources` to the rest of the system?**
-  _1321 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **What connects `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)` to the rest of the system?**
+  _1364 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05429864253393665 - nodes in this community are weakly interconnected._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
@@ -774,5 +810,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
 - **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
   _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
-- **Should `Phase B Decision Tree — D7+ playbook` be split into smaller, more focused modules?**
-  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
