@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-07-15)
+# Graph Report - Guru  (2026-07-24)
 
 ## Corpus Check
-- 174 files · ~190,350 words
+- 180 files · ~191,183 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1823 nodes · 1719 edges · 165 communities (153 shown, 12 thin omitted)
+- 1837 nodes · 1730 edges · 168 communities (156 shown, 12 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -171,6 +171,7 @@
 - graphify reference: GitHub clone and cross-repo merge
 - graphify reference: transcribe video and audio
 - extraction-spec.md
+- Mercury AI Assistant - Project Hub.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -190,11 +191,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (165 total, 12 thin omitted)
+## Communities (168 total, 12 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
-Nodes (39): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+31 more)
+Nodes (39): I. The original spec (verbatim), II. Why this is the right shape, III. Real execution, IV. Verdict semantics, L99 — Final System Integration & Validation Engine, I. The original spec (verbatim), II. Why this spec is taken seriously, III. The non-negotiable prerequisite (+31 more)
 
 ### Community 1 - "Trading_Guru_Empire_MOC.md"
 Cohesion: 0.05
@@ -402,7 +403,7 @@ Nodes (12): Action Items (activate on gate pass), ADR-002: Phase B direction —
 
 ### Community 52 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
 Cohesion: 0.15
-Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR, V.1 `regime_probability.py` (estimator core), V.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features), V.3 `regime_transition.py` (+5 more)
+Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+5 more)
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
@@ -788,8 +789,12 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
+### Community 165 - "Mercury AI Assistant - Project Hub.md"
+Cohesion: 0.17
+Nodes (8): API Documentation, Documentation Index, Documentation Status, Getting Started, User Guides, Project Overview, 📊 Project Status, 🚀 Quick Navigation
+
 ## Knowledge Gaps
-- **1364 isolated node(s):** `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)`, `Step 1 - Ensure graphify is installed`, `Step 2 - Detect files` (+1359 more)
+- **1371 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1366 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -797,9 +802,9 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **What connects `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)` to the rest of the system?**
-  _1364 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **What connects `Getting Started`, `User Guides`, `API Documentation` to the rest of the system?**
+  _1371 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05429864253393665 - nodes in this community are weakly interconnected._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**

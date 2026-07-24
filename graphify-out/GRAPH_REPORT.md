@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-07-24)
 
 ## Corpus Check
-- 180 files · ~191,183 words
+- 183 files · ~191,704 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1837 nodes · 1730 edges · 168 communities (156 shown, 12 thin omitted)
+- 1840 nodes · 1730 edges · 171 communities (159 shown, 12 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -191,7 +191,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (168 total, 12 thin omitted)
+## Communities (171 total, 12 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
@@ -801,8 +801,6 @@ Nodes (8): API Documentation, Documentation Index, Documentation Status, Getting
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `Getting Started`, `User Guides`, `API Documentation` to the rest of the system?**
   _1371 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
@@ -815,3 +813,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
 - **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
   _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
+- **Should `Phase B Decision Tree — D7+ playbook` be split into smaller, more focused modules?**
+  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
