@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1784875731.0714602,
-    "ast_hash": "efae1a9c3e258b5675c6c6c6a182b1f2",
+    "mtime": 1784876363.0667748,
+    "ast_hash": "1f261b4c4d0b8faf0bd985c096aebde3",
     "semantic_hash": ""
   },
   "00_Home.md": {
@@ -932,6 +932,11 @@
   "Untitled 4.md": {
     "mtime": 1784875535.987999,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "Mercury AI Design System.md": {
+    "mtime": 1784876263.076999,
+    "ast_hash": "fe188e70769190b1eb2ae76404db8412",
     "semantic_hash": ""
   }
 }
