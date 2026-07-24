@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1784923242.1076028,
-    "ast_hash": "19e06f0f3aa80674bc7fe48685abb0e1",
+    "mtime": 1784928835.0334578,
+    "ast_hash": "b18f8858c580c908aad7e51cd223edd4",
     "semantic_hash": ""
   },
   "00_Home.md": {
@@ -957,6 +957,46 @@
   "Untitled Kanban 3.md": {
     "mtime": 1784922800.667,
     "ast_hash": "2914d7e7a86f68b4588aae3c74c11e14",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/ARCHITECTURE.md": {
+    "mtime": 1784928485.028,
+    "ast_hash": "88451f673682d425362168a0bd4653bd",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/DEPLOYMENT_LOG.md": {
+    "mtime": 1784928485.029999,
+    "ast_hash": "4c093adbe7cc56c674285a3c9e9d7700",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/Dashboard.md": {
+    "mtime": 1784928485.052,
+    "ast_hash": "0d8c36b2a6937e4035e087ff6af386ca",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/OBSIDIAN_IMPORT.md": {
+    "mtime": 1784928485.033999,
+    "ast_hash": "dcbe18847c2a2aa7a3ad8d7a7c2af57e",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/PROJECT_SUMMARY.md": {
+    "mtime": 1784928485.026,
+    "ast_hash": "59a0e3ba06d8aea1142da27b1dd102a0",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/QUICK_REFERENCE.md": {
+    "mtime": 1784928485.032,
+    "ast_hash": "9b432b2f4ffde77f4c478102150885d8",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/README.md": {
+    "mtime": 1784928485.036,
+    "ast_hash": "71e84caf28551bea18007a8703a86d0b",
+    "semantic_hash": ""
+  },
+  "Reincarnation/Booking AI Agent/SECURITY.md": {
+    "mtime": 1784928485.038,
+    "ast_hash": "7879300352d90d481a036c4b11919cf5",
     "semantic_hash": ""
   }
 }

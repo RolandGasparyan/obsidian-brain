@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1784921048.1308057,
-    "ast_hash": "b443ede3e73729af6c92714aa0e5f929",
+    "mtime": 1784923242.1076028,
+    "ast_hash": "19e06f0f3aa80674bc7fe48685abb0e1",
     "semantic_hash": ""
   },
   "00_Home.md": {
@@ -951,6 +951,11 @@
   },
   "Untitled Kanban 2.md": {
     "mtime": 1784920783.89,
+    "ast_hash": "2914d7e7a86f68b4588aae3c74c11e14",
+    "semantic_hash": ""
+  },
+  "Untitled Kanban 3.md": {
+    "mtime": 1784922800.667,
     "ast_hash": "2914d7e7a86f68b4588aae3c74c11e14",
     "semantic_hash": ""
   }
