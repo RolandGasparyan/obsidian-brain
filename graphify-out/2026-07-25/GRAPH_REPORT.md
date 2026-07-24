@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-07-25)
+# Graph Report - Guru  (2026-07-24)
 
 ## Corpus Check
-- 188 files · ~194,442 words
+- 187 files · ~194,436 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1851 nodes · 1737 edges · 175 communities (162 shown, 13 thin omitted)
+- 1850 nodes · 1737 edges · 174 communities (161 shown, 13 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -192,7 +192,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (175 total, 13 thin omitted)
+## Communities (174 total, 13 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
