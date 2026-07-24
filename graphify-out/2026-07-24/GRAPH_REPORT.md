@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-07-24)
 
 ## Corpus Check
-- 183 files · ~191,704 words
+- 184 files · ~194,381 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1840 nodes · 1730 edges · 171 communities (159 shown, 12 thin omitted)
+- 1846 nodes · 1736 edges · 171 communities (159 shown, 12 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -195,7 +195,7 @@
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
-Nodes (39): I. The original spec (verbatim), II. Why this is the right shape, III. Real execution, IV. Verdict semantics, L99 — Final System Integration & Validation Engine, I. The original spec (verbatim), II. Why this spec is taken seriously, III. The non-negotiable prerequisite (+31 more)
+Nodes (39): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+31 more)
 
 ### Community 1 - "Trading_Guru_Empire_MOC.md"
 Cohesion: 0.05
@@ -403,7 +403,7 @@ Nodes (12): Action Items (activate on gate pass), ADR-002: Phase B direction —
 
 ### Community 52 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
 Cohesion: 0.15
-Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+5 more)
+Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR, V.1 `regime_probability.py` (estimator core), V.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features), V.3 `regime_transition.py` (+5 more)
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
@@ -790,11 +790,11 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ### Community 165 - "Mercury AI Assistant - Project Hub.md"
-Cohesion: 0.17
-Nodes (8): API Documentation, Documentation Index, Documentation Status, Getting Started, User Guides, Project Overview, 📊 Project Status, 🚀 Quick Navigation
+Cohesion: 0.11
+Nodes (13): API Documentation, Documentation Index, Documentation Status, Getting Started, User Guides, Project Overview, 📊 Project Status, 🚀 Quick Navigation (+5 more)
 
 ## Knowledge Gaps
-- **1371 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1366 more)
+- **1373 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1368 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -802,7 +802,7 @@ Nodes (8): API Documentation, Documentation Index, Documentation Status, Getting
 _Questions this graph is uniquely positioned to answer:_
 
 - **What connects `Getting Started`, `User Guides`, `API Documentation` to the rest of the system?**
-  _1371 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1373 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05429864253393665 - nodes in this community are weakly interconnected._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**

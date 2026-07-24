@@ -4932,6 +4932,28 @@
       "norm_label": "reproducing"
     },
     {
+      "label": "Drawing 2026-07-24 23.19.27.excalidraw.md",
+      "file_type": "document",
+      "source_file": "Excalidraw/Drawing 2026-07-24 23.19.27.excalidraw.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "excalidraw_drawing_2026_07_24_23_19_27_excalidraw",
+      "community": 171,
+      "community_name": "Drawing 2026-07-24 23.19.27.excalidraw.md",
+      "norm_label": "drawing 2026-07-24 23.19.27.excalidraw.md"
+    },
+    {
+      "label": "Drawing",
+      "file_type": "document",
+      "source_file": "Excalidraw/Drawing 2026-07-24 23.19.27.excalidraw.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "excalidraw_drawing_2026_07_24_23_19_27_excalidraw_drawing",
+      "community": 171,
+      "community_name": "Drawing 2026-07-24 23.19.27.excalidraw.md",
+      "norm_label": "drawing"
+    },
+    {
       "label": "FINAL_VERIFICATION_3ACCOUNT_LIVE.md",
       "file_type": "document",
       "source_file": "FINAL_VERIFICATION_3ACCOUNT_LIVE.md",
@@ -8054,6 +8076,28 @@
       "community": 170,
       "community_name": "Untitled 4.md",
       "norm_label": "untitled 4.md"
+    },
+    {
+      "label": "Untitled Kanban 1.md",
+      "file_type": "document",
+      "source_file": "Untitled Kanban 1.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "untitled_kanban_1",
+      "community": 172,
+      "community_name": "Untitled Kanban 1.md",
+      "norm_label": "untitled kanban 1.md"
+    },
+    {
+      "label": "Untitled Kanban 2.md",
+      "file_type": "document",
+      "source_file": "Untitled Kanban 2.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "untitled_kanban_2",
+      "community": 173,
+      "community_name": "Untitled Kanban 2.md",
+      "norm_label": "untitled kanban 2.md"
     },
     {
       "label": "Untitled Kanban.md",
@@ -15498,8 +15542,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_l99_compounding_velocity_optimizer",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "l99 \u2014 compounding velocity optimizer"
     },
     {
@@ -15509,8 +15553,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_i_the_original_spec_verbatim",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "i. the original spec (verbatim)"
     },
     {
@@ -15520,8 +15564,8 @@
       "source_location": "L228",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_ii_why_this_spec_is_taken_seriously",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "ii. why this spec is taken seriously"
     },
     {
@@ -15531,8 +15575,8 @@
       "source_location": "L240",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_iii_mapping_to_existing_tooling",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "iii. mapping to existing tooling"
     },
     {
@@ -15542,8 +15586,8 @@
       "source_location": "L260",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_iv_what_this_framework_says_about_current_data",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "iv. what this framework says about current data"
     },
     {
@@ -15553,8 +15597,8 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_implementable_pre_edge_proof_modules",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "v. implementable pre-edge-proof modules"
     },
     {
@@ -15564,8 +15608,8 @@
       "source_location": "L276",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_1_velocity_state_machine_py",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "v.1 `velocity_state_machine.py`"
     },
     {
@@ -15575,8 +15619,8 @@
       "source_location": "L283",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_2_velocity_score_py",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "v.2 `velocity_score.py`"
     },
     {
@@ -15586,8 +15630,8 @@
       "source_location": "L290",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_3_anti_overcompounding_py",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "v.3 `anti_overcompounding.py`"
     },
     {
@@ -15597,8 +15641,8 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_4_stair_step_compounder_py",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "v.4 `stair_step_compounder.py`"
     },
     {
@@ -15608,8 +15652,8 @@
       "source_location": "L307",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_vi_what_must_not_be_built",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "vi. what must not be built"
     },
     {
@@ -15619,8 +15663,8 @@
       "source_location": "L317",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_vii_adr_linkage",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "vii. adr linkage"
     },
     {
@@ -15630,8 +15674,8 @@
       "source_location": "L325",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_viii_sources",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "viii. sources"
     },
     {
@@ -15916,8 +15960,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_l99_dynamic_regime_probability_estimator",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "l99 \u2014 dynamic regime probability estimator"
     },
     {
@@ -15927,8 +15971,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_i_the_original_spec_verbatim",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "i. the original spec (verbatim)"
     },
     {
@@ -15938,8 +15982,8 @@
       "source_location": "L221",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_ii_why_this_spec_is_taken_seriously",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "ii. why this spec is taken seriously"
     },
     {
@@ -15949,8 +15993,8 @@
       "source_location": "L230",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_iii_mapping_to_existing_tooling",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "iii. mapping to existing tooling"
     },
     {
@@ -15960,8 +16004,8 @@
       "source_location": "L256",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_iv_what_this_framework_says_about_current_data",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "iv. what this framework says about current data"
     },
     {
@@ -15971,8 +16015,8 @@
       "source_location": "L268",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_v_implementable_pre_edge_proof_modules",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v. implementable pre-edge-proof modules"
     },
     {
@@ -15982,8 +16026,8 @@
       "source_location": "L270",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_v_1_regime_probability_py_estimator_core",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.1 `regime_probability.py` (estimator core)"
     },
     {
@@ -15993,8 +16037,8 @@
       "source_location": "L278",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_v_2_regime_breadth_py_regime_liquidity_py_missing_input_features",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features)"
     },
     {
@@ -16004,8 +16048,8 @@
       "source_location": "L283",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_v_3_regime_transition_py",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.3 `regime_transition.py`"
     },
     {
@@ -16015,8 +16059,8 @@
       "source_location": "L290",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_v_4_regime_validation_py",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.4 `regime_validation.py`"
     },
     {
@@ -16026,8 +16070,8 @@
       "source_location": "L302",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_vi_what_must_not_be_built",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "vi. what must not be built"
     },
     {
@@ -16037,8 +16081,8 @@
       "source_location": "L314",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_vii_adr_linkage",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "vii. adr linkage"
     },
     {
@@ -16048,8 +16092,8 @@
       "source_location": "L322",
       "_origin": "ast",
       "id": "docs_specs_l99_regime_probability_viii_sources",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "viii. sources"
     },
     {
@@ -24439,6 +24483,16 @@
       "weight": 1.0,
       "source": "deep_edge_results_recommended_deployment",
       "target": "deep_edge_results_plan_b_ma20_w5_btc_gate_binary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Excalidraw/Drawing 2026-07-24 23.19.27.excalidraw.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "excalidraw_drawing_2026_07_24_23_19_27_excalidraw",
+      "target": "excalidraw_drawing_2026_07_24_23_19_27_excalidraw_drawing",
       "confidence_score": 1.0
     },
     {

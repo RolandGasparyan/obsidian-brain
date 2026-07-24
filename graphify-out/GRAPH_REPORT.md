@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-07-24)
 
 ## Corpus Check
-- 184 files · ~194,381 words
+- 187 files · ~194,436 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1846 nodes · 1736 edges · 171 communities (159 shown, 12 thin omitted)
+- 1850 nodes · 1737 edges · 174 communities (161 shown, 13 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -172,6 +172,7 @@
 - graphify reference: transcribe video and audio
 - extraction-spec.md
 - Mercury AI Assistant - Project Hub.md
+- Drawing 2026-07-24 23.19.27.excalidraw.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -191,11 +192,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (171 total, 12 thin omitted)
+## Communities (174 total, 13 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
-Nodes (39): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+31 more)
+Nodes (39): I. The original spec (verbatim), II. Why this is the right shape, III. Real execution, IV. Verdict semantics, L99 — Final System Integration & Validation Engine, I. The original spec (verbatim), II. Why this spec is taken seriously, III. The non-negotiable prerequisite (+31 more)
 
 ### Community 1 - "Trading_Guru_Empire_MOC.md"
 Cohesion: 0.05
@@ -403,7 +404,7 @@ Nodes (12): Action Items (activate on gate pass), ADR-002: Phase B direction —
 
 ### Community 52 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
 Cohesion: 0.15
-Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR, V.1 `regime_probability.py` (estimator core), V.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features), V.3 `regime_transition.py` (+5 more)
+Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+5 more)
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
@@ -794,15 +795,17 @@ Cohesion: 0.11
 Nodes (13): API Documentation, Documentation Index, Documentation Status, Getting Started, User Guides, Project Overview, 📊 Project Status, 🚀 Quick Navigation (+5 more)
 
 ## Knowledge Gaps
-- **1373 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1368 more)
+- **1374 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1369 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `NULL_REGISTRY — canonical record of falsified factor families` connect `Methodology lessons crystallized from this list` to `L99_ALPHA_VALIDATION.md`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `Getting Started`, `User Guides`, `API Documentation` to the rest of the system?**
-  _1373 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1374 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05429864253393665 - nodes in this community are weakly interconnected._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
@@ -813,5 +816,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
 - **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
   _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
-- **Should `Phase B Decision Tree — D7+ playbook` be split into smaller, more focused modules?**
-  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._

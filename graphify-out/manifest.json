@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1784876363.0667748,
-    "ast_hash": "1f261b4c4d0b8faf0bd985c096aebde3",
+    "mtime": 1784921048.1308057,
+    "ast_hash": "b443ede3e73729af6c92714aa0e5f929",
     "semantic_hash": ""
   },
   "00_Home.md": {
@@ -937,6 +937,21 @@
   "Mercury AI Design System.md": {
     "mtime": 1784876263.076999,
     "ast_hash": "fe188e70769190b1eb2ae76404db8412",
+    "semantic_hash": ""
+  },
+  "Excalidraw/Drawing 2026-07-24 23.19.27.excalidraw.md": {
+    "mtime": 1784920767.234999,
+    "ast_hash": "7fcb350cd1150b42b28d4d49bc965075",
+    "semantic_hash": ""
+  },
+  "Untitled Kanban 1.md": {
+    "mtime": 1784920744.401,
+    "ast_hash": "2914d7e7a86f68b4588aae3c74c11e14",
+    "semantic_hash": ""
+  },
+  "Untitled Kanban 2.md": {
+    "mtime": 1784920783.89,
+    "ast_hash": "2914d7e7a86f68b4588aae3c74c11e14",
     "semantic_hash": ""
   }
 }
