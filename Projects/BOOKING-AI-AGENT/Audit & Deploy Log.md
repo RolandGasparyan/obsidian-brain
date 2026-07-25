@@ -12,3 +12,6 @@
 - GitHub Actions run `30163064257` passed security/regression checks and atomic production deploy.
 - Production verification: `reincarnation-booking.service` active, `https://booking.6-empires.com/health` returned `{"status":"ok","service":"REINCARNATION Booking v3"}`, release `3b058de1127417a905bd690835ec64164a7732dd` active.
 - Shared environment remains restricted to `600 www-data:www-data`; no secret values were logged.
+- Secret inventory verification: GitHub Actions secret names and both VPS env files were checked without exposing values. Obsidian Brain stores audit metadata only; no credentials were added.
+- Active production provider material is present for Telegram, Meta Page, OpenAI/LLM, and Twilio voice. WhatsApp, Instagram direct token, Viber, Vapi, Postiz, SMTP password, and SerpAPI entries remain empty or unavailable on the booking VPS.
+- Key storage policy remains enforced: secrets stay in GitHub Actions/VPS runtime stores, never in tracked Markdown or Obsidian logs.
