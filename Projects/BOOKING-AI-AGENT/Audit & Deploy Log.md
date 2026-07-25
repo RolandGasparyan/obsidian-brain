@@ -15,3 +15,7 @@
 - Secret inventory verification: GitHub Actions secret names and both VPS env files were checked without exposing values. Obsidian Brain stores audit metadata only; no credentials were added.
 - Active production provider material is present for Telegram, Meta Page, OpenAI/LLM, and Twilio voice. WhatsApp, Instagram direct token, Viber, Vapi, Postiz, SMTP password, and SerpAPI entries remain empty or unavailable on the booking VPS.
 - Key storage policy remains enforced: secrets stay in GitHub Actions/VPS runtime stores, never in tracked Markdown or Obsidian logs.
+- Fixed two additional Python 3.9 connector failures: postponed annotations in `scripts/connect_channels.py` and `scripts/hostinger_dns.py`.
+- Hardened connector error handling, normalized URL suffix removal, and marked the Hostinger DNS helper executable. Targeted Ruff is clean.
+- Verification: connector CLI smoke checks, E2E 99/99, integration 111/111, and GitHub Actions run `30163761071` all passed.
+- PR `#101` merged as `85f3b08`; production release `85f3b080b930152f414c66c6185b280d39f2f082` is active and health is `200 OK`.
