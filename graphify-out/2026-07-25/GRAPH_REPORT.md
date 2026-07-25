@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-07-25)
 
 ## Corpus Check
-- 188 files · ~194,442 words
+- 196 files · ~202,246 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1851 nodes · 1737 edges · 175 communities (162 shown, 13 thin omitted)
+- 2033 nodes · 1922 edges · 188 communities (175 shown, 13 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -173,18 +173,30 @@
 - extraction-spec.md
 - Mercury AI Assistant - Project Hub.md
 - Drawing 2026-07-24 23.19.27.excalidraw.md
+- Booking AI Agent - Quick Reference Guide
+- Reincarnation Booking AI Agent - Architecture
+- Booking AI Agent - Deployment & Documentation Log
+- L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR
+- Reincarnation Booking AI Agent - Obsidian Vault Guide
+- REINCARNATION Booking AI Agent
+- 🎯 Booking AI Agent — Dashboard
+- Security policy
+- 📊 Obsidian Dataview Queries (Optional)
+- 🔄 Sync Workflow
+- 🎯 Import Steps
+- 🔗 Quick Links for Obsidian
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
 2. `DEPLOYMENT READY CHECKLIST — tradingguru-agent` - 19 edges
 3. `4. Tier 2 Strategies — Asset Specialists` - 19 edges
-4. `Stage 1 forward-test runbook` - 16 edges
-5. `L99 System Audit — Post-Architecture Phase` - 16 edges
-6. `GODS LEVEL ENGINE — Project Guide` - 15 edges
-7. `L99 Bot — VPS Deploy Guide` - 14 edges
-8. `RESEARCH ARC COMPLETE — formal decision to pause factor research` - 14 edges
-9. `Roland Gasparyan's Cloud Computer — AGENTS.md` - 13 edges
-10. `FINAL VERIFY AUDIT — `Godmode` branch` - 13 edges
+4. `Reincarnation Booking AI Agent - Complete Project Summary` - 18 edges
+5. `Reincarnation Booking AI Agent - Obsidian Vault Guide` - 16 edges
+6. `Stage 1 forward-test runbook` - 16 edges
+7. `L99 System Audit — Post-Architecture Phase` - 16 edges
+8. `GODS LEVEL ENGINE — Project Guide` - 15 edges
+9. `Booking AI Agent - Quick Reference Guide` - 15 edges
+10. `L99 Bot — VPS Deploy Guide` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -192,11 +204,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (175 total, 13 thin omitted)
+## Communities (188 total, 13 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
-Nodes (39): I. The original spec (verbatim), II. Why this is the right shape, III. Real execution, IV. Verdict semantics, L99 — Final System Integration & Validation Engine, I. The original spec (verbatim), II. Why this spec is taken seriously, III. The non-negotiable prerequisite (+31 more)
+Nodes (39): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+31 more)
 
 ### Community 1 - "Trading_Guru_Empire_MOC.md"
 Cohesion: 0.05
@@ -403,8 +415,8 @@ Cohesion: 0.15
 Nodes (12): Action Items (activate on gate pass), ADR-002: Phase B direction — what to build on a detected signal, Consequences, Context, Decision (conditional), Options Considered, Spot fee calibration (2026-04-25 update), Trade-off Analysis (+4 more)
 
 ### Community 52 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
-Cohesion: 0.15
-Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+5 more)
+Cohesion: 0.04
+Nodes (45): 1. Clone Repository, 2. Read Documentation, 3. Set Up Local Environment, 4. Run Tests, 5. Make Changes, 6. Import to Obsidian, 🙏 Acknowledgments, ✅ Completed Fixes & Features (+37 more)
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
@@ -794,18 +806,68 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.11
 Nodes (13): API Documentation, Documentation Index, Documentation Status, Getting Started, User Guides, Project Overview, 📊 Project Status, 🚀 Quick Navigation (+5 more)
 
+### Community 175 - "Booking AI Agent - Quick Reference Guide"
+Cohesion: 0.06
+Nodes (34): Adding New Translations, Booking AI Agent - Quick Reference Guide, Can't Push to GitHub, Check Deployment Status, 📋 Common Tasks, ⚡ Critical CSS Fixes (Remember These!), 🔧 Debugging Checklist, Deploy Changes (+26 more)
+
+### Community 176 - "Reincarnation Booking AI Agent - Architecture"
+Cohesion: 0.08
+Nodes (26): 1. **Chat Interface**, 2. **Quick Commands Panel**, 3. **Calendar Panel**, 4. **Toast Notifications**, Atomic Deployment Process, Calendar Opening/Closing, Component Breakdown, 🚀 Deployment Pipeline (+18 more)
+
+### Community 177 - "Booking AI Agent - Deployment & Documentation Log"
+Cohesion: 0.10
+Nodes (21): Booking AI Agent - Deployment & Documentation Log, Commit: `2f5586a`, CSS Grid Fixes:, 🚀 Current Production State, Deployment:, 👤 Developer Notes, Files Modified:, Issues Fixed: (+13 more)
+
+### Community 178 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
+Cohesion: 0.15
+Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR, V.1 `regime_probability.py` (estimator core), V.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features), V.3 `regime_transition.py` (+5 more)
+
+### Community 179 - "Reincarnation Booking AI Agent - Obsidian Vault Guide"
+Cohesion: 0.15
+Nodes (13): 💾 Backup Strategy, 📞 Contact & Links, 🎯 Example Dashboard Note, 📋 Initial Checklist for Obsidian Setup, 🗒️ Note Template - Bug Fix/Feature, 🗒️ Note Template - Deployment Records, 🗒️ Note Template - Development Tasks, 🚀 Obsidian Daily Workflow (+5 more)
+
+### Community 180 - "REINCARNATION Booking AI Agent"
+Cohesion: 0.22
+Nodes (9): API routes, Architecture, Configuration, Local setup, Operational notes, Production deployment, REINCARNATION Booking AI Agent, Security model (+1 more)
+
+### Community 182 - "🎯 Booking AI Agent — Dashboard"
+Cohesion: 0.40
+Nodes (5): 🎯 Booking AI Agent — Dashboard, 🩺 Check production health, 📚 Documentation, 🔗 Live services, 🔄 Refresh this vault
+
+### Community 183 - "Security policy"
+Cohesion: 0.40
+Nodes (5): Production checklist, Reporting a vulnerability, Residual operational boundaries, Security policy, Supported code
+
+### Community 184 - "📊 Obsidian Dataview Queries (Optional)"
+Cohesion: 0.50
+Nodes (4): Active Issues, Completed Fixes, 📊 Obsidian Dataview Queries (Optional), Urgent Items
+
+### Community 185 - "🔄 Sync Workflow"
+Cohesion: 0.50
+Nodes (4): Automatic Sync (if Git plugin enabled), Manual Sync, Steps:, 🔄 Sync Workflow
+
+### Community 186 - "🎯 Import Steps"
+Cohesion: 0.50
+Nodes (4): 🎯 Import Steps, Method 1: Copy-Paste Files, Method 2: Direct Import from GitHub, Method 3: Clone Repository
+
+### Community 187 - "🔗 Quick Links for Obsidian"
+Cohesion: 0.50
+Nodes (4): Key Documentation, Main Project Files, 🔗 Quick Links for Obsidian, Technologies
+
 ## Knowledge Gaps
-- **1374 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1369 more)
+- **1510 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1505 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `NULL_REGISTRY — canonical record of falsified factor families` connect `Methodology lessons crystallized from this list` to `L99_ALPHA_VALIDATION.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `Reincarnation Booking AI Agent - Complete Project Summary` connect `L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR` to `Dashboard.md`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `L99 — INSTITUTIONAL ALPHA RESEARCH ROADMAP` connect `III. Mapping to existing tooling` to `L99_ALPHA_VALIDATION.md`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **What connects `Getting Started`, `User Guides`, `API Documentation` to the rest of the system?**
-  _1374 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1510 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05429864253393665 - nodes in this community are weakly interconnected._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
@@ -814,5 +876,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `MA50W10 Strategy — Backtesting Results & Validation` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
-- **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
-  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._

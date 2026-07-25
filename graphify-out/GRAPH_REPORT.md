@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-07-25)
 
 ## Corpus Check
-- 196 files · ~202,246 words
+- 197 files · ~202,279 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2033 nodes · 1922 edges · 188 communities (175 shown, 13 thin omitted)
+- 2034 nodes · 1922 edges · 188 communities (175 shown, 13 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -147,7 +147,6 @@
 - 12. God-Level Unified Engine Architecture
 - 13. Risk Management Framework
 - 3. Tier 1 Strategies — Core Engine Drivers
-- 3. AI Agent Logic and Constraint Validation
 - Trading Guru Vision Documents
 - Paper Forward-Test — MA50W10 / BTC
 - Live-Eligibility Gate
@@ -420,7 +419,7 @@ Nodes (45): 1. Clone Repository, 2. Read Documentation, 3. Set Up Local Environm
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
-Nodes (9): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 4. Profit Securing and Cold Wallet Simulation, 5. Trading Guru Self-Learning Validation (+1 more)
+Nodes (13): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy (+5 more)
 
 ### Community 54 - "Tournament Package - Integration Guide"
 Cohesion: 0.15
@@ -727,7 +726,7 @@ Cohesion: 0.40
 Nodes (5): 9.1 The Volatility Asymmetry Secret, 9.2 The Confirmation Threshold Secret, 9.3 The Timeout Exit Secret, 9.4 The Risk Mode Ladder Secret, 9. Secret Money-Making Methods
 
 ### Community 130 - "System Verification Documentation Workflow"
-Cohesion: 0.40
+Cohesion: 0.22
 Nodes (4): Best Practices for Document Generation, Bundled Resources, Core Principles, System Verification Documentation Workflow
 
 ### Community 131 - "🔄 Auto-synced project status"
@@ -753,10 +752,6 @@ Nodes (4): 13.1 The Three Laws of Crypto Risk Management, 13.2 Maximum Drawdown 
 ### Community 136 - "3. Tier 1 Strategies — Core Engine Drivers"
 Cohesion: 0.50
 Nodes (4): 3.1 Chande Momentum Oscillator (CMO), 3.2 ICT Fair Value Gap (FVG), 3.3 Squeeze Momentum (LazyBear), 3. Tier 1 Strategies — Core Engine Drivers
-
-### Community 137 - "3. AI Agent Logic and Constraint Validation"
-Cohesion: 0.50
-Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
 
 ### Community 138 - "Trading Guru Vision Documents"
 Cohesion: 0.50
@@ -862,8 +857,6 @@ Nodes (4): Key Documentation, Main Project Files, 🔗 Quick Links for Obsidian,
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Reincarnation Booking AI Agent - Complete Project Summary` connect `L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR` to `Dashboard.md`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `L99 — INSTITUTIONAL ALPHA RESEARCH ROADMAP` connect `III. Mapping to existing tooling` to `L99_ALPHA_VALIDATION.md`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **What connects `Getting Started`, `User Guides`, `API Documentation` to the rest of the system?**
@@ -876,3 +869,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `MA50W10 Strategy — Backtesting Results & Validation` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
+- **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
+  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
