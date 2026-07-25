@@ -21,3 +21,5 @@
 - PR `#101` merged as `85f3b08`; production release `85f3b080b930152f414c66c6185b280d39f2f082` is active and health is `200 OK`.
 - Live read-only channel check: Telegram connected; WhatsApp, Viber, Instagram DM, and Postiz remain unconfigured; Meta Page token is present but expired and requires owner-side token rotation.
 - No provider settings, webhooks, or secrets were changed during this check.
+- Postiz removal deployed as `0076d85`; production shared env now has zero `POSTIZ_*` entries, with backup retained at `/opt/reincarnation_booking/shared/.env.pre-postiz-removal-20260725-160938`.
+- Live smoke after removal: Armenian chat returned a reply, Vapi empty-transcript webhook returned `ok`, unsigned Twilio voice webhook correctly returned `403`, and admin stats keys are only `by_status,total`.
