@@ -19,3 +19,5 @@
 - Hardened connector error handling, normalized URL suffix removal, and marked the Hostinger DNS helper executable. Targeted Ruff is clean.
 - Verification: connector CLI smoke checks, E2E 99/99, integration 111/111, and GitHub Actions run `30163761071` all passed.
 - PR `#101` merged as `85f3b08`; production release `85f3b080b930152f414c66c6185b280d39f2f082` is active and health is `200 OK`.
+- Live read-only channel check: Telegram connected; WhatsApp, Viber, Instagram DM, and Postiz remain unconfigured; Meta Page token is present but expired and requires owner-side token rotation.
+- No provider settings, webhooks, or secrets were changed during this check.
