@@ -23,4 +23,5 @@
 - No provider settings, webhooks, or secrets were changed during this check.
 - Postiz removal deployed as `0076d85`; production shared env now has zero `POSTIZ_*` entries, with backup retained at `/opt/reincarnation_booking/shared/.env.pre-postiz-removal-20260725-160938`.
 - Live smoke after removal: Armenian chat returned a reply, Vapi empty-transcript webhook returned `ok`, unsigned Twilio voice webhook correctly returned `403`, and admin stats keys are only `by_status,total`.
-- Outbound call verification remains gated: no recipient/test phone variable exists in the protected production env, so no arbitrary real call was attempted. Inbound Vapi/Twilio voice security and TwiML paths remain verified.
+- Before the user-authorized test, no recipient/test phone variable existed in the protected production env; inbound Vapi/Twilio voice security and TwiML paths were already verified.
+- User-authorized Twilio conversational test call completed successfully (`completed`, 44 seconds). The recipient is stored only in protected VPS env as `VOICE_TEST_RECIPIENT`; the number is not in GitHub, source, or Obsidian. Backup created before the env update.
