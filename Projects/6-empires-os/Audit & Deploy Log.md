@@ -9,3 +9,4 @@
 - Booking health remained `200 OK`; no secrets or trading gates were modified.
 - Clean `ro-supreme-6-empires-os` mirror verification: `empire-ai-chat` tests 10/10 and `empire-sync` tests 7/7 passed with localhost bind permission enabled.
 - No dirty 6-EMPIRES-OS worktree changes were committed or deployed; existing user edits and approval/testnet safety gates remain preserved.
+- Read-only second VPS check: `postiz`, `temporal`, Postgres, and Redis containers are running; Postiz localhost health returned `200`. Legacy `reincarnation-smm.service` and `reincarnation-smm-api.service` units are inactive; no service changes were made.
