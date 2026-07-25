@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-07-25)
 
 ## Corpus Check
-- 197 files · ~202,279 words
+- 198 files · ~202,664 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2034 nodes · 1922 edges · 188 communities (175 shown, 13 thin omitted)
+- 2042 nodes · 1929 edges · 182 communities (168 shown, 14 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -147,6 +147,7 @@
 - 12. God-Level Unified Engine Architecture
 - 13. Risk Management Framework
 - 3. Tier 1 Strategies — Core Engine Drivers
+- 3. AI Agent Logic and Constraint Validation
 - Trading Guru Vision Documents
 - Paper Forward-Test — MA50W10 / BTC
 - Live-Eligibility Gate
@@ -178,12 +179,7 @@
 - L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR
 - Reincarnation Booking AI Agent - Obsidian Vault Guide
 - REINCARNATION Booking AI Agent
-- 🎯 Booking AI Agent — Dashboard
-- Security policy
-- 📊 Obsidian Dataview Queries (Optional)
-- 🔄 Sync Workflow
-- 🎯 Import Steps
-- 🔗 Quick Links for Obsidian
+- Dashboard.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -203,11 +199,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (188 total, 13 thin omitted)
+## Communities (182 total, 14 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
-Nodes (39): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+31 more)
+Nodes (40): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, IX. Sources, L99 — ADVANCED CAPITAL MATHEMATICS ENGINE, V.1 `kelly_sizer.py`, V.2 `regime_expectancy_matrix.py` (also called for in [L99_ALPHA_VALIDATION.md](L99_ALPHA_VALIDATION.md) §V.1) (+32 more)
 
 ### Community 1 - "Trading_Guru_Empire_MOC.md"
 Cohesion: 0.05
@@ -382,8 +378,8 @@ Cohesion: 0.14
 Nodes (14): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, IX. ADR linkage, L99 — FORMAL ALPHA VALIDATION + REALISTIC EXPECTANCY MODEL, V.1 Regime-conditional expectancy matrix (Section 1.4 full + Section 2.6), V.2 Equity-curve Monte Carlo (Section 2.4) (+6 more)
 
 ### Community 44 - "L99 — ADVANCED CAPITAL MATHEMATICS ENGINE"
-Cohesion: 0.14
-Nodes (14): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, IX. Sources, L99 — ADVANCED CAPITAL MATHEMATICS ENGINE, V.1 `kelly_sizer.py`, V.2 `regime_expectancy_matrix.py` (also called for in [L99_ALPHA_VALIDATION.md](L99_ALPHA_VALIDATION.md) §V.1) (+6 more)
+Cohesion: 0.15
+Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — COMPOUNDING VELOCITY OPTIMIZER, V.1 `velocity_state_machine.py`, V.2 `velocity_score.py`, V.3 `anti_overcompounding.py` (+5 more)
 
 ### Community 45 - "UNCRISHABLE Trading Engine"
 Cohesion: 0.14
@@ -419,7 +415,7 @@ Nodes (45): 1. Clone Repository, 2. Read Documentation, 3. Set Up Local Environm
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
-Nodes (13): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy (+5 more)
+Nodes (9): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 4. Profit Securing and Cold Wallet Simulation, 5. Trading Guru Self-Learning Validation (+1 more)
 
 ### Community 54 - "Tournament Package - Integration Guide"
 Cohesion: 0.15
@@ -726,7 +722,7 @@ Cohesion: 0.40
 Nodes (5): 9.1 The Volatility Asymmetry Secret, 9.2 The Confirmation Threshold Secret, 9.3 The Timeout Exit Secret, 9.4 The Risk Mode Ladder Secret, 9. Secret Money-Making Methods
 
 ### Community 130 - "System Verification Documentation Workflow"
-Cohesion: 0.22
+Cohesion: 0.40
 Nodes (4): Best Practices for Document Generation, Bundled Resources, Core Principles, System Verification Documentation Workflow
 
 ### Community 131 - "🔄 Auto-synced project status"
@@ -752,6 +748,10 @@ Nodes (4): 13.1 The Three Laws of Crypto Risk Management, 13.2 Maximum Drawdown 
 ### Community 136 - "3. Tier 1 Strategies — Core Engine Drivers"
 Cohesion: 0.50
 Nodes (4): 3.1 Chande Momentum Oscillator (CMO), 3.2 ICT Fair Value Gap (FVG), 3.3 Squeeze Momentum (LazyBear), 3. Tier 1 Strategies — Core Engine Drivers
+
+### Community 137 - "3. AI Agent Logic and Constraint Validation"
+Cohesion: 0.33
+Nodes (5): Available Modes, Current Configuration, Filter Settings, SoundID Reference Setup, Status: Active ✅
 
 ### Community 138 - "Trading Guru Vision Documents"
 Cohesion: 0.50
@@ -810,64 +810,40 @@ Cohesion: 0.08
 Nodes (26): 1. **Chat Interface**, 2. **Quick Commands Panel**, 3. **Calendar Panel**, 4. **Toast Notifications**, Atomic Deployment Process, Calendar Opening/Closing, Component Breakdown, 🚀 Deployment Pipeline (+18 more)
 
 ### Community 177 - "Booking AI Agent - Deployment & Documentation Log"
-Cohesion: 0.10
-Nodes (21): Booking AI Agent - Deployment & Documentation Log, Commit: `2f5586a`, CSS Grid Fixes:, 🚀 Current Production State, Deployment:, 👤 Developer Notes, Files Modified:, Issues Fixed: (+13 more)
+Cohesion: 0.05
+Nodes (40): 🎯 Booking AI Agent — Dashboard, 🩺 Check production health, 📚 Documentation, 🔗 Live services, 🔄 Refresh this vault, Booking AI Agent - Deployment & Documentation Log, Commit: `2f5586a`, CSS Grid Fixes: (+32 more)
 
 ### Community 178 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
 Cohesion: 0.15
 Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR, V.1 `regime_probability.py` (estimator core), V.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features), V.3 `regime_transition.py` (+5 more)
 
 ### Community 179 - "Reincarnation Booking AI Agent - Obsidian Vault Guide"
-Cohesion: 0.15
-Nodes (13): 💾 Backup Strategy, 📞 Contact & Links, 🎯 Example Dashboard Note, 📋 Initial Checklist for Obsidian Setup, 🗒️ Note Template - Bug Fix/Feature, 🗒️ Note Template - Deployment Records, 🗒️ Note Template - Development Tasks, 🚀 Obsidian Daily Workflow (+5 more)
+Cohesion: 0.07
+Nodes (29): Active Issues, Automatic Sync (if Git plugin enabled), 💾 Backup Strategy, Completed Fixes, 📞 Contact & Links, 🎯 Example Dashboard Note, 🎯 Import Steps, 📋 Initial Checklist for Obsidian Setup (+21 more)
 
 ### Community 180 - "REINCARNATION Booking AI Agent"
-Cohesion: 0.22
-Nodes (9): API routes, Architecture, Configuration, Local setup, Operational notes, Production deployment, REINCARNATION Booking AI Agent, Security model (+1 more)
-
-### Community 182 - "🎯 Booking AI Agent — Dashboard"
-Cohesion: 0.40
-Nodes (5): 🎯 Booking AI Agent — Dashboard, 🩺 Check production health, 📚 Documentation, 🔗 Live services, 🔄 Refresh this vault
-
-### Community 183 - "Security policy"
-Cohesion: 0.40
-Nodes (5): Production checklist, Reporting a vulnerability, Residual operational boundaries, Security policy, Supported code
-
-### Community 184 - "📊 Obsidian Dataview Queries (Optional)"
 Cohesion: 0.50
-Nodes (4): Active Issues, Completed Fixes, 📊 Obsidian Dataview Queries (Optional), Urgent Items
-
-### Community 185 - "🔄 Sync Workflow"
-Cohesion: 0.50
-Nodes (4): Automatic Sync (if Git plugin enabled), Manual Sync, Steps:, 🔄 Sync Workflow
-
-### Community 186 - "🎯 Import Steps"
-Cohesion: 0.50
-Nodes (4): 🎯 Import Steps, Method 1: Copy-Paste Files, Method 2: Direct Import from GitHub, Method 3: Clone Repository
-
-### Community 187 - "🔗 Quick Links for Obsidian"
-Cohesion: 0.50
-Nodes (4): Key Documentation, Main Project Files, 🔗 Quick Links for Obsidian, Technologies
+Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
 
 ## Knowledge Gaps
-- **1510 isolated node(s):** `Getting Started`, `User Guides`, `API Documentation`, `Documentation Status`, `Usage` (+1505 more)
+- **1516 isolated node(s):** `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started`, `User Guides`, `API Documentation` (+1511 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `L99 — INSTITUTIONAL ALPHA RESEARCH ROADMAP` connect `III. Mapping to existing tooling` to `L99_ALPHA_VALIDATION.md`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **What connects `Getting Started`, `User Guides`, `API Documentation` to the rest of the system?**
-  _1510 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `Reincarnation Booking AI Agent - Complete Project Summary` connect `L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR` to `Booking AI Agent - Deployment & Documentation Log`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `RESEARCH ARC COMPLETE — formal decision to pause factor research` connect `RESEARCH ARC COMPLETE — formal decision to pause factor research` to `L99_ALPHA_VALIDATION.md`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **What connects `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` to the rest of the system?**
+  _1516 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.05429864253393665 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05297532656023222 - nodes in this community are weakly interconnected._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `MA50W10 Strategy — Backtesting Results & Validation` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
-- **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
-  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
