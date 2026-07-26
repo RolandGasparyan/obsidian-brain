@@ -63,3 +63,9 @@
 
 - Tightened the Twilio voice closing line so Armenian calls now end with the Armenian goodbye text instead of an English fallback sentence.
 - Kept the existing conservative TTS fallback behavior intact, because the configured Twilio voice catalog still does not expose a dedicated Armenian voice.
+
+## 2026-07-26 — VPS publish and proxy correction
+
+- Published the current Booking AI Agent release to the VPS and verified the live HTTPS health route returned `ok`.
+- Re-aligned the VPS app bind address and nginx upstream to the host bridge address `172.17.0.1:5000` so the public reverse proxy can reach the app again.
+- Confirmed the live service is running under systemd and the public `/health` route succeeds through the reverse proxy after reload.
