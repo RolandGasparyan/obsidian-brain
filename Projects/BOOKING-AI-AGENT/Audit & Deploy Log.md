@@ -83,3 +83,11 @@
 - Tuned the system prompt so Armenian replies prefer natural, spoken, non-translated Armenian and avoid unnecessary English borrowings.
 - Mirrored the transliteration heuristic in the channel adapter layer so inbound routing and persisted language metadata stay aligned.
 - Verified with `PYTHONPYCACHEPREFIX=/tmp/pycache .venv/bin/python tests/integration_test.py` and `PYTHONPYCACHEPREFIX=/tmp/pycache .venv/bin/python tests/e2e_test.py`; both passed after the update.
+
+## 2026-07-26 — Reply-language enforcement and live smoke
+
+- Added post-generation language drift guards so English and Russian replies are rewritten or downgraded to a language-appropriate fallback if the model drifts into the wrong script.
+- Kept the Armenian rewrite guard in place so Armenian replies remain clean and natural.
+- Verified locally with `tests/integration_test.py` and `tests/e2e_test.py`; both suites passed after the new guards were added.
+- Synced the patched `core/llm_core.py` to the live VPS release, restarted `reincarnation-booking`, and re-verified the production health route.
+- Live smoke on `2026-07-26` confirmed the final behavior: transliterated Armenian returned a normal Armenian reply, and English input returned an English reply.
