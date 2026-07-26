@@ -15,39 +15,6 @@
       "norm_label": "app.json"
     },
     {
-      "label": "# SoundID Reference Configuration Tracker.md",
-      "file_type": "document",
-      "source_file": "# SoundID Reference Configuration Tracker.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "soundid_reference_configuration_tracker",
-      "community": 181,
-      "community_name": "Dashboard.md",
-      "norm_label": "# soundid reference configuration tracker.md"
-    },
-    {
-      "label": "Last Updated: 2026-07-25",
-      "file_type": "document",
-      "source_file": "# SoundID Reference Configuration Tracker.md",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "soundid_reference_configuration_tracker_last_updated_2026_07_25",
-      "community": 181,
-      "community_name": "Dashboard.md",
-      "norm_label": "last updated: 2026-07-25"
-    },
-    {
-      "label": "Current Setup Profile",
-      "file_type": "document",
-      "source_file": "# SoundID Reference Configuration Tracker.md",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "soundid_reference_configuration_tracker_current_setup_profile",
-      "community": 181,
-      "community_name": "Dashboard.md",
-      "norm_label": "current setup profile"
-    },
-    {
       "label": "## DocumentationUntitled 2.md",
       "file_type": "document",
       "source_file": "## DocumentationUntitled 2.md",
@@ -2862,61 +2829,6 @@
       "community": 137,
       "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "2026-07-25.md"
-    },
-    {
-      "label": "SoundID Reference Setup",
-      "file_type": "document",
-      "source_file": "2026-07-25.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "2026_07_25_soundid_reference_setup",
-      "community": 137,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
-      "norm_label": "soundid reference setup"
-    },
-    {
-      "label": "Current Configuration",
-      "file_type": "document",
-      "source_file": "2026-07-25.md",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "2026_07_25_current_configuration",
-      "community": 137,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
-      "norm_label": "current configuration"
-    },
-    {
-      "label": "Available Modes",
-      "file_type": "document",
-      "source_file": "2026-07-25.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "2026_07_25_available_modes",
-      "community": 137,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
-      "norm_label": "available modes"
-    },
-    {
-      "label": "Filter Settings",
-      "file_type": "document",
-      "source_file": "2026-07-25.md",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "2026_07_25_filter_settings",
-      "community": 137,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
-      "norm_label": "filter settings"
-    },
-    {
-      "label": "Status: Active \u2705",
-      "file_type": "document",
-      "source_file": "2026-07-25.md",
-      "source_location": "L16",
-      "_origin": "ast",
-      "id": "2026_07_25_status_active",
-      "community": 137,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
-      "norm_label": "status: active \u2705"
     },
     {
       "label": "6 EMPIRES OS \u2014 Project State.md",
@@ -7292,8 +7204,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_architecture",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "architecture.md"
     },
     {
@@ -7589,8 +7501,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_deployment_log",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "deployment_log.md"
     },
     {
@@ -7831,8 +7743,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_dashboard",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "dashboard.md"
     },
     {
@@ -7842,8 +7754,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_dashboard_booking_ai_agent_dashboard",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 182,
+      "community_name": "\ud83c\udfaf Booking AI Agent \u2014 Dashboard",
       "norm_label": "\ud83c\udfaf booking ai agent \u2014 dashboard"
     },
     {
@@ -7853,8 +7765,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_dashboard_documentation",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 182,
+      "community_name": "\ud83c\udfaf Booking AI Agent \u2014 Dashboard",
       "norm_label": "\ud83d\udcda documentation"
     },
     {
@@ -7864,8 +7776,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_dashboard_live_services",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 182,
+      "community_name": "\ud83c\udfaf Booking AI Agent \u2014 Dashboard",
       "norm_label": "\ud83d\udd17 live services"
     },
     {
@@ -7875,8 +7787,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_dashboard_check_production_health",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 182,
+      "community_name": "\ud83c\udfaf Booking AI Agent \u2014 Dashboard",
       "norm_label": "\ud83e\ude7a check production health"
     },
     {
@@ -7886,8 +7798,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_dashboard_refresh_this_vault",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 182,
+      "community_name": "\ud83c\udfaf Booking AI Agent \u2014 Dashboard",
       "norm_label": "\ud83d\udd04 refresh this vault"
     },
     {
@@ -7897,8 +7809,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "obsidian_import.md"
     },
     {
@@ -7930,8 +7842,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_quick_links_for_obsidian",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 187,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "\ud83d\udd17 quick links for obsidian"
     },
     {
@@ -7941,8 +7853,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_main_project_files",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 187,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "main project files"
     },
     {
@@ -7952,8 +7864,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_key_documentation",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 187,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "key documentation"
     },
     {
@@ -7963,8 +7875,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_technologies",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 187,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "technologies"
     },
     {
@@ -7996,8 +7908,8 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_obsidian_dataview_queries_optional",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 184,
+      "community_name": "\ud83d\udcca Obsidian Dataview Queries (Optional)",
       "norm_label": "\ud83d\udcca obsidian dataview queries (optional)"
     },
     {
@@ -8007,8 +7919,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_active_issues",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 184,
+      "community_name": "\ud83d\udcca Obsidian Dataview Queries (Optional)",
       "norm_label": "active issues"
     },
     {
@@ -8018,8 +7930,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_completed_fixes",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 184,
+      "community_name": "\ud83d\udcca Obsidian Dataview Queries (Optional)",
       "norm_label": "completed fixes"
     },
     {
@@ -8029,8 +7941,8 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_urgent_items",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 184,
+      "community_name": "\ud83d\udcca Obsidian Dataview Queries (Optional)",
       "norm_label": "urgent items"
     },
     {
@@ -8040,8 +7952,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_import_steps",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 186,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "\ud83c\udfaf import steps"
     },
     {
@@ -8051,8 +7963,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_method_1_copy_paste_files",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 186,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "method 1: copy-paste files"
     },
     {
@@ -8062,8 +7974,8 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_method_2_direct_import_from_github",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 186,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "method 2: direct import from github"
     },
     {
@@ -8073,8 +7985,8 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_method_3_clone_repository",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 186,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "method 3: clone repository"
     },
     {
@@ -8128,8 +8040,8 @@
       "source_location": "L302",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_sync_workflow",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 185,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "\ud83d\udd04 sync workflow"
     },
     {
@@ -8139,8 +8051,8 @@
       "source_location": "L304",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_automatic_sync_if_git_plugin_enabled",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 185,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "automatic sync (if git plugin enabled)"
     },
     {
@@ -8150,8 +8062,8 @@
       "source_location": "L310",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_manual_sync",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 185,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "manual sync"
     },
     {
@@ -8161,8 +8073,8 @@
       "source_location": "L317",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_steps",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 185,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "steps:"
     },
     {
@@ -8227,8 +8139,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_project_summary",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "project_summary.md"
     },
     {
@@ -8733,8 +8645,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_quick_reference",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "quick_reference.md"
     },
     {
@@ -9118,8 +9030,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "readme.md"
     },
     {
@@ -9129,8 +9041,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_reincarnation_booking_ai_agent",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "reincarnation booking ai agent"
     },
     {
@@ -9140,8 +9052,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_security_model",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "security model"
     },
     {
@@ -9151,8 +9063,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_local_setup",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "local setup"
     },
     {
@@ -9162,8 +9074,8 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_configuration",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "configuration"
     },
     {
@@ -9173,8 +9085,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_verification",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "verification"
     },
     {
@@ -9184,8 +9096,8 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_api_routes",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "api routes"
     },
     {
@@ -9195,8 +9107,8 @@
       "source_location": "L144",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_production_deployment",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "production deployment"
     },
     {
@@ -9206,8 +9118,8 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_architecture",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "architecture"
     },
     {
@@ -9217,8 +9129,8 @@
       "source_location": "L176",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_readme_operational_notes",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 180,
+      "community_name": "REINCARNATION Booking AI Agent",
       "norm_label": "operational notes"
     },
     {
@@ -9228,8 +9140,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_security",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 181,
+      "community_name": "Dashboard.md",
       "norm_label": "security.md"
     },
     {
@@ -9239,8 +9151,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_security_security_policy",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 183,
+      "community_name": "Security policy",
       "norm_label": "security policy"
     },
     {
@@ -9250,8 +9162,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_security_reporting_a_vulnerability",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 183,
+      "community_name": "Security policy",
       "norm_label": "reporting a vulnerability"
     },
     {
@@ -9261,8 +9173,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_security_supported_code",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 183,
+      "community_name": "Security policy",
       "norm_label": "supported code"
     },
     {
@@ -9272,8 +9184,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_security_production_checklist",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 183,
+      "community_name": "Security policy",
       "norm_label": "production checklist"
     },
     {
@@ -9283,8 +9195,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_security_residual_operational_boundaries",
-      "community": 177,
-      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "community": 183,
+      "community_name": "Security policy",
       "norm_label": "residual operational boundaries"
     },
     {
@@ -9789,8 +9701,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "testing_engine",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "testing_engine.md"
     },
     {
@@ -17489,8 +17401,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_l99_advanced_capital_mathematics_engine",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "l99 \u2014 advanced capital mathematics engine"
     },
     {
@@ -17500,8 +17412,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_i_the_original_spec_verbatim",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "i. the original spec (verbatim)"
     },
     {
@@ -17511,8 +17423,8 @@
       "source_location": "L305",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_ii_why_this_spec_is_taken_seriously",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "ii. why this spec is taken seriously"
     },
     {
@@ -17522,8 +17434,8 @@
       "source_location": "L321",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_iii_mapping_to_existing_tooling",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "iii. mapping to existing tooling"
     },
     {
@@ -17533,8 +17445,8 @@
       "source_location": "L342",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_iv_what_this_framework_says_about_current_data",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "iv. what this framework says about current data"
     },
     {
@@ -17544,8 +17456,8 @@
       "source_location": "L356",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_v_implementable_pre_edge_proof_modules",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "v. implementable pre-edge-proof modules"
     },
     {
@@ -17555,8 +17467,8 @@
       "source_location": "L360",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_v_1_kelly_sizer_py",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "v.1 `kelly_sizer.py`"
     },
     {
@@ -17566,8 +17478,8 @@
       "source_location": "L367",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_v_2_regime_expectancy_matrix_py_also_called_for_in_l99_alpha_validation_md_l99_alpha_validation_md_v_1",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "v.2 `regime_expectancy_matrix.py` (also called for in [l99_alpha_validation.md](l99_alpha_validation.md) \u00a7v.1)"
     },
     {
@@ -17577,8 +17489,8 @@
       "source_location": "L374",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_v_3_equity_mc_sim_py",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "v.3 `equity_mc_sim.py`"
     },
     {
@@ -17588,8 +17500,8 @@
       "source_location": "L381",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_v_4_growth_projector_py",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "v.4 `growth_projector.py`"
     },
     {
@@ -17599,8 +17511,8 @@
       "source_location": "L392",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_vi_what_must_not_be_built",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "vi. what must not be built"
     },
     {
@@ -17610,8 +17522,8 @@
       "source_location": "L404",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_vii_order_of_operations_gating",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "vii. order of operations (gating)"
     },
     {
@@ -17621,8 +17533,8 @@
       "source_location": "L421",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_viii_adr_linkage",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "viii. adr linkage"
     },
     {
@@ -17632,8 +17544,8 @@
       "source_location": "L430",
       "_origin": "ast",
       "id": "docs_specs_l99_capital_mathematics_ix_sources",
-      "community": 0,
-      "community_name": "L99_ALPHA_VALIDATION.md",
+      "community": 44,
+      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
       "norm_label": "ix. sources"
     },
     {
@@ -17654,8 +17566,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_l99_compounding_velocity_optimizer",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "l99 \u2014 compounding velocity optimizer"
     },
     {
@@ -17665,8 +17577,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_i_the_original_spec_verbatim",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "i. the original spec (verbatim)"
     },
     {
@@ -17676,8 +17588,8 @@
       "source_location": "L228",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_ii_why_this_spec_is_taken_seriously",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "ii. why this spec is taken seriously"
     },
     {
@@ -17687,8 +17599,8 @@
       "source_location": "L240",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_iii_mapping_to_existing_tooling",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "iii. mapping to existing tooling"
     },
     {
@@ -17698,8 +17610,8 @@
       "source_location": "L260",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_iv_what_this_framework_says_about_current_data",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "iv. what this framework says about current data"
     },
     {
@@ -17709,8 +17621,8 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_implementable_pre_edge_proof_modules",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v. implementable pre-edge-proof modules"
     },
     {
@@ -17720,8 +17632,8 @@
       "source_location": "L276",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_1_velocity_state_machine_py",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.1 `velocity_state_machine.py`"
     },
     {
@@ -17731,8 +17643,8 @@
       "source_location": "L283",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_2_velocity_score_py",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.2 `velocity_score.py`"
     },
     {
@@ -17742,8 +17654,8 @@
       "source_location": "L290",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_3_anti_overcompounding_py",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.3 `anti_overcompounding.py`"
     },
     {
@@ -17753,8 +17665,8 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_v_4_stair_step_compounder_py",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "v.4 `stair_step_compounder.py`"
     },
     {
@@ -17764,8 +17676,8 @@
       "source_location": "L307",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_vi_what_must_not_be_built",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "vi. what must not be built"
     },
     {
@@ -17775,8 +17687,8 @@
       "source_location": "L317",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_vii_adr_linkage",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "vii. adr linkage"
     },
     {
@@ -17786,8 +17698,8 @@
       "source_location": "L325",
       "_origin": "ast",
       "id": "docs_specs_l99_compounding_velocity_viii_sources",
-      "community": 44,
-      "community_name": "L99 \u2014 ADVANCED CAPITAL MATHEMATICS ENGINE",
+      "community": 0,
+      "community_name": "L99_ALPHA_VALIDATION.md",
       "norm_label": "viii. sources"
     },
     {
@@ -19634,8 +19546,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_tech_spec",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "tech_spec.md"
     },
     {
@@ -19766,8 +19678,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "testing_protocol.md"
     },
     {
@@ -19854,8 +19766,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_ai_agent_logic_and_constraint_validation",
-      "community": 180,
-      "community_name": "REINCARNATION Booking AI Agent",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3. ai agent logic and constraint validation"
     },
     {
@@ -19865,8 +19777,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_1_aggressive_execution_and_loss_mitigation",
-      "community": 180,
-      "community_name": "REINCARNATION Booking AI Agent",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.1. aggressive execution and loss mitigation"
     },
     {
@@ -19876,8 +19788,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_2_gods_level_position_sizing_accuracy",
-      "community": 180,
-      "community_name": "REINCARNATION Booking AI Agent",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.2. \"gods level\" position sizing accuracy"
     },
     {
@@ -19887,8 +19799,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_3_entry_exit_checklist_enforcement",
-      "community": 180,
-      "community_name": "REINCARNATION Booking AI Agent",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.3. entry/exit checklist enforcement"
     },
     {
@@ -19920,8 +19832,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_verification_checklist",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "verification_checklist.md"
     },
     {
@@ -22470,26 +22382,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "# SoundID Reference Configuration Tracker.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "soundid_reference_configuration_tracker",
-      "target": "soundid_reference_configuration_tracker_current_setup_profile",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "# SoundID Reference Configuration Tracker.md",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "soundid_reference_configuration_tracker",
-      "target": "soundid_reference_configuration_tracker_last_updated_2026_07_25",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "## DocumentationUntitled 2.md",
       "source_location": "L3",
       "weight": 1.0,
@@ -24805,56 +24697,6 @@
       "weight": 1.0,
       "source": "03_resources_external_links_key_resources_key_resources_external_links",
       "target": "03_resources_external_links_key_resources_trading_data",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "2026-07-25.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "2026_07_25",
-      "target": "2026_07_25_soundid_reference_setup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "2026-07-25.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "2026_07_25_soundid_reference_setup",
-      "target": "2026_07_25_available_modes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "2026-07-25.md",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "2026_07_25_soundid_reference_setup",
-      "target": "2026_07_25_current_configuration",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "2026-07-25.md",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "2026_07_25_soundid_reference_setup",
-      "target": "2026_07_25_filter_settings",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "2026-07-25.md",
-      "source_location": "L16",
-      "weight": 1.0,
-      "source": "2026_07_25_soundid_reference_setup",
-      "target": "2026_07_25_status_active",
       "confidence_score": 1.0
     },
     {
