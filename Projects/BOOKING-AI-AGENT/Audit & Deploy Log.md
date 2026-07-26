@@ -69,3 +69,17 @@
 - Published the current Booking AI Agent release to the VPS and verified the live HTTPS health route returned `ok`.
 - Re-aligned the VPS app bind address and nginx upstream to the host bridge address `172.17.0.1:5000` so the public reverse proxy can reach the app again.
 - Confirmed the live service is running under systemd and the public `/health` route succeeds through the reverse proxy after reload.
+
+## 2026-07-26 — Same-language reply policy
+
+- Updated the conversation core so chat replies now mirror the customer’s language: Armenian, Russian, or English.
+- Updated the Twilio voice webhook to detect the spoken language and pass it through to the LLM and TwiML `<Gather>` language setting.
+- Adjusted the E2E assertions so English chat now expects an English reply, and Twilio voice now checks for English speech-language mirroring.
+- Verified the change with `PYTHONPYCACHEPREFIX=/tmp/pycache .venv/bin/python tests/integration_test.py` and `PYTHONPYCACHEPREFIX=/tmp/pycache .venv/bin/python tests/e2e_test.py`; both suites passed.
+
+## 2026-07-26 — Armenian transliteration recognition
+
+- Extended language detection so Latin-script Armenian phrases like “hima karas amen inch fix anes” are recognized as Armenian instead of English.
+- Tuned the system prompt so Armenian replies prefer natural, spoken, non-translated Armenian and avoid unnecessary English borrowings.
+- Mirrored the transliteration heuristic in the channel adapter layer so inbound routing and persisted language metadata stay aligned.
+- Verified with `PYTHONPYCACHEPREFIX=/tmp/pycache .venv/bin/python tests/integration_test.py` and `PYTHONPYCACHEPREFIX=/tmp/pycache .venv/bin/python tests/e2e_test.py`; both passed after the update.
