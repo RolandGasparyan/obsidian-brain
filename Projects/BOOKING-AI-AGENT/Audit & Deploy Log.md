@@ -104,3 +104,15 @@
 
 - Pushed `agent/remove-postiz` to GitHub so the finalized Booking AI Agent branch is now published.
 - Verified the branch exists remotely at `origin/agent/remove-postiz` and the local branch is tracking the published remote head.
+
+## 2026-07-27 — Production redeploy and runtime verification
+
+- Installed Python 3.11 on the VPS so the release build can use a supported interpreter.
+- Rebuilt the current release virtual environment with the real system Python 3.11, which fixed the broken `/tmp`-backed venv symlink from the first deploy attempt.
+- Confirmed the live health route returns `ok` again after restart.
+- Ran a final live chat smoke using the e2e payload shape; the bot answered in Armenian with a natural booking prompt.
+
+## 2026-07-27 — Deploy script hardening
+
+- Updated `deploy/deploy.sh` so future deploys select `python3.11` explicitly when available instead of relying on a temporary PATH shim.
+- Pushed the deploy-script fix to `agent/remove-postiz` for future safe redeploys.
