@@ -91,3 +91,10 @@
 - Verified locally with `tests/integration_test.py` and `tests/e2e_test.py`; both suites passed after the new guards were added.
 - Synced the patched `core/llm_core.py` to the live VPS release, restarted `reincarnation-booking`, and re-verified the production health route.
 - Live smoke on `2026-07-26` confirmed the final behavior: transliterated Armenian returned a normal Armenian reply, and English input returned an English reply.
+
+## 2026-07-27 — Platform response verification update
+
+- Re-opened the live booking preview and confirmed the web chat preview responds in Armenian to Armenian input.
+- Re-ran authenticated production webhook smoke checks for Meta, Telegram, Twilio voice, Twilio WhatsApp, Vapi, and WhatsApp Cloud; those channels remained healthy.
+- Confirmed the deployed `VIBER_AUTH_TOKEN` and `EMAIL_WEBHOOK_SECRET` entries in `/opt/reincarnation_booking/shared/.env` are currently empty on the VPS, which explains the live `403` rejects on Viber and inbound email webhook verification.
+- Kept the system closed to unsafe fallback behavior; no real keys were guessed or injected.
