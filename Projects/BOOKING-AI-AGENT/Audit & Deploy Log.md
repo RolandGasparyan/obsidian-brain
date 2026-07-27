@@ -98,3 +98,4 @@
 - Re-ran authenticated production webhook smoke checks for Meta, Telegram, Twilio voice, Twilio WhatsApp, Vapi, and WhatsApp Cloud; those channels remained healthy.
 - Confirmed the deployed `VIBER_AUTH_TOKEN` and `EMAIL_WEBHOOK_SECRET` entries in `/opt/reincarnation_booking/shared/.env` are currently empty on the VPS, which explains the live `403` rejects on Viber and inbound email webhook verification.
 - Kept the system closed to unsafe fallback behavior; no real keys were guessed or injected.
+- In the repo workspace, only `.env.template` exists for `BOOKING-AI-AGENT`; there is no deployable local `.env` file carrying the missing Viber or email secrets.
