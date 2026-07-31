@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-07-31)
+# Graph Report - Guru  (2026-07-26)
 
 ## Corpus Check
-- 201 files · ~203,695 words
+- 200 files · ~203,702 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2054 nodes · 1938 edges · 185 communities (170 shown, 15 thin omitted)
+- 2053 nodes · 1938 edges · 183 communities (168 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -181,7 +181,6 @@
 - REINCARNATION Booking AI Agent
 - Dashboard.md
 - 6-empires-os Audit & Deploy Log
-- 3. AI Agent Logic and Constraint Validation
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -201,7 +200,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (185 total, 15 thin omitted)
+## Communities (183 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
@@ -417,7 +416,7 @@ Nodes (45): 1. Clone Repository, 2. Read Documentation, 3. Set Up Local Environm
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
-Nodes (9): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 4. Profit Securing and Cold Wallet Simulation, 5. Trading Guru Self-Learning Validation (+1 more)
+Nodes (13): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy (+5 more)
 
 ### Community 54 - "Tournament Package - Integration Guide"
 Cohesion: 0.15
@@ -724,7 +723,7 @@ Cohesion: 0.40
 Nodes (5): 9.1 The Volatility Asymmetry Secret, 9.2 The Confirmation Threshold Secret, 9.3 The Timeout Exit Secret, 9.4 The Risk Mode Ladder Secret, 9. Secret Money-Making Methods
 
 ### Community 130 - "System Verification Documentation Workflow"
-Cohesion: 0.40
+Cohesion: 0.22
 Nodes (4): Best Practices for Document Generation, Bundled Resources, Core Principles, System Verification Documentation Workflow
 
 ### Community 131 - "🔄 Auto-synced project status"
@@ -826,10 +825,6 @@ Nodes (29): Active Issues, Automatic Sync (if Git plugin enabled), 💾 Backup S
 ### Community 180 - "REINCARNATION Booking AI Agent"
 Cohesion: 0.25
 Nodes (7): Environment inventory, Executive result, GitHub voice/deployment PR review, Live voice validation checklist, Required follow-up, RO-SUPREME-SETUP Environment Audit, Verification evidence
-
-### Community 183 - "3. AI Agent Logic and Constraint Validation"
-Cohesion: 0.50
-Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
 
 ## Knowledge Gaps
 - **1523 isolated node(s):** `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started`, `User Guides`, `API Documentation` (+1518 more)
