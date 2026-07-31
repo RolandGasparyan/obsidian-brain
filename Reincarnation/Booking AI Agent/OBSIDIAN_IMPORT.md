@@ -2,7 +2,7 @@
 
 **Purpose:** Complete documentation structure for Obsidian Brain  
 **Format:** Markdown (ready to import)  
-**Updated:** 2026-08-01
+**Updated:** 2026-07-24
 
 ---
 
@@ -37,15 +37,14 @@ Reincarnation/
 
 ### Main Project Files
 - **GitHub Repository:** https://github.com/rolandgasparyan/booking-ai-agent
-- **Production URL:** https://booking.6-empires.com
+- **Production URL:** https://6-empires.com
 - **VPS Gateway:** 172.17.0.1:5000
-- **Production Branch:** main
+- **Development Branch:** claude/booking-ai-agent-sync-ksu0yk
 
 ### Key Documentation
 - [[DEPLOYMENT_LOG.md|Deployment History]]
 - [[ARCHITECTURE.md|System Architecture]]
 - [[QUICK_REFERENCE.md|Developer Quick Reference]]
-- [[BOOKING_SYSTEM_STATUS.md|Current Production Status]]
 
 ### Technologies
 - **Frontend:** HTML5, CSS3 (Flexbox/Grid), JavaScript (Web Speech API)
