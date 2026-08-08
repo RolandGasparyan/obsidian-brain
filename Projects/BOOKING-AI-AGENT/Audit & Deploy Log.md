@@ -105,3 +105,14 @@
 - Final read-only provider verification: web/API, LLM, Telegram, Facebook Page, Instagram, Twilio Voice, SMTP, and Google Calendar passed.
 - External account blockers remain explicit: WhatsApp Cloud object `507303355806859` is inaccessible, Twilio has no registered WhatsApp sender, Viber credentials are absent, and Vapi credentials are absent.
 - No new real call or outbound platform message was sent during this final verification, and no provider credential was generated, guessed, exposed, or committed.
+
+## 2026-08-08 — Final production health pipeline stabilization
+
+- Fixed an intermittent `prod_healthcheck.sh` false negative caused by `grep -q` closing the Docker nginx configuration pipe early while `pipefail` was active.
+- Kept the nginx vhost validation strict while allowing the producer to finish normally; three consecutive pre-deploy live runs passed `26/26` with zero warnings and failures.
+- Merged PR `#114`; GitHub Actions run `31238059747` passed and atomically deployed release `b5f7d092f44fa5ca24d89a18c92bed0797e6cc63`.
+- Three consecutive checks of the installed production script passed `26/26`; public health, service, database integrity, Docker nginx configuration, booking vhost, HTTPS, redirect, TLS, disk, memory, and recent logs passed.
+- Final public chat smoke passed in Armenian, English, and Russian, with every response staying in the user's language.
+- Read-only Meta discovery confirmed the configured WhatsApp token is accepted, but WABA enumeration requires the missing `business_management` permission and no phone number was discoverable under the accessible Roland business.
+- Read-only provider verification remained `8 working`, `2 failed`, `2 not configured`: WhatsApp Cloud has an inaccessible phone object, Twilio has no registered WhatsApp sender, and Viber/Vapi credentials are absent.
+- No provider credential was generated, guessed, printed, committed, or added to this log. No real outbound message or call was placed.
