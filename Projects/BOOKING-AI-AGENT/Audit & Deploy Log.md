@@ -71,3 +71,21 @@
 - Graphify generated a local architecture graph with 614 nodes and 1,195 edges.
   It reported dangling/collapsed extraction edges as graph limitations, not
   confirmed application defects.
+
+## 2026-08-08 — Final live hardening and provider truth gate
+
+- Removed the reintroduced Postiz application, admin, ledger, and test paths by reverting the three Postiz commits; retained only immutable legacy migration compatibility.
+- Added complete GitHub Actions-to-VPS synchronization for channel, TTS, email webhook, and Google Calendar configuration without logging secret values.
+- Isolated concurrent E2E databases and added deployment-configuration regression checks.
+- Merged PR `#110` and deployed release `425e39723e75e67c4a7d76f37f252caedb30d163`; quality and atomic deployment jobs passed.
+- Live chat verification passed for Armenian, English, and Russian. Armenian output was natural and script-correct; AIMLAPI TTS returned a valid HTTPS audio asset.
+- A user-authorized Twilio call to the protected test recipient completed successfully in production with a 16-second duration. The active caller ID is owned by the configured Twilio account.
+- A real WhatsApp outbound probe exposed provider error `63007`. The official Twilio Senders API returned no registered WhatsApp sender; the configured sandbox-style sender is therefore not production-ready.
+- Hardened channel verification to query the official Twilio Senders API and report Twilio Voice independently from Twilio WhatsApp.
+- Changed outbound WhatsApp API behavior so immediate provider rejection returns `502`; success now states provider acceptance and no longer claims delivery.
+- Added `tests/test_verify_channels.py`; final local gates passed: integration `112/112`, E2E `110/110`, Ruff, Bandit, and pip-audit with no known vulnerabilities.
+- Merged PR `#111` as `33c20e87ca8b33af531245319e254e75aa68b822`. GitHub Actions run `31236202361` passed and atomically deployed that exact release.
+- Post-deploy evidence: `reincarnation-booking.service` is active and `https://booking.6-empires.com/health` returns `ok`.
+- Production-ready providers: web chat/API, LLM, Telegram, Facebook Page, Instagram, Twilio Voice, SMTP, and Google Calendar.
+- External provider blockers remain explicit: WhatsApp Cloud references inaccessible object `507303355806859`; Twilio has no registered WhatsApp sender; Viber has no auth token; Vapi has no API key, assistant ID, or phone-number ID.
+- No provider credentials were generated, guessed, copied into source control, or written to this log.
