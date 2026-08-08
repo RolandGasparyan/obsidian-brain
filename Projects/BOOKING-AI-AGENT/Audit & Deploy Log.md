@@ -116,3 +116,17 @@
 - Read-only Meta discovery confirmed the configured WhatsApp token is accepted, but WABA enumeration requires the missing `business_management` permission and no phone number was discoverable under the accessible Roland business.
 - Read-only provider verification remained `8 working`, `2 failed`, `2 not configured`: WhatsApp Cloud has an inaccessible phone object, Twilio has no registered WhatsApp sender, and Viber/Vapi credentials are absent.
 - No provider credential was generated, guessed, printed, committed, or added to this log. No real outbound message or call was placed.
+
+## 2026-08-08 — Provider onboarding security hardening and production release
+
+- Inspected Meta Business Portfolio `458729864550170` through the authenticated browser session. Three approved Reincarnation Orchestra WhatsApp Business Accounts exist: `2207138373371879`, `1755403032553350`, and `1034074986034025`.
+- Read-only inspection confirmed that all three WABAs have zero phone numbers. The business verification remains in progress and no payment method is present.
+- Hardened `scripts/connect_meta_channels.py` with a read-only `--check` mode, explicit `business_management` permission diagnostics, owned/client WABA discovery, optional explicit WABA IDs, safe env-key insertion, and UTF-8/context-managed env access.
+- Removed the unsafe behavior that persisted a temporary Meta user token as `WA_ACCESS_TOKEN`. Apply mode now requires `META_SYSTEM_USER_TOKEN` or `WA_SYSTEM_USER_TOKEN` and fails closed without one.
+- Added a focused regression suite proving that temporary user tokens are not persisted or used to subscribe a WABA. Added the suite to GitHub Actions.
+- Local evidence passed: focused onboarding tests `2/2`, integration `112/112`, E2E `115/115`, targeted Ruff, Bandit, compileall, and pip-audit with no known vulnerabilities.
+- Merged PR `#115` as `578631d87e47bd1b066bd8fd65cecf068433c77c`. GitHub Actions run `31238957555` passed and atomically deployed that exact release.
+- Three consecutive post-deploy production health checks passed `26/26` with zero warnings and zero failures. The service is active and enabled; public HTTPS, TLS, Docker nginx, database integrity, backups, disk, memory, and recent logs passed.
+- Final read-only channel verification remains truthful: 8 working (web/API, LLM, Telegram, Facebook, Instagram, Twilio Voice, SMTP, Google Calendar), 2 failed (WhatsApp Cloud stale/inaccessible phone object and unregistered Twilio WhatsApp sender), and 2 not configured (Viber and Vapi).
+- Meta phone onboarding is prepared in the browser with display name `Reincarnation Orchestra` and category `Entertainment`; the next step creates/updates the business profile and proceeds to phone verification, so it was not submitted without action-time authorization and OTP access.
+- Twilio, Viber, and Vapi browser sessions are at their login/registration gates. No provider token was generated, guessed, scraped from repositories, printed, committed, or copied into this log. No real outbound message or call was sent.
