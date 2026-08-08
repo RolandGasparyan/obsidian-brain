@@ -89,3 +89,19 @@
 - Production-ready providers: web chat/API, LLM, Telegram, Facebook Page, Instagram, Twilio Voice, SMTP, and Google Calendar.
 - External provider blockers remain explicit: WhatsApp Cloud references inaccessible object `507303355806859`; Twilio has no registered WhatsApp sender; Viber has no auth token; Vapi has no API key, assistant ID, or phone-number ID.
 - No provider credentials were generated, guessed, copied into source control, or written to this log.
+
+## 2026-08-08 — Final outbound-call truth fix and clean launch
+
+- Fixed outbound Twilio and Vapi calls so the API waits for immediate provider acceptance instead of returning success before the provider request runs.
+- Provider rejection and malformed provider success responses now fail closed with HTTP `502`; successful responses include the provider call ID.
+- Removed the unsafe fallback that reused `TWILIO_WA_NUMBER` as a voice caller ID. Voice calls now require the owned `TWILIO_PHONE_NUMBER`.
+- Added regression coverage for missing Twilio voice configuration, missing provider IDs, provider rejection, provider acceptance, and Vapi rejection without placing real calls.
+- Local verification passed: Ruff, Bandit, compileall, pip-audit with no known vulnerabilities, integration `112/112`, and E2E `115/115`.
+- Merged PR `#112`; GitHub Actions run `31237355302` passed and atomically deployed release `84f2a4ee41050368717a7eb5798fe0accb31790b`.
+- Corrected `prod_healthcheck.sh` to detect the active Docker nginx proxy when the legacy host `nginx.service` is intentionally inactive, and to validate the running container configuration and loaded booking vhost.
+- Merged PR `#113`; GitHub Actions run `31237612709` passed and atomically deployed final release `d1f680ca3d06ec5d40f8f13e7eac59b1b9ad0af4`.
+- Final VPS health evidence: `26 passed`, `0 warnings`, `0 failed`; service active and enabled, database integrity passed, public HTTPS returned `200`, HTTP redirected to HTTPS, TLS valid, and no service errors were logged in the last hour.
+- Final public live-chat smoke passed in Armenian, English, and Russian. Each response stayed in the user's language; Armenian output was natural and script-correct.
+- Final read-only provider verification: web/API, LLM, Telegram, Facebook Page, Instagram, Twilio Voice, SMTP, and Google Calendar passed.
+- External account blockers remain explicit: WhatsApp Cloud object `507303355806859` is inaccessible, Twilio has no registered WhatsApp sender, Viber credentials are absent, and Vapi credentials are absent.
+- No new real call or outbound platform message was sent during this final verification, and no provider credential was generated, guessed, exposed, or committed.
