@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-08-08)
+# Graph Report - Guru  (2026-08-04)
 
 ## Corpus Check
-- 200 files · ~203,725 words
+- 202 files · ~203,734 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2053 nodes · 1938 edges · 184 communities (169 shown, 15 thin omitted)
+- 2055 nodes · 1938 edges · 186 communities (171 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -201,7 +201,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (184 total, 15 thin omitted)
+## Communities (186 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.05
@@ -840,7 +840,7 @@ Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Posi
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **What connects `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` to the rest of the system?**
   _1523 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
