@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1786308819.642734,
-    "ast_hash": "aeebc419c71ae95df391051760bbab99",
+    "mtime": 1786287651.6665056,
+    "ast_hash": "d735e446fab726bab8458ffad7f0c9f5",
     "semantic_hash": ""
   },
   "00_Home.md": {
@@ -1032,11 +1032,6 @@
   "Reincarnation/Booking AI Agent/SETUP_GUIDE.md": {
     "mtime": 1786287620.821783,
     "ast_hash": "53decd99e4702f5310b485d8874c1228",
-    "semantic_hash": ""
-  },
-  "wa-idwa-iwa-id.ts.md": {
-    "mtime": 1786308626.1342487,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": ""
   }
 }
