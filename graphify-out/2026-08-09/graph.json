@@ -15,6 +15,105 @@
       "norm_label": "app.json"
     },
     {
+      "label": "wa-id.ts",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "wa-id.ts"
+    },
+    {
+      "label": "WaIdKind",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_waidkind",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "waidkind"
+    },
+    {
+      "label": "USER_DOMAINS",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_user_domains",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "user_domains"
+    },
+    {
+      "label": "ParsedWaId",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_parsedwaid",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "parsedwaid"
+    },
+    {
+      "label": "userPart()",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_userpart",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "userpart()"
+    },
+    {
+      "label": "parseWaId()",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_parsewaid",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "parsewaid()"
+    },
+    {
+      "label": "toNeutralJid()",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_toneutraljid",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "toneutraljid()"
+    },
+    {
+      "label": "isChannelJid()",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_ischanneljid",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "ischanneljid()"
+    },
+    {
+      "label": "chatKind",
+      "file_type": "code",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L121",
+      "_origin": "ast",
+      "id": "openwa_src_engine_identity_wa_id_chatkind",
+      "community": 172,
+      "community_name": "wa-id.ts",
+      "norm_label": "chatkind"
+    },
+    {
       "label": "# SoundID Reference Configuration Tracker.md",
       "file_type": "document",
       "source_file": "# SoundID Reference Configuration Tracker.md",
@@ -9910,8 +10009,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "testing_engine",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "testing_engine.md"
     },
     {
@@ -19755,8 +19854,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_tech_spec",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "tech_spec.md"
     },
     {
@@ -19887,8 +19986,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "testing_protocol.md"
     },
     {
@@ -19975,8 +20074,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_ai_agent_logic_and_constraint_validation",
-      "community": 183,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3. ai agent logic and constraint validation"
     },
     {
@@ -19986,8 +20085,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_1_aggressive_execution_and_loss_mitigation",
-      "community": 183,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.1. aggressive execution and loss mitigation"
     },
     {
@@ -19997,8 +20096,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_2_gods_level_position_sizing_accuracy",
-      "community": 183,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.2. \"gods level\" position sizing accuracy"
     },
     {
@@ -20008,8 +20107,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_3_entry_exit_checklist_enforcement",
-      "community": 183,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.3. entry/exit checklist enforcement"
     },
     {
@@ -20041,8 +20140,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_verification_checklist",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "verification_checklist.md"
     },
     {
@@ -22588,6 +22687,130 @@
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_chatkind",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_ischanneljid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_parsedwaid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_parsewaid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_toneutraljid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_user_domains",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_userpart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id",
+      "target": "openwa_src_engine_identity_wa_id_waidkind",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id_parsewaid",
+      "target": "openwa_src_engine_identity_wa_id_user_domains"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id_chatkind",
+      "target": "openwa_src_engine_identity_wa_id_parsewaid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id_ischanneljid",
+      "target": "openwa_src_engine_identity_wa_id_parsewaid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "OpenWA/src/engine/identity/wa-id.ts",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "openwa_src_engine_identity_wa_id_toneutraljid",
+      "target": "openwa_src_engine_identity_wa_id_parsewaid",
+      "confidence_score": 1.0
+    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
