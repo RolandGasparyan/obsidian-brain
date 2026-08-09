@@ -230,3 +230,19 @@
 
 *Generated: 2026-07-24*  
 *Last Updated: 2026-07-24 05:53:24 UTC*
+
+---
+
+## 2026-08-01 — Channel verification, Armenian typing UX, and Viber readiness
+
+- Deployed Armenian assistant typing state with a slowly rotating REINCARNATION logo, localized status text, animated dots, and a 900 ms minimum visible duration.
+- Verified the production Armenian web-chat response and confirmed zero browser console errors.
+- Verified Telegram bot identity and webhook health.
+- Verified WhatsApp Cloud phone/token permissions, callback verification, and signed webhook handling.
+- Verified Facebook Messenger page subscription and Instagram account linkage/permissions.
+- Kept Viber disabled because no commercial Viber bot token exists; updated its public status endpoint to report `not_configured` truthfully.
+- Added GitHub Actions propagation for a future `VIBER_AUTH_TOKEN` and `VIBER_BOT_NAME`.
+- TikTok remains outside the booking system because no messaging adapter is configured.
+- CI security, regression, webhook, and atomic VPS deployment checks passed.
+
+See [[BOOKING_SYSTEM_STATUS.md]] for the current source of truth.

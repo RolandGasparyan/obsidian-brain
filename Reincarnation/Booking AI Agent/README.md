@@ -78,7 +78,6 @@ The main optional controls are:
 
 - `FESTIVAL_SCOUT_ENABLED=false`
 - `FESTIVAL_OUTREACH_ENABLED=false`
-- `POSTIZ_AUTO_PUBLISH_ENABLED=false`
 - `SESSION_MAX_COUNT=500`
 - `SESSION_TTL_SECONDS=3600`
 - `MAX_REQUEST_BYTES=1048576`
@@ -135,11 +134,9 @@ from the protected server `.env` when a provider dashboard asks for one.
 Armenian (`hy`) is the system fallback for chat and booking communications.
 Explicit English and Russian messages are still answered in their detected
 language. Browser voice chat uses Armenian (`hy-AM`) by default. Twilio speech
-recognition accepts Armenian (`hy-AM`), but Twilio `<Say>` does
-not currently provide Armenian text-to-speech. Spoken Armenian phone replies
-therefore require a separately configured voice provider that explicitly lists
-Armenian TTS support. The application must not claim Armenian phone speech is
-active when only Twilio `<Say>` is configured.
+recognition accepts Armenian (`hy-AM`); Armenian greeting, replies, and goodbye
+audio are synthesized through AIMLAPI `openai/gpt-4o-mini-tts` and delivered by
+Twilio with `<Play>`. English and Russian calls continue to use Twilio `<Say>`.
 
 ## Production deployment
 
