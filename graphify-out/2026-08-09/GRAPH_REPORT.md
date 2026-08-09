@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-08-09)
+# Graph Report - Guru  (2026-08-08)
 
 ## Corpus Check
-- 201 files · ~204,436 words
+- 200 files · ~203,725 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2062 nodes · 1950 edges · 184 communities (169 shown, 15 thin omitted)
+- 2053 nodes · 1938 edges · 184 communities (169 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -173,7 +173,6 @@
 - extraction-spec.md
 - Mercury AI Assistant - Project Hub.md
 - Drawing 2026-07-24 23.19.27.excalidraw.md
-- wa-id.ts
 - Booking AI Agent - Quick Reference Guide
 - Reincarnation Booking AI Agent - Architecture
 - Booking AI Agent - Deployment & Documentation Log
@@ -182,6 +181,7 @@
 - REINCARNATION Booking AI Agent
 - Dashboard.md
 - 6-empires-os Audit & Deploy Log
+- 3. AI Agent Logic and Constraint Validation
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -417,7 +417,7 @@ Nodes (45): 1. Clone Repository, 2. Read Documentation, 3. Set Up Local Environm
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
-Nodes (13): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy (+5 more)
+Nodes (9): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 4. Profit Securing and Cold Wallet Simulation, 5. Trading Guru Self-Learning Validation (+1 more)
 
 ### Community 54 - "Tournament Package - Integration Guide"
 Cohesion: 0.15
@@ -724,7 +724,7 @@ Cohesion: 0.40
 Nodes (5): 9.1 The Volatility Asymmetry Secret, 9.2 The Confirmation Threshold Secret, 9.3 The Timeout Exit Secret, 9.4 The Risk Mode Ladder Secret, 9. Secret Money-Making Methods
 
 ### Community 130 - "System Verification Documentation Workflow"
-Cohesion: 0.22
+Cohesion: 0.40
 Nodes (4): Best Practices for Document Generation, Bundled Resources, Core Principles, System Verification Documentation Workflow
 
 ### Community 131 - "🔄 Auto-synced project status"
@@ -803,10 +803,6 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.11
 Nodes (13): API Documentation, Documentation Index, Documentation Status, Getting Started, User Guides, Project Overview, 📊 Project Status, 🚀 Quick Navigation (+5 more)
 
-### Community 172 - "wa-id.ts"
-Cohesion: 0.33
-Nodes (7): chatKind, isChannelJid(), ParsedWaId, parseWaId(), toNeutralJid(), USER_DOMAINS, WaIdKind
-
 ### Community 175 - "Booking AI Agent - Quick Reference Guide"
 Cohesion: 0.06
 Nodes (34): Adding New Translations, Booking AI Agent - Quick Reference Guide, Can't Push to GitHub, Check Deployment Status, 📋 Common Tasks, ⚡ Critical CSS Fixes (Remember These!), 🔧 Debugging Checklist, Deploy Changes (+26 more)
@@ -831,8 +827,12 @@ Nodes (29): Active Issues, Automatic Sync (if Git plugin enabled), 💾 Backup S
 Cohesion: 0.25
 Nodes (7): Environment inventory, Executive result, GitHub voice/deployment PR review, Live voice validation checklist, Required follow-up, RO-SUPREME-SETUP Environment Audit, Verification evidence
 
+### Community 183 - "3. AI Agent Logic and Constraint Validation"
+Cohesion: 0.50
+Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
+
 ## Knowledge Gaps
-- **1525 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1520 more)
+- **1523 isolated node(s):** `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started`, `User Guides`, `API Documentation` (+1518 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -841,8 +841,8 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1525 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` to the rest of the system?**
+  _1523 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `L99_ALPHA_VALIDATION.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05429864253393665 - nodes in this community are weakly interconnected._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
