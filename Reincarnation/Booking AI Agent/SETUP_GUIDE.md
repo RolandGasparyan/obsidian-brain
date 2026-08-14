@@ -130,7 +130,7 @@ network). Re-run it any time to refresh — that is the intended workflow.
 | What | Value |
 |------|-------|
 | Production site | https://booking.6-empires.com |
-| Provider callback health | https://booking.165-227-95-37.sslip.io/health |
+| Temporary live site + provider callbacks | https://booking.165-227-95-37.sslip.io |
 | Droplet | `empire-booking-prod` · 165.227.95.37 · NYC1 · Ubuntu 24.04 LTS |
 | App root on server | `/opt/reincarnation_booking` |
 | App (internal) | `http://172.17.0.1:5000` |

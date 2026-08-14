@@ -300,7 +300,7 @@ curl -H "Host: booking.6-empires.com" http://172.17.0.1:5000/health
 | What | Value |
 |------|-------|
 | Production site | https://booking.6-empires.com |
-| Provider callback health | https://booking.165-227-95-37.sslip.io/health |
+| Temporary live site + provider callbacks | https://booking.165-227-95-37.sslip.io |
 | Droplet | `empire-booking-prod` · 165.227.95.37 · NYC1 · Ubuntu 24.04 LTS |
 | App bind address | `172.17.0.1:5000` (Docker gateway) |
 | systemd unit | `reincarnation-booking` |
