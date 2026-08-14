@@ -175,7 +175,7 @@ repository — `.env.template` carries names and example values only.
 | Meta (FB/IG) | `META_APP_SECRET`, `META_PAGE_ACCESS_TOKEN`, `META_IG_ACCESS_TOKEN`, `META_IG_ACCOUNT_ID`, `META_VERIFY_TOKEN`, `META_GRAPH_API_VERSION` (`v21.0`) |
 | WhatsApp Cloud | `WA_PHONE_NUMBER_ID`, `WA_ACCESS_TOKEN`, `WA_APP_SECRET`, `WA_VERIFY_TOKEN` |
 | Viber | `VIBER_AUTH_TOKEN`, `VIBER_BOT_NAME` |
-| Twilio | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WA_NUMBER` (`whatsapp:+1…`), `TWILIO_PHONE_NUMBER` (plain E.164, voice-capable) |
+| Twilio | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WA_NUMBER` (`whatsapp:+1…`), `TWILIO_PHONE_NUMBER` (plain E.164, voice-capable), `TWILIO_VERIFY_SERVICE_SID`, `TWILIO_VERIFY_DEFAULT_CHANNEL` |
 | Vapi.ai | `VAPI_API_KEY`, `VAPI_PHONE_NUMBER_ID`, `VAPI_ASSISTANT_ID`, `VAPI_WEBHOOK_SECRET` |
 
 Note the two different Twilio number formats — `TWILIO_WA_NUMBER` needs the
@@ -269,7 +269,7 @@ and the active `claude/*` branch.
 lockfiles, re-runs both suites **on the server**, backs up and migrates the
 database, swaps the symlink, restarts, health-checks, and rolls back on failure.
 
-Repository secrets/variables it reads: `SSH_HOST` (default `64.227.6.197`),
+Repository secrets/variables it reads: `SSH_HOST` (production: `165.227.95.37`),
 `SSH_PORT` (`22`), `SSH_USER` (`root`), plus the deploy key.
 
 Dependencies are installed with `--require-hashes` from `requirements*.lock`, so
@@ -300,7 +300,8 @@ curl -H "Host: booking.6-empires.com" http://172.17.0.1:5000/health
 | What | Value |
 |------|-------|
 | Production site | https://booking.6-empires.com |
-| Droplet | `empire-cpu` · 64.227.6.197 · NYC1 · Ubuntu 22.04 LTS |
+| Provider callback health | https://booking.165-227-95-37.sslip.io/health |
+| Droplet | `empire-booking-prod` · 165.227.95.37 · NYC1 · Ubuntu 24.04 LTS |
 | App bind address | `172.17.0.1:5000` (Docker gateway) |
 | systemd unit | `reincarnation-booking` |
 | Service user | `www-data` |

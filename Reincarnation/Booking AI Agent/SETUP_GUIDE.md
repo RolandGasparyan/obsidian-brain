@@ -6,8 +6,8 @@ Two scripts, both safe to re-run, both tested.
 
 ## 1. Check production health
 
-**Where:** on the droplet — DigitalOcean → Droplets → `empire-cpu` → **Web Console**
-(or `ssh root@64.227.6.197`).
+**Where:** on the droplet — DigitalOcean → Droplets → `empire-booking-prod` → **Web Console**
+(or `ssh root@165.227.95.37`).
 
 ```bash
 bash /opt/reincarnation_booking/current/scripts/prod_healthcheck.sh
@@ -62,11 +62,12 @@ actually connected". It asks each provider directly:
 | Channel | What is verified |
 |---------|------------------|
 | Web chat + API | `/health` returns ok, the UI serves HTML |
-| LLM | Credentials accepted **and `LLM_MODEL` is in the provider's model list** |
+| LLM | Credentials accepted **and `LLM_MODEL` is in the provider's model list** (production target: aimlapi) |
 | Telegram | `getMe` accepts the token, a webhook is registered, it points at us, and Telegram's last delivery did not fail |
 | Facebook Page / Instagram | Each access token resolves to a real account |
 | WhatsApp Cloud | The phone number ID resolves; reports number, verified name and quality rating |
 | Twilio | Account is active, `TWILIO_PHONE_NUMBER` is genuinely owned, `TWILIO_WA_NUMBER` carries the `whatsapp:` prefix |
+| Twilio Verify | Verification Service resolves from `TWILIO_VERIFY_SERVICE_SID`; OTP start/check can be exercised against the live service |
 | Viber | Token accepted, webhook registered and pointing at us |
 | Vapi | Assistant and phone number IDs exist on the account |
 | Email | Real SMTP connect + STARTTLS + login |
@@ -78,9 +79,9 @@ that is a valid state. Exit code is `0` unless a *configured* channel fails.
 **It sends nothing.** No messages, no calls, no emails — every probe is a
 read-only lookup.
 
-The LLM model check is the one to watch after switching providers: Groq retires
-models, and a wrong `LLM_MODEL` fails here loudly instead of silently degrading
-the chat into canned fallbacks.
+The LLM model check is the one to watch after switching providers: aimlapi and
+Groq both retire or rename models over time, and a wrong `LLM_MODEL` fails here
+loudly instead of silently degrading the chat into canned fallbacks.
 
 ---
 
@@ -129,7 +130,8 @@ network). Re-run it any time to refresh — that is the intended workflow.
 | What | Value |
 |------|-------|
 | Production site | https://booking.6-empires.com |
-| Droplet | `empire-cpu` · 64.227.6.197 · NYC1 · Ubuntu 22.04 LTS |
+| Provider callback health | https://booking.165-227-95-37.sslip.io/health |
+| Droplet | `empire-booking-prod` · 165.227.95.37 · NYC1 · Ubuntu 24.04 LTS |
 | App root on server | `/opt/reincarnation_booking` |
 | App (internal) | `http://172.17.0.1:5000` |
 | systemd unit | `reincarnation-booking` |

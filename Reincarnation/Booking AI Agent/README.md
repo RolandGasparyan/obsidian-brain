@@ -115,6 +115,7 @@ uv pip compile requirements-bootstrap.txt --python-version 3.11 --generate-hashe
 | Meta FB/IG | `POST /api/webhook/meta` | Meta HMAC |
 | WhatsApp Cloud | `POST /api/webhook/whatsapp` | Meta HMAC |
 | Twilio WhatsApp | `POST /api/webhook/twilio/whatsapp` | Twilio signature |
+| Twilio Verify OTP | `POST /api/verify/start`, `POST /api/verify/check` | Public, Twilio Verify |
 | Viber | `POST /api/webhook/viber` | Viber HMAC |
 | Twilio voice | `POST /api/webhook/twilio/voice` | Twilio signature |
 | Vapi | `POST /api/webhook/vapi` | Vapi webhook secret |
@@ -137,6 +138,8 @@ language. Browser voice chat uses Armenian (`hy-AM`) by default. Twilio speech
 recognition accepts Armenian (`hy-AM`); Armenian greeting, replies, and goodbye
 audio are synthesized through AIMLAPI `openai/gpt-4o-mini-tts` and delivered by
 Twilio with `<Play>`. English and Russian calls continue to use Twilio `<Say>`.
+Twilio Verify is available for OTP flows through `/api/verify/start` and
+`/api/verify/check` once `TWILIO_VERIFY_SERVICE_SID` is configured.
 
 ## Production deployment
 
