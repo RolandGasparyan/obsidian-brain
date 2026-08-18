@@ -1,11 +1,11 @@
 {
   ".obsidian/app.json": {
-    "mtime": 1786316056.7967045,
+    "mtime": 1787085314.35305,
     "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
     "semantic_hash": ""
   },
   ".obsidian/appearance.json": {
-    "mtime": 1786316056.7970839,
+    "mtime": 1787085314.3533797,
     "ast_hash": "86d9f6137e6a7f85b82e26b03cbcde9d",
     "semantic_hash": ""
   },
@@ -15,12 +15,12 @@
     "semantic_hash": ""
   },
   ".obsidian/core-plugins.json": {
-    "mtime": 1786316056.3724158,
+    "mtime": 1787085313.9113586,
     "ast_hash": "7c877bea49eaeabb100563bd157b9051",
     "semantic_hash": ""
   },
   ".obsidian/graph.json": {
-    "mtime": 1786316058.119999,
+    "mtime": 1787085315.677999,
     "ast_hash": "a1ea0720be912378a4ea423ae9c54995",
     "semantic_hash": ""
   },
@@ -35,7 +35,7 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1786316056.9334466,
+    "mtime": 1787085314.5061288,
     "ast_hash": "6b533d9f01b75af326fd81def2da9b92",
     "semantic_hash": ""
   },
