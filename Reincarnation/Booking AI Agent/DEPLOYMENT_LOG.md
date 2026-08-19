@@ -285,3 +285,24 @@ See [[BOOKING_SYSTEM_STATUS.md]] for the current source of truth.
 - SMTP initially crossed a short tunnel-reconnect window after deploy; the
   repeat production NOOP probe passed for `bookings@reincarnation.am`.
 - No external festival email was sent during verification.
+
+---
+
+## 2026-08-19 — Final full verification and deployment
+
+- Deployed immutable release `4ef6e5fcfeca721a5e2866330df15142b3f3f920`
+  through successful GitHub Actions run `32239341381`.
+- Compile, Ruff, Bandit and the locked dependency vulnerability audit passed.
+- Local verification passed: integration 148/148 and E2E 140/140; deploy,
+  provider, WAHA, Meta and festival regression suites also passed.
+- VPS production health passed 27/27 with zero warnings and zero failures.
+- Live provider probes passed for Web/API, AIMLAPI, Telegram, Facebook,
+  Instagram, WAHA WhatsApp, Twilio WhatsApp, Twilio Voice, Twilio Verify,
+  Vapi, SMTP email and Google Calendar.
+- WhatsApp Cloud and Viber remain explicitly disabled because no production
+  credentials exist.
+- Live Armenian web chat returned the correct Armenia private-event pricing
+  and a concise follow-up question.
+- Side-effect-free production festival dry-run found 9 leads and 2 verified
+  outreach contacts; both proposal previews passed date, media and rider-link
+  checks. No external call or email was sent during this verification.

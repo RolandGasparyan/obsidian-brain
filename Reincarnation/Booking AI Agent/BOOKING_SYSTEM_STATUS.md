@@ -14,8 +14,8 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 - Health URL: https://booking.6-empires.com/health
 - GitHub: https://github.com/RolandGasparyan/BOOKING-AI-AGENT
 - Branch: `main`
-- Live release: `b8f484a3058ea4c020a24e804a2e9f4e0e284624`
-- Verified deploy run: https://github.com/RolandGasparyan/BOOKING-AI-AGENT/actions/runs/32237287040
+- Live release: `4ef6e5fcfeca721a5e2866330df15142b3f3f920`
+- Verified deploy run: https://github.com/RolandGasparyan/BOOKING-AI-AGENT/actions/runs/32239341381
 - Deployment: GitHub Actions atomic release to the booking VPS
 - Service: `REINCARNATION Booking v3`
 - DNS: `booking.6-empires.com` points to `165.227.95.37`
@@ -81,7 +81,7 @@ updates the existing event instead of creating a duplicate.
 ## Last verification
 
 - Date: 2026-08-19 (Asia/Yerevan)
-- Release: `b8f484a3058ea4c020a24e804a2e9f4e0e284624`
+- Release: `4ef6e5fcfeca721a5e2866330df15142b3f3f920`
 - CI: compile, Ruff, Bandit, dependency audit, integration, E2E and webhook security passed
 - Regression totals: integration 148/148; E2E 140/140; production health 27/27
 - VPS: atomic deployment, systemd, nginx, HTTPS, TLS, DB integrity and disk checks passed

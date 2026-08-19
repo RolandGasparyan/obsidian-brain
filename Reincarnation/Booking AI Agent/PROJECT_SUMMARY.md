@@ -26,7 +26,7 @@
 - Production: https://booking.6-empires.com
 - VPS Gateway: 172.17.0.1:5000
 
-**Verified release:** `b8f484a3058ea4c020a24e804a2e9f4e0e284624`
+**Verified release:** `4ef6e5fcfeca721a5e2866330df15142b3f3f920`
 
 **Production health:** 27/27 checks passed
 
