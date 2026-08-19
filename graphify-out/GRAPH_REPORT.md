@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-08-19)
 
 ## Corpus Check
-- 205 files · ~208,892 words
+- 206 files · ~208,923 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2105 nodes · 1994 edges · 199 communities (184 shown, 15 thin omitted)
+- 2106 nodes · 1994 edges · 200 communities (185 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -212,7 +212,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (199 total, 15 thin omitted)
+## Communities (200 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.15
@@ -898,8 +898,6 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `Booking AI Agent - Quick Reference Guide` connect `Booking AI Agent - Quick Reference Guide` to `Dashboard.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
   _1555 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
@@ -908,3 +906,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `MA50W10 Strategy — Backtesting Results & Validation` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
+- **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
+  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
