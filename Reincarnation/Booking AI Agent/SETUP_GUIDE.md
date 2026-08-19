@@ -66,6 +66,7 @@ actually connected". It asks each provider directly:
 | Telegram | `getMe` accepts the token, a webhook is registered, it points at us, and Telegram's last delivery did not fail |
 | Facebook Page / Instagram | Each access token resolves to a real account |
 | WhatsApp Cloud | The phone number ID resolves; reports number, verified name and quality rating |
+| WAHA WhatsApp | The local API accepts its key and the linked session reports `WORKING` |
 | Twilio | Account is active, `TWILIO_PHONE_NUMBER` is genuinely owned, `TWILIO_WA_NUMBER` carries the `whatsapp:` prefix |
 | Twilio Verify | Verification Service resolves from `TWILIO_VERIFY_SERVICE_SID`; OTP start/check can be exercised against the live service |
 | Viber | Token accepted, webhook registered and pointing at us |

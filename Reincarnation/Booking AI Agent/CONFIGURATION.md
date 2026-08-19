@@ -108,9 +108,13 @@ Alternatives, same three variables:
 
 ### Armenian phone text-to-speech
 
-Twilio handles Armenian speech recognition with `hy-AM`, while AIMLAPI creates
-the Armenian MP3 played inside the TwiML `<Gather>` loop. The production API key
-must allow the **Chat**, **Audio**, and **Speech** endpoint categories.
+Twilio handles Armenian speech recognition with `hy-AM`. AIMLAPI is the primary
+speech provider for the Armenian audio played inside the TwiML `<Gather>` loop.
+If AIMLAPI Speech is unavailable or out of credit, the deploy's pinned local
+Piper Armenian model creates a WAV file and Twilio plays it from the protected
+short-lived audio endpoint. The production API key should allow the **Chat**,
+**Audio**, and **Speech** endpoint categories, but calls do not become silent if
+the Speech category is temporarily unavailable.
 
 | Variable | Default | Notes |
 |----------|---------|-------|
@@ -120,6 +124,10 @@ must allow the **Chat**, **Audio**, and **Speech** endpoint categories.
 | `TTS_VOICE` | `nova` | AIMLAPI/OpenAI voice name; tuned for a softer conversational response |
 | `TTS_SPEED` | `0.88` | Allowed range 0.25–4.0; slightly slower for clearer Armenian |
 | `TTS_STYLE` | natural Armenian booking-manager prompt | AIMLAPI speaking style; use an empty value to omit it |
+
+The fallback model and its dependency hashes are pinned under `deploy/piper/`.
+`scripts/setup_piper_armenian.sh` installs it idempotently in persistent shared
+storage during an atomic production deploy.
 
 ### Changing the LLM provider from GitHub (recommended)
 
@@ -174,12 +182,20 @@ repository — `.env.template` carries names and example values only.
 | Email (SMTP) | `SMTP_HOST` (`smtp.gmail.com`), `SMTP_PORT` (`587`), `SMTP_USER`, `SMTP_PASSWORD`, `EMAIL_WEBHOOK_SECRET` |
 | Meta (FB/IG) | `META_APP_SECRET`, `META_PAGE_ACCESS_TOKEN`, `META_IG_ACCESS_TOKEN`, `META_IG_ACCOUNT_ID`, `META_VERIFY_TOKEN`, `META_GRAPH_API_VERSION` (`v21.0`) |
 | WhatsApp Cloud | `WA_PHONE_NUMBER_ID`, `WA_ACCESS_TOKEN`, `WA_APP_SECRET`, `WA_VERIFY_TOKEN` |
+| WAHA WhatsApp | `WAHA_URL` (`http://127.0.0.1:3000`), `WAHA_API_KEY`, `WAHA_SESSION` (`booking`), `WAHA_WEBHOOK_SECRET`, `WHATSAPP_PROVIDER` (`waha`) |
 | Viber | `VIBER_AUTH_TOKEN`, `VIBER_BOT_NAME` |
 | Twilio | `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_WA_NUMBER` (`whatsapp:+1…`), `TWILIO_PHONE_NUMBER` (plain E.164, voice-capable), `TWILIO_VERIFY_SERVICE_SID`, `TWILIO_VERIFY_DEFAULT_CHANNEL` |
 | Vapi.ai | `VAPI_API_KEY`, `VAPI_PHONE_NUMBER_ID`, `VAPI_ASSISTANT_ID`, `VAPI_WEBHOOK_SECRET` |
 
 Note the two different Twilio number formats — `TWILIO_WA_NUMBER` needs the
 `whatsapp:` prefix, `TWILIO_PHONE_NUMBER` must not have it.
+
+WAHA is the self-hosted bridge for an existing branded WhatsApp mobile number.
+Its API must stay bound to VPS loopback, its webhook must use HTTPS plus the
+SHA-512 secret, and `WHATSAPP_PROVIDER` must remain `twilio` until the linked
+session reports `WORKING`. The one-time QR is scanned from WhatsApp **Linked
+devices**. This is an unofficial WhatsApp Web connection, so Cloud API remains
+the preferred long-term production path when Meta approves the number.
 
 ### Integrations
 

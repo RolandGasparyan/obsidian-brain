@@ -114,6 +114,7 @@ uv pip compile requirements-bootstrap.txt --python-version 3.11 --generate-hashe
 | Telegram | `POST /api/webhook/telegram` | Telegram secret header |
 | Meta FB/IG | `POST /api/webhook/meta` | Meta HMAC |
 | WhatsApp Cloud | `POST /api/webhook/whatsapp` | Meta HMAC |
+| WAHA WhatsApp | `POST /api/webhook/waha` | WAHA HMAC-SHA512 |
 | Twilio WhatsApp | `POST /api/webhook/twilio/whatsapp` | Twilio signature |
 | Twilio Verify OTP | `POST /api/verify/start`, `POST /api/verify/check` | Public, Twilio Verify |
 | Viber | `POST /api/webhook/viber` | Viber HMAC |
@@ -136,8 +137,9 @@ Armenian (`hy`) is the system fallback for chat and booking communications.
 Explicit English and Russian messages are still answered in their detected
 language. Browser voice chat uses Armenian (`hy-AM`) by default. Twilio speech
 recognition accepts Armenian (`hy-AM`); Armenian greeting, replies, and goodbye
-audio are synthesized through AIMLAPI `openai/gpt-4o-mini-tts` and delivered by
-Twilio with `<Play>`. English and Russian calls continue to use Twilio `<Say>`.
+audio use AIMLAPI `openai/gpt-4o-mini-tts` first, then the pinned local Armenian
+Piper voice when AIMLAPI Speech is unavailable, and are delivered by Twilio
+with `<Play>`. English and Russian calls continue to use Twilio `<Say>`.
 Twilio Verify is available for OTP flows through `/api/verify/start` and
 `/api/verify/check` once `TWILIO_VERIFY_SERVICE_SID` is configured.
 
