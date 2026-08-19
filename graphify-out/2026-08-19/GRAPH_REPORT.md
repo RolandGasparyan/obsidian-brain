@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-08-19)
 
 ## Corpus Check
-- 205 files · ~208,355 words
+- 205 files · ~208,521 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2101 nodes · 1990 edges · 198 communities (183 shown, 15 thin omitted)
+- 2102 nodes · 1991 edges · 198 communities (183 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -198,11 +198,11 @@
 2. `DEPLOYMENT READY CHECKLIST — tradingguru-agent` - 19 edges
 3. `4. Tier 2 Strategies — Asset Specialists` - 19 edges
 4. `Reincarnation Booking AI Agent - Complete Project Summary` - 18 edges
-5. `Reincarnation Booking AI Agent - Obsidian Vault Guide` - 16 edges
-6. `Stage 1 forward-test runbook` - 16 edges
-7. `L99 System Audit — Post-Architecture Phase` - 16 edges
-8. `GODS LEVEL ENGINE — Project Guide` - 15 edges
-9. `Booking AI Agent - Deployment & Documentation Log` - 15 edges
+5. `Booking AI Agent - Deployment & Documentation Log` - 16 edges
+6. `Reincarnation Booking AI Agent - Obsidian Vault Guide` - 16 edges
+7. `Stage 1 forward-test runbook` - 16 edges
+8. `L99 System Audit — Post-Architecture Phase` - 16 edges
+9. `GODS LEVEL ENGINE — Project Guide` - 15 edges
 10. `Booking AI Agent - Quick Reference Guide` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -830,8 +830,8 @@ Cohesion: 0.08
 Nodes (26): 1. **Chat Interface**, 2. **Quick Commands Panel**, 3. **Calendar Panel**, 4. **Toast Notifications**, Atomic Deployment Process, Calendar Opening/Closing, Component Breakdown, 🚀 Deployment Pipeline (+18 more)
 
 ### Community 177 - "Booking AI Agent - Deployment & Documentation Log"
-Cohesion: 0.09
-Nodes (23): 2026-08-01 — Channel verification, Armenian typing UX, and Viber readiness, 2026-08-19 — Full production deploy and calendar persistence, Booking AI Agent - Deployment & Documentation Log, Commit: `2f5586a`, CSS Grid Fixes:, 🚀 Current Production State, Deployment:, 👤 Developer Notes (+15 more)
+Cohesion: 0.08
+Nodes (24): 2026-08-01 — Channel verification, Armenian typing UX, and Viber readiness, 2026-08-19 — Festival outreach proposal repair, 2026-08-19 — Full production deploy and calendar persistence, Booking AI Agent - Deployment & Documentation Log, Commit: `2f5586a`, CSS Grid Fixes:, 🚀 Current Production State, Deployment: (+16 more)
 
 ### Community 178 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
 Cohesion: 0.15
@@ -882,7 +882,7 @@ Cohesion: 0.25
 Nodes (8): 3. Environment variables, Armenian phone text-to-speech, Changing the LLM provider directly on the server, Changing the LLM provider from GitHub (recommended), Channels, Integrations, LLM, Server
 
 ## Knowledge Gaps
-- **1552 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1547 more)
+- **1553 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1548 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -896,7 +896,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1552 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1553 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**
