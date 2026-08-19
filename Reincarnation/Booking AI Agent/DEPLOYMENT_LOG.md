@@ -324,3 +324,14 @@ See [[BOOKING_SYSTEM_STATUS.md]] for the current source of truth.
   rejected by Viber. Since new Viber bots require commercial approval, Viber
   remains accurately reported as awaiting an approved bot rather than live.
 - Full local quality/regression suite and production health 27/27 passed.
+
+### Viber commercial onboarding
+
+- Sent the official Viber Chatbot/API onboarding request on 2026-08-19 from
+  `bookings@reincarnation.am` to Viber-listed partner Infosintez, whose listed
+  operating countries include Armenia.
+- Requested the commercial account approval, billing steps, production bot
+  authentication token/app key and activation timeline. No paid order was
+  authorized by the inquiry.
+- Production webhook `https://booking.6-empires.com/api/webhook/viber` remains
+  live and ready; final activation is pending the approved token.

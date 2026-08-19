@@ -40,7 +40,7 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 | Vapi voice | Live API connection | Configured assistant found; `+37495776665` attached |
 | Email | Live | Loopback SSH relay accepted a live message from `bookings@reincarnation.am` to `info@reincarnation.am` |
 | Festival outreach | Verified, sending gated | Production dry-run found 9 leads and 2 verified contacts; proposal preview, SMTP relay, deduplication and safety gates passed. Automatic external email remains controlled by `FESTIVAL_OUTREACH_ENABLED` |
-| Viber | Awaiting commercial bot | Logged-in Viber Admin Panel contains no bot/public account and all archived token candidates were rejected; adapter and automatic webhook registration are ready for an approved token |
+| Viber | Commercial application sent | Official onboarding request sent on 2026-08-19 from `bookings@reincarnation.am` to Viber partner Infosintez (covers Armenia); adapter, live HTTPS webhook and automatic registration are ready for the approved token |
 | Google Calendar | Live | Dedicated `REINCARNATION Booking` calendar; service-account token exchange, live read and create→delete write probe passed from production |
 | TikTok | Not integrated | No supported direct-message adapter or token |
 
