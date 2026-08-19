@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1787098440.2362628,
-    "ast_hash": "1339ab896738751992f5e065f2e3cb46",
+    "mtime": 1787085314.5061288,
+    "ast_hash": "6b533d9f01b75af326fd81def2da9b92",
     "semantic_hash": ""
   },
   "00_Home.md": {
@@ -950,42 +950,42 @@
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/ARCHITECTURE.md": {
-    "mtime": 1787098408.8752131,
+    "mtime": 1786793245.743887,
     "ast_hash": "88451f673682d425362168a0bd4653bd",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/DEPLOYMENT_LOG.md": {
-    "mtime": 1787098408.8831217,
+    "mtime": 1786793245.7519367,
     "ast_hash": "1f93d4b9688ddd19d6c74706125251a8",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/Dashboard.md": {
-    "mtime": 1787098408.9103174,
-    "ast_hash": "dfc757a0cdda1de695faeb172fc6a3ed",
+    "mtime": 1786793245.781414,
+    "ast_hash": "a10fa4e49cdc6163b8a4e965be034125",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/OBSIDIAN_IMPORT.md": {
-    "mtime": 1787098408.8879013,
+    "mtime": 1786793245.7569628,
     "ast_hash": "d1f1e2029e31fcb3568ff333fdbcd28b",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/PROJECT_SUMMARY.md": {
-    "mtime": 1787098408.8728397,
+    "mtime": 1786793245.7407055,
     "ast_hash": "59a0e3ba06d8aea1142da27b1dd102a0",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/QUICK_REFERENCE.md": {
-    "mtime": 1787098408.8856575,
+    "mtime": 1786793245.7544372,
     "ast_hash": "9b432b2f4ffde77f4c478102150885d8",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/README.md": {
-    "mtime": 1787098408.8902957,
-    "ast_hash": "58997996f765295ec9661688552930b6",
+    "mtime": 1786793245.7593186,
+    "ast_hash": "01d47c9a6c149fcb17f1bf1339671c88",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/SECURITY.md": {
-    "mtime": 1787098408.8924212,
+    "mtime": 1786793245.7617116,
     "ast_hash": "7879300352d90d481a036c4b11919cf5",
     "semantic_hash": ""
   },
@@ -1025,23 +1025,18 @@
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/CONFIGURATION.md": {
-    "mtime": 1787098408.8773625,
-    "ast_hash": "30c05ad42f4747c8312fcbe07a642e9d",
+    "mtime": 1786793245.7464087,
+    "ast_hash": "619dd10b03cf0f7ba8cd6b454d9f39b9",
     "semantic_hash": ""
   },
   "Reincarnation/Booking AI Agent/SETUP_GUIDE.md": {
-    "mtime": 1787098408.8802018,
-    "ast_hash": "7f761c4357243298052e531a55fb8a3f",
+    "mtime": 1786793245.7493565,
+    "ast_hash": "c7ce54a34dff86cfedd909436beb7f13",
     "semantic_hash": ""
   },
   "wa-idwa-iwa-id.ts.md": {
     "mtime": 1786308626.1342487,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
-    "semantic_hash": ""
-  },
-  "Reincarnation/Booking AI Agent/BOOKING_SYSTEM_STATUS.md": {
-    "mtime": 1787098408.8701603,
-    "ast_hash": "6f59eec0fd393d0727fe812ef45134e4",
     "semantic_hash": ""
   }
 }
