@@ -14,6 +14,8 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 - Health URL: https://booking.6-empires.com/health
 - GitHub: https://github.com/RolandGasparyan/BOOKING-AI-AGENT
 - Branch: `main`
+- Live release: `9e92a527d1d1ea116329bad159d10c2274f6649a`
+- Verified deploy run: https://github.com/RolandGasparyan/BOOKING-AI-AGENT/actions/runs/32211871889
 - Deployment: GitHub Actions atomic release to the booking VPS
 - Service: `REINCARNATION Booking v3`
 - DNS: `booking.6-empires.com` points to `165.227.95.37`
@@ -38,8 +40,22 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 | Vapi voice | Live API connection | Configured assistant found; `+37495776665` attached |
 | Email | Live | Loopback SSH relay accepted a live message from `bookings@reincarnation.am` to `info@reincarnation.am` |
 | Viber | Not configured | No commercial Viber bot/token exists; adapter stays disabled |
-| Google Calendar | Not configured | No Calendar ID/service-account credentials; adapter stays disabled |
+| Google Calendar | Live | Dedicated `REINCARNATION Booking` calendar; service-account token exchange, live read and create→delete write probe passed from production |
 | TikTok | Not integrated | No supported direct-message adapter or token |
+
+## Confirmed performance calendar
+
+The dedicated `REINCARNATION Booking` Google Calendar contains these confirmed
+all-day performance dates for 2026:
+
+| Date | Performance | Location |
+|---|---|---|
+| 2026-08-22 | REINCARNATION — Jermuk | Jermuk, Armenia |
+| 2026-10-24 | REINCARNATION — Los Angeles | Peacock Theater, Los Angeles, CA, USA |
+| 2026-11-19 | REINCARNATION — Moscow | Moscow, Russia |
+
+Each event uses a deterministic event ID, so re-running the calendar sync
+updates the existing event instead of creating a duplicate.
 
 ## Chat and pricing behavior
 
@@ -49,7 +65,10 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 - Once event type, duration, and country are known, the bot states the official applicable fee.
 - The Armenian 60-minute private-event live test returned 6,300,000 AMD.
 - Russian declined city forms such as `В Москве` route to international USD pricing.
-- Technical Rider and live availability/calendar functions are deployed.
+- Երևանի հանրային 40-րոպեանոց set-ը և 40-րոպեանոց մասնավոր միջոցառումը հստակ տարանջատված են՝ համապատասխանաբար 5,500,000 և 5,000,000 ՀՀ դրամից։
+- Technical Rider 2026-ը վերակառուցված 8-էջանոց PDF է՝ Audio/F.O.H., Backline, Stage Plot, input channels և տեխնիկական կոնտակտներով։
+- General Permissions-ը համադրված է պաշտոնական գների, 50% կանխավճարի, չեղարկման կանոնի և ընթացիկ կայքի/կոնտակտների հետ։
+- Technical Rider-ի ներբեռնումը և live availability/calendar գործառույթները միացված են։
 
 ## Voice behavior
 
@@ -61,8 +80,9 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 ## Last verification
 
 - Date: 2026-08-19 (Asia/Yerevan)
+- Release: `9e92a527d1d1ea116329bad159d10c2274f6649a`
 - CI: compile, Ruff, Bandit, dependency audit, integration, E2E and webhook security passed
-- Regression totals: integration 123/123; E2E 136/136
+- Regression totals: integration 143/143; E2E 140/140; focused provider regressions 27/27
 - VPS: atomic deployment, systemd, nginx, HTTPS, TLS, DB integrity and disk checks passed
-- Live delivery: Twilio call, WhatsApp message, Telegram message and email accepted by their configured providers
+- Live delivery: Twilio call, WhatsApp message, Telegram message and email accepted by their configured providers; Google Calendar live read/write/delete passed
 - Secrets remain in GitHub Actions/VPS environment configuration and are not stored in this note

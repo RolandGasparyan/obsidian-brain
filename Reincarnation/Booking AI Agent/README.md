@@ -145,6 +145,11 @@ Twilio Verify is available for OTP flows through `/api/verify/start` and
 
 ## Production deployment
 
+Last fully verified production release: `9e92a527d1d1ea116329bad159d10c2274f6649a`
+(2026-08-19). The release passed 143/143 integration tests, 140/140 E2E
+tests, and the 27/27 production health check. The live service is
+https://booking.6-empires.com/.
+
 The GitHub Actions workflow runs the full quality gate before deploying `main`.
 It requires `SSH_HOST`, `SSH_PORT`, `SSH_USER`, `SSH_PRIVATE_KEY`, and a pinned
 `SSH_KNOWN_HOSTS` value. The deploy user needs narrowly scoped passwordless

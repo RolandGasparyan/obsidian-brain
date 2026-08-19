@@ -1,9 +1,11 @@
 # Reincarnation Booking AI Agent - Complete Project Summary
 
 **Status:** ✅ **PRODUCTION LIVE**  
-**Date:** 2026-07-24  
-**Owner:** Roland Gasparyan  
-**Repository:** https://github.com/rolandgasparyan/booking-ai-agent
+**Date:** 2026-08-19
+
+**Owner:** Roland Gasparyan
+
+**Repository:** https://github.com/RolandGasparyan/BOOKING-AI-AGENT
 
 ---
 
@@ -17,12 +19,19 @@
 - ✅ Calendar management with mobile close button
 - ✅ Toast notifications with viewport wrapping
 - ✅ Atomic deployment with auto-rollback
-- ✅ 99/99 E2E tests all passing
+- ✅ 143/143 integration and 140/140 E2E tests passing
 - ✅ Security scanning and dependency audits
 
 **Live URLs:**
-- Production: https://6-empires.com
+- Production: https://booking.6-empires.com
 - VPS Gateway: 172.17.0.1:5000
+
+**Verified release:** `9e92a527d1d1ea116329bad159d10c2274f6649a`
+
+**Production health:** 27/27 checks passed
+
+**Google Calendar:** Jermuk (Aug 22), Los Angeles / Peacock Theater
+(Oct 24), and Moscow (Nov 19) are stored as confirmed 2026 performances.
 
 ---
 

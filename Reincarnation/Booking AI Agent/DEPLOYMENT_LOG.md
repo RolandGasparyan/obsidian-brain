@@ -246,3 +246,22 @@
 - CI security, regression, webhook, and atomic VPS deployment checks passed.
 
 See [[BOOKING_SYSTEM_STATUS.md]] for the current source of truth.
+
+---
+
+## 2026-08-19 — Full production deploy and calendar persistence
+
+- Deployed immutable release `9e92a527d1d1ea116329bad159d10c2274f6649a`.
+- GitHub Actions run `32211871889` completed successfully: quality gate and
+  atomic production deploy both passed.
+- Local verification passed: integration 143/143 and E2E 140/140.
+- VPS production health passed 27/27 with zero warnings and zero failures.
+- Live provider verification passed for Web/API, AIMLAPI, Telegram, Facebook,
+  Instagram, WAHA WhatsApp, Twilio WhatsApp, Twilio Voice, Twilio Verify,
+  Vapi, SMTP email, and Google Calendar.
+- WhatsApp Cloud and Viber remain explicitly disabled because no production
+  credentials exist; they are not reported as working.
+- Added and read back three confirmed all-day Google Calendar events:
+  Jermuk on 2026-08-22, Peacock Theater / Los Angeles on 2026-10-24, and
+  Moscow on 2026-11-19.
+- Verified a live Armenian pricing chat response after deployment.
