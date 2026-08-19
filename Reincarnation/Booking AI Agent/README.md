@@ -145,8 +145,8 @@ Twilio Verify is available for OTP flows through `/api/verify/start` and
 
 ## Production deployment
 
-Last fully verified production release: `9e92a527d1d1ea116329bad159d10c2274f6649a`
-(2026-08-19). The release passed 143/143 integration tests, 140/140 E2E
+Last fully verified production release: `b8f484a3058ea4c020a24e804a2e9f4e0e284624`
+(2026-08-19). The release passed 148/148 integration tests, 140/140 E2E
 tests, and the 27/27 production health check. The live service is
 https://booking.6-empires.com/.
 

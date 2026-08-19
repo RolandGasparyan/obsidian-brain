@@ -265,3 +265,23 @@ See [[BOOKING_SYSTEM_STATUS.md]] for the current source of truth.
   Jermuk on 2026-08-22, Peacock Theater / Los Angeles on 2026-10-24, and
   Moscow on 2026-11-19.
 - Verified a live Armenian pricing chat response after deployment.
+
+---
+
+## 2026-08-19 — Festival outreach proposal repair
+
+- Deployed release `b8f484a3058ea4c020a24e804a2e9f4e0e284624` through successful
+  GitHub Actions run `32237287040`.
+- Removed the duplicated edition/current-year suffix from festival subjects.
+- Replaced placeholder media text with official YouTube, Spotify and Instagram
+  links and added the public Technical Rider 2026 URL.
+- Added the actual festival dates to proposal bodies and made the management
+  introduction more professional.
+- Added a testable `build_festival_epk()` path and five regression assertions.
+- Local verification passed: integration 148/148 and E2E 140/140.
+- Production health passed 27/27.
+- Side-effect-free production dry-run found 9 leads and 2 verified outreach
+  candidates; both proposal previews passed every content check.
+- SMTP initially crossed a short tunnel-reconnect window after deploy; the
+  repeat production NOOP probe passed for `bookings@reincarnation.am`.
+- No external festival email was sent during verification.

@@ -19,14 +19,14 @@
 - ✅ Calendar management with mobile close button
 - ✅ Toast notifications with viewport wrapping
 - ✅ Atomic deployment with auto-rollback
-- ✅ 143/143 integration and 140/140 E2E tests passing
+- ✅ 148/148 integration and 140/140 E2E tests passing
 - ✅ Security scanning and dependency audits
 
 **Live URLs:**
 - Production: https://booking.6-empires.com
 - VPS Gateway: 172.17.0.1:5000
 
-**Verified release:** `9e92a527d1d1ea116329bad159d10c2274f6649a`
+**Verified release:** `b8f484a3058ea4c020a24e804a2e9f4e0e284624`
 
 **Production health:** 27/27 checks passed
 

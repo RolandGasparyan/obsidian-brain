@@ -14,8 +14,8 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 - Health URL: https://booking.6-empires.com/health
 - GitHub: https://github.com/RolandGasparyan/BOOKING-AI-AGENT
 - Branch: `main`
-- Live release: `9e92a527d1d1ea116329bad159d10c2274f6649a`
-- Verified deploy run: https://github.com/RolandGasparyan/BOOKING-AI-AGENT/actions/runs/32211871889
+- Live release: `b8f484a3058ea4c020a24e804a2e9f4e0e284624`
+- Verified deploy run: https://github.com/RolandGasparyan/BOOKING-AI-AGENT/actions/runs/32237287040
 - Deployment: GitHub Actions atomic release to the booking VPS
 - Service: `REINCARNATION Booking v3`
 - DNS: `booking.6-empires.com` points to `165.227.95.37`
@@ -39,6 +39,7 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 | Instagram | Live API connection | Instagram/Page token valid for Reincarnation Orchestra |
 | Vapi voice | Live API connection | Configured assistant found; `+37495776665` attached |
 | Email | Live | Loopback SSH relay accepted a live message from `bookings@reincarnation.am` to `info@reincarnation.am` |
+| Festival outreach | Verified, sending gated | Production dry-run found 9 leads and 2 verified contacts; proposal preview, SMTP relay, deduplication and safety gates passed. Automatic external email remains controlled by `FESTIVAL_OUTREACH_ENABLED` |
 | Viber | Not configured | No commercial Viber bot/token exists; adapter stays disabled |
 | Google Calendar | Live | Dedicated `REINCARNATION Booking` calendar; service-account token exchange, live read and create→delete write probe passed from production |
 | TikTok | Not integrated | No supported direct-message adapter or token |
@@ -80,9 +81,9 @@ updates the existing event instead of creating a duplicate.
 ## Last verification
 
 - Date: 2026-08-19 (Asia/Yerevan)
-- Release: `9e92a527d1d1ea116329bad159d10c2274f6649a`
+- Release: `b8f484a3058ea4c020a24e804a2e9f4e0e284624`
 - CI: compile, Ruff, Bandit, dependency audit, integration, E2E and webhook security passed
-- Regression totals: integration 143/143; E2E 140/140; focused provider regressions 27/27
+- Regression totals: integration 148/148; E2E 140/140; production health 27/27
 - VPS: atomic deployment, systemd, nginx, HTTPS, TLS, DB integrity and disk checks passed
 - Live delivery: Twilio call, WhatsApp message, Telegram message and email accepted by their configured providers; Google Calendar live read/write/delete passed
 - Secrets remain in GitHub Actions/VPS environment configuration and are not stored in this note
