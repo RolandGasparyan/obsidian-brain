@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-08-14)
+# Graph Report - Guru  (2026-08-19)
 
 ## Corpus Check
-- 204 files · ~207,264 words
+- 205 files · ~208,006 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2092 nodes · 1979 edges · 198 communities (183 shown, 15 thin omitted)
+- 2099 nodes · 1988 edges · 202 communities (187 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -192,6 +192,10 @@
 - 🎯 Booking AI Agent — Dashboard
 - Security policy
 - 3. AI Agent Logic and Constraint Validation
+- 📊 Obsidian Dataview Queries (Optional)
+- 🔄 Sync Workflow
+- 🎯 Import Steps
+- 🔗 Quick Links for Obsidian
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -211,7 +215,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (198 total, 15 thin omitted)
+## Communities (202 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.15
@@ -838,16 +842,16 @@ Cohesion: 0.15
 Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR, V.1 `regime_probability.py` (estimator core), V.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features), V.3 `regime_transition.py` (+5 more)
 
 ### Community 179 - "Reincarnation Booking AI Agent - Obsidian Vault Guide"
-Cohesion: 0.07
-Nodes (29): Active Issues, Automatic Sync (if Git plugin enabled), 💾 Backup Strategy, Completed Fixes, 📞 Contact & Links, 🎯 Example Dashboard Note, 🎯 Import Steps, 📋 Initial Checklist for Obsidian Setup (+21 more)
+Cohesion: 0.15
+Nodes (13): 💾 Backup Strategy, 📞 Contact & Links, 🎯 Example Dashboard Note, 📋 Initial Checklist for Obsidian Setup, 🗒️ Note Template - Bug Fix/Feature, 🗒️ Note Template - Deployment Records, 🗒️ Note Template - Development Tasks, 🚀 Obsidian Daily Workflow (+5 more)
 
 ### Community 180 - "REINCARNATION Booking AI Agent"
 Cohesion: 0.25
 Nodes (7): Environment inventory, Executive result, GitHub voice/deployment PR review, Live voice validation checklist, Required follow-up, RO-SUPREME-SETUP Environment Audit, Verification evidence
 
 ### Community 183 - "Configuration Reference — Working Production Setup"
-Cohesion: 0.18
-Nodes (10): 1. Where things live on the server, 2. Runtime validation rules (production), 4. systemd unit, 5. nginx, 6. Deployment (GitHub Actions), 7. Health check, 8. Quick facts, Configuration Reference — Working Production Setup (+2 more)
+Cohesion: 0.11
+Nodes (18): 1. Where things live on the server, 2. Runtime validation rules (production), 3. Environment variables, 4. systemd unit, 5. nginx, 6. Deployment (GitHub Actions), 7. Health check, 8. Quick facts (+10 more)
 
 ### Community 187 - "L99 — ULTRA AGGRESSIVE ALPHA DISCOVERY: Exact Factor Blueprint (4 Data Classes)"
 Cohesion: 0.20
@@ -862,8 +866,8 @@ Cohesion: 0.22
 Nodes (8): 1. Check production health, 2. Verify every channel against its real provider, 3. Sync the docs into Obsidian (on your Mac), Common server commands, Reference, Setup Guide — Production Checks & Obsidian Sync, What it does, What it verifies
 
 ### Community 190 - "3. Environment variables"
-Cohesion: 0.25
-Nodes (8): 3. Environment variables, Armenian phone text-to-speech, Changing the LLM provider directly on the server, Changing the LLM provider from GitHub (recommended), Channels, Integrations, LLM, Server
+Cohesion: 0.33
+Nodes (6): Chat and pricing behavior, Last verification, Production, REINCARNATION Booking AI Agent — Current Status, Verified channels, Voice behavior
 
 ### Community 192 - "L99 — Final System Integration & Validation Engine"
 Cohesion: 0.40
@@ -881,25 +885,41 @@ Nodes (5): Production checklist, Reporting a vulnerability, Residual operational
 Cohesion: 0.50
 Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
 
+### Community 198 - "📊 Obsidian Dataview Queries (Optional)"
+Cohesion: 0.50
+Nodes (4): Active Issues, Completed Fixes, 📊 Obsidian Dataview Queries (Optional), Urgent Items
+
+### Community 199 - "🔄 Sync Workflow"
+Cohesion: 0.50
+Nodes (4): Automatic Sync (if Git plugin enabled), Manual Sync, Steps:, 🔄 Sync Workflow
+
+### Community 200 - "🎯 Import Steps"
+Cohesion: 0.50
+Nodes (4): 🎯 Import Steps, Method 1: Copy-Paste Files, Method 2: Direct Import from GitHub, Method 3: Clone Repository
+
+### Community 201 - "🔗 Quick Links for Obsidian"
+Cohesion: 0.50
+Nodes (4): Key Documentation, Main Project Files, 🔗 Quick Links for Obsidian, Technologies
+
 ## Knowledge Gaps
-- **1545 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1540 more)
+- **1550 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1545 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `L99 — INSTITUTIONAL ALPHA RESEARCH ROADMAP` connect `III. Mapping to existing tooling` to `L99_ALPHA_VALIDATION.md`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `Booking AI Agent - Quick Reference Guide` connect `Booking AI Agent - Quick Reference Guide` to `Dashboard.md`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `L99_ALPHA_VALIDATION — Amendments (post-11-NULL methodology meta-pivot)` connect `L99_ALPHA_VALIDATION — Amendments (post-11-NULL methodology meta-pivot)` to `L99_ALPHA_VALIDATION_AMENDMENTS.md`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1545 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1550 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `MA50W10 Strategy — Backtesting Results & Validation` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
-- **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
-  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
