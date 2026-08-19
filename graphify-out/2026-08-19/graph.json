@@ -8375,6 +8375,17 @@
       "norm_label": "2026-08-19 \u2014 festival outreach proposal repair"
     },
     {
+      "label": "2026-08-19 \u2014 Final full verification and deployment",
+      "file_type": "document",
+      "source_file": "Reincarnation/Booking AI Agent/DEPLOYMENT_LOG.md",
+      "source_location": "L291",
+      "_origin": "ast",
+      "id": "reincarnation_booking_ai_agent_deployment_log_2026_08_19_final_full_verification_and_deployment",
+      "community": 177,
+      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "norm_label": "2026-08-19 \u2014 final full verification and deployment"
+    },
+    {
       "label": "Dashboard.md",
       "file_type": "document",
       "source_file": "Reincarnation/Booking AI Agent/Dashboard.md",
@@ -10438,8 +10449,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "testing_engine",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "testing_engine.md"
     },
     {
@@ -20283,8 +20294,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_tech_spec",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "tech_spec.md"
     },
     {
@@ -20415,8 +20426,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "testing_protocol.md"
     },
     {
@@ -20503,8 +20514,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_ai_agent_logic_and_constraint_validation",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3. ai agent logic and constraint validation"
     },
     {
@@ -20514,8 +20525,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_1_aggressive_execution_and_loss_mitigation",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3.1. aggressive execution and loss mitigation"
     },
     {
@@ -20525,8 +20536,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_2_gods_level_position_sizing_accuracy",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3.2. \"gods level\" position sizing accuracy"
     },
     {
@@ -20536,8 +20547,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_3_entry_exit_checklist_enforcement",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3.3. entry/exit checklist enforcement"
     },
     {
@@ -20569,8 +20580,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_verification_checklist",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "verification_checklist.md"
     },
     {
@@ -30119,6 +30130,16 @@
       "weight": 1.0,
       "source": "reincarnation_booking_ai_agent_deployment_log_booking_ai_agent_deployment_documentation_log",
       "target": "reincarnation_booking_ai_agent_deployment_log_2026_08_19_festival_outreach_proposal_repair",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Reincarnation/Booking AI Agent/DEPLOYMENT_LOG.md",
+      "source_location": "L291",
+      "weight": 1.0,
+      "source": "reincarnation_booking_ai_agent_deployment_log_booking_ai_agent_deployment_documentation_log",
+      "target": "reincarnation_booking_ai_agent_deployment_log_2026_08_19_final_full_verification_and_deployment",
       "confidence_score": 1.0
     },
     {

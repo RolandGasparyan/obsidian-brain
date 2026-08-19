@@ -7941,8 +7941,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_3_environment_variables",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "3. environment variables"
     },
     {
@@ -7952,8 +7952,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_server",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "server"
     },
     {
@@ -7963,8 +7963,8 @@
       "source_location": "L80",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_llm",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "llm"
     },
     {
@@ -7974,8 +7974,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_armenian_phone_text_to_speech",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "armenian phone text-to-speech"
     },
     {
@@ -7985,8 +7985,8 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_changing_the_llm_provider_from_github_recommended",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "changing the llm provider from github (recommended)"
     },
     {
@@ -7996,8 +7996,8 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_changing_the_llm_provider_directly_on_the_server",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "changing the llm provider directly on the server"
     },
     {
@@ -8007,8 +8007,8 @@
       "source_location": "L177",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_channels",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "channels"
     },
     {
@@ -8018,8 +8018,8 @@
       "source_location": "L200",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_configuration_integrations",
-      "community": 195,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 183,
+      "community_name": "Configuration Reference \u2014 Working Production Setup",
       "norm_label": "integrations"
     },
     {
@@ -8386,6 +8386,17 @@
       "norm_label": "2026-08-19 \u2014 final full verification and deployment"
     },
     {
+      "label": "2026-08-19 \u2014 WhatsApp deployment pin and Viber readiness",
+      "file_type": "document",
+      "source_file": "Reincarnation/Booking AI Agent/DEPLOYMENT_LOG.md",
+      "source_location": "L312",
+      "_origin": "ast",
+      "id": "reincarnation_booking_ai_agent_deployment_log_2026_08_19_whatsapp_deployment_pin_and_viber_readiness",
+      "community": 177,
+      "community_name": "Booking AI Agent - Deployment & Documentation Log",
+      "norm_label": "2026-08-19 \u2014 whatsapp deployment pin and viber readiness"
+    },
+    {
       "label": "Dashboard.md",
       "file_type": "document",
       "source_file": "Reincarnation/Booking AI Agent/Dashboard.md",
@@ -8491,8 +8502,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_quick_links_for_obsidian",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 201,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "\ud83d\udd17 quick links for obsidian"
     },
     {
@@ -8502,8 +8513,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_main_project_files",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 201,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "main project files"
     },
     {
@@ -8513,8 +8524,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_key_documentation",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 201,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "key documentation"
     },
     {
@@ -8524,8 +8535,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_technologies",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 201,
+      "community_name": "\ud83d\udd17 Quick Links for Obsidian",
       "norm_label": "technologies"
     },
     {
@@ -8557,8 +8568,8 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_obsidian_dataview_queries_optional",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 195,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "\ud83d\udcca obsidian dataview queries (optional)"
     },
     {
@@ -8568,8 +8579,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_active_issues",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 195,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "active issues"
     },
     {
@@ -8579,8 +8590,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_completed_fixes",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 195,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "completed fixes"
     },
     {
@@ -8590,8 +8601,8 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_urgent_items",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 195,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "urgent items"
     },
     {
@@ -8601,8 +8612,8 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_import_steps",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 200,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "\ud83c\udfaf import steps"
     },
     {
@@ -8612,8 +8623,8 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_method_1_copy_paste_files",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 200,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "method 1: copy-paste files"
     },
     {
@@ -8623,8 +8634,8 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_method_2_direct_import_from_github",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 200,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "method 2: direct import from github"
     },
     {
@@ -8634,8 +8645,8 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_method_3_clone_repository",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 200,
+      "community_name": "\ud83c\udfaf Import Steps",
       "norm_label": "method 3: clone repository"
     },
     {
@@ -8689,8 +8700,8 @@
       "source_location": "L303",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_sync_workflow",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 199,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "\ud83d\udd04 sync workflow"
     },
     {
@@ -8700,8 +8711,8 @@
       "source_location": "L305",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_automatic_sync_if_git_plugin_enabled",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 199,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "automatic sync (if git plugin enabled)"
     },
     {
@@ -8711,8 +8722,8 @@
       "source_location": "L311",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_manual_sync",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 199,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "manual sync"
     },
     {
@@ -8722,8 +8733,8 @@
       "source_location": "L318",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_obsidian_import_steps",
-      "community": 179,
-      "community_name": "Reincarnation Booking AI Agent - Obsidian Vault Guide",
+      "community": 199,
+      "community_name": "\ud83d\udd04 Sync Workflow",
       "norm_label": "steps:"
     },
     {
@@ -8788,8 +8799,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_project_summary",
-      "community": 52,
-      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
+      "community": 191,
+      "community_name": "Dashboard.md",
       "norm_label": "project_summary.md"
     },
     {
@@ -30150,6 +30161,16 @@
       "weight": 1.0,
       "source": "reincarnation_booking_ai_agent_deployment_log_booking_ai_agent_deployment_documentation_log",
       "target": "reincarnation_booking_ai_agent_deployment_log_2026_08_19_full_production_deploy_and_calendar_persistence",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "Reincarnation/Booking AI Agent/DEPLOYMENT_LOG.md",
+      "source_location": "L312",
+      "weight": 1.0,
+      "source": "reincarnation_booking_ai_agent_deployment_log_booking_ai_agent_deployment_documentation_log",
+      "target": "reincarnation_booking_ai_agent_deployment_log_2026_08_19_whatsapp_deployment_pin_and_viber_readiness",
       "confidence_score": 1.0
     },
     {

@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-08-19)
 
 ## Corpus Check
-- 205 files · ~208,669 words
+- 205 files · ~208,826 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2103 nodes · 1992 edges · 199 communities (184 shown, 15 thin omitted)
+- 2104 nodes · 1993 edges · 202 communities (187 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -193,13 +193,16 @@
 - Security policy
 - 3. AI Agent Logic and Constraint Validation
 - 3. AI Agent Logic and Constraint Validation
+- 🔄 Sync Workflow
+- 🎯 Import Steps
+- 🔗 Quick Links for Obsidian
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
 2. `DEPLOYMENT READY CHECKLIST — tradingguru-agent` - 19 edges
 3. `4. Tier 2 Strategies — Asset Specialists` - 19 edges
-4. `Reincarnation Booking AI Agent - Complete Project Summary` - 18 edges
-5. `Booking AI Agent - Deployment & Documentation Log` - 17 edges
+4. `Booking AI Agent - Deployment & Documentation Log` - 18 edges
+5. `Reincarnation Booking AI Agent - Complete Project Summary` - 18 edges
 6. `Reincarnation Booking AI Agent - Obsidian Vault Guide` - 16 edges
 7. `Stage 1 forward-test runbook` - 16 edges
 8. `L99 System Audit — Post-Architecture Phase` - 16 edges
@@ -212,7 +215,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (199 total, 15 thin omitted)
+## Communities (202 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.15
@@ -832,23 +835,23 @@ Nodes (26): 1. **Chat Interface**, 2. **Quick Commands Panel**, 3. **Calendar Pa
 
 ### Community 177 - "Booking AI Agent - Deployment & Documentation Log"
 Cohesion: 0.08
-Nodes (25): 2026-08-01 — Channel verification, Armenian typing UX, and Viber readiness, 2026-08-19 — Festival outreach proposal repair, 2026-08-19 — Final full verification and deployment, 2026-08-19 — Full production deploy and calendar persistence, Booking AI Agent - Deployment & Documentation Log, Commit: `2f5586a`, CSS Grid Fixes:, 🚀 Current Production State (+17 more)
+Nodes (26): 2026-08-01 — Channel verification, Armenian typing UX, and Viber readiness, 2026-08-19 — Festival outreach proposal repair, 2026-08-19 — Final full verification and deployment, 2026-08-19 — Full production deploy and calendar persistence, 2026-08-19 — WhatsApp deployment pin and Viber readiness, Booking AI Agent - Deployment & Documentation Log, Commit: `2f5586a`, CSS Grid Fixes: (+18 more)
 
 ### Community 178 - "L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR"
 Cohesion: 0.15
 Nodes (13): I. The original spec (verbatim), II. Why this spec is taken seriously, III. Mapping to existing tooling, IV. What this framework says about CURRENT data, L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR, V.1 `regime_probability.py` (estimator core), V.2 `regime_breadth.py` + `regime_liquidity.py` (missing input features), V.3 `regime_transition.py` (+5 more)
 
 ### Community 179 - "Reincarnation Booking AI Agent - Obsidian Vault Guide"
-Cohesion: 0.07
-Nodes (29): Active Issues, Automatic Sync (if Git plugin enabled), 💾 Backup Strategy, Completed Fixes, 📞 Contact & Links, 🎯 Example Dashboard Note, 🎯 Import Steps, 📋 Initial Checklist for Obsidian Setup (+21 more)
+Cohesion: 0.15
+Nodes (13): 💾 Backup Strategy, 📞 Contact & Links, 🎯 Example Dashboard Note, 📋 Initial Checklist for Obsidian Setup, 🗒️ Note Template - Bug Fix/Feature, 🗒️ Note Template - Deployment Records, 🗒️ Note Template - Development Tasks, 🚀 Obsidian Daily Workflow (+5 more)
 
 ### Community 180 - "REINCARNATION Booking AI Agent"
 Cohesion: 0.25
 Nodes (7): Environment inventory, Executive result, GitHub voice/deployment PR review, Live voice validation checklist, Required follow-up, RO-SUPREME-SETUP Environment Audit, Verification evidence
 
 ### Community 183 - "Configuration Reference — Working Production Setup"
-Cohesion: 0.18
-Nodes (10): 1. Where things live on the server, 2. Runtime validation rules (production), 4. systemd unit, 5. nginx, 6. Deployment (GitHub Actions), 7. Health check, 8. Quick facts, Configuration Reference — Working Production Setup (+2 more)
+Cohesion: 0.11
+Nodes (18): 1. Where things live on the server, 2. Runtime validation rules (production), 3. Environment variables, 4. systemd unit, 5. nginx, 6. Deployment (GitHub Actions), 7. Health check, 8. Quick facts (+10 more)
 
 ### Community 187 - "L99 — ULTRA AGGRESSIVE ALPHA DISCOVERY: Exact Factor Blueprint (4 Data Classes)"
 Cohesion: 0.20
@@ -879,15 +882,27 @@ Cohesion: 0.40
 Nodes (5): Production checklist, Reporting a vulnerability, Residual operational boundaries, Security policy, Supported code
 
 ### Community 195 - "3. AI Agent Logic and Constraint Validation"
-Cohesion: 0.25
-Nodes (8): 3. Environment variables, Armenian phone text-to-speech, Changing the LLM provider directly on the server, Changing the LLM provider from GitHub (recommended), Channels, Integrations, LLM, Server
+Cohesion: 0.50
+Nodes (4): Active Issues, Completed Fixes, 📊 Obsidian Dataview Queries (Optional), Urgent Items
 
 ### Community 198 - "3. AI Agent Logic and Constraint Validation"
 Cohesion: 0.50
 Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
 
+### Community 199 - "🔄 Sync Workflow"
+Cohesion: 0.50
+Nodes (4): Automatic Sync (if Git plugin enabled), Manual Sync, Steps:, 🔄 Sync Workflow
+
+### Community 200 - "🎯 Import Steps"
+Cohesion: 0.50
+Nodes (4): 🎯 Import Steps, Method 1: Copy-Paste Files, Method 2: Direct Import from GitHub, Method 3: Clone Repository
+
+### Community 201 - "🔗 Quick Links for Obsidian"
+Cohesion: 0.50
+Nodes (4): Key Documentation, Main Project Files, 🔗 Quick Links for Obsidian, Technologies
+
 ## Knowledge Gaps
-- **1554 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1549 more)
+- **1555 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1550 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -901,7 +916,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Phase B Decision Tree — D7+ playbook` connect `Phase B Decision Tree — D7+ playbook` to `L99_ALPHA_VALIDATION.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1554 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1555 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**

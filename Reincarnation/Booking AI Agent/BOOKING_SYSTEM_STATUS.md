@@ -14,8 +14,8 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 - Health URL: https://booking.6-empires.com/health
 - GitHub: https://github.com/RolandGasparyan/BOOKING-AI-AGENT
 - Branch: `main`
-- Live release: `4ef6e5fcfeca721a5e2866330df15142b3f3f920`
-- Verified deploy run: https://github.com/RolandGasparyan/BOOKING-AI-AGENT/actions/runs/32239341381
+- Live release: `2379caacfbfa1c3baca9f89535e32d610fb30e14`
+- Verified deploy run: https://github.com/RolandGasparyan/BOOKING-AI-AGENT/actions/runs/32240314957
 - Deployment: GitHub Actions atomic release to the booking VPS
 - Service: `REINCARNATION Booking v3`
 - DNS: `booking.6-empires.com` points to `165.227.95.37`
@@ -32,7 +32,7 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 | Armenian voice | Live | Twilio outbound call accepted; AIMLAPI Speech falls back to local Armenian Piper audio |
 | Twilio Verify | Live | Verification Service exists; six-digit SMS channel configured |
 | Telegram | Live | `@reincarnation_ai_bot`, webhook connected, no pending updates; live message accepted |
-| WhatsApp (WAHA) | Live | `booking` session WORKING as `+37495776665`; outbound live message accepted |
+| WhatsApp (WAHA) | Live, deploy-pinned | `booking` session WORKING as `+37495776665`; every production deploy now fails and rolls back if the live session is unavailable |
 | WhatsApp (Twilio) | Live | `whatsapp:+14155238886` sender ONLINE |
 | WhatsApp Cloud | Disabled | No Cloud API credentials; WAHA/Twilio are the active WhatsApp transports |
 | Facebook Messenger | Live API connection | Page token valid for Reincarnation Orchestra |
@@ -40,7 +40,7 @@ tags: [reincarnation, booking-ai, production, vps, github, obsidian]
 | Vapi voice | Live API connection | Configured assistant found; `+37495776665` attached |
 | Email | Live | Loopback SSH relay accepted a live message from `bookings@reincarnation.am` to `info@reincarnation.am` |
 | Festival outreach | Verified, sending gated | Production dry-run found 9 leads and 2 verified contacts; proposal preview, SMTP relay, deduplication and safety gates passed. Automatic external email remains controlled by `FESTIVAL_OUTREACH_ENABLED` |
-| Viber | Not configured | No commercial Viber bot/token exists; adapter stays disabled |
+| Viber | Awaiting commercial bot | Logged-in Viber Admin Panel contains no bot/public account and all archived token candidates were rejected; adapter and automatic webhook registration are ready for an approved token |
 | Google Calendar | Live | Dedicated `REINCARNATION Booking` calendar; service-account token exchange, live read and create→delete write probe passed from production |
 | TikTok | Not integrated | No supported direct-message adapter or token |
 
@@ -81,7 +81,7 @@ updates the existing event instead of creating a duplicate.
 ## Last verification
 
 - Date: 2026-08-19 (Asia/Yerevan)
-- Release: `4ef6e5fcfeca721a5e2866330df15142b3f3f920`
+- Release: `2379caacfbfa1c3baca9f89535e32d610fb30e14`
 - CI: compile, Ruff, Bandit, dependency audit, integration, E2E and webhook security passed
 - Regression totals: integration 148/148; E2E 140/140; production health 27/27
 - VPS: atomic deployment, systemd, nginx, HTTPS, TLS, DB integrity and disk checks passed

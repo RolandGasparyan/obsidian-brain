@@ -306,3 +306,21 @@ See [[BOOKING_SYSTEM_STATUS.md]] for the current source of truth.
 - Side-effect-free production festival dry-run found 9 leads and 2 verified
   outreach contacts; both proposal previews passed date, media and rider-link
   checks. No external call or email was sent during this verification.
+
+---
+
+## 2026-08-19 — WhatsApp deployment pin and Viber readiness
+
+- Deployed release `2379caacfbfa1c3baca9f89535e32d610fb30e14` through successful
+  GitHub Actions run `32240314957`.
+- Added a mandatory post-switch WAHA probe. A deploy now rolls back instead of
+  leaving production with the Armenian WhatsApp session unavailable.
+- Added a live Twilio WhatsApp fallback probe; sender `whatsapp:+14155238886`
+  is ONLINE.
+- Added legacy `VIBER_BOT_TOKEN` secret migration support and idempotent Viber
+  webhook registration whenever an approved authentication token is present.
+- The logged-in Viber Admin Panel has no bot/public account. Eleven archived
+  token-shaped candidates were checked without exposing them and all were
+  rejected by Viber. Since new Viber bots require commercial approval, Viber
+  remains accurately reported as awaiting an approved bot rather than live.
+- Full local quality/regression suite and production health 27/27 passed.
