@@ -24,3 +24,11 @@
 - Added a Hermes no-agent Cron cycle every two hours for three paper-only trainees
 - Verified live execution requests are rejected and audited
 - Updated index.md (11 total pages)
+
+## [2026-08-20] update | Activated persistent Trading Academy agents
+- Created Hermes profiles: `academyquant`, `academystrategy`, `academyrisk`
+- Added role-specific SOULs, Nous Portal model pins, and launchd-supervised gateways
+- Connected least-privilege MCP allowlists without order placement/cancellation tools
+- Added six-hour continuity learning routines and verified one run per profile
+- Added a grounded deterministic math replay fixture; all three trainees scored 100 and advanced to `microstructure`
+- Full project suite verified: 136 tests passed

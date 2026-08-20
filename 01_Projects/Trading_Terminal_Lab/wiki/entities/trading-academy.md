@@ -47,6 +47,14 @@ Hermes Cron-ի `Trading Academy 24/7 Paper Cycle` job-ը երկու ժամը մ�
 երեք bounded trainee cycle՝ առանց շարունակական LLM ծախսի։ Gateway-ը supervised է
 macOS launchd-ի միջոցով։
 
+Ավելացվել են նաև երեք persistent Hermes Bot profile՝ `academyquant`,
+`academystrategy`, `academyrisk`։ Յուրաքանչյուրն ունի Nous Portal model pin,
+role-specific SOUL, launchd gateway, վեցժամյա continuity routine և least-privilege
+MCP allowlist։ `place_order` ու `cancel_order` գործիքները trainee profile-ների համար
+անջատված են։ Առաջին grounded replay assessment-ից հետո երեք trainees-ն էլ ստացել
+են 100 միավոր և անցել `microstructure` մոդուլ, սակայն `live_eligible`-ը մնում է
+false։
+
 ## Կապեր
 
 - [[trading-engine]]
