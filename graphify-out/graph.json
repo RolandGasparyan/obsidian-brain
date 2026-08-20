@@ -3582,7 +3582,7 @@
       "label": "\u053f\u0561\u057a\u0565\u0580",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
-      "source_location": "L50",
+      "source_location": "L58",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u056f\u0561\u057a\u0565\u0580",
       "community": 201,
@@ -3907,6 +3907,17 @@
       "community": 206,
       "community_name": "Wiki Log \u2014 Trading Terminal Lab",
       "norm_label": "[2026-08-20] create | trading academy"
+    },
+    {
+      "label": "[2026-08-20] update | Activated persistent Trading Academy agents",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/log.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_update_activated_persistent_trading_academy_agents",
+      "community": 206,
+      "community_name": "Wiki Log \u2014 Trading Terminal Lab",
+      "norm_label": "[2026-08-20] update | activated persistent trading academy agents"
     },
     {
       "label": "hudda.md",
@@ -10273,8 +10284,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reincarnation_booking_ai_agent_project_summary",
-      "community": 191,
-      "community_name": "Dashboard.md",
+      "community": 52,
+      "community_name": "L99 \u2014 DYNAMIC REGIME PROBABILITY ESTIMATOR",
       "norm_label": "project_summary.md"
     },
     {
@@ -11934,8 +11945,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "testing_engine",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "testing_engine.md"
     },
     {
@@ -21790,8 +21801,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_tech_spec",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "tech_spec.md"
     },
     {
@@ -21922,8 +21933,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "testing_protocol.md"
     },
     {
@@ -22010,8 +22021,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_ai_agent_logic_and_constraint_validation",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3. ai agent logic and constraint validation"
     },
     {
@@ -22021,8 +22032,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_1_aggressive_execution_and_loss_mitigation",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3.1. aggressive execution and loss mitigation"
     },
     {
@@ -22032,8 +22043,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_2_gods_level_position_sizing_accuracy",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3.2. \"gods level\" position sizing accuracy"
     },
     {
@@ -22043,8 +22054,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_3_entry_exit_checklist_enforcement",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 198,
+      "community_name": "3. AI Agent Logic and Constraint Validation",
       "norm_label": "3.3. entry/exit checklist enforcement"
     },
     {
@@ -22076,8 +22087,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_verification_checklist",
-      "community": 130,
-      "community_name": "System Verification Documentation Workflow",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "verification_checklist.md"
     },
     {
@@ -27612,7 +27623,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
-      "source_location": "L54",
+      "source_location": "L62",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
       "target": "01_projects_trading_terminal_lab_wiki_entities_hermes_agent",
@@ -27682,7 +27693,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
-      "source_location": "L53",
+      "source_location": "L61",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
       "target": "01_projects_trading_terminal_lab_wiki_entities_mcp_server",
@@ -27752,7 +27763,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
-      "source_location": "L52",
+      "source_location": "L60",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
       "target": "01_projects_trading_terminal_lab_wiki_entities_trading_engine",
@@ -27772,7 +27783,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
-      "source_location": "L50",
+      "source_location": "L58",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_trading_academy",
       "target": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u056f\u0561\u057a\u0565\u0580",
@@ -28046,6 +28057,16 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_log_wiki_log_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_create_wiki_initialized",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/log.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_log_wiki_log_trading_terminal_lab",
+      "target": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_update_activated_persistent_trading_academy_agents",
       "confidence_score": 1.0
     },
     {

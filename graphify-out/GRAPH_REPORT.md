@@ -1,11 +1,11 @@
 # Graph Report - Guru  (2026-08-20)
 
 ## Corpus Check
-- 225 files · ~213,383 words
+- 225 files · ~213,514 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2239 nodes · 2130 edges · 206 communities (191 shown, 15 thin omitted)
+- 2240 nodes · 2131 edges · 207 communities (192 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -192,6 +192,7 @@
 - 🎯 Booking AI Agent — Dashboard
 - Security policy
 - 3. AI Agent Logic and Constraint Validation
+- 3. AI Agent Logic and Constraint Validation
 - 🧪 Trading Terminal Lab — Map of Content
 - Hermes Agent
 - Order Management
@@ -218,7 +219,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (206 total, 15 thin omitted)
+## Communities (207 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.15
@@ -434,7 +435,7 @@ Nodes (45): 1. Clone Repository, 2. Read Documentation, 3. Set Up Local Environm
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
-Nodes (13): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy (+5 more)
+Nodes (9): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 4. Profit Securing and Cold Wallet Simulation, 5. Trading Guru Self-Learning Validation (+1 more)
 
 ### Community 54 - "Tournament Package - Integration Guide"
 Cohesion: 0.15
@@ -741,7 +742,7 @@ Cohesion: 0.40
 Nodes (5): 9.1 The Volatility Asymmetry Secret, 9.2 The Confirmation Threshold Secret, 9.3 The Timeout Exit Secret, 9.4 The Risk Mode Ladder Secret, 9. Secret Money-Making Methods
 
 ### Community 130 - "System Verification Documentation Workflow"
-Cohesion: 0.22
+Cohesion: 0.40
 Nodes (4): Best Practices for Document Generation, Bundled Resources, Core Principles, System Verification Documentation Workflow
 
 ### Community 131 - "🔄 Auto-synced project status"
@@ -888,6 +889,10 @@ Nodes (5): Production checklist, Reporting a vulnerability, Residual operational
 Cohesion: 0.25
 Nodes (8): 3. Environment variables, Armenian phone text-to-speech, Changing the LLM provider directly on the server, Changing the LLM provider from GitHub (recommended), Channels, Integrations, LLM, Server
 
+### Community 198 - "3. AI Agent Logic and Constraint Validation"
+Cohesion: 0.50
+Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
+
 ### Community 200 - "🧪 Trading Terminal Lab — Map of Content"
 Cohesion: 0.04
 Nodes (42): Alert Types, Configuration, Related, Telegram Integration, 🤖 Trading Monitor Agent, What It Checks, Architecture, File Tree (+34 more)
@@ -913,28 +918,28 @@ Cohesion: 0.33
 Nodes (5): Comparisons, Concepts, Entities, Queries, Wiki Index — Trading Terminal Lab
 
 ### Community 206 - "Wiki Log — Trading Terminal Lab"
-Cohesion: 0.40
-Nodes (4): [2026-08-20] create | Trading Academy, [2026-08-20] create | Wiki initialized, [2026-08-20] update | Added triangular arbitrage pages, Wiki Log — Trading Terminal Lab
+Cohesion: 0.33
+Nodes (5): [2026-08-20] create | Trading Academy, [2026-08-20] create | Wiki initialized, [2026-08-20] update | Activated persistent Trading Academy agents, [2026-08-20] update | Added triangular arbitrage pages, Wiki Log — Trading Terminal Lab
 
 ## Knowledge Gaps
-- **1646 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1641 more)
+- **1647 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1642 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Reincarnation Booking AI Agent - Complete Project Summary` connect `L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR` to `Dashboard.md`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **Why does `Booking AI Agent - Quick Reference Guide` connect `Booking AI Agent - Quick Reference Guide` to `Dashboard.md`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `Booking AI Agent - Deployment & Documentation Log` connect `Booking AI Agent - Deployment & Documentation Log` to `Dashboard.md`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **Why does `Reincarnation Booking AI Agent - Obsidian Vault Guide` connect `Reincarnation Booking AI Agent - Obsidian Vault Guide` to `Dashboard.md`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1646 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1647 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `MA50W10 Strategy — Backtesting Results & Validation` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
+- **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
+  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._

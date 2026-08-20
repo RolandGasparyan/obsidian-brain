@@ -3524,6 +3524,72 @@
       "norm_label": "related"
     },
     {
+      "label": "trading-academy.md",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "trading-academy.md"
+    },
+    {
+      "label": "Trading Academy",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_trading_academy",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "trading academy"
+    },
+    {
+      "label": "\u0534\u0561\u057d\u0561\u056d\u0578\u057d\u0561\u056f\u0561\u0576 \u056f\u0561\u0566\u0574",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u0564\u0561\u057d\u0561\u056d\u0578\u057d\u0561\u056f\u0561\u0576_\u056f\u0561\u0566\u0574",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "\u0564\u0561\u057d\u0561\u056d\u0578\u057d\u0561\u056f\u0561\u0576 \u056f\u0561\u0566\u0574"
+    },
+    {
+      "label": "\u0548\u0582\u057d\u0578\u0582\u0581\u0574\u0561\u0576 \u0578\u056c\u0578\u0580\u057f\u0576\u0565\u0580",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u0578\u0582\u057d\u0578\u0582\u0581\u0574\u0561\u0576_\u0578\u056c\u0578\u0580\u057f\u0576\u0565\u0580",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "\u0578\u0582\u057d\u0578\u0582\u0581\u0574\u0561\u0576 \u0578\u056c\u0578\u0580\u057f\u0576\u0565\u0580"
+    },
+    {
+      "label": "\u0543\u0561\u0580\u057f\u0561\u0580\u0561\u057a\u0565\u057f\u0578\u0582\u0569\u0575\u0578\u0582\u0576",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u0573\u0561\u0580\u057f\u0561\u0580\u0561\u057a\u0565\u057f\u0578\u0582\u0569\u0575\u0578\u0582\u0576",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "\u0573\u0561\u0580\u057f\u0561\u0580\u0561\u057a\u0565\u057f\u0578\u0582\u0569\u0575\u0578\u0582\u0576"
+    },
+    {
+      "label": "\u053f\u0561\u057a\u0565\u0580",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u056f\u0561\u057a\u0565\u0580",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "\u056f\u0561\u057a\u0565\u0580"
+    },
+    {
       "label": "trading-engine.md",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-engine.md",
@@ -3758,7 +3824,7 @@
       "label": "Concepts",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L15",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_wiki_index_concepts",
       "community": 205,
@@ -3769,7 +3835,7 @@
       "label": "Comparisons",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_wiki_index_comparisons",
       "community": 205,
@@ -3780,7 +3846,7 @@
       "label": "Queries",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_wiki_index_queries",
       "community": 205,
@@ -3830,6 +3896,17 @@
       "community": 206,
       "community_name": "Wiki Log \u2014 Trading Terminal Lab",
       "norm_label": "[2026-08-20] update | added triangular arbitrage pages"
+    },
+    {
+      "label": "[2026-08-20] create | Trading Academy",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/log.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_create_trading_academy",
+      "community": 206,
+      "community_name": "Wiki Log \u2014 Trading Terminal Lab",
+      "norm_label": "[2026-08-20] create | trading academy"
     },
     {
       "label": "hudda.md",
@@ -11857,8 +11934,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "testing_engine",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "testing_engine.md"
     },
     {
@@ -21713,8 +21790,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_tech_spec",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "tech_spec.md"
     },
     {
@@ -21845,8 +21922,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "testing_protocol.md"
     },
     {
@@ -21933,8 +22010,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_ai_agent_logic_and_constraint_validation",
-      "community": 198,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3. ai agent logic and constraint validation"
     },
     {
@@ -21944,8 +22021,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_1_aggressive_execution_and_loss_mitigation",
-      "community": 198,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.1. aggressive execution and loss mitigation"
     },
     {
@@ -21955,8 +22032,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_2_gods_level_position_sizing_accuracy",
-      "community": 198,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.2. \"gods level\" position sizing accuracy"
     },
     {
@@ -21966,8 +22043,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "docs_testing_engine_testing_protocol_3_3_entry_exit_checklist_enforcement",
-      "community": 198,
-      "community_name": "3. AI Agent Logic and Constraint Validation",
+      "community": 53,
+      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
       "norm_label": "3.3. entry/exit checklist enforcement"
     },
     {
@@ -21999,8 +22076,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_testing_engine_verification_checklist",
-      "community": 53,
-      "community_name": "Trading Strategies Testing Engine: Testing & Validation Protocol",
+      "community": 130,
+      "community_name": "System Verification Documentation Workflow",
       "norm_label": "verification_checklist.md"
     },
     {
@@ -27532,6 +27609,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_hermes_agent",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/hermes-agent.md",
@@ -27594,6 +27681,16 @@
     {
       "relation": "references",
       "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_mcp_server",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
       "source_location": "L40",
       "weight": 1.0,
@@ -27639,6 +27736,66 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_entities_mcp_server_mcp_server",
       "target": "01_projects_trading_terminal_lab_wiki_entities_mcp_server_transport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_trading_academy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_trading_engine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u0564\u0561\u057d\u0561\u056d\u0578\u057d\u0561\u056f\u0561\u0576_\u056f\u0561\u0566\u0574",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u056f\u0561\u057a\u0565\u0580",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u0573\u0561\u0580\u057f\u0561\u0580\u0561\u057a\u0565\u057f\u0578\u0582\u0569\u0575\u0578\u0582\u0576",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_trading_academy",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_trading_academy_\u0578\u0582\u057d\u0578\u0582\u0581\u0574\u0561\u0576_\u0578\u056c\u0578\u0580\u057f\u0576\u0565\u0580",
       "confidence_score": 1.0
     },
     {
@@ -27825,7 +27982,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_index_wiki_index_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_index_comparisons",
@@ -27835,7 +27992,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_index_wiki_index_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_index_concepts",
@@ -27855,7 +28012,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_index_wiki_index_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_index_queries",
@@ -27869,6 +28026,16 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_log",
       "target": "01_projects_trading_terminal_lab_wiki_log_wiki_log_trading_terminal_lab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/log.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_log_wiki_log_trading_terminal_lab",
+      "target": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_create_trading_academy",
       "confidence_score": 1.0
     },
     {
