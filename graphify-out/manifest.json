@@ -1115,13 +1115,13 @@
     "semantic_hash": ""
   },
   "01_Projects/Trading_Terminal_Lab/wiki/index.md": {
-    "mtime": 1787221722.3637123,
-    "ast_hash": "32c813dbf769017cae6ec413ddad6f6d",
+    "mtime": 1787226087.419452,
+    "ast_hash": "4a589d6e6d477a8af1760126d22e8b8e",
     "semantic_hash": ""
   },
   "01_Projects/Trading_Terminal_Lab/wiki/log.md": {
-    "mtime": 1787221727.455132,
-    "ast_hash": "11d3cb347b9ce33984147c76e0973cab",
+    "mtime": 1787226087.578685,
+    "ast_hash": "ac7605ae455668529946424e652eb212",
     "semantic_hash": ""
   },
   "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md": {
@@ -1137,6 +1137,11 @@
   "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md": {
     "mtime": 1787221696.948589,
     "ast_hash": "f3b23635080094e24fbd1c33ed808d56",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md": {
+    "mtime": 1787226075.2091012,
+    "ast_hash": "5fa006331ce8e9fb45677d8e5f12aa3f",
     "semantic_hash": ""
   }
 }

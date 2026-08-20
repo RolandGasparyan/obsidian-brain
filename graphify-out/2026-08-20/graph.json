@@ -2699,10 +2699,21 @@
       "norm_label": "\ud83e\udde0 knowledge graph"
     },
     {
-      "label": "\ud83d\udccb Roadmap",
+      "label": "\ud83d\udd04 Arb Scanner (Triangular Arbitrage)",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
       "source_location": "L62",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_arb_scanner_triangular_arbitrage",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "\ud83d\udd04 arb scanner (triangular arbitrage)"
+    },
+    {
+      "label": "\ud83d\udccb Roadmap",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
+      "source_location": "L69",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_roadmap",
       "community": 200,
@@ -2713,7 +2724,7 @@
       "label": "\ud83d\udd01 Sync",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
-      "source_location": "L76",
+      "source_location": "L86",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_sync",
       "community": 200,
@@ -2815,6 +2826,138 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_trading_terminal_lab_wiki_related",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "related"
+    },
+    {
+      "label": "Triangular_Arbitrage_Bot.md",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "triangular_arbitrage_bot.md"
+    },
+    {
+      "label": "\ud83d\udd04 Triangular Arbitrage Bot",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "\ud83d\udd04 triangular arbitrage bot"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_overview",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "overview"
+    },
+    {
+      "label": "Key Stats",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_key_stats",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "key stats"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_architecture",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "architecture"
+    },
+    {
+      "label": "How It Works",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_how_it_works",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "how it works"
+    },
+    {
+      "label": "Triangle Cycle: `USDT \u2192 BTC \u2192 ETH \u2192 USDT`",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangle_cycle_usdt_btc_eth_usdt",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "triangle cycle: `usdt \u2192 btc \u2192 eth \u2192 usdt`"
+    },
+    {
+      "label": "Arbitrage Condition",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_arbitrage_condition",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "arbitrage condition"
+    },
+    {
+      "label": "Tested Results",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_tested_results",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "tested results"
+    },
+    {
+      "label": "Integration with Trading Terminal Lab",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_integration_with_trading_terminal_lab",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "integration with trading terminal lab"
+    },
+    {
+      "label": "Session",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_session",
+      "community": 200,
+      "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
+      "norm_label": "session"
+    },
+    {
+      "label": "Related",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_related",
       "community": 200,
       "community_name": "\ud83e\uddea Trading Terminal Lab \u2014 Map of Content",
       "norm_label": "related"
@@ -3172,6 +3315,83 @@
       "norm_label": "related"
     },
     {
+      "label": "triangular-arbitrage.md",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage",
+      "community": 202,
+      "community_name": "Order Management",
+      "norm_label": "triangular-arbitrage.md"
+    },
+    {
+      "label": "Triangular Arbitrage",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_triangular_arbitrage",
+      "community": 202,
+      "community_name": "Order Management",
+      "norm_label": "triangular arbitrage"
+    },
+    {
+      "label": "How It Works",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_how_it_works",
+      "community": 202,
+      "community_name": "Order Management",
+      "norm_label": "how it works"
+    },
+    {
+      "label": "Mathematical Condition",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_mathematical_condition",
+      "community": 202,
+      "community_name": "Order Management",
+      "norm_label": "mathematical condition"
+    },
+    {
+      "label": "Real-World Challenges",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_real_world_challenges",
+      "community": 202,
+      "community_name": "Order Management",
+      "norm_label": "real-world challenges"
+    },
+    {
+      "label": "In Trading Terminal Lab",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_in_trading_terminal_lab",
+      "community": 202,
+      "community_name": "Order Management",
+      "norm_label": "in trading terminal lab"
+    },
+    {
+      "label": "Related",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_related",
+      "community": 202,
+      "community_name": "Order Management",
+      "norm_label": "related"
+    },
+    {
       "label": "hermes-agent.md",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/hermes-agent.md",
@@ -3425,6 +3645,83 @@
       "norm_label": "related"
     },
     {
+      "label": "triangular-arb-bot.md",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "triangular-arb-bot.md"
+    },
+    {
+      "label": "Triangular Arbitrage Bot",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_triangular_arbitrage_bot",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "triangular arbitrage bot"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_overview",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "overview"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_architecture",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "architecture"
+    },
+    {
+      "label": "3 Modes",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_3_modes",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "3 modes"
+    },
+    {
+      "label": "Integration",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_integration",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "integration"
+    },
+    {
+      "label": "Related",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_related",
+      "community": 201,
+      "community_name": "Hermes Agent",
+      "norm_label": "related"
+    },
+    {
       "label": "index.md",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
@@ -3461,7 +3758,7 @@
       "label": "Concepts",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L14",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_wiki_index_concepts",
       "community": 205,
@@ -3472,7 +3769,7 @@
       "label": "Comparisons",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L21",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_wiki_index_comparisons",
       "community": 205,
@@ -3483,7 +3780,7 @@
       "label": "Queries",
       "file_type": "document",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L23",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "01_projects_trading_terminal_lab_wiki_index_queries",
       "community": 205,
@@ -3522,6 +3819,17 @@
       "community": 206,
       "community_name": "Wiki Log \u2014 Trading Terminal Lab",
       "norm_label": "[2026-08-20] create | wiki initialized"
+    },
+    {
+      "label": "[2026-08-20] update | Added triangular arbitrage pages",
+      "file_type": "document",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/log.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_update_added_triangular_arbitrage_pages",
+      "community": 206,
+      "community_name": "Wiki Log \u2014 Trading Terminal Lab",
+      "norm_label": "[2026-08-20] update | added triangular arbitrage pages"
     },
     {
       "label": "hudda.md",
@@ -26414,6 +26722,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_trading_terminal_lab_codebase",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_Codebase.md",
@@ -26504,6 +26822,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_trading_terminal_lab_moc",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
@@ -26511,6 +26839,16 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_trading_terminal_lab_map_of_content",
       "target": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_api_endpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_trading_terminal_lab_map_of_content",
+      "target": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_arb_scanner_triangular_arbitrage",
       "confidence_score": 1.0
     },
     {
@@ -26557,7 +26895,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
-      "source_location": "L62",
+      "source_location": "L69",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_trading_terminal_lab_map_of_content",
       "target": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_roadmap",
@@ -26567,7 +26905,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md",
-      "source_location": "L76",
+      "source_location": "L86",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_trading_terminal_lab_map_of_content",
       "target": "01_projects_trading_terminal_lab_trading_terminal_lab_moc_sync",
@@ -26651,6 +26989,116 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_trading_terminal_lab_wiki_pages_8",
       "target": "01_projects_trading_terminal_lab_trading_terminal_lab_wiki_entities_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_how_it_works",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_integration_with_trading_terminal_lab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_related",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_overview",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_key_stats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_how_it_works",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_arbitrage_condition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_how_it_works",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_tested_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_how_it_works",
+      "target": "01_projects_trading_terminal_lab_triangular_arbitrage_bot_triangle_cycle_usdt_btc_eth_usdt",
       "confidence_score": 1.0
     },
     {
@@ -26794,6 +27242,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_mock_market_data",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/mock-market-data.md",
@@ -26851,6 +27309,16 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_concepts_order_management",
       "target": "01_projects_trading_terminal_lab_wiki_concepts_portfolio_tracking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_order_management",
       "confidence_score": 1.0
     },
     {
@@ -26914,6 +27382,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_portfolio_tracking",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/portfolio-tracking.md",
@@ -26951,6 +27429,66 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_concepts_portfolio_tracking_portfolio_tracking",
       "target": "01_projects_trading_terminal_lab_wiki_concepts_portfolio_tracking_related",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_triangular_arbitrage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_how_it_works",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_in_trading_terminal_lab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_mathematical_condition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_real_world_challenges",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_triangular_arbitrage",
+      "target": "01_projects_trading_terminal_lab_wiki_concepts_triangular_arbitrage_related",
       "confidence_score": 1.0
     },
     {
@@ -27054,6 +27592,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_mcp_server",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/mcp-server.md",
@@ -27110,6 +27658,16 @@
       "source_location": "L37",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_entities_trading_monitor_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_trading_engine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot",
       "target": "01_projects_trading_terminal_lab_wiki_entities_trading_engine",
       "confidence_score": 1.0
     },
@@ -27196,6 +27754,66 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_triangular_arbitrage_bot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_3_modes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_triangular_arbitrage_bot",
+      "target": "01_projects_trading_terminal_lab_wiki_entities_triangular_arb_bot_related",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -27207,7 +27825,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_index_wiki_index_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_index_comparisons",
@@ -27217,7 +27835,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_index_wiki_index_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_index_concepts",
@@ -27237,7 +27855,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "01_Projects/Trading_Terminal_Lab/wiki/index.md",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_index_wiki_index_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_index_queries",
@@ -27261,6 +27879,16 @@
       "weight": 1.0,
       "source": "01_projects_trading_terminal_lab_wiki_log_wiki_log_trading_terminal_lab",
       "target": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_create_wiki_initialized",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "01_Projects/Trading_Terminal_Lab/wiki/log.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "01_projects_trading_terminal_lab_wiki_log_wiki_log_trading_terminal_lab",
+      "target": "01_projects_trading_terminal_lab_wiki_log_2026_08_20_update_added_triangular_arbitrage_pages",
       "confidence_score": 1.0
     },
     {
