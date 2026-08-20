@@ -7,6 +7,12 @@
 ## [2026-08-20] create | Wiki initialized
 - Domain: Trading terminal development (MCP, trading engine, AI agents)
 - Structure created with SCHEMA.md, index.md, log.md
-- Initial pages created: trading-engine, mcp-server, hermes-agent, trading-monitor-bot, mcp-protocol, order-management, mock-market-data, portfolio-tracking
-- Source: [[Trading_Terminal_Lab_Codebase]] (codebase analysis)
-- Source: [[Trading_Terminal_Lab_MOC]] (project overview)
+- Initial pages: 8 (4 entities + 4 concepts)
+
+## [2026-08-20] update | Added triangular arbitrage pages
+- Added entity: [[triangular-arb-bot]] (Binance, 733 pairs, 265K triangles)
+- Added concept: [[triangular-arbitrage]] (math, challenges, integration)
+- Updated index.md (10 total pages)
+- Source: session @session:default/20260820_122120_b5f8d7
+- Arb bot moved into ~/Projects/trading-terminal-mcp/arb-bot/
+- Web UI updated: unified buttons/sizes/positions + Arb Scanner tab
