@@ -16,3 +16,11 @@
 - Source: session @session:default/20260820_122120_b5f8d7
 - Arb bot moved into ~/Projects/trading-terminal-mcp/arb-bot/
 - Web UI updated: unified buttons/sizes/positions + Arb Scanner tab
+
+## [2026-08-20] create | Trading Academy
+- Added entity: [[trading-academy]]
+- Added eight AI faculty roles and ten prerequisite-based curriculum modules
+- Added deterministic assessments, SQLite persistence, MCP/REST tools, and append-only audit
+- Added a Hermes no-agent Cron cycle every two hours for three paper-only trainees
+- Verified live execution requests are rejected and audited
+- Updated index.md (11 total pages)

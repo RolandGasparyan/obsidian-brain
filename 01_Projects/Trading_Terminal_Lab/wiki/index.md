@@ -2,7 +2,7 @@
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
 > Read this first to find relevant pages for any query.
-> Last updated: 2026-08-20 | Total pages: 10
+> Last updated: 2026-08-20 | Total pages: 11
 
 ## Entities
 
@@ -11,6 +11,7 @@
 - [[hermes-agent]] — Hermes Agent desktop app: AI assistant with terminal, browser, tools
 - [[trading-monitor-bot]] — Telegram bot @Tradinglab6666_bot for hourly VPS health alerts
 - [[triangular-arb-bot]] — Crypto triangular arbitrage scanner (Binance, 733 pairs, 265K triangles)
+- [[trading-academy]] — 24/7 paper-only AI faculty and trainee system with exams, persistence, and audit
 
 ## Concepts
 
