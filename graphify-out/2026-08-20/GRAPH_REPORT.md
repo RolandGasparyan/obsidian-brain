@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-08-20)
+# Graph Report - Guru  (2026-08-19)
 
 ## Corpus Check
-- 221 files · ~212,189 words
+- 206 files · ~208,923 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2204 nodes · 2089 edges · 207 communities (191 shown, 16 thin omitted)
+- 2106 nodes · 1994 edges · 200 communities (185 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -193,13 +193,6 @@
 - Security policy
 - 3. AI Agent Logic and Constraint Validation
 - 3. AI Agent Logic and Constraint Validation
-- 🧪 Trading Terminal Lab — Map of Content
-- Hermes Agent
-- Order Management
-- Wiki Schema — Trading Terminal Lab
-- MCP Protocol
-- Wiki Index — Trading Terminal Lab
-- Wiki Log — Trading Terminal Lab
 
 ## God Nodes (most connected - your core abstractions)
 1. `The Complete Encyclopedia of Crypto Trading` - 22 edges
@@ -219,7 +212,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (207 total, 16 thin omitted)
+## Communities (200 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.15
@@ -893,44 +886,20 @@ Nodes (8): 3. Environment variables, Armenian phone text-to-speech, Changing the
 Cohesion: 0.50
 Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
 
-### Community 200 - "🧪 Trading Terminal Lab — Map of Content"
-Cohesion: 0.06
-Nodes (30): Alert Types, Configuration, Related, Telegram Integration, 🤖 Trading Monitor Agent, What It Checks, Architecture, File Tree (+22 more)
-
-### Community 201 - "Hermes Agent"
-Cohesion: 0.09
-Nodes (19): Hermes Agent, Local AI Models (Ollama), Overview, Related, Trading Terminal Lab Integration, MCP Server, Overview, Related (+11 more)
-
-### Community 202 - "Order Management"
-Cohesion: 0.11
-Nodes (16): GBM Formula, Mock Market Data, Overview, Related, Symbols, Fill Logic, Order Lifecycle, Order Management (+8 more)
-
-### Community 203 - "Wiki Schema — Trading Terminal Lab"
-Cohesion: 0.29
-Nodes (6): Conventions, Domain, Frontmatter, Page Thresholds, Tag Taxonomy, Wiki Schema — Trading Terminal Lab
-
-### Community 204 - "MCP Protocol"
-Cohesion: 0.33
-Nodes (5): Advantages, In Trading Terminal Lab, MCP Protocol, Overview, Related
-
-### Community 205 - "Wiki Index — Trading Terminal Lab"
-Cohesion: 0.33
-Nodes (5): Comparisons, Concepts, Entities, Queries, Wiki Index — Trading Terminal Lab
-
 ## Knowledge Gaps
-- **1621 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1616 more)
+- **1555 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1550 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Reincarnation Booking AI Agent - Complete Project Summary` connect `L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR` to `Dashboard.md`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `Reincarnation Booking AI Agent - Obsidian Vault Guide` connect `Reincarnation Booking AI Agent - Obsidian Vault Guide` to `Dashboard.md`?**
+- **Why does `L99 — INSTITUTIONAL ALPHA RESEARCH ROADMAP` connect `III. Mapping to existing tooling` to `L99_ALPHA_VALIDATION.md`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `Booking AI Agent - Quick Reference Guide` connect `Booking AI Agent - Quick Reference Guide` to `Dashboard.md`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1621 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1555 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**
