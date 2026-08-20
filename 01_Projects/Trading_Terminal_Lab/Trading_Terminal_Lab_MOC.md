@@ -59,6 +59,13 @@ updated: 2026-08-20
 - [[Trading_Guru_Empire_MOC]] — parent trading ecosystem
 - [[6_EMPIRES_OS_Project_State]] — 3D corporation (VPS down)
 
+## 🔄 Arb Scanner (Triangular Arbitrage)
+
+- [[Triangular_Arbitrage_Bot]] — Binance, 733 USDT զույգ, 265K եռյակ, WebSocket-ով
+- 3 ռեժիմ՝ scanner (միայն տեսնել), paper (սիմուլացիա), live (իրական)
+- Session: @session:default/20260820_122120_b5f8d7
+- Տեղը: `~/Projects/trading-terminal-mcp/arb-bot/`
+
 ## 📋 Roadmap
 
 - [x] Build core trading engine (mock market, orders, portfolio)
@@ -67,10 +74,13 @@ updated: 2026-08-20
 - [x] Write tests (8+ passing)
 - [x] Create Hermes Project
 - [x] Create Obsidian Brain notes
-- [ ] Set up Graphify knowledge graph
-- [ ] Set up Karpathy LLM Wiki
-- [ ] Push to GitHub
-- [ ] Connect to real VPS trading engine data
+- [x] Set up Graphify knowledge graph
+- [x] Set up Karpathy LLM Wiki
+- [x] Build Triangular Arbitrage Bot
+- [x] Unify all UI buttons, sizes, positions
+- [x] Add Arb Scanner tab in web UI
+- [ ] Push to GitHub (trading-terminal-mcp repo)
+- [ ] Connect arb bot to real Binance API keys
 - [ ] Add more trading strategies
 
 ## 🔁 Sync

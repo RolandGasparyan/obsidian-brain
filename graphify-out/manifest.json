@@ -1060,8 +1060,8 @@
     "semantic_hash": ""
   },
   "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_MOC.md": {
-    "mtime": 1787215811.7319787,
-    "ast_hash": "cac51978607b944f0e5977769e3bd45d",
+    "mtime": 1787221772.8370678,
+    "ast_hash": "d5c3ced256e7d9a8a720142956321c29",
     "semantic_hash": ""
   },
   "01_Projects/Trading_Terminal_Lab/Trading_Terminal_Lab_Wiki.md": {
@@ -1115,13 +1115,28 @@
     "semantic_hash": ""
   },
   "01_Projects/Trading_Terminal_Lab/wiki/index.md": {
-    "mtime": 1787215883.1063895,
-    "ast_hash": "b8cb7c640fd24e740fc6133bf3cc5f03",
+    "mtime": 1787221722.3637123,
+    "ast_hash": "32c813dbf769017cae6ec413ddad6f6d",
     "semantic_hash": ""
   },
   "01_Projects/Trading_Terminal_Lab/wiki/log.md": {
-    "mtime": 1787215888.0886257,
-    "ast_hash": "15c7f2601c4d152e2d063e33e0795d9a",
+    "mtime": 1787221727.455132,
+    "ast_hash": "11d3cb347b9ce33984147c76e0973cab",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Terminal_Lab/Triangular_Arbitrage_Bot.md": {
+    "mtime": 1787221689.4244688,
+    "ast_hash": "0c2c570c1df55c035101c1815ee8961e",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Terminal_Lab/wiki/concepts/triangular-arbitrage.md": {
+    "mtime": 1787221715.4784486,
+    "ast_hash": "d52dfd9a5f5e73e8f94195bc863ea248",
+    "semantic_hash": ""
+  },
+  "01_Projects/Trading_Terminal_Lab/wiki/entities/triangular-arb-bot.md": {
+    "mtime": 1787221696.948589,
+    "ast_hash": "f3b23635080094e24fbd1c33ed808d56",
     "semantic_hash": ""
   }
 }
