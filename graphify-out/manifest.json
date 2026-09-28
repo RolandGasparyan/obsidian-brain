@@ -824,16 +824,6 @@
     "ast_hash": "ce89b948c73f27768800ef771b727dcd",
     "semantic_hash": ""
   },
-  ".claude/settings.json": {
-    "mtime": 1784139765.3076656,
-    "ast_hash": "e555c8e93abd29ca05554e470e21ca51",
-    "semantic_hash": ""
-  },
-  ".codex/hooks.json": {
-    "mtime": 1784139765.4911208,
-    "ast_hash": "c74cdbe199ee582a54c0b449112e607b",
-    "semantic_hash": ""
-  },
   "## DocumentationUntitled 2.md": {
     "mtime": 1784875411.982,
     "ast_hash": "268b93ebaa6169d4ebca2ce22d687f7f",
