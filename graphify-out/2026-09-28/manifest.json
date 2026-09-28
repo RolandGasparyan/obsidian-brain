@@ -234,6 +234,11 @@
     "ast_hash": "89638fb2ef350367a054bc83f4110661",
     "semantic_hash": ""
   },
+  "AGENTS.md": {
+    "mtime": 1784139765.4908342,
+    "ast_hash": "b07b631669f694849751de232ea662c4",
+    "semantic_hash": ""
+  },
   "AUDIT_REPORT_GODMODE.md": {
     "mtime": 1781116852.411999,
     "ast_hash": "3b4fe13a1d3f4ceb9c54cef92a48d33f",
@@ -262,6 +267,11 @@
   "CHAMPION_MODE.md": {
     "mtime": 1781116852.414,
     "ast_hash": "d14a600cac9e147887a29dd73c03edd7",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1784139765.3072574,
+    "ast_hash": "2d40909e8e95fbb02e75f702c29f40c7",
     "semantic_hash": ""
   },
   "DEEP_EDGE_RESULTS.md": {
