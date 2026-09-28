@@ -19,6 +19,7 @@
 - Strategy Deep Dives — Top 10 Profitable Strategies
 - Canary Deployment — Operator Playbook  (MA50W10 variant)
 - command-center.sh
+- What You Must Do When Invoked
 - FINAL VERIFY AUDIT — `Godmode` branch
 - Champion Mode — L99 Apex Doctrine
 - DEPLOYMENT READY CHECKLIST — tradingguru-agent
@@ -42,6 +43,7 @@
 - Stage 1 forward-test runbook
 - Upgrade Research — what's on GitHub that could move L99 forward
 - PROFITABLE TRADING SETUP BACKUP
+- graphify reference: extra exports and benchmark
 - MA-family parameter sweep — no combo clears the ship gate
 - tradingguru-empire — Snapshot Provenance
 - Order Flow Imbalance Strategy — AGENT ZETA
@@ -167,8 +169,6 @@
 - graphify reference: commit hook and native CLAUDE.md integration
 - graphify reference: incremental update and cluster-only
 - graphify reference: GitHub clone and cross-repo merge
-- graphify reference: transcribe video and audio
-- extraction-spec.md
 - Mercury AI Assistant - Project Hub.md
 - Drawing 2026-07-24 23.19.27.excalidraw.md
 - wa-id.ts
@@ -254,6 +254,10 @@ Nodes (21): Canary Deployment — Operator Playbook  (MA50W10 variant), Emergenc
 ### Community 8 - "command-center.sh"
 Cohesion: 0.09
 Nodes (21): `battle` and `battle-restart`, command-center.sh, Configuration, `final` — championship report, Governance posture, Governance posture (Mac side), GUARDED ZONE input validation, GUARDED ZONE (require `CONFIRM=YES`) (+13 more)
+
+### Community 9 - "What You Must Do When Invoked"
+Cohesion: 0.08
+Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 10 - "FINAL VERIFY AUDIT — `Godmode` branch"
 Cohesion: 0.10
@@ -346,6 +350,10 @@ Nodes (16): 1. Order-book / microstructure tooling, 2. Factor analysis / validat
 ### Community 32 - "PROFITABLE TRADING SETUP BACKUP"
 Cohesion: 0.12
 Nodes (15): 8 AI MODELS WITH WEIGHTS, Consensus Requirements, CURRENT TRADING CONFIGURATION, Date: January 27, 2026, GODS LEVEL RSI LOGIC, KEY FILES, NOTES, Platform: Gate.io Futures - SHORTS ONLY (+7 more)
+
+### Community 33 - "graphify reference: extra exports and benchmark"
+Cohesion: 0.22
+Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
 
 ### Community 34 - "MA-family parameter sweep — no combo clears the ship gate"
 Cohesion: 0.12
@@ -784,26 +792,18 @@ Cohesion: 0.67
 Nodes (3): 5.1 ALMA + Stochastic Reversal (PF: 0.984), 5.2 Heikin Ashi Trend Filter (PF: 0.974), 5. Tier 3 Strategies — Breakeven Zone (PF 0.984–0.999)
 
 ### Community 156 - "What You Must Do When Invoked"
-Cohesion: 0.08
-Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
-
-### Community 157 - "graphify reference: extra exports and benchmark"
-Cohesion: 0.22
-Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
-
-### Community 158 - "graphify reference: query, path, explain"
 Cohesion: 0.33
 Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
 
-### Community 159 - "graphify reference: add a URL and watch a folder"
+### Community 157 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.50
 Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
 
-### Community 160 - "graphify reference: commit hook and native CLAUDE.md integration"
+### Community 158 - "graphify reference: query, path, explain"
 Cohesion: 0.50
 Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify reference: commit hook and native CLAUDE.md integration
 
-### Community 161 - "graphify reference: incremental update and cluster-only"
+### Community 159 - "graphify reference: add a URL and watch a folder"
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 

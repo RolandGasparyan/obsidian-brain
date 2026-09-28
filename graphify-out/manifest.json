@@ -834,51 +834,6 @@
     "ast_hash": "c74cdbe199ee582a54c0b449112e607b",
     "semantic_hash": ""
   },
-  ".codex/skills/graphify/SKILL.md": {
-    "mtime": 1784139765.4900613,
-    "ast_hash": "eb3f90594c76c2c4a5370ecaf088f461",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/add-watch.md": {
-    "mtime": 1784039854.951447,
-    "ast_hash": "d59d027fe449f06aa03905a01184e779",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/exports.md": {
-    "mtime": 1784039854.9515808,
-    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/extraction-spec.md": {
-    "mtime": 1784039854.9518564,
-    "ast_hash": "bf895ec4d4e40f5f66f7d31c2a9bd4a7",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/github-and-merge.md": {
-    "mtime": 1784039854.9521298,
-    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/hooks.md": {
-    "mtime": 1784039854.95887,
-    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/query.md": {
-    "mtime": 1784039854.9595284,
-    "ast_hash": "3c46f8ad006874260614ed8657d02307",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/transcribe.md": {
-    "mtime": 1784039854.9597318,
-    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
-    "semantic_hash": ""
-  },
-  ".codex/skills/graphify/references/update.md": {
-    "mtime": 1784039854.9598763,
-    "ast_hash": "c698309979460d0f02ba616417844399",
-    "semantic_hash": ""
-  },
   "## DocumentationUntitled 2.md": {
     "mtime": 1784875411.982,
     "ast_hash": "268b93ebaa6169d4ebca2ce22d687f7f",
@@ -1132,6 +1087,51 @@
   "01_Projects/Trading_Terminal_Lab/wiki/entities/trading-academy.md": {
     "mtime": 1787230237.0339313,
     "ast_hash": "6f0ce5ea0359548a60b4efa65ff80983",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/SKILL.md": {
+    "mtime": 1784139765.4900613,
+    "ast_hash": "eb3f90594c76c2c4a5370ecaf088f461",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/add-watch.md": {
+    "mtime": 1784039854.951447,
+    "ast_hash": "d59d027fe449f06aa03905a01184e779",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/exports.md": {
+    "mtime": 1784039854.9515808,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/extraction-spec.md": {
+    "mtime": 1784039854.9518564,
+    "ast_hash": "bf895ec4d4e40f5f66f7d31c2a9bd4a7",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/github-and-merge.md": {
+    "mtime": 1784039854.9521298,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/hooks.md": {
+    "mtime": 1784039854.95887,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/query.md": {
+    "mtime": 1784039854.9595284,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/transcribe.md": {
+    "mtime": 1784039854.9597318,
+    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
+    "semantic_hash": ""
+  },
+  ".codex/skills.disabled-2026-09-28/graphify/references/update.md": {
+    "mtime": 1784039854.9598763,
+    "ast_hash": "c698309979460d0f02ba616417844399",
     "semantic_hash": ""
   }
 }

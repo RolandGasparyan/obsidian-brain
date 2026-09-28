@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-08-20)
+# Graph Report - Guru  (2026-09-28)
 
 ## Corpus Check
-- 225 files · ~213,514 words
+- 223 files · ~210,094 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2240 nodes · 2131 edges · 207 communities (192 shown, 15 thin omitted)
+- 2201 nodes · 2094 edges · 205 communities (190 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -19,7 +19,6 @@
 - Strategy Deep Dives — Top 10 Profitable Strategies
 - Canary Deployment — Operator Playbook  (MA50W10 variant)
 - command-center.sh
-- Roland Gasparyan's Cloud Computer — AGENTS.md
 - FINAL VERIFY AUDIT — `Godmode` branch
 - Champion Mode — L99 Apex Doctrine
 - DEPLOYMENT READY CHECKLIST — tradingguru-agent
@@ -43,7 +42,6 @@
 - Stage 1 forward-test runbook
 - Upgrade Research — what's on GitHub that could move L99 forward
 - PROFITABLE TRADING SETUP BACKUP
-- GODS LEVEL ENGINE — Project Guide
 - MA-family parameter sweep — no combo clears the ship gate
 - tradingguru-empire — Snapshot Provenance
 - Order Flow Imbalance Strategy — AGENT ZETA
@@ -210,8 +208,8 @@
 6. `Reincarnation Booking AI Agent - Obsidian Vault Guide` - 16 edges
 7. `Stage 1 forward-test runbook` - 16 edges
 8. `L99 System Audit — Post-Architecture Phase` - 16 edges
-9. `GODS LEVEL ENGINE — Project Guide` - 15 edges
-10. `Booking AI Agent - Quick Reference Guide` - 15 edges
+9. `Booking AI Agent - Quick Reference Guide` - 15 edges
+10. `L99 Bot — VPS Deploy Guide` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -219,7 +217,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (207 total, 15 thin omitted)
+## Communities (205 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.15
@@ -256,10 +254,6 @@ Nodes (21): Canary Deployment — Operator Playbook  (MA50W10 variant), Emergenc
 ### Community 8 - "command-center.sh"
 Cohesion: 0.09
 Nodes (21): `battle` and `battle-restart`, command-center.sh, Configuration, `final` — championship report, Governance posture, Governance posture (Mac side), GUARDED ZONE input validation, GUARDED ZONE (require `CONFIRM=YES`) (+13 more)
-
-### Community 9 - "Roland Gasparyan's Cloud Computer — AGENTS.md"
-Cohesion: 0.09
-Nodes (21): 1. Trading Strategies Testing Engine v9.1 (5 critical fixes applied 2026-06-01), 2. Trading Engine Status API v3 — Interactive Animated Dashboard (v8.0), Active Services, 🔴 CANARY REAL MONEY BATTLE (DO VPS: 167.71.24.86), Champion Battle v9.1 DUST-PROOF — 2026-06-06 07:45 UTC ✅, Daily AM Monitoring System (2026-06-01), Engine v9.2 — Anti-Martingale Default Sizing (2026-06-01), Environment (+13 more)
 
 ### Community 10 - "FINAL VERIFY AUDIT — `Godmode` branch"
 Cohesion: 0.10
@@ -352,10 +346,6 @@ Nodes (16): 1. Order-book / microstructure tooling, 2. Factor analysis / validat
 ### Community 32 - "PROFITABLE TRADING SETUP BACKUP"
 Cohesion: 0.12
 Nodes (15): 8 AI MODELS WITH WEIGHTS, Consensus Requirements, CURRENT TRADING CONFIGURATION, Date: January 27, 2026, GODS LEVEL RSI LOGIC, KEY FILES, NOTES, Platform: Gate.io Futures - SHORTS ONLY (+7 more)
-
-### Community 33 - "GODS LEVEL ENGINE — Project Guide"
-Cohesion: 0.12
-Nodes (16): Backtest reality check, Canary Real Money Battle (DO VPS: 167.71.24.86), Commands, Current state — 2026-04-28 (post-Step 1 of L99 path), Files, GODS LEVEL ENGINE — Project Guide, graphify, Hard rules (today's discipline lessons) (+8 more)
 
 ### Community 34 - "MA-family parameter sweep — no combo clears the ship gate"
 Cohesion: 0.12
@@ -922,7 +912,7 @@ Cohesion: 0.33
 Nodes (5): [2026-08-20] create | Trading Academy, [2026-08-20] create | Wiki initialized, [2026-08-20] update | Activated persistent Trading Academy agents, [2026-08-20] update | Added triangular arbitrage pages, Wiki Log — Trading Terminal Lab
 
 ## Knowledge Gaps
-- **1647 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1642 more)
+- **1615 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1610 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -930,11 +920,9 @@ Nodes (5): [2026-08-20] create | Trading Academy, [2026-08-20] create | Wiki ini
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Booking AI Agent - Quick Reference Guide` connect `Booking AI Agent - Quick Reference Guide` to `Dashboard.md`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `Reincarnation Booking AI Agent - Obsidian Vault Guide` connect `Reincarnation Booking AI Agent - Obsidian Vault Guide` to `Dashboard.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1647 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1615 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**
@@ -943,3 +931,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
 - **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
   _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
+- **Should `Phase B Decision Tree — D7+ playbook` be split into smaller, more focused modules?**
+  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
