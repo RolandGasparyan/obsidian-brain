@@ -18,6 +18,7 @@ updated: 2026-10-10
 
 🔗 Core note: [[Roland Gasparyan ABSOLUTE Skills]]
 🌱 Ecosystem seed: [[ABSOLUTE_SKILL]] — how every /ABSOLUTE skill is born and the Brain grows from zero
+🕊 Philosophy: [[ROLAND-PHILOSOPHY]] — life, art, business, teams, finance, secret knowledges, superhuman visions
 
 ---
 

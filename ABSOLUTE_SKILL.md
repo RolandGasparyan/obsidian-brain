@@ -55,11 +55,11 @@ The Brain develops from zero this way:
 |---|---|---|---|
 | absolute-production | All creative output | All five | ACTIVE |
 | trading-music-empire | Business knowledge | Բարություն, Սեր | ACTIVE |
-| roland-philosophy | Identity & values | All five | PLANNED |
+| roland-philosophy | Identity & values | All five | ACTIVE |
+| absolute-blueprint | Dev-team blueprints | Հարգանք | ACTIVE |
 | absolute-music-video | Music video production | Լույս, Սեր | NEXT |
 | absolute-ai-film | Fantastic AI movies | Տիեզերական | NEXT |
 | absolute-web-design | Spiritual web spaces | Լույս | NEXT |
-| absolute-blueprint | Dev-team blueprints | Հարգանք | NEXT |
 
 ## Ecosystem Rules
 
