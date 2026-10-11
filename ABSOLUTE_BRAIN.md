@@ -48,10 +48,9 @@ Music is already ABSOLUTE (30-40 awards, 8 albums, 24+ years). Everything else e
 | Project | GitHub Repo | Role | Status |
 |---|---|---|---|
 | 6-empires | 6-empires | AI corp HQ | CONCEPTION |
-| 6-empires OS | 6-empires-os | Public site | PUBLIC |
+| Oracle Arena | oracle-arena | Multi-agent LLM trading arena | ACTIVE ✅ SYNCED |
+| Oracle Arena Tuning | oracle-arena-tuning-loop | TradingAgents research pipeline | ACTIVE ✅ SYNC |
 | Hermes Brain | hermes-brain | Meta-orchestrator | ACTIVE |
-| Oracle Arena | oracle-arena | AI arena (JS) | ACTIVE |
-| Oracle Arena Tuning | oracle-arena-tuning-loop | Tuning loop (Py) | ACTIVE |
 | The Delegation | the-delegation | 3D agentic playground | PUBLIC |
 
 ### 📈 Trading Empire
