@@ -17,6 +17,7 @@ updated: 2026-10-10
 > **Principle: Everything carries the ABSOLUTE standard. Nothing enters this system below that bar.**
 
 🔗 Core note: [[Roland Gasparyan ABSOLUTE Skills]]
+🌱 Ecosystem seed: [[ABSOLUTE_SKILL]] — how every /ABSOLUTE skill is born and the Brain grows from zero
 
 ---
 
