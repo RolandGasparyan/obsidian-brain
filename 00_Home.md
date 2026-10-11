@@ -10,9 +10,19 @@ updated: 2026-06-08
 > [!tip] Canonical vault
 > This iCloud vault (`Obsidian_Second_Brain`) is the **single source of truth**. Other vaults on this Mac are left in place but are *not* canonical — see [[Vault_Map]].
 
+> [!star] ABSOLUTE Layer
+> 🌟 [[ABSOLUTE_BRAIN]] — the master hub syncing GitHub + Hermes Agents + this vault.
+> 📜 [[Roland Gasparyan ABSOLUTE Skills]] — the standard governing everything.
+
 ## 🚀 Active project
 - [[Trading_Guru_Empire_MOC|Trading Guru Empire]] — the trading championship empire
   - [[Councils_28]] · [[Council_Runner_Automation]] · [[Free_APIs_Reference]] · [[War_Room_and_The_Delegation]]
+
+## 🏛 Empire Hubs (ABSOLUTE layer)
+- [[REINCARNATION_MOC]] — music empire hub
+- [[6-EMPIRES_MOC]] — AI corporation hub
+- [[TRADING_GURU_MOC]] — championship hub
+- [[HIGHYOGI_MOC]] — spiritual commerce hub
 
 ## 🗺 Areas
 - [[Agent_Roles_Leaderboard]] · [[Infrastructure_Overview]]
