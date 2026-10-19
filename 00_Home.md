@@ -14,6 +14,9 @@ updated: 2026-06-08
 - [[Trading_Guru_Empire_MOC|Trading Guru Empire]] — the trading championship empire
   - [[Councils_28]] · [[Council_Runner_Automation]] · [[Free_APIs_Reference]] · [[War_Room_and_The_Delegation]]
 
+## 🎵 Music & media
+- [[01_Projects/Reincarnation_Orchestra/README|Reincarnation Orchestra — Project Hub]] — spec · implementation skeleton · **Music+Video generation blueprint v1.0**
+
 ## 🗺 Areas
 - [[Agent_Roles_Leaderboard]] · [[Infrastructure_Overview]]
 - Strategies: [[MA50W10_Strategy]] · [[RSI2_Champion_Cell]]
