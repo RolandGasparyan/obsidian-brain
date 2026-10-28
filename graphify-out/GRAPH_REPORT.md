@@ -1,11 +1,11 @@
-# Graph Report - Guru  (2026-09-28)
+# Graph Report - Guru  (2026-10-27)
 
 ## Corpus Check
-- 223 files · ~210,094 words
+- 226 files · ~221,685 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2201 nodes · 2094 edges · 205 communities (190 shown, 15 thin omitted)
+- 2302 nodes · 2192 edges · 207 communities (192 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -169,6 +169,8 @@
 - graphify reference: commit hook and native CLAUDE.md integration
 - graphify reference: incremental update and cluster-only
 - graphify reference: GitHub clone and cross-repo merge
+- Any change goes through Roland/Hermes first. Versioned and timestamped.
+- GENERATING MUSIC AND VIDEO — ABSOLUTE BLUEPRINT v1.0
 - Mercury AI Assistant - Project Hub.md
 - Drawing 2026-07-24 23.19.27.excalidraw.md
 - wa-id.ts
@@ -205,11 +207,11 @@
 3. `4. Tier 2 Strategies — Asset Specialists` - 19 edges
 4. `Booking AI Agent - Deployment & Documentation Log` - 18 edges
 5. `Reincarnation Booking AI Agent - Complete Project Summary` - 18 edges
-6. `Reincarnation Booking AI Agent - Obsidian Vault Guide` - 16 edges
-7. `Stage 1 forward-test runbook` - 16 edges
-8. `L99 System Audit — Post-Architecture Phase` - 16 edges
-9. `Booking AI Agent - Quick Reference Guide` - 15 edges
-10. `L99 Bot — VPS Deploy Guide` - 14 edges
+6. `GENERATING MUSIC AND VIDEO — ABSOLUTE BLUEPRINT v1.0` - 17 edges
+7. `Reincarnation Booking AI Agent - Obsidian Vault Guide` - 16 edges
+8. `Stage 1 forward-test runbook` - 16 edges
+9. `L99 System Audit — Post-Architecture Phase` - 16 edges
+10. `Booking AI Agent - Quick Reference Guide` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -217,7 +219,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (205 total, 15 thin omitted)
+## Communities (207 total, 15 thin omitted)
 
 ### Community 0 - "L99_ALPHA_VALIDATION.md"
 Cohesion: 0.15
@@ -433,7 +435,7 @@ Nodes (45): 1. Clone Repository, 2. Read Documentation, 3. Set Up Local Environm
 
 ### Community 53 - "Trading Strategies Testing Engine: Testing & Validation Protocol"
 Cohesion: 0.15
-Nodes (9): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 4. Profit Securing and Cold Wallet Simulation, 5. Trading Guru Self-Learning Validation (+1 more)
+Nodes (13): 1.1. Uptime and Stability Testing, 1.2. Health Check System Simulation, 1. Infrastructure and Environment Validation, 2.1. Data Ingestion Verification, 2.2. Paper Trading Engine Fidelity, 2. Market Data and Execution Simulation Testing, 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy (+5 more)
 
 ### Community 54 - "Tournament Package - Integration Guide"
 Cohesion: 0.15
@@ -740,7 +742,7 @@ Cohesion: 0.40
 Nodes (5): 9.1 The Volatility Asymmetry Secret, 9.2 The Confirmation Threshold Secret, 9.3 The Timeout Exit Secret, 9.4 The Risk Mode Ladder Secret, 9. Secret Money-Making Methods
 
 ### Community 130 - "System Verification Documentation Workflow"
-Cohesion: 0.40
+Cohesion: 0.22
 Nodes (4): Best Practices for Document Generation, Bundled Resources, Core Principles, System Verification Documentation Workflow
 
 ### Community 131 - "🔄 Auto-synced project status"
@@ -806,6 +808,14 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 ### Community 159 - "graphify reference: add a URL and watch a folder"
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
+
+### Community 163 - "Any change goes through Roland/Hermes first. Versioned and timestamped."
+Cohesion: 0.05
+Nodes (38): 0. WHO WE ARE, 10. NEXT REVIEW, 1. TOP-LEVEL ARCHITECTURE, 2. NEXT 90 DAYS — PRIORITY ROADMAP, 3. SHARED DATA MODELS, 4. APIS (SHARED GATEWAY), 5. CREATIVE DIRECTION (ROLAND'S VISION), 6. WHAT ROLAND PROVIDES THIS WEEK (+30 more)
+
+### Community 164 - "GENERATING MUSIC AND VIDEO — ABSOLUTE BLUEPRINT v1.0"
+Cohesion: 0.06
+Nodes (30): 0. VERIFIED CURRENT STATE (checked 2026-10-18, not assumed), 10. COMMANDS — with expected output, 11. ACCEPTANCE CRITERIA (CI-enforced — a PR without them is rejected), 12. WHAT NOT TO DO (explicit anti-patterns), 13. ROLLBACK, 14. COST & TIME (estimates — verify on provider dashboards, not taken as fact), 15. OPEN QUESTIONS FOR ROLAND (creative decisions only he can make), 1. GOAL (one sentence) (+22 more)
 
 ### Community 165 - "Mercury AI Assistant - Project Hub.md"
 Cohesion: 0.11
@@ -880,8 +890,8 @@ Cohesion: 0.25
 Nodes (8): 3. Environment variables, Armenian phone text-to-speech, Changing the LLM provider directly on the server, Changing the LLM provider from GitHub (recommended), Channels, Integrations, LLM, Server
 
 ### Community 198 - "3. AI Agent Logic and Constraint Validation"
-Cohesion: 0.50
-Nodes (4): 3.1. Aggressive Execution and Loss Mitigation, 3.2. "Gods Level" Position Sizing Accuracy, 3.3. Entry/Exit Checklist Enforcement, 3. AI Agent Logic and Constraint Validation
+Cohesion: 0.07
+Nodes (28): 10. WHAT WE DO NEXT (AFTER YOUR APPROVAL), 1. VISION LAYER (Artist/Director), 2. BUSINESS LAYER (Producer/Manager), 3. TECH LAYER (Dev Team), 4.1 Auth (shared across all brands), 4.2 Artists and releases (Orchestra + Studios), 4.3 Booking (AI-assisted), 4.4 Merch (HighYogi integration) (+20 more)
 
 ### Community 200 - "🧪 Trading Terminal Lab — Map of Content"
 Cohesion: 0.04
@@ -912,24 +922,24 @@ Cohesion: 0.33
 Nodes (5): [2026-08-20] create | Trading Academy, [2026-08-20] create | Wiki initialized, [2026-08-20] update | Activated persistent Trading Academy agents, [2026-08-20] update | Added triangular arbitrage pages, Wiki Log — Trading Terminal Lab
 
 ## Knowledge Gaps
-- **1615 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1610 more)
+- **1699 isolated node(s):** `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25`, `Current Setup Profile`, `Getting Started` (+1694 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Booking AI Agent - Quick Reference Guide` connect `Booking AI Agent - Quick Reference Guide` to `Dashboard.md`?**
+- **Why does `Reincarnation Booking AI Agent - Architecture` connect `Reincarnation Booking AI Agent - Architecture` to `Dashboard.md`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `Reincarnation Booking AI Agent - Complete Project Summary` connect `L99 — DYNAMIC REGIME PROBABILITY ESTIMATOR` to `Dashboard.md`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `Booking AI Agent - Deployment & Documentation Log` connect `Booking AI Agent - Deployment & Documentation Log` to `Dashboard.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `WaIdKind`, `ParsedWaId`, `Last Updated: 2026-07-25` to the rest of the system?**
-  _1615 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1699 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Trading_Guru_Empire_MOC.md` be split into smaller, more focused modules?**
   _Cohesion score 0.05454545454545454 - nodes in this community are weakly interconnected._
 - **Should `L99 System Audit — Post-Architecture Phase` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `MA50W10 Strategy — Backtesting Results & Validation` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
-- **Should `GODMODE Audit — AI Trading Championship` be split into smaller, more focused modules?**
-  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
-- **Should `Phase B Decision Tree — D7+ playbook` be split into smaller, more focused modules?**
-  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._

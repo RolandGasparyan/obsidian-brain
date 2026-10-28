@@ -1,11 +1,11 @@
 {
   ".obsidian/app.json": {
-    "mtime": 1790531637.599619,
+    "mtime": 1793163854.4155111,
     "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
     "semantic_hash": ""
   },
   ".obsidian/appearance.json": {
-    "mtime": 1790531637.6001043,
+    "mtime": 1793163854.4159667,
     "ast_hash": "86d9f6137e6a7f85b82e26b03cbcde9d",
     "semantic_hash": ""
   },
@@ -15,12 +15,12 @@
     "semantic_hash": ""
   },
   ".obsidian/core-plugins.json": {
-    "mtime": 1790531637.176399,
-    "ast_hash": "7c877bea49eaeabb100563bd157b9051",
+    "mtime": 1791691413.964999,
+    "ast_hash": "2cb6da275a80b6a699163f431b7b9246",
     "semantic_hash": ""
   },
   ".obsidian/graph.json": {
-    "mtime": 1790531638.944,
+    "mtime": 1793163857.369999,
     "ast_hash": "de71c255f49d6a464b1a0701ace977dc",
     "semantic_hash": ""
   },
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   ".obsidian/workspace.json": {
-    "mtime": 1790531637.7538836,
-    "ast_hash": "82d35da6671de50c10e49c568f831ea8",
+    "mtime": 1793164240.3711724,
+    "ast_hash": "37087f55211e01ad37796a05888a6f0d",
     "semantic_hash": ""
   },
   "00_Home.md": {
@@ -1122,6 +1122,31 @@
   ".codex/skills.disabled-2026-09-28/graphify/references/update.md": {
     "mtime": 1784039854.9598763,
     "ast_hash": "c698309979460d0f02ba616417844399",
+    "semantic_hash": ""
+  },
+  "01_Projects/Reincarnation_Orchestra/EMPIRE-SPEC-FOR-DEV-TEAM.md": {
+    "mtime": 1792386510.733999,
+    "ast_hash": "5aa7126d57a7065bad3adb67324af540",
+    "semantic_hash": ""
+  },
+  "01_Projects/Reincarnation_Orchestra/GENERATING-MUSIC-AND-VIDEO-BLUEPRINT-v1.0.md": {
+    "mtime": 1792388026.157,
+    "ast_hash": "2d049bc96ddc28abd533ed6976ef8e87",
+    "semantic_hash": ""
+  },
+  "01_Projects/Reincarnation_Orchestra/IMPLEMENTATION-SKELETON.md": {
+    "mtime": 1792386510.733999,
+    "ast_hash": "2b6d1221ffc232a4d3e99033b9e994fd",
+    "semantic_hash": ""
+  },
+  "01_Projects/Reincarnation_Orchestra/README.md": {
+    "mtime": 1792386568.868,
+    "ast_hash": "5b021ae290b99dacad2143e7302de445",
+    "semantic_hash": ""
+  },
+  "01_Projects/Reincarnation_Orchestra/REINCARNATION-ORCHESTRA-SPEC-v1.0.md": {
+    "mtime": 1792386510.733999,
+    "ast_hash": "4c7a2375bdc8b095eed9cbd404d173f6",
     "semantic_hash": ""
   }
 }
